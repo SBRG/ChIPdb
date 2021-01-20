@@ -7,6 +7,7 @@
     <!-- CSS imports -->
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
 
     <!-- javascript imports -->
     <script src="js/bootstrap.js"></script>
@@ -31,21 +32,80 @@
 
     <!-- top bar -->
     <div class="header navbar-dark sticky-top">
-        <div class="navbar-header">
+        <div class="navbar-header" style="font-size: x-large; font-weight: 400;">
             TFBSdb 1.0.0
         </div>
     </div>
+    <div class="row row-no-margin">
+        <!-- Left Navigation -->
+        <div id="left_col" class="col-sm-2">
+            <div id="left_col_content">
+                <div class="pl-1 mb-2"> Navigation</div>
+                <div class="card p-2 mb-1 text-center"> Home</div>
+                <div class="card p-2 mb-1 text-center"> Upload</div>
+                <div class="card p-2 mb-1 text-center"> Download</div>
+                <div class="card p-2 mb-1 text-center"> Visualization</div>
+                <div class="card p-2 mb-1 text-center"> Comparative Analysis</div>
+            </div>
+        </div>
+        <!-- middle -->
+        <div class="col-lg-7 col-sm-10 middle-spacing">
+            <div class="content mt-4">
+                <div class="card homepage-card p-2 mb-1 text-center">
+                    <div class="row">
+                        <div class="col-sm-12 m-2">
+                            <h1> TFBS v1.0.0 </h1>
+                        </div>
+                        <div class="col-sm-12 mb-3">
+                            <h3> A database for prokaryotic organisms' genome-wide binding sites and comparative
+                                analysis. </h3>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <h4>Organisms</h4>
+                            <div class="db-stat"> XX </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 middle-divider-lines">
+                            <h4>Datasets</h4>
+                            <div class="db-stat"> XX </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <h4>Release</h4>
+                            <div class="db-stat"> XX </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Left Navigation -->
-    <div id="left_col" class="col-sm-2">
-        <div id="left_col_content">
-
-            <h1 id="title" class="bd-title bd-lead"></h1>
-            <div class="card p-2 bd-lead" id="header"></div>
+            <!-- Footer -->
+            <hr>
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="http://systemsbiology.ucsd.edu/">
+                                <img class="img-fluid" src="images/sbrg-logo.png">
+                            </a>
+                        </div>
+                        <div class="col-sm-9 m-auto">
+                            <p class="copyright text-muted small">
+                                TFBSdb is maintained by the Systems Biology Research Group at the University of
+                                California, San Diego. <br/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- right twitter panel -->
+        <div id="right_col" class="col-lg-3 d-md-none d-lg-block">
+            <a class="twitter-timeline" data-height="800" data-theme="light"
+               href="https://twitter.com/ucsd_sbrg?ref_src=twsrc%5Etfw">Tweets by ucsd_sbrg</a
         </div>
     </div>
-
 </div>
+
+<!-- Scripts -->
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 </body>
 </html>
