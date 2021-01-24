@@ -24,13 +24,14 @@ body {
     color: white;
     margin-bottom: 0;
     padding: 0.4rem 0.4rem 0.4rem 0.7rem;
+    height: 50px;
 }
 
 #left_col {
     background-color: #CFDBD5;
     padding: 1rem 1rem 4.5rem;
     height: unset;
-    min-height: 100vh;
+    min-height: calc(100vh - 50px);
 }
 
 #left_col_content {
@@ -43,5 +44,21 @@ body {
 }
 
 .middle-spacing{
+    flex: 1;
+    flex-direction: column;
+    display: flex;
     justify-content: space-between;
+}
+
+.page-icon{
+    color: #87978F;
+    height: 2rem;
+    line-height: 2rem;
+    vertical-align: middle;
+    font-size: 1rem;
+}
+
+.material-icons {
+    vertical-align: middle;
+    font-size: 1.3rem !important;
 }
