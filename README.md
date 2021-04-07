@@ -1,2 +1,2 @@
-# TFBSdb
-Transcription Factor Binding Site databse (TFBSdb) website
+# ChIPdb
+Transcription Factor Binding Site database website for ChIP data
