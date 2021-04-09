@@ -1,9 +1,3 @@
-/**
- * @summary Creates interactive gene tables for ModulomeVis
- * @author Kevin Rychel
- * requires Papa parse, tabulator
- */
-
 //helper for querystring params
 function qs(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
@@ -78,11 +72,6 @@ function generateGeneTable(csvContent, container) {
         ],
 
         rowClick: function (e, row) { //link to the page in a database
-            // var link = 'gene.html?';
-            // link += 'organism=' + qs('organism') + '&';
-            // link += 'dataset=' + qs('dataset') + '&';
-            // link += 'gene_id=' + row.getData().locus;
-            // window.open(link);
             var rnd = row.getData().start;
             igv.removeAllBrowsers()
             igv.createBrowser(igvDiv, options)
