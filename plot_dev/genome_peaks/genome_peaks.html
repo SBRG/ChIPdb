@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genome-Wide Binding Peaks</title>
+
+    <!-- CSS imports -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="/css/common.css" type="text/css">
+
+    <!-- javascript imports -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/igv@2.7.6/dist/igv.min.js"></script>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Sulphur+Point:wght@300;400;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <style>
+        * {
+            font-family: 'Lato', 'Roboto', 'Helvetica', 'Segoe UI', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- Page Content -->
+<div id="main_div" class="container-fluid page-container">
+
+    <!-- top bar -->
+    <div class="header navbar-dark sticky-top">
+        <div class="navbar-header" style="font-size: x-large; font-weight: 400;">
+            TFBSdb 1.0.0
+        </div>
+    </div>
+
+    <!-- Header -->
+    <h2 style="text-align:center;">ChIPdb: Genome-Wide Peaks Plot Development</h2>
+    <hr />
+
+</div>
+
+<!-- Load Outside Libraries -->
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script src="https://code.highcharts.com/modules/data.src.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+
+<!-- JS file for this plot -->
+<script src="genome_peaks.js"></script>
+
+<!-- Make plots -->
+<script>
+
+    // FILL IN THE NUMBER OF PLOTS
+    var num_plots = 3
+
+    // generate all divs
+    for (k = 0; k < num_plots; k++) {
+        $('#main_div').append('<h4>'+k+'</h4>')
+        $('#main_div').append($('<div/>', {id: 'fig'+k, style: "width: 80%;height: 250px;"}));
+    }
+    
+    // recursively make all plots
+    function get_and_plot(k, num_plots) {
+    
+        $.get('data/'+k+'_genome_peaks.csv', function(data) {
+        
+            // REPLACE: function name
+            generateGenomePeaks(data, 'fig'+k);
+            if (k < num_plots) {
+                k++;
+                get_and_plot(k);
+            }
+        });
+    }
+    get_and_plot(0, num_plots);
+    
+</script>
+
+</body>
+</html>
