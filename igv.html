@@ -5,6 +5,7 @@
     <title>IGV</title>
 
     <!-- CSS imports -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/common.css" type="text/css">
 
@@ -112,7 +113,7 @@
 <script src="js/peak_table.js"></script>
 
 <script>
-   $.get('/TFBSdb/data/test/0_gene_table.csv', function (gene_table_data) {
+   $.get('../data/test/0_gene_table.csv', function (gene_table_data) {
         generateGeneTable(gene_table_data, "gene_table");
     });
 </script>
@@ -128,8 +129,8 @@
                 {
                     "id": "MG1655",
                     "name": "E. coli MG1655",
-                    "fastaURL": "/TFBSdb/data/test/align/NC000913_2_gi.fasta",
-                    "indexURL": "/TFBSdb/data/test/align/NC000913_2_gi.fasta.fai",
+                    "fastaURL": "../data/test/align/NC000913_2_gi.fasta",
+                    "indexURL": "../data/test/align/NC000913_2_gi.fasta.fai",
                     "tracks": [
                         {
                             "name": "YjdC BAM",
