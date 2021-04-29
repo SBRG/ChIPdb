@@ -11,7 +11,7 @@
 
     <!-- javascript imports -->
     <script src="js/bootstrap.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/igv@2.7.6/dist/igv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/igv@2.8.1/dist/igv.min.js"></script>
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -133,12 +133,19 @@
                     "indexURL": "../data/test/align/NC000913_2_gi.fasta.fai",
                     "tracks": [
                         {
+                            "type": "annotation",
+                            "format": "gff",
+                            "url": "../data/test/ec_annotation.gff",
+                            "name": "Gene Annotation",
+                            "gffTags": "on"
+                        },
+                        {
                             "name": "YjdC BAM",
                             "type": "alignment",
                             "url": "https://chip-db.s3.us-east-2.amazonaws.com/YjdC/yjdc_glc_1.bam",
                             "indexURL": "https://chip-db.s3.us-east-2.amazonaws.com/YjdC/yjdc_glc_1.bam.bai",
                             "format": "bam"
-                        },
+                        }
                         // {
                         //     "name": "YjdC BED",
                         //     "type": "alignment",
@@ -166,7 +173,7 @@
                     ]
                 }
         };
-
+    console.log(options);
     igv.createBrowser(igvDiv, options)
         .then(function (browser) {
             console.log("Created IGV browser");
