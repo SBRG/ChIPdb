@@ -118,6 +118,7 @@
         // columns object
         var columns = [
             {title: "Transcription Factor", field: "TF", frozen: true, formatter: "textarea", widthGrow: 2},
+            {title: "Strain", field: "Strain", frozen: true, formatter: "textarea", widthGrow: 2},
         ]
 
         // generate the table
@@ -126,7 +127,7 @@
             data: tabledata,
             columns: columns,
             rowClick: function (e, row) { //link to the page in a database
-                var link = 'igv.html?';
+                var link = 'tf_dashboard.html?';
                 link += 'tf=' + row.getData().TF;
                 link += '&i=' + row.getData().index;
                 window.location.href = link;
