@@ -48,7 +48,7 @@
                     <a role="button" class="btn" href="index.html"> Home </a>
                 </div>
                 <div class="card mb-1 text-center">
-                    <a role="button" class="btn" href="ecoli_TF.html"> <i>E. coli</i> &nbspTF List</a>
+                    <a role="button" class="btn" href="dataset_page.html"> <i>E. coli</i> &nbspTF List</a>
                 </div>
                 <div class="card p-2 mb-1 text-center"> Upload</div>
                 <div class="card p-2 mb-1 text-center"> Download</div>
@@ -65,13 +65,8 @@
             </div>
         </div>
         <!-- page content -->
-        <div class="col-sm-10 middle-spacing">
-            <div class="card mb-1 mt-6 text-center">
-                <a role="button" class="btn" href="igv.html"> YjdC </a>
-            </div>
-            <ul id="TFs"></ul>
-            <div id="TF_table" style="width: 100%"></div>
-
+        <div class="col-sm-10 middle-spacing ">
+            <div id="TF_table" class="mt-3" style="width: 100%"></div>
 
             <!-- Footer -->
             <footer>
@@ -104,17 +99,7 @@
 <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator_simple.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js"></script>
 
-<script>
-    // Load TF List
-    $.get('/ChIPdb/data/E_coli_TF_list.csv', function (TF) {
-        const metadata = Papa.parse(TF).data;
-        metadata.splice(0,1)
-        metadata.splice(-1,1)
-        const TFs = metadata.map(m => `<li>${m[0]}</li>`);
-        console.log(metadata)
-        $('#TFs').append(TFs)
-    })
-</script>
+
 <script>
     // populate the table
     $.get('/ChIPdb/data/E_coli_TF_list.csv', function (table_data) {
@@ -127,7 +112,6 @@
             for (j = 0; j < data[0].length; j++) { //cols
                 obj[data[0][j]] = data[i][j];
             }
-
             tabledata.push(obj);
         }
 
@@ -138,7 +122,6 @@
 
         // generate the table
         var table = new Tabulator('#TF_table', {
-
             layout: "fitColumns",
             data: tabledata,
             columns: columns,

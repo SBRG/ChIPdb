@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IGV</title>
+
+    <!-- CSS imports -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+
+    <!-- javascript imports -->
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/igv@2.7.6/dist/igv.min.js"></script>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Sulphur+Point:wght@300;400;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <style>
+        * {
+            font-family: 'Lato', 'Roboto', 'Helvetica', 'Segoe UI', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- Page Content -->
+<div class="container-fluid page-container">
+
+    <!-- top bar -->
+    <div class="header row row-no-margin navbar-dark sticky-top">
+        <div class="navbar-header" style="font-size: x-large; font-weight: 400;">
+            <a class="navbar-brand" href="index.html"> ChIPdb 1.0.0 </a>
+        </div>
+
+        <div class="nav navbar-dark">
+            <div class="nav-item dropdown">
+                <button class="btn nav-color dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Organism Dataset
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
+                    <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
+                    <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
+                    <a class="dropdown-item" href="dataset_page.html?organism=s_yphimurium"><i>S.typhimurium</i></a>
+                    <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y. pseudotuberculosis</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row row-no-margin">
+            <!-- Left Navigation -->
+            <div id="left_col" class="col-sm-2">
+                <div id="left_col_content">
+                    <div class="pl-1 mb-2"> Details</div>
+                </div>
+            </div>
+            <!-- page content -->
+            <div class="col-sm-10 middle-spacing">
+                <h1 id="TF_header"></h1>
+                <div>
+                    <div id="gene_table" style="width: 100%;height:275px;"></div>
+                </div>
+                <div id="igv-div"></div>
+
+                <!-- Footer -->
+                <footer>
+                    <hr>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="http://systemsbiology.ucsd.edu/">
+                                    <img class="img-fluid" src="images/sbrg-logo.png">
+                                </a>
+                            </div>
+                            <div class="col-sm-9 m-auto">
+                                <p class="copyright text-muted small">
+                                    ChIPdb is maintained by the Systems Biology Research Group at the University of
+                                    California, San Diego. <br/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+
+    <!-- Load Outside Libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+    <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator_simple.min.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js"></script>
+
+    <!-- Load scripts -->
+    <script src="js/peak_table.js"></script>
+
+    <!-- Determine which TF -->
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var TF_name = params.get('tf');
+        var index = params.get('i');
+        $('#TF_header').append(TF_name);
+        var file1;
+
+        // const res = await fetch("/ChIPdb/data/E_coli_TF_list.csv");
+        // if (res.ok) {
+        //     file1 = Papa.parse(res.body, { dynamicTyping: true});
+        //
+        // }
+
+        $.get('/ChIPdb/data/E_coli_TF_list.csv', function (file_data) {
+            var data = Papa.parse(file_data, {dynamicTyping: true}).data;
+            console.log(data)
+            file1 = data[index + 1][2]
+        }).then(() => {
+            console.log(file1)
+        });
+
+        // Table
+        $.get('/ChIPdb/data/test/0_gene_table.csv', function (gene_table_data) {
+            generateGeneTable(gene_table_data, "gene_table");
+        });
+
+        // IGV
+        var igvDiv = document.getElementById("igv-div");
+        var options =
+            {
+                reference:
+                    {
+                        "id": "MG1655",
+                        "name": "E. coli MG1655",
+                        "fastaURL": "/ChIPdb/data/align/NC000913_2_gi.fasta",
+                        "indexURL": "/ChIPdb/data/align/NC000913_2_gi.fasta.fai",
+                        "tracks": [
+                            {
+                                "name": "YjdC BW - 1nt",
+                                "type": "wig",
+                                "url": "/ChIPdb/data/test/bw_test/yjdC_glc_1_bs1.bw"
+                            },
+                            // {
+                            //     "name": "YjdC BED",
+                            //     "type": "alignment",
+                            //     "url": "/TFBSdb/data/test/yjdc_glc.border_pair_elite_sorted.bed",
+                            //     "indexURL": "/TFBSdb/data/test/yjdc_glc.border_pair_elite.bed.tbi",
+                            //     "format": "bed",
+                            //     "color": "#ff0000"
+                            // },
+                            // {
+                            //     "name": "YdcI BED",
+                            //     "type": "alignment",
+                            //     "url": "/TFBSdb/data/test/ydcI_ph7_border_pair_elite.bed.gz",
+                            //     "indexURL": "/TFBSdb/data/test/ydcI_ph7_border_pair_elite.bed.gz.tbi",
+                            //     "format": "bed",
+                            //     "color": "#ff0000"
+                            // },
+                            // {
+                            //     type: "annotation",
+                            //     format: "bed",
+                            //     url: "/TFBSdb/data/test/NC000913_2.bed",
+                            //     indexURL: "/TFBSdb/data/test/NC000913_2.bed.tbi",
+                            //     displayMode: "SQUISHED",
+                            //     name: "NC000913_2 annotation"
+                            // }
+                        ]
+                    }
+            };
+
+        igv.createBrowser(igvDiv, options)
+            .then(function (browser) {
+                console.log("Created IGV browser");
+            })
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+    </script>
+</body>
+
+</html>
