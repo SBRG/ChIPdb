@@ -1,17 +1,17 @@
 /**
- * @summary Creates interactive binding site tables for ChIPdb
- * @author INSERT NAME
- * requires highcharts, papa parse
+ * @summary Creates interactive venn diagrams between regulon and chip-seq data for ChIPdb
+ * @author Tahani Al Bulushi
+ * requires highcharts
  */
- 
- // edit function below
+
+
  // Write plot to container
  function generateVenn(jsconContent, container) {  
 
     var vennData = []
     for (let i = 0; i < jsconContent.length; i++) {
         var obj = jsconContent[i];
-        vennData.push(obj) //adds items to an object
+        vennData.push(obj)
     }
 
     for (let i = 0; i < vennData.length; i++) {
@@ -19,8 +19,9 @@
         const gene_list = vennData[i].list;
     }
     
-    // TF_name =
+    // TF_name
     var tfName = vennData[0].value
+
     // gene lists
     var reg_list = vennData[1].list
     var reg_only_list = vennData[2].list

@@ -5,10 +5,8 @@
  */
  //write function to container
  function genBindingSiteTable(jsonContent,container) {
-    // const response = await fetch(jsonContent);
-    // const data = await response.json();
 
-    // for tabulator, convert rows into objects
+    // convert rows into objects
     var tabledata = []
     for (let i = 0; i < jsonContent.length; i++) {
         var obj = jsonContent[i];
