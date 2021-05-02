@@ -53,33 +53,39 @@
 
 <!-- JS file for this plot -->
 <script src="binding_site_table.js"></script>
+<script type="text/javascript" src="_YheO_binding_site_table.json"></script>
 
 <!-- Make plots -->
 <script>
 
     // FILL IN THE NUMBER OF PLOTS
-    var num_plots = 3
+    var num_plots = 11
 
-    // generate all divs
-    for (k = 0; k < num_plots; k++) {
-        $('#main_div').append('<h4>'+k+'</h4>')
-        $('#main_div').append($('<div/>', {id: 'fig'+k, style: "width: 80%;height: 250px;"}));
-    }
+    var myStringArray =["YheO","YbiH","YbaQ","YdcI","YbaO","YieP","Yagi","YiaJ","YddM","YafC","YeiE"];
+    console.log(myStringArray);
+    var arrayLength = myStringArray.length;
+    for (var i = 0; i < arrayLength; i++) {
+        $('#main_div').append('<h4>'+myStringArray[i]+'</h4>')
+        $('#main_div').append($('<div/>', {id: 'fig'+myStringArray[i], style: "width: 80%;height: 250px;"}));
+
+}
+// generate all divs
+    // for (k = 0; k < num_plots; k++) {
+    //     $('#main_div').append('<h4>'+k+'</h4>')
+    //     $('#main_div').append($('<div/>', {id: 'fig'+k, style: "width: 80%;height: 250px;"}));
+    // }
     
     // recursively make all plots
-    function get_and_plot(k, num_plots) {
-    
-        $.get('data/'+k+'_binding_site_table.csv', function(data) {
-        
-            // REPLACE: function name
-            generateBindingSiteTable(data, 'fig'+k);
-            if (k < num_plots) {
-                k++;
-                get_and_plot(k);
+    function get_and_plot(i, TF_list, num_plots) {
+        $.getJSON('data/'+TF_list[i]+'_binding_site_table.json', function(data) {
+            genBindingSiteTable(data, 'fig'+myStringArray[i]);
+            if (i < num_plots) {
+                i++;
+                get_and_plot(i);
             }
         });
     }
-    get_and_plot(0, num_plots);
+    get_and_plot(0, myStringArray, num_plots);
     
 </script>
 
