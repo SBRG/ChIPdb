@@ -85,14 +85,9 @@
                 ]
     
     var table = new Tabulator("#"+container, {
-        hight: "200px",
-        responsiveLayout:"hide",
-        layout:"fitColumns",
-        // maxHeight: "100%", 
+        maxHeight: "100%",
         data: tabledata,
         columns:columns,
-        pagination:"local",
-        paginationSize: 10,
         initialSort: [
             {column: "binding_condition", dir: "desc"}
         ],

@@ -13,12 +13,14 @@
         var obj = jsconContent[i];
         vennData.push(obj) //adds items to an object
     }
-    
+
     for (let i = 0; i < vennData.length; i++) {
         const value = vennData[i].value;
         const gene_list = vennData[i].list;
     }
     
+    // TF_name =
+    var tfName = vennData[0].value
     // gene lists
     var reg_list = vennData[1].list
     var reg_only_list = vennData[2].list
@@ -34,16 +36,6 @@
     var chip_only_val = vennData[4].value
     var shared_val = vennData[5].value
     var all_val = vennData[5].value
-    
-
-    console.log(reg_list);
-    
-    if (chip_only_list.length > 20) {
-        chip_only_list = chip_only_list.slice(0, 10) + "<br>"
-                    chip_only_list.slice(10,20)  +"<br>"
-                    chip_only_list.slice(20,30) + "<br>"
-                    chip_only_list.slice(30,40) + '...';
-    }
 
     // set up plot
     var myChart = Highcharts.chart(container, {
@@ -124,20 +116,41 @@
                 }]
             }],
     title: {
-        text: 'Chip-seq & Regulon Venn Diagram for: MetJ'
+        text: 'Chip-seq & Regulon Venn Diagram for: ' + tfName
     },
     tooltip: {
-        width:'400px',
-        formatter: function() {
-            var tooltip = this.point.name + ": <b>" + this.point.value + "</b>";
-            tooltip += "<br>" + this.point.gene_list
-            
-            return tooltip;
-        }
-    },
+				width:'400px',
+				formatter: function() {
+					var tooltip = this.point.name + ": <b>" + this.point.value + "</b>";
+					if (this.point.gene_list.length > 10 && this.point.gene_list.length < 20) {
+						tooltip += "<br>" + this.point.gene_list.slice(0, 10) + "<br>"+
+											this.point.gene_list.slice(10,gene_list.length-1);
+					}
+                    else if (this.point.gene_list.length > 20 && this.point.gene_list.length < 30) {
+						tooltip += "<br>" + this.point.gene_list.slice(0, 10) + "<br>"+
+											this.point.gene_list.slice(10, 20) + "<br>"+
+											this.point.gene_list.slice(20,gene_list.length-1);
+					}
+                    else if (this.point.gene_list.length > 30 && this.point.gene_list.length < 40) {
+						tooltip += "<br>" + this.point.gene_list.slice(0, 10) + "<br>"+
+											this.point.gene_list.slice(10, 20) + "<br>"+
+											this.point.gene_list.slice(20, 30) + "<br>"+
+											this.point.gene_list.slice(30,gene_list.length-1);
+					}
+                    else if (this.point.gene_list.length > 40) {
+						tooltip += "<br>" + this.point.gene_list.slice(0, 10) + "<br>"+
+											this.point.gene_list.slice(10,20) + "<br>"+
+											this.point.gene_list.slice(20,30) + "<br>"+
+											this.point.gene_list.slice(30,40) + '...';
+					}
+					else {
+						tooltip += "<br>" + this.point.gene_list;
+					}
+					return tooltip;
+				}
+    }, //end of tooltip
     exporting: {
         enabled: false
     }
-    }); //end var highcharts 
-
+    }); //end var highcharts
 }; //end of dataVenn
