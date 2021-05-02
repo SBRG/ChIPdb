@@ -53,33 +53,31 @@
 
 <!-- JS file for this plot -->
 <script src="binding_site_table.js"></script>
+<script type="text/javascript" src="_YheO_binding_site_table.json"></script>
 
 <!-- Make plots -->
 <script>
+    // Add TF names that match the json files here:
+    var tfList =["YheO","YbiH","YbaQ","YdcI","YbaO","YieP","YagI","YiaJ","YddM","YafC","YeiE"];
+    var numPlots = tfList.length;
 
-    // FILL IN THE NUMBER OF PLOTS
-    var num_plots = 3
-
-    // generate all divs
-    for (k = 0; k < num_plots; k++) {
-        $('#main_div').append('<h4>'+k+'</h4>')
-        $('#main_div').append($('<div/>', {id: 'fig'+k, style: "width: 80%;height: 250px;"}));
+    // generate all divs:
+    for (var i = 0; i < numPlots; i++) {
+        $('#main_div').append('<h4>'+tfList[i]+'</h4>')
+        $('#main_div').append($('<div/>', {id: 'fig'+tfList[i], style: "width: 80%;height: 250px;"}));
     }
-    
-    // recursively make all plots
-    function get_and_plot(k, num_plots) {
-    
-        $.get('data/'+k+'_binding_site_table.csv', function(data) {
-        
-            // REPLACE: function name
-            generateBindingSiteTable(data, 'fig'+k);
-            if (k < num_plots) {
-                k++;
-                get_and_plot(k);
+
+    // recursively make all plots:
+    function get_and_plot(i, tfList, numPlots) {
+        $.getJSON('data/'+tfList[i]+'_binding_site_table.json', function(data) {
+            genBindingSiteTable(data, 'fig'+tfList[i]);
+            if (i < numPlots) {
+                i++;
+                get_and_plot(i, tfList, numPlots);
             }
         });
     }
-    get_and_plot(0, num_plots);
+    get_and_plot(0, tfList, numPlots);
     
 </script>
 
