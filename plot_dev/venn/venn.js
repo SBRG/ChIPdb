@@ -127,18 +127,18 @@
 						tooltip += "<br>" + this.point.gene_list.slice(0, 10) + "<br>"+
 											this.point.gene_list.slice(10,gene_list.length-1);
 					}
-                    else if (this.point.gene_list.length > 20 && this.point.gene_list.length < 30) {
+					else if (this.point.gene_list.length > 20 && this.point.gene_list.length < 30) {
 						tooltip += "<br>" + this.point.gene_list.slice(0, 10) + "<br>"+
 											this.point.gene_list.slice(10, 20) + "<br>"+
 											this.point.gene_list.slice(20,gene_list.length-1);
 					}
-                    else if (this.point.gene_list.length > 30 && this.point.gene_list.length < 40) {
+					else if (this.point.gene_list.length > 30 && this.point.gene_list.length < 40) {
 						tooltip += "<br>" + this.point.gene_list.slice(0, 10) + "<br>"+
 											this.point.gene_list.slice(10, 20) + "<br>"+
 											this.point.gene_list.slice(20, 30) + "<br>"+
 											this.point.gene_list.slice(30,gene_list.length-1);
 					}
-                    else if (this.point.gene_list.length > 40) {
+					else if (this.point.gene_list.length > 40) {
 						tooltip += "<br>" + this.point.gene_list.slice(0, 10) + "<br>"+
 											this.point.gene_list.slice(10,20) + "<br>"+
 											this.point.gene_list.slice(20,30) + "<br>"+
