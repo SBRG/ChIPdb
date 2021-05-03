@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E. coli TF List</title>
+
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/dataset-page.css" type="text/css">
+
+    <!-- javascript imports -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/igv@2.7.6/dist/igv.min.js"></script>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Sulphur+Point:wght@300;400;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <style>
+        * {
+            font-family: 'Lato', 'Roboto', 'Helvetica', 'Segoe UI', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- Page Content -->
+<div class="container-fluid page-container">
+
+    <!-- top bar -->
+    <div class="header row row-no-margin navbar-dark sticky-top">
+        <div class="navbar-header" style="font-size: x-large; font-weight: 400;">
+            <a class="navbar-brand" href="index.html"> ChIPdb 1.0.0 </a>
+        </div>
+
+        <div class="nav navbar-dark">
+            <div class="nav-item dropdown">
+                <button class="btn nav-color dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Organism Dataset
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
+                    <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
+                    <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
+                    <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
+                    <a class="dropdown-item" href="dataset_page.html?organism=s_yphimurium"><i>S.typhimurium</i></a>
+                    <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y. pseudotuberculosis</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-no-margin">
+        <!-- Left Navigation -->
+        <div id="left_col" class="col-sm-2">
+            <div id="left_col_content">
+                <div class="pl-1 mb-2"> Navigation</div>
+
+                <div class="card mb-1 text-center">
+                    <a role="button" class="btn" href="index.html"> Home </a>
+                </div>
+                <div class="card mb-1 text-center">
+                    <a role="button" class="btn" href="dataset_page.html"> <i>E. coli</i> &nbspTF List</a>
+                </div>
+                <div class="card mb-1 text-center">
+                    <a role="button" class="btn" href="plot_development_home.html"> Plot Development</a>
+                </div>
+                <div class="card p-2 mb-1 text-center"> Upload</div>
+                <div class="card p-2 mb-1 text-center"> Download</div>
+                <div class="card p-2 mb-1 text-center"> Visualization</div>
+                <div class="card p-2 mb-1 text-center"> Comparative Analysis</div>
+                <div class="page-icon mt-3 ml-3">
+                    <span><i class="material-icons">email</i></span>
+                    <span class="ml-1">Contact</span>
+                </div>
+                <div class="page-icon ml-3">
+                    <span><i class="material-icons">info</i></span>
+                    <span class="ml-1">About</span>
+                </div>
+            </div>
+        </div>
+        <!-- page content -->
+        <div class="col-sm-10 middle-spacing ">
+            <div id="TF_table" class="mt-3" style="width: 100%"></div>
+
+            <!-- Footer -->
+            <footer>
+                <hr>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="http://systemsbiology.ucsd.edu/">
+                                <img class="img-fluid" src="images/sbrg-logo.png">
+                            </a>
+                        </div>
+                        <div class="col-sm-9 m-auto">
+                            <p class="copyright text-muted small">
+                                ChIPdb is maintained by the Systems Biology Research Group at the University of
+                                California, San Diego. <br/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+
+<!-- Load Outside Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+<link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator_simple.min.css" rel="stylesheet"/>
+<script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js"></script>
+
+
+<script>
+    // populate the table
+    $.get('/ChIPdb/data/E_coli_TF_list.csv', function (table_data) {
+
+        // get the data, convert to objects
+        var data = Papa.parse(table_data, {dynamicTyping: true}).data;
+        var tabledata = []
+        for (i = 1; i < data.length - 1; i++) { //rows, excluding header
+            var obj = {};
+            for (j = 0; j < data[0].length; j++) { //cols
+                obj[data[0][j]] = data[i][j];
+            }
+            tabledata.push(obj);
+        }
+
+        //make a header object for the columns
+        var headerMenu = [
+            {
+                label: "<i class='fas fa-arrow-right'></i> Move Column to End",
+                action: function (e, column) {
+                    column.move("end");
+                }
+            }, {
+                label: "<i class='fas fa-trash'></i> Hide Column",
+                action: function (e, column) {
+                    column.hide();
+                }
+            }
+        ]
+
+        // columns object
+        var columns = [
+            {
+                title: "Transcription Factor",
+                field: "TF",
+                formatter: "textarea",
+                widthGrow: 2,
+                headerContextMenu: headerMenu
+            },
+            {
+                title: "Organism",
+                field: "Organism",
+                formatter: "",
+                widthGrow: 2,
+                headerContextMenu: headerMenu
+            },
+            {
+                title: "Strain",
+                field: "Strain",
+                formatter: "textarea",
+                widthGrow: 2,
+                headerContextMenu: headerMenu
+            },
+            {
+                title: "Number of Binding Sites",
+                field: "num_binding_sites",
+                formatter: "textarea",
+                widthGrow: 2,
+                headerContextMenu: headerMenu
+            },
+            {
+                title: "Number of Replicates",
+                field: "num_rep",
+                formatter: "textarea",
+                widthGrow: 2,
+                headerContextMenu: headerMenu
+            }
+        ]
+
+        // generate the table
+        var table = new Tabulator('#TF_table', {
+            layout: "fitColumns",
+            data: tabledata,
+            columns: columns,
+            movableColumns: true,
+            headerVisible: true,
+            initialSort: [
+                {column: "TF", dir: "asc"}
+            ],
+            tooltips: true,
+            rowClick: function (e, row) { //link to the page in a database
+                var link = 'tf_dashboard.html?';
+                link += 'tf=' + row.getData().TF;
+                link += '&i=' + row.getData().index;
+                window.location.href = link;
+            },
+            tooltips: function (cell) {
+                return "Click to view TF dashboard";
+            }
+        });
+        table.redraw();
+    });
+</script>
+
+</body>
+</html>

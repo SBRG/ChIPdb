@@ -70,6 +70,7 @@
     // recursively make all plots:
     function get_and_plot(i, tfList, numPlots) {
         $.getJSON('data/'+tfList[i]+'_binding_site_table.json', function(data) {
+            console.log(tfList[i], data.length)
             genBindingSiteTable(data, 'fig'+tfList[i]);
             if (i < numPlots) {
                 i++;
