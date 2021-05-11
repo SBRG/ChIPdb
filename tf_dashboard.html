@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>IGV</title>
+    <title>TF Dashboard</title>
 
     <!-- CSS imports -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -117,13 +117,15 @@
 <!-- Determine which TF -->
 <script>
     var params = new URLSearchParams(window.location.search);
+    var organism = params.get('organism');
     var TF_name = params.get('tf');
     var index = params.get('i');
     $('#TF_header').append(TF_name);
+    document.title = TF_name;
     var file1;
 
 
-    $.get('/ChIPdb/data/E_coli_TF_list.csv', function (file_data) {
+    $.get('/ChIPdb/data/'+organism+'_TF_list.csv', function (file_data) {
         var data = Papa.parse(file_data, {dynamicTyping: true}).data;
         const row = data[parseInt(index) + 1];
 
