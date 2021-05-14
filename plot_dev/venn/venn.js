@@ -117,7 +117,7 @@
                 }]
             }],
     title: {
-        text: 'Chip-seq & Regulon Venn Diagram for: ' + tfName
+        text: null
     },
     tooltip: {
 				width:'400px',
