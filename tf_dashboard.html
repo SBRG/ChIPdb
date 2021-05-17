@@ -178,10 +178,38 @@
                             {
                                 "type": "annotation",
                                 "format": "gff",
-                                "url": "/ChIPdb/data/test/ec_annotation.gff",
+                                "url": "/ChIPdb/data/annotation_tracks/NC_000913_2.gff",
                                 "name": "Gene Annotation",
                                 "gffTags": "on"
-                            }]
+                            },
+                            {
+                                "type": "annotation",
+                                "format": "gff",
+                                "url": "/ChIPdb/data/annotation_tracks/NC_000913_3.gff",
+                                "name": "NC_000913_3",
+                                "color": "#5386E4",
+                                "gffTags": "on",
+                                "searchable": true
+                            },
+                            {
+                                "type": "annotation",
+                                "format": "gff",
+                                "url": "/ChIPdb/data/annotation_tracks/bitome_tfbs.gff",
+                                "name": "Published TFBS",
+                                "color": "#F5CB5C",
+                                "gffTags": "on",
+                                "nameField": "TF"
+                            },
+                            {
+                                "type": "annotation",
+                                "format": "gff",
+                                "url": "/ChIPdb/data/annotation_tracks/bitome_tss.gff",
+                                "name": "Published TSS",
+                                "color": "#A6B5AE",
+                                "gffTags": "on",
+                                "nameField": "tss_name"
+                            }
+                        ]
                     }
             };
         igv.createBrowser(igvDiv, options)
@@ -302,6 +330,7 @@
                                 browser.loadTrack({
                                     "name": row[i - 1],
                                     "type": "wig",
+                                    "color": "#333533",
                                     "url": "/ChIPdb/data/test/bw_test/" + row[i]
                                 })
                                 i += 2
@@ -309,7 +338,6 @@
                             browser.search('gi|49175990|ref|NC_000913.2|:'.concat(numberWithCommas(rnd - 500), '-', numberWithCommas(rnd + 500)));
                             console.log("Created IGV browser 2");
                         });
-                    // document.getElementById('tb').value = rnd;
                 },
                 tooltips: function (cell) {
                     return "Click to jump to peak in genome viewer below";
@@ -317,7 +345,7 @@
             });
             table.redraw();
 
-            //trigger download of data.csv file
+            //trigger download of .csv file
             document.getElementById("download-table").addEventListener("click", function () {
                 table.download("csv", TF_name + ".csv");
             });
