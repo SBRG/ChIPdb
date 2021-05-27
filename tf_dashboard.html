@@ -35,7 +35,7 @@
 <body>
 <!-- Page Content -->
 <div class="container-fluid page-container">
-
+    <!-- Top Navigation Bar -->
     <nav class="navbar navbar-expand-md sticky-top header">
         <a class="navbar-brand" href="index.html"> ChIPdb 1.0.0 </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -149,7 +149,7 @@
     document.title = TF_name;
 
 
-    $.get('/ChIPdb/data/' + organism + '_TF_list.csv', function (file_data) {
+    $.get('/ChIPdb/data/' + organism + '/TF_list.csv', function (file_data) {
         var data = Papa.parse(file_data, {dynamicTyping: true}).data;
         const row = data[parseInt(index) + 1];
 
@@ -171,30 +171,23 @@
                     {
                         "id": "MG1655",
                         "name": "E. coli MG1655",
-                        "fastaURL": "/ChIPdb/data/align/NC000913_2_gi.fasta",
-                        "indexURL": "/ChIPdb/data/align/NC000913_2_gi.fasta.fai",
+                        "fastaURL": "/ChIPdb/data/e_coli/NC_000913_3/sequence/sequence.fasta",
+                        "indexURL": "/ChIPdb/data/e_coli/NC_000913_3/sequence/sequence.fasta.fai",
                         "tracks": [
                             {
                                 "type": "annotation",
                                 "format": "gff",
-                                "url": "/ChIPdb/data/annotation_tracks/NC_000913_2.gff",
-                                "name": "Gene Annotation",
+                                "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/genes.gff",
+                                "name": "Genes",
                                 "gffTags": "on",
-                                "nameField": "gene"
-                            },
-                            {
-                                "type": "annotation",
-                                "format": "gff",
-                                "url": "/ChIPdb/data/annotation_tracks/NC_000913_3_v2indexed.gff",
-                                "name": "NC_000913_3",
                                 "color": "#5386E4",
-                                "gffTags": "on",
+                                "nameField": "gene",
                                 "searchable": true
                             },
                             {
                                 "type": "annotation",
                                 "format": "gff",
-                                "url": "/ChIPdb/data/annotation_tracks/bitome_tfbs.gff",
+                                "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/tfbs.gff",
                                 "name": "Published TFBS",
                                 "color": "#F5CB5C",
                                 "gffTags": "on",
@@ -203,7 +196,7 @@
                             {
                                 "type": "annotation",
                                 "format": "gff",
-                                "url": "/ChIPdb/data/annotation_tracks/bitome_tss.gff",
+                                "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/tss.gff",
                                 "name": "Published TSS",
                                 "color": "#A6B5AE",
                                 "gffTags": "on",
@@ -215,12 +208,12 @@
         igv.createBrowser(igvDiv, options)
             .then(function (browser) {
                 console.log("Created IGV browser");
-                var i = row.length - 5
+                var i = row.length - 11
                 while (row[i] != null) {
                     browser.loadTrack({
                         "name": row[i - 1],
                         "type": "wig",
-                        "url": "/ChIPdb/data/test/bw_test/" + row[i]
+                        "url": "/ChIPdb/data/e_coli/NC_000913_3/bw/" + row[i]
                     })
                     i += 2
                 }
@@ -321,21 +314,23 @@
                 tooltips: true,
                 movableColumns: true,
                 rowClick: function (e, clicked_row) { //link to the page in a database
-                    var rnd = clicked_row.getData().binding_peak_start;
+                    var start = clicked_row.getData().binding_peak_start;
+                    var end = clicked_row.getData().binding_peak_end;
                     igv.removeAllBrowsers()
                     igv.createBrowser(igvDiv, options)
                         .then(function (browser) {
-                            var i = row.length - 5
+                            var i = row.length - 11
                             while (row[i] != null) {
                                 browser.loadTrack({
                                     "name": row[i - 1],
                                     "type": "wig",
                                     "color": "#333533",
-                                    "url": "/ChIPdb/data/test/bw_test/" + row[i]
+                                    "url": "/ChIPdb/data/e_coli/NC_000913_3/bw/" + row[i]
                                 })
                                 i += 2
                             }
-                            browser.search('gi|49175990|ref|NC_000913.2|:'.concat(numberWithCommas(rnd - 1000), '-', numberWithCommas(rnd + 1000)));
+                            browser.search('NC_000913.3:'.concat(numberWithCommas(start - 1000), '-',
+                                numberWithCommas(end + 1000)));
                             console.log("Created IGV browser 2");
                         });
                 },
