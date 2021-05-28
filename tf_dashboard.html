@@ -208,7 +208,7 @@
                             {
                                 "type": "annotation",
                                 "format": "gff",
-                                "url": "/ChIPdb/data/annotation_tracks/bitome_tu.gff",
+                                "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/tu.gff",
                                 "name": "Published TUs",
                                 "color": "#A88132",
                                 "gffTags": "on",
@@ -218,11 +218,11 @@
                     }
             };
         igv.createBrowser(igvDiv, options)
-            .then(function (browser) {
+            .then(async function (browser) {
                 console.log("Created IGV browser");
                 var i = row.length - 11
                 while (row[i] != null) {
-                    browser.loadTrack({
+                    await browser.loadTrack({
                         "name": row[i - 1],
                         "type": "wig",
                         "url": "/ChIPdb/data/e_coli/NC_000913_3/bw/" + row[i]
@@ -230,7 +230,7 @@
                     i += 2
                 }
             })
-        console.log(TF_name.substr(0, 4))
+
         // Table
         $.getJSON('plot_dev/binding_site_table/data/' + TF_name.substr(0, 4) + '_binding_site_table.json', function (data) {
             // convert rows into objects
@@ -330,10 +330,10 @@
                     var end = clicked_row.getData().binding_peak_end;
                     igv.removeAllBrowsers()
                     igv.createBrowser(igvDiv, options)
-                        .then(function (browser) {
+                        .then(async function (browser) {
                             var i = row.length - 11
                             while (row[i] != null) {
-                                browser.loadTrack({
+                                await browser.loadTrack({
                                     "name": row[i - 1],
                                     "type": "wig",
                                     "color": "#333533",
