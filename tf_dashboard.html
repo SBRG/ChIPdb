@@ -96,7 +96,7 @@
             </div>
             <div class="card mt-3 pb-2">
                 <div class="section-header"> Genome Viewer
-                    <button class="btn btn-sm btn-mod" id="download-bw">Download bigWig files</button>
+                    <a class="btn btn-sm btn-mod" id="download-bw">Download bigWig files</a>
                 </div>
                 <div id="igv-div"></div>
             </div>
@@ -148,6 +148,9 @@
     $('#TF_header').append(TF_name);
     document.title = TF_name;
 
+    //trigger download of big wig files
+    document.getElementById("download-bw").setAttribute("href",
+        "/ChIPdb/data/e_coli/NC_000913_3/bw/compressed/" + TF_name + "_bw.zip");
 
     $.get('/ChIPdb/data/' + organism + '/TF_list.csv', function (file_data) {
         var data = Papa.parse(file_data, {dynamicTyping: true}).data;
@@ -340,10 +343,12 @@
             });
             table.redraw();
 
-            //trigger download of .csv file
+            //trigger download of binding site table .csv file
             document.getElementById("download-table").addEventListener("click", function () {
-                table.download("csv", TF_name + ".csv");
+                table.download("csv", TF_name + "_binding_site_table.csv");
             });
+
+
         });
 
         // Venn
