@@ -113,11 +113,10 @@
 <script src="js/peak_table.js"></script>
 
 <script>
-   $.get('/ChIPdb/data/test/0_gene_table.csv', function (gene_table_data) {
+    $.get('/ChIPdb/data/test/0_gene_table.csv', function (gene_table_data) {
         generateGeneTable(gene_table_data, "gene_table");
     });
 </script>
-
 
 
 <!-- IGV -->
@@ -129,22 +128,23 @@
                 {
                     "id": "MG1655",
                     "name": "E. coli MG1655",
-                    "fastaURL": "/ChIPdb/data/test/align/NC000913_2_gi.fasta",
-                    "indexURL": "/ChIPdb/data/test/align/NC000913_2_gi.fasta.fai",
+                    "fastaURL": "/ChIPdb/data/align/sequence.fasta",
+                    "indexURL": "/ChIPdb/data/align/sequence.fasta.fai",
                     "tracks": [
                         {
                             "type": "annotation",
-                            "format": "gff",
-                            "url": "../data/test/ec_annotation.gff",
-                            "name": "Gene Annotation",
-                            "gffTags": "on"
+                                "format": "gff",
+                                "url": "/ChIPdb/data/annotation_tracks/NC_000913_3.gff",
+                                "name": "NC_000913_3",
+                                "color": "#5386E4",
+                                "gffTags": "on",
+                                "searchable": true
                         },
                         {
-                            "name": "YjdC BAM",
-                            "type": "alignment",
-                            "url": "https://chip-db.s3.us-east-2.amazonaws.com/YjdC/yjdc_glc_1.bam",
-                            "indexURL": "https://chip-db.s3.us-east-2.amazonaws.com/YjdC/yjdc_glc_1.bam.bai",
-                            "format": "bam"
+                            "name": "YjdC 000913_3",
+                            "type": "wig",
+                            "color": "#333533",
+                            "url": "/ChIPdb/data/NC_000913_3/ydci_ph7_1.bw"
                         },
                         // {
                         //     "name": "YjdC BED",

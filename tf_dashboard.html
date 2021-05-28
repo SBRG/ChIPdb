@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <title>TF Dashboard</title>
 
-    <!-- CSS imports -->
+    <!-- javascript imports -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/igv@2.8.1/dist/igv.min.js"></script>
+    <script src="js/tabulator.min.js" type="text/javascript"></script>
+
+    <!-- CSS imports -->
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/common.css" type="text/css">
     <link rel="stylesheet" href="css/tf_dashboard.css" type="text/css">
     <link rel="stylesheet" href="css/tabulator_bootstrap4.min.css" rel="stylesheet">
-
-    <!-- javascript imports -->
-    <script src="js/bootstrap.bundle.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/igv@2.8.1/dist/igv.min.js"></script>
-    <script src="js/tabulator.min.js" type="text/javascript"></script>
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -35,66 +35,39 @@
 <body>
 <!-- Page Content -->
 <div class="container-fluid page-container">
-
-    <!-- top bar -->
-    <div class="header row row-no-margin navbar-dark sticky-top pb-5">
-        <div class="navbar-header" style="font-size: x-large; font-weight: 400;">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/ChIPdb_logo.png" height=35 class="d-inline-block align-top" alt=""
-                     loading="lazy"> ChIPdb 1.0.0
-            </a>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-md sticky-top header">
+        <a class="navbar-brand" href="index.html"> ChIPdb 1.0.0 </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <button class="btn nav-color dropdown-toggle" type="button" id="dropdownMenu2"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Organism Dataset
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=s_yphimurium"><i>S.typhimurium</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y.
+                            pseudotuberculosis</i></a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="mr-4" href="about.html"><span><i class="material-icons">info</i></span>
+                        <span>About</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <div class="nav navbar-dark">
-            <div class="nav-item dropdown">
-                <button class="btn nav-color dropdown-toggle" type="button" id="dropdownMenu2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Organism Dataset
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
-                    <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
-                    <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
-                    <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
-                    <a class="dropdown-item" href="dataset_page.html?organism=s_yphimurium"><i>S.typhimurium</i></a>
-                    <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y. pseudotuberculosis</i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--    &lt;!&ndash; top bar &ndash;&gt;-->
-<!--    <nav class="navbar navbar-expand-md header">-->
-<!--        <a class="navbar-brand" href="index.html"> ChIPdb 1.0.0 </a>-->
-<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">-->
-<!--            <span class="navbar-toggler-icon"></span>-->
-<!--        </button>-->
-<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
-<!--            <ul class="navbar-nav mr-auto">-->
-<!--                <li class="nav-item dropdown">-->
-<!--                    <button class="btn nav-color dropdown-toggle" type="button" id="dropdownMenu2"-->
-<!--                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--                        Organism Dataset-->
-<!--                    </button>-->
-<!--                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">-->
-<!--                        <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>-->
-<!--                        <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>-->
-<!--                        <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>-->
-<!--                        <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>-->
-<!--                        <a class="dropdown-item" href="dataset_page.html?organism=s_yphimurium"><i>S.typhimurium</i></a>-->
-<!--                        <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y.-->
-<!--                            pseudotuberculosis</i></a>-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--            <ul class="navbar-nav">-->
-<!--                <li class="nav-item">-->
-<!--                   <a class="mr-4" href="about.html"><span><i class="material-icons">info</i></span>-->
-<!--                    <span>About</span>-->
-<!--                   </a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </nav>-->
+    </nav>
     <div class="row row-no-margin">
         <!-- Left Navigation -->
         <div id="left_col" class="col-sm-12 col-md-2">
@@ -123,7 +96,7 @@
             </div>
             <div class="card mt-3 pb-2">
                 <div class="section-header"> Genome Viewer
-                    <button class="btn btn-sm btn-mod" id="download-bw">Download bigWig files</button>
+                    <a class="btn btn-sm btn-mod" id="download-bw">Download bigWig files</a>
                 </div>
                 <div id="igv-div"></div>
             </div>
@@ -175,8 +148,11 @@
     $('#TF_header').append(TF_name);
     document.title = TF_name;
 
+    //trigger download of big wig files
+    document.getElementById("download-bw").setAttribute("href",
+        "/ChIPdb/data/e_coli/NC_000913_3/bw/compressed/" + TF_name + "_bw.zip");
 
-    $.get('/ChIPdb/data/' + organism + '_TF_list.csv', function (file_data) {
+    $.get('/ChIPdb/data/' + organism + '/TF_list.csv', function (file_data) {
         var data = Papa.parse(file_data, {dynamicTyping: true}).data;
         const row = data[parseInt(index) + 1];
 
@@ -198,29 +174,23 @@
                     {
                         "id": "MG1655",
                         "name": "E. coli MG1655",
-                        "fastaURL": "/ChIPdb/data/align/NC000913_2_gi.fasta",
-                        "indexURL": "/ChIPdb/data/align/NC000913_2_gi.fasta.fai",
+                        "fastaURL": "/ChIPdb/data/e_coli/NC_000913_3/sequence/sequence.fasta",
+                        "indexURL": "/ChIPdb/data/e_coli/NC_000913_3/sequence/sequence.fasta.fai",
                         "tracks": [
                             {
                                 "type": "annotation",
                                 "format": "gff",
-                                "url": "/ChIPdb/data/annotation_tracks/NC_000913_2.gff",
-                                "name": "Gene Annotation",
-                                "gffTags": "on"
-                            },
-                            {
-                                "type": "annotation",
-                                "format": "gff",
-                                "url": "/ChIPdb/data/annotation_tracks/NC_000913_3.gff",
-                                "name": "NC_000913_3",
-                                "color": "#5386E4",
+                                "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/genes.gff",
+                                "name": "Genes",
                                 "gffTags": "on",
+                                "color": "#5386E4",
+                                "nameField": "gene",
                                 "searchable": true
                             },
                             {
                                 "type": "annotation",
                                 "format": "gff",
-                                "url": "/ChIPdb/data/annotation_tracks/bitome_tfbs.gff",
+                                "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/tfbs.gff",
                                 "name": "Published TFBS",
                                 "color": "#F5CB5C",
                                 "gffTags": "on",
@@ -229,7 +199,7 @@
                             {
                                 "type": "annotation",
                                 "format": "gff",
-                                "url": "/ChIPdb/data/annotation_tracks/bitome_tss.gff",
+                                "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/tss.gff",
                                 "name": "Published TSS",
                                 "color": "#A6B5AE",
                                 "gffTags": "on",
@@ -250,12 +220,12 @@
         igv.createBrowser(igvDiv, options)
             .then(function (browser) {
                 console.log("Created IGV browser");
-                var i = row.length - 5
+                var i = row.length - 11
                 while (row[i] != null) {
                     browser.loadTrack({
                         "name": row[i - 1],
                         "type": "wig",
-                        "url": "/ChIPdb/data/test/bw_test/" + row[i]
+                        "url": "/ChIPdb/data/e_coli/NC_000913_3/bw/" + row[i]
                     })
                     i += 2
                 }
@@ -356,21 +326,23 @@
                 tooltips: true,
                 movableColumns: true,
                 rowClick: function (e, clicked_row) { //link to the page in a database
-                    var rnd = clicked_row.getData().binding_peak_start;
+                    var start = clicked_row.getData().binding_peak_start;
+                    var end = clicked_row.getData().binding_peak_end;
                     igv.removeAllBrowsers()
                     igv.createBrowser(igvDiv, options)
                         .then(function (browser) {
-                            var i = row.length - 5
+                            var i = row.length - 11
                             while (row[i] != null) {
                                 browser.loadTrack({
                                     "name": row[i - 1],
                                     "type": "wig",
                                     "color": "#333533",
-                                    "url": "/ChIPdb/data/test/bw_test/" + row[i]
+                                    "url": "/ChIPdb/data/e_coli/NC_000913_3/bw/" + row[i]
                                 })
                                 i += 2
                             }
-                            browser.search('gi|49175990|ref|NC_000913.2|:'.concat(numberWithCommas(rnd - 1000), '-', numberWithCommas(rnd + 1000)));
+                            browser.search('NC_000913.3:'.concat(numberWithCommas(start - 1000), '-',
+                                numberWithCommas(end + 1000)));
                             console.log("Created IGV browser 2");
                         });
                 },
@@ -380,10 +352,12 @@
             });
             table.redraw();
 
-            //trigger download of .csv file
+            //trigger download of binding site table .csv file
             document.getElementById("download-table").addEventListener("click", function () {
-                table.download("csv", TF_name + ".csv");
+                table.download("csv", TF_name + "_binding_site_table.csv");
             });
+
+
         });
 
         // Venn

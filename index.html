@@ -33,32 +33,39 @@
 <!-- Page Content -->
 <div class="container-fluid page-container">
 
-    <!-- top bar -->
-    <div class="header row row-no-margin navbar-dark sticky-top pb-5">
-        <div class="navbar-header" style="font-size: x-large; font-weight: 400;">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/ChIPdb_logo.png" height=35 class="d-inline-block align-top" alt=""
-                     loading="lazy"> ChIPdb 1.0.0
-            </a>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-md sticky-top header">
+        <a class="navbar-brand" href="index.html"> ChIPdb 1.0.0 </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <button class="btn nav-color dropdown-toggle" type="button" id="dropdownMenu2"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Organism Dataset
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=s_yphimurium"><i>S.typhimurium</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y.
+                            pseudotuberculosis</i></a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="mr-4" href="about.html"><span><i class="material-icons">info</i></span>
+                        <span>About</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <div class="nav navbar-dark">
-            <div class="nav-item dropdown">
-                <button class="btn nav-color dropdown-toggle" type="button" id="dropdownMenu2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Organism Dataset
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
-                    <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
-                    <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
-                    <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
-                    <a class="dropdown-item" href="dataset_page.html?organism=s_yphimurium"><i>S.typhimurium</i></a>
-                    <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y. pseudotuberculosis</i></a>
-                </div>
-            </div>
-        </div>
-    </div>
+    </nav>
     <div class="row row-no-margin">
         <!-- Left Navigation -->
         <div id="left_col" class="col-sm-2">
