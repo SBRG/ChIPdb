@@ -113,6 +113,12 @@
                 </div>
                 <div class="col-md-12 col-lg-4">
                     <div class="card">
+                        <div class="section-header"> Sequence Motif</div>
+                        <img id="motif_sequence" src=""/>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <div class="card">
                         <div class="section-header"> ChIPdb vs. Literature* Regulon Venn</div>
                         <div id="venn" style="width:100%; height:300px;"></div>
                     </div>
@@ -170,7 +176,8 @@
     var TF_name = params.get('tf');
     var index = params.get('i');
     $('#TF_header').append(TF_name);
-    document.title = TF_name;
+
+    document.getElementById("motif_sequence").src = '/ChIPdb/plot_dev/motifs/images/' + TF_name + '.svg';
 
 
     $.get('/ChIPdb/data/' + organism + '_TF_list.csv', function (file_data) {
@@ -378,7 +385,6 @@
         $.getJSON('plot_dev/venn/data/' + TF_name.substr(0, 4) + '.json', function (data) {
             generateVenn(data, 'venn');
         });
-
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
