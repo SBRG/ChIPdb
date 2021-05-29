@@ -75,6 +75,10 @@
                 <h1 id="TF_header"></h1>
                 <div class="card p-2" id="meta_text"></div>
             </div>
+            <div class="card">
+                <div class="section-header"> Sequence Motif</div>
+                <img id="motif_sequence" src=""/>
+            </div>
         </div>
         <!-- page content -->
         <div class="col-sm-10 middle-spacing mt-3">
@@ -146,7 +150,9 @@
     var TF_name = params.get('tf');
     var index = params.get('i');
     $('#TF_header').append(TF_name);
+
     document.title = TF_name;
+    document.getElementById("motif_sequence").src = '/ChIPdb/plot_dev/motifs/images/' + TF_name + '.svg';
 
     //trigger download of big wig files
     document.getElementById("download-bw").setAttribute("href",
@@ -364,7 +370,6 @@
         $.getJSON('plot_dev/venn/data/' + TF_name.substr(0, 4) + '.json', function (data) {
             generateVenn(data, 'venn');
         });
-
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
