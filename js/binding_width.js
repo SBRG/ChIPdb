@@ -3,7 +3,7 @@
  * @author Katherine Decker
  * requires D3
  */
-//write function to container
+//write chart to container
 
 function generateWidthHist(TF_name, container) {
 // set the dimensions and margins of the graph

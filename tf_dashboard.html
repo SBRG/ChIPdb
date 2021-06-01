@@ -89,20 +89,20 @@
                 </div>
                 <div class="col-md-12 col-lg-4">
                     <div class="card">
-                        <div class="section-header"> ChIPdb vs. Literature* Regulon Venn</div>
+                        <div class="section-header"> Feature Visualization</div>
                         <!-- <div id="venn" style="width:100%; height:300px;"></div>-->
                         <ul class="nav nav-tabs tab-strip" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link round-tab active" id="header-tab-1" data-bs-toggle="tab"
                                         data-bs-target="#tab-1"   data-toggle="tab"  data-target="#tab-1"
                                         type="button" role="tab" aria-controls="tab-1"
-                                        aria-selected="true">Peak Width
+                                        aria-selected="true">Width
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link round-tab" id="header-tab-2" data-bs-toggle="tab"
                                         data-bs-target="#tab-2"  data-toggle="tab" data-target="#tab-2"
-                                        type="button" role="tab" aria-controls="tab-2" aria-selected="false">Lit. Venn
+                                        type="button" role="tab" aria-controls="tab-2" aria-selected="false">Venn
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -111,10 +111,16 @@
                                         type="button" role="tab" aria-controls="tab-3" aria-selected="false">Motif
                                 </button>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link round-tab" id="header-tab-4" data-bs-toggle="tab"
+                                        data-bs-target="#tab-4"  data-toggle="tab" data-target="#tab-4"
+                                        type="button" role="tab" aria-controls="tab-4" aria-selected="false">Position
+                                </button>
+                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="venn-tab">
-                                <div id="my_dataviz"></div>
+                                <div id="widthHist"></div>
                                 <p style="margin-left: 20px">
                                     <label>Number of bins: </label>
                                     <input type="number" min="1" max="100" step="1" value="3" id="nBin">
@@ -127,6 +133,9 @@
                                 <div style="width:100%; height:300px" class="fill">
                                     <img id="motif_sequence" src=""/>
                                 </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="hist-tab">
+                                <div id="position_scatter" style="width:100%; height:300px;"></div>
                             </div>
                         </div>
 
@@ -177,6 +186,7 @@
 <!-- Load scripts -->
 <script src="js/igv_and_table.js"></script>
 <script src="js/binding_width.js"></script>
+<script src="js/peak_gene_positions.js"></script>
 <script src="plot_dev/binding_site_table/binding_site_table.js"></script>
 <script src="plot_dev/venn/venn.js"></script>
 
@@ -215,7 +225,12 @@
         });
 
         // Binding width histogram
-        generateWidthHist(TF_name, "#my_dataviz")
+        generateWidthHist(TF_name, "#widthHist")
+
+        // Peak/Gene Position Scatter
+        $.get('data/e_coli/NC_000913_3/positions/' + TF_name + "_positions.csv", function (positions_data) {
+        generatePeakScatter(positions_data, "position_scatter");
+    });
 
         // Formatting commas into numbers
         function numberWithCommas(x) {
