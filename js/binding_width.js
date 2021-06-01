@@ -13,9 +13,16 @@ function generateWidthHist(TF_name, container) {
 
 // append the svg object to the body of the page
     var svg = d3.select(container)
+        .append("div")
+        .append("center")
+        // Container class to make it responsive.
+        .classed("svg-container", true)
         .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        // Responsive SVG needs these 2 attributes and no width and height attr.
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 400 250")
+        // Class to make it responsive.
+        .classed("svg-content-responsive", true)
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
@@ -34,7 +41,7 @@ function generateWidthHist(TF_name, container) {
             .range([0, width]);
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+            .call(d3.axisBottom(x).tickFormat(d3.format("d")).tickValues(d3.range(min, max + 1, Math.max(1, parseInt((max-min) / 5)))));
         // x axis label
         svg.append("text")
             .attr("class", "x label")
@@ -47,7 +54,7 @@ function generateWidthHist(TF_name, container) {
             .attr("class", "y label")
             .attr("text-anchor", "end")
             .attr("y", 6)
-            .attr("dy", -35)
+            .attr("dy", -31)
             .attr("transform", "rotate(-90)")
             .text("Frequency");
 
@@ -105,7 +112,7 @@ function generateWidthHist(TF_name, container) {
                 .attr("height", function (d) {
                     return height - y(d.length);
                 })
-                .style("fill", "#69b3a2")
+                .style("fill", "#f5cb5c")
 
 
             // If less bar in the new histogram, I delete the ones not in use anymore
@@ -115,7 +122,7 @@ function generateWidthHist(TF_name, container) {
 
         }
 
-        // Initialize with 5 bins
+        // Initialize with 3 bins
         update(3)
 
         // Listen to the button -> update if user change it
