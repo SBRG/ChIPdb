@@ -90,50 +90,89 @@
                 <div class="col-md-12 col-lg-4">
                     <div class="card">
                         <div class="section-header"> Feature Visualization</div>
-                        <!-- <div id="venn" style="width:100%; height:300px;"></div>-->
                         <ul class="nav nav-tabs tab-strip" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link round-tab active" id="header-tab-1" data-bs-toggle="tab"
-                                        data-bs-target="#tab-1"   data-toggle="tab"  data-target="#tab-1"
+                                        data-bs-target="#tab-1" data-toggle="tab" data-target="#tab-1"
                                         type="button" role="tab" aria-controls="tab-1"
                                         aria-selected="true">Width
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link round-tab" id="header-tab-2" data-bs-toggle="tab"
-                                        data-bs-target="#tab-2"  data-toggle="tab" data-target="#tab-2"
+                                        data-bs-target="#tab-2" data-toggle="tab" data-target="#tab-2"
                                         type="button" role="tab" aria-controls="tab-2" aria-selected="false">Venn
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link round-tab" id="header-tab-3" data-bs-toggle="tab"
-                                        data-bs-target="#tab-3"  data-toggle="tab" data-target="#tab-3"
+                                        data-bs-target="#tab-3" data-toggle="tab" data-target="#tab-3"
                                         type="button" role="tab" aria-controls="tab-3" aria-selected="false">Motif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link round-tab" id="header-tab-4" data-bs-toggle="tab"
-                                        data-bs-target="#tab-4"  data-toggle="tab" data-target="#tab-4"
+                                        data-bs-target="#tab-4" data-toggle="tab" data-target="#tab-4"
                                         type="button" role="tab" aria-controls="tab-4" aria-selected="false">Position
                                 </button>
                             </li>
                         </ul>
+                        <!-- Binding width histogram-->
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="venn-tab">
+                            <div class="tab-pane fade show active" id="tab-1" role="tabpanel"
+                                 aria-labelledby="venn-tab">
+                                 <!--Hamburger Dropdown-->
+                                <div class="dropdown menu-right">
+                                    <!--Trigger-->
+                                    <button class="btn menu-hamburger-height" type="button" id="dropdownMenuHist"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">menu</i>
+                                    </button>
+                                    <!--Menu-->
+                                    <div class="dropdown-menu dropdown-primary">
+                                        <button id="saveButtonWidth" class="dropdown-item" type="button">Download PNG image</button>
+                                        <a class="dropdown-item" href="#">Download SVG vector image</a>
+                                    </div>
+                                </div>
+                                <!--/Hamburger Dropdown-->
                                 <div id="widthHist"></div>
                                 <p style="margin-left: 20px">
                                     <label>Number of bins: </label>
                                     <input type="number" min="1" max="100" step="1" value="3" id="nBin">
                                 </p>
                             </div>
+
+                            <!--Venn Diagram-->
                             <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="hist-tab">
                                 <div id="venn" style="width:100%; height:300px;"></div>
                             </div>
+
+                            <!-- Motif Sequence-->
                             <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="contact-tab">
+
+                                <!--Hamburger Dropdown-->
+                                <div class="dropdown menu-right">
+                                    <!--Trigger-->
+                                    <button class="btn menu-hamburger-height" type="button" id="dropdownMenuMotif"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">menu</i>
+                                    </button>
+                                    <!--Menu-->
+                                    <div class="dropdown-menu dropdown-primary">
+                                        <a class="dropdown-item" href="#">Download PNG image</a>
+                                        <a id="motif-download" class="dropdown-item" download>Download SVG vector image</a>
+                                    </div>
+                                </div>
+                                <!--/Hamburger Dropdown-->
+
                                 <div style="width:100%; height:300px" class="fill">
                                     <img id="motif_sequence" src=""/>
                                 </div>
                             </div>
+
+                            <!-- Position Scatterplot-->
                             <div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="hist-tab">
                                 <div id="position_scatter" style="width:100%; height:300px;"></div>
                             </div>
@@ -181,6 +220,8 @@
 <script src="https://code.highcharts.com/modules/venn.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
+<script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Load scripts -->
@@ -199,7 +240,10 @@
     $('#TF_header').append(TF_name);
 
     document.title = TF_name;
-    document.getElementById("motif_sequence").src = '/ChIPdb/plot_dev/motifs/images/' + TF_name + '.svg';
+    const motifSVG = '/ChIPdb/plot_dev/motifs/images/' + TF_name + '.svg';
+    document.getElementById("motif_sequence").src = motifSVG;
+    document.getElementById("motif-download").href = motifSVG;
+
 
     $.get('/ChIPdb/data/' + organism + '/TF_list.csv', function (file_data) {
         var data = Papa.parse(file_data, {dynamicTyping: true}).data;
@@ -225,12 +269,12 @@
         });
 
         // Binding width histogram
-        generateWidthHist(TF_name, "#widthHist")
+        generateWidthHist(TF_name, "#widthHist", "#saveButtonWidth");
 
         // Peak/Gene Position Scatter
         $.get('data/e_coli/NC_000913_3/positions/' + TF_name + "_positions.csv", function (positions_data) {
-        generatePeakScatter(positions_data, "position_scatter");
-    });
+            generatePeakScatter(positions_data, "position_scatter");
+        });
 
         // Formatting commas into numbers
         function numberWithCommas(x) {
