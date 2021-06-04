@@ -123,31 +123,12 @@
                         <!-- Binding width histogram-->
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade" id="tab-1" role="tabpanel"
-                                 aria-labelledby="venn-tab">
-                                 <!--Hamburger Dropdown-->
-                                <div class="dropdown menu-right">
-                                    <!--Trigger-->
-                                    <button class="btn menu-hamburger-height" type="button" id="dropdownMenuHist"
-                                            data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">menu</i>
-                                    </button>
-                                    <!--Menu-->
-                                    <div class="dropdown-menu dropdown-primary">
-                                        <button id="saveButtonWidth" class="dropdown-item" type="button">Download PNG image</button>
-                                        <a class="dropdown-item" href="#">Download SVG vector image</a>
-                                    </div>
-                                </div>
-                                <!--/Hamburger Dropdown-->
-                                <div id="widthHist"></div>
-                                <p style="margin-left: 20px">
-                                    <label>Number of bins: </label>
-                                    <input type="number" min="1" max="100" step="1" value="3" id="nBin">
-                                </p>
+                                 aria-labelledby="hist-tab">
+                                <div id="widthHist" style="width:100%; height:300px;"></div>
                             </div>
 
                             <!--Venn Diagram-->
-                            <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="hist-tab">
+                            <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="venn-tab">
                                 <div id="venn" style="width:100%; height:300px;"></div>
                             </div>
 
@@ -221,16 +202,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/venn.js"></script>
+<script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
 <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
-<script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Load scripts -->
 <script src="js/igv_and_table.js"></script>
-<script src="js/binding_width.js"></script>
 <script src="js/peak_gene_positions.js"></script>
+<script src="js/width_histogram.js"></script>
 <script src="plot_dev/binding_site_table/binding_site_table.js"></script>
 <script src="plot_dev/venn/venn.js"></script>
 
@@ -278,7 +259,11 @@
         });;
 
         // Binding width histogram
-        generateWidthHist(TF_name, "#widthHist", "#saveButtonWidth");
+         $.get('data/e_coli/NC_000913_3/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
+             generateWidthHistogram(width_data, 'widthHist')
+         }).catch(() => {
+            document.getElementById("header-tab-1").classList.add('disabled')
+        });
 
         // Peak/Gene Position Scatter
         $.get('data/e_coli/NC_000913_3/positions/' + TF_name + "_positions.csv", function (positions_data) {

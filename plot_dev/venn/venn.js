@@ -142,7 +142,7 @@ function generateVenn(jsconContent, container) {
             }]
         }],
         title: {
-            text: null
+            text: TF_name + ' Venn Diagram ChIPdb versus Literature Target Genes'
         },
         caption: {
             text: "* Literature data from: " + data_source,
