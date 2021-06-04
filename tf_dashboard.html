@@ -95,10 +95,9 @@
                         <div class="section-header"> Feature Visualization</div>
                         <ul class="nav nav-tabs tab-strip" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link round-tab active" id="header-tab-1" data-bs-toggle="tab"
-                                        data-bs-target="#tab-1" data-toggle="tab" data-target="#tab-1"
-                                        type="button" role="tab" aria-controls="tab-1"
-                                        aria-selected="true">Width
+                                <button class="nav-link round-tab active" id="header-tab-3" data-bs-toggle="tab"
+                                        data-bs-target="#tab-3" data-toggle="tab" data-target="#tab-3"
+                                        type="button" role="tab" aria-controls="tab-3" aria-selected="false">Motif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -108,9 +107,10 @@
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link round-tab" id="header-tab-3" data-bs-toggle="tab"
-                                        data-bs-target="#tab-3" data-toggle="tab" data-target="#tab-3"
-                                        type="button" role="tab" aria-controls="tab-3" aria-selected="false">Motif
+                                <button class="nav-link round-tab" id="header-tab-1" data-bs-toggle="tab"
+                                        data-bs-target="#tab-1" data-toggle="tab" data-target="#tab-1"
+                                        type="button" role="tab" aria-controls="tab-1"
+                                        aria-selected="true">Width
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -122,7 +122,7 @@
                         </ul>
                         <!-- Binding width histogram-->
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="tab-1" role="tabpanel"
+                            <div class="tab-pane fade" id="tab-1" role="tabpanel"
                                  aria-labelledby="venn-tab">
                                  <!--Hamburger Dropdown-->
                                 <div class="dropdown menu-right">
@@ -152,7 +152,7 @@
                             </div>
 
                             <!-- Motif Sequence-->
-                            <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="tab-pane fade show active" id="tab-3" role="tabpanel" aria-labelledby="contact-tab">
 
                                 <!--Hamburger Dropdown-->
                                 <div class="dropdown menu-right">
@@ -243,8 +243,12 @@
     $('#TF_header').append(TF_name);
 
     document.title = TF_name;
+
+    // motif
     const motifSVG = '/ChIPdb/plot_dev/motifs/images/' + TF_name + '.svg';
     document.getElementById("motif_sequence").src = motifSVG;
+    document.getElementById("motif_sequence").onerror = () =>
+        document.getElementById("motif_sequence").src = '/ChIPdb/plot_dev/motifs/TF_404.svg';
     document.getElementById("motif-download").href = motifSVG;
 
 
@@ -269,7 +273,9 @@
         // Venn
         $.getJSON('plot_dev/venn/data/' + TF_name.substr(0, 4) + '.json', function (data) {
             generateVenn(data, 'venn');
-        });
+        }).catch(() => {
+            document.getElementById("header-tab-2").classList.add('disabled')
+        });;
 
         // Binding width histogram
         generateWidthHist(TF_name, "#widthHist", "#saveButtonWidth");
@@ -277,6 +283,8 @@
         // Peak/Gene Position Scatter
         $.get('data/e_coli/NC_000913_3/positions/' + TF_name + "_positions.csv", function (positions_data) {
             generatePeakScatter(positions_data, "position_scatter");
+        }).catch(() => {
+            document.getElementById("header-tab-4").classList.add('disabled')
         });
 
     });

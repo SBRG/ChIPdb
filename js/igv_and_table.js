@@ -4,6 +4,29 @@
  * requires Tabulator and igv.js
  */
 
+// data download helper function
+ function data_download(csv_data, file_name) {
+    const a = document.createElement("a");
+    a.style.display = "none";
+    document.body.appendChild(a);
+
+    // Set the HREF to a Blob representation of the data to be downloaded
+    a.href = window.URL.createObjectURL(
+        new Blob([csv_data], {type: 'text/plain'})
+    );
+
+    // Use download attribute to set set desired file name
+    a.setAttribute("download", file_name);
+
+    // Trigger the download by simulating click
+    a.click();
+
+    // Cleanup
+    window.URL.revokeObjectURL(a.href);
+    document.body.removeChild(a);
+ }
+
+
 function generateIGVandTable(TF_name, row) {
 
 //trigger download of big wig files
@@ -211,7 +234,9 @@ function generateIGVandTable(TF_name, row) {
             table.download("csv", TF_name + "_binding_site_table.csv");
         });
 
-    });
+    }).catch(() => {
+            document.getElementById('binding_site_table').innerText = 'Peak binding data table not available.'
+        });;
 }
 
 // Formatting commas into numbers

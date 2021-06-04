@@ -69,6 +69,7 @@ function generatePeakScatter(csvContent, container) {
             //     }
             // }
         }],
+
         tooltip: {
             formatter: function () {
                 tooltip = "<br>Peak: " + this.point.peak;
