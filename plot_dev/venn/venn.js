@@ -65,12 +65,12 @@ function generateVenn(jsconContent, container) {
                 name: 'Genes in ChIP Data Only',
                 sets: ['Chip-seq Genes'],
                 color: '#F5CB5C',
-                opacity: 0.7,
+                opacity: 0.8,
                 value: chip_only_val,
                 gene_list: chip_only_list
             }, {
                 sets: ['Chip-seq Genes', 'Regulon Genes'],
-                color: '#26ada9',
+                color: '#04724D',
                 opacity: 0.7,
                 name: 'Genes in ChIP and Literature Data',
                 value: shared_val,
@@ -79,7 +79,7 @@ function generateVenn(jsconContent, container) {
                 name: 'Genes in Literature* Only',
                 sets: ['Regulon Genes'],
                 color: '#306FBF',
-                opacity: 0.7,
+                opacity: 0.8,
                 value: reg_only_val,
                 gene_list: reg_only_list
             }, {
