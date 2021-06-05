@@ -252,7 +252,7 @@
         generateIGVandTable(TF_name, row)
 
         // Venn
-        $.getJSON('plot_dev/venn/data/' + TF_name.substr(0, 4) + '.json', function (data) {
+        $.getJSON('plot_dev/venn/data/' + TF_name.substr(0, 4) + '_venn.json', function (data) {
             generateVenn(data, 'venn');
         }).catch(() => {
             document.getElementById("header-tab-2").classList.add('disabled')

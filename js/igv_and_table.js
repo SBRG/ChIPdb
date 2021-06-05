@@ -106,7 +106,7 @@ function generateIGVandTable(TF_name, row) {
         })
 
     // Table
-    $.getJSON('plot_dev/binding_site_table/data/' + TF_name.substr(0, 4) + '_binding_site_table.json', function (data) {
+    $.getJSON('plot_dev/binding_site_table/data/' + TF_name.substr(0, 4) + '_binding_table.json', function (data) {
         // convert rows into objects
         const container = 'binding_site_table'
         var tabledata = []
