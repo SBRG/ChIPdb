@@ -49,10 +49,8 @@
 <!-- Load Outside Libraries -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/venn.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.src.js"></script>
-<script src="https://code.highcharts.com/modules/data.src.js"></script>
-<script src="https://code.highcharts.com/stock/highstock.js"></script>
-
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <!-- JS file for this plot -->
 <script src="venn.js"></script>
@@ -60,7 +58,7 @@
 <!-- Make plots -->
 <script>
     // Add TF names that match the json files here:
-    var tfList =["YheO","YbiH","YbaQ","YdcI","YbaO","YieP","YagI","YiaJ","YddM","YafC","YeiE"];
+    var tfList =['YbeF','YciT','YdcI','YbcM','YddM','YdiP','YbhD','YieP','YcfQ','YcaN','YbaQ','YdhB','YeaM','YjdC','YdcN','YdcI','YheO','YdcR','YbaO','YcjW','YahB','YbdO','YdcI'];
     var numPlots = tfList.length;
 
     // generate all divs:
@@ -71,7 +69,7 @@
 
     // recursively make all plots:
     function get_and_plot(i, tfList, numPlots) {
-        $.getJSON('data/'+tfList[i]+'.json', function(data) {
+        $.getJSON('data/'+tfList[i]+'_venn.json', function(data) {
             generateVenn(data, 'fig'+tfList[i]);
             if (i < numPlots) {
                 i++;

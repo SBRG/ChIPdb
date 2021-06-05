@@ -53,14 +53,14 @@ function genBindingSiteTable(jsonContent, container, target_div, igv_options) {
             headerContextMenu: headerMenu
         },
         {
-            title: "Start Position",
+            title: "Peak Location",
             field: "binding_peak_start",
             sorter: "number",
             hozAlign: "center",
             headerContextMenu: headerMenu
         },
         {
-            title: "End Position",
+            title: "Peak Location",
             field: "binding_peak_end",
             sorter: "number",
             hozAlign: "center",

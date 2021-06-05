@@ -58,7 +58,7 @@
 <!-- Make plots -->
 <script>
     // Add TF names that match the json files here:
-    var tfList =["YheO","YbiH","YbaQ","YdcI","YbaO","YieP","YagI","YiaJ","YddM","YafC","YeiE"];
+    var tfList =['YbeF','YciT','YdcI','YbcM','YddM','YdiP','YbhD','YieP','YcfQ','YcaN','YbaQ','YdhB','YeaM','YjdC','YdcN','YdcI','YheO','YdcR','YbaO','YcjW','YahB','YbdO','YdcI'];
     var numPlots = tfList.length;
 
     // generate all divs:
@@ -69,7 +69,7 @@
 
     // recursively make all plots:
     function get_and_plot(i, tfList, numPlots) {
-        $.getJSON('data/'+tfList[i]+'_binding_site_table.json', function(data) {
+        $.getJSON('data/'+tfList[i]+'_binding_table.json', function(data) {
             console.log(tfList[i], data.length)
             genBindingSiteTable(data, 'fig'+tfList[i]);
             if (i < numPlots) {

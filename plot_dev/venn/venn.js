@@ -4,38 +4,16 @@
  * requires highcharts
  */
 
- // data download helper function
-function data_download(json_data, file_name) {
-    var a = document.createElement("a");
-    a.style.display = "none";
-    document.body.appendChild(a);
-
-    // convert json data into json format
-    var json = JSON.stringify(json_data);
-    blob = new Blob([json], {type: "octet/stream"});
-
-    // Set the HREF to a Blob representation of the data to be downloaded
-    a.href = window.URL.createObjectURL(blob);
-
-    // Use download attribute to set set desired file name
-    a.setAttribute("download", file_name);
-
-    // Trigger the download by simulating click
-    a.click();
-
-    // Cleanup
-    window.URL.revokeObjectURL(a.href);
-    document.body.removeChild(a);
-    }
 
 // Write plot to container
 function generateVenn(jsconContent, container) {
+
     var vennData = []
     for (let i = 0; i < jsconContent.length; i++) {
         var obj = jsconContent[i];
         vennData.push(obj)
     }
-     console.log(vennData)
+
     for (let i = 0; i < vennData.length; i++) {
         const value = vennData[i].value;
         const gene_list = vennData[i].list;
@@ -46,6 +24,7 @@ function generateVenn(jsconContent, container) {
 
     // Data Source
     var data_source = vennData[0].list
+
     // gene lists
     var reg_list = vennData[1].list
     var reg_only_list = vennData[2].list
@@ -83,21 +62,21 @@ function generateVenn(jsconContent, container) {
             type: 'venn',
             name: 'Venn Diagram',
             data: [{
-                name: 'Genes in ChIP Data',
+                name: 'Genes in ChIP Data Only',
                 sets: ['Chip-seq Genes'],
                 color: '#F5CB5C',
                 opacity: 0.7,
                 value: chip_only_val,
                 gene_list: chip_only_list
             }, {
-                name: 'Genes in ChIP and Regulon Data',
                 sets: ['Chip-seq Genes', 'Regulon Genes'],
-                color: '#04724D',
+                color: '#26ada9',
                 opacity: 0.7,
+                name: 'Genes in ChIP and Literature Data',
                 value: shared_val,
                 gene_list: shared_list
             }, {
-                name: 'Genes in Regulon Data*',
+                name: 'Genes in Literature* Only',
                 sets: ['Regulon Genes'],
                 color: '#306FBF',
                 opacity: 0.7,
@@ -106,35 +85,35 @@ function generateVenn(jsconContent, container) {
             }, {
                 sets: ['chipseq all contained in Regulon'],
                 value: 0,
-                color: '#3de3e0',
+                color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and i-Modulon',
                 gene_list: shared_list
                 }, {
                 sets: ['Regulon Genes', 'chipseq all contained in Regulon'],
                 value: 0,
-                color: '#3de3e0',
+                color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and i-Modulon',
                 gene_list: shared_list
                 }, {
                 sets: ['Regulon all contained in Chipseq'],
                 value: 0,
-                color: '#37d7b4',
+                color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and i-Modulon',
                 gene_list: shared_list
                 }, {
                 sets: ['Chip-seq Genes', 'Regulon all contained in Chipseq'],
                 value: 0,
-                color: '#37d7b4',
+                color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and Chipseq',
                 geme_list: shared_list
                 }, {
                 sets: ['Regulon == Chipseq'],
                 value: 0,
-                color: '#37d7b4',
+                color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and i-Modulon',
                 gene_list: shared_list
@@ -143,11 +122,10 @@ function generateVenn(jsconContent, container) {
         title: {
             text: null
         },
-        credits: {
-        text: '*Regulon data is from: ' + data_source,
-        href: 'https://www.pnas.org/content/118/2/e2021171118.short?casa_token=j6iYmpSar'+
-              'iUAAAAA:jm2p2N_4kt5nojgedZDesurBz-elvG6K1BIipb6hcpBJqKU6nRFuqnEkM9Jt3Z_VOSJG9B-3JR5mLw',
-	 	},
+        caption: {
+            text: "* Literature data from: " + data_source,
+            align: "right"
+        },
         tooltip: {
             width: '400px',
             formatter: function () {
@@ -175,20 +153,21 @@ function generateVenn(jsconContent, container) {
                 return tooltip;
             }
         }, //end of tooltip
-      exporting: {
+        exporting: {
+            enabled: true,
             menuItemDefinitions: {
                 downloadData: {
                     onclick: function() {
-                        data_download(jsconContent, tfName+'_venn_data.json');
+                        data_download(jsconContent, 'venn_data.json');
                     },
                     text: 'Download venn data'
                 }
             },
             buttons: {
                 contextButton: {
-                    menuItems: ['viewFullscreen', 'downloadPNG', 'downloadSVG', 'downloadData']
+                    menuItems: ['downloadPNG', 'downloadSVG', 'downloadData']
                 }
             }
         }
-    }); //end highcharts
-}; //end dataVenn
+    }); //end var highcharts
+}; //end of dataVenn
