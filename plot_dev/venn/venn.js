@@ -5,6 +5,28 @@
  */
 
 
+// data download helper function
+ function data_download(csv_data, file_name) {
+    const a = document.createElement("a");
+    a.style.display = "none";
+    document.body.appendChild(a);
+
+    // Set the HREF to a Blob representation of the data to be downloaded
+    a.href = window.URL.createObjectURL(
+        new Blob([csv_data], {type: 'text/plain'})
+    );
+
+    // Use download attribute to set set desired file name
+    a.setAttribute("download", file_name);
+
+    // Trigger the download by simulating click
+    a.click();
+
+    // Cleanup
+    window.URL.revokeObjectURL(a.href);
+    document.body.removeChild(a);
+ }
+
 // Write plot to container
 function generateVenn(jsconContent, container) {
 
@@ -120,7 +142,7 @@ function generateVenn(jsconContent, container) {
             }]
         }],
         title: {
-            text: null
+            text: TF_name + ' Venn Diagram ChIPdb versus Literature Target Genes'
         },
         caption: {
             text: "* Literature data from: " + data_source,
