@@ -85,35 +85,35 @@ function generateVenn(jsconContent, container) {
             }, {
                 sets: ['chipseq all contained in Regulon'],
                 value: 0,
-                color: '#3de3e0',
+                color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and i-Modulon',
                 gene_list: shared_list
                 }, {
                 sets: ['Regulon Genes', 'chipseq all contained in Regulon'],
                 value: 0,
-                color: '#3de3e0',
+                color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and i-Modulon',
                 gene_list: shared_list
                 }, {
                 sets: ['Regulon all contained in Chipseq'],
                 value: 0,
-                color: '#37d7b4',
+                color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and i-Modulon',
                 gene_list: shared_list
                 }, {
                 sets: ['Chip-seq Genes', 'Regulon all contained in Chipseq'],
                 value: 0,
-                color: '#37d7b4',
+                color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and Chipseq',
                 geme_list: shared_list
                 }, {
                 sets: ['Regulon == Chipseq'],
                 value: 0,
-                color: '#37d7b4',
+                color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and i-Modulon',
                 gene_list: shared_list
