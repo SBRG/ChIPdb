@@ -5,7 +5,7 @@
  */
 
 // data download helper function
- function data_download(csv_data, file_name) {
+function data_download(csv_data, file_name) {
     const a = document.createElement("a");
     a.style.display = "none";
     document.body.appendChild(a);
@@ -24,7 +24,7 @@
     // Cleanup
     window.URL.revokeObjectURL(a.href);
     document.body.removeChild(a);
- }
+}
 
 
 function generateIGVandTable(TF_name, row) {
@@ -39,49 +39,21 @@ function generateIGVandTable(TF_name, row) {
         {
             reference:
                 {
-                    "id": "MG1655",
-                    "name": "E. coli MG1655",
-                    "fastaURL": "/ChIPdb/data/e_coli/NC_000913_3/sequence/sequence.fasta",
-                    "indexURL": "/ChIPdb/data/e_coli/NC_000913_3/sequence/sequence.fasta.fai",
+                    "id": "genome",
+                    "name": genome,
+                    "fastaURL": "/ChIPdb/data/" + organism + "/" + genome + "/sequence/sequence.fasta",
+                    "indexURL": "/ChIPdb/data/" + organism + "/" + genome + "/sequence/sequence.fasta.fai",
                     "tracks": [
                         {
                             "type": "annotation",
                             "format": "gff",
-                            "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/genes.gff",
+                            "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/genes.gff",
                             "name": "Genes",
                             "gffTags": "on",
                             "color": "#0D5899",
                             "nameField": "gene",
                             "searchable": true
-                        },
-                        {
-                            "type": "annotation",
-                            "format": "gff",
-                            "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/tu.gff",
-                            "name": "Published TUs",
-                            "color": "#5386E4",
-                            "gffTags": "on",
-                            "nameField": "genes"
-                        },
-                        {
-                            "type": "annotation",
-                            "format": "gff",
-                            "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/tss.gff",
-                            "name": "Published TSS",
-                            "color": "#8E908E",
-                            "gffTags": "on",
-                            "nameField": "tss_name"
-                        },
-                        {
-                            "type": "annotation",
-                            "format": "gff",
-                            "url": "/ChIPdb/data/e_coli/NC_000913_3/annotation/tfbs.gff",
-                            "name": "Published TFBS",
-                            "color": "#F5CB5C",
-                            "gffTags": "on",
-                            "nameField": "TF"
                         }
-
                     ]
                 }
         };
@@ -91,12 +63,45 @@ function generateIGVandTable(TF_name, row) {
             var i = row.length - 15;
             var color_iter = 0;
             const colors = ['#464746', '#464746', '#9BABA4', '#9BABA4', '#417f5d', '#417f5d', '#817198', '#817198']; // maybe make better someday
+            if (genome == 'NC_000913_3') {
+                await browser.loadTrack(
+                    {
+                        "type": "annotation",
+                        "format": "gff",
+                        "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tu.gff",
+                        "name": "Published TUs",
+                        "color": "#5386E4",
+                        "gffTags": "on",
+                        "nameField": "genes"
+                    })
+                await browser.loadTrack(
+                    {
+                        "type": "annotation",
+                        "format": "gff",
+                        "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tss.gff",
+                        "name": "Published TSS",
+                        "color": "#8E908E",
+                        "gffTags": "on",
+                        "nameField": "tss_name"
+                    })
+                await browser.loadTrack(
+                    {
+                        "type": "annotation",
+                        "format": "gff",
+                        "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tfbs.gff",
+                        "name": "Published TFBS",
+                        "color": "#F5CB5C",
+                        "gffTags": "on",
+                        "nameField": "TF"
+                    })
+            }
+            ;
             while (i < row.length) {
                 if (row[i] != null) {
                     await browser.loadTrack({
                         "name": row[i - 1],
                         "type": "wig",
-                        "url": "/ChIPdb/data/e_coli/NC_000913_3/bw/" + row[i],
+                        "url": "/ChIPdb/data/" + organism + "/" + genome + "/bw/" + row[i],
                         "color": colors[color_iter]
                     })
                 }
@@ -106,7 +111,7 @@ function generateIGVandTable(TF_name, row) {
         })
 
     // Table
-    $.getJSON('data/e_coli/NC_000913_3/table/' + TF_name.substr(0, 4) + '_binding_table.json', function (data) {
+    $.getJSON('/ChIPdb/data/' + organism + '/' + genome + '/table/' + TF_name.substr(0, 4) + '_binding_table.json', function (data) {
         // convert rows into objects
         const container = 'binding_site_table'
         var tabledata = []
@@ -207,12 +212,45 @@ function generateIGVandTable(TF_name, row) {
                         var i = row.length - 15;
                         var color_iter = 0;
                         const colors = ['#464746', '#464746', '#9BABA4', '#9BABA4', '#417f5d', '#417f5d', '#817198', '#817198']; // maybe make better someday
+                        if (genome == 'NC_000913_3') {
+                            await browser.loadTrack(
+                                {
+                                    "type": "annotation",
+                                    "format": "gff",
+                                    "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tu.gff",
+                                    "name": "Published TUs",
+                                    "color": "#5386E4",
+                                    "gffTags": "on",
+                                    "nameField": "genes"
+                                })
+                            await browser.loadTrack(
+                                {
+                                    "type": "annotation",
+                                    "format": "gff",
+                                    "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tss.gff",
+                                    "name": "Published TSS",
+                                    "color": "#8E908E",
+                                    "gffTags": "on",
+                                    "nameField": "tss_name"
+                                })
+                            await browser.loadTrack(
+                                {
+                                    "type": "annotation",
+                                    "format": "gff",
+                                    "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tfbs.gff",
+                                    "name": "Published TFBS",
+                                    "color": "#F5CB5C",
+                                    "gffTags": "on",
+                                    "nameField": "TF"
+                                })
+                        }
+                        ;
                         while (i < row.length) {
                             if (row[i] != null) {
                                 await browser.loadTrack({
                                     "name": row[i - 1],
                                     "type": "wig",
-                                    "url": "/ChIPdb/data/e_coli/NC_000913_3/bw/" + row[i],
+                                    "url": "/ChIPdb/data/" + organism + "/" + genome + "/bw/" + row[i],
                                     "color": colors[color_iter]
                                 })
                             }
@@ -235,8 +273,9 @@ function generateIGVandTable(TF_name, row) {
         });
 
     }).catch(() => {
-            document.getElementById('binding_site_table').innerText = 'Peak binding data table not available.'
-        });;
+        document.getElementById('binding_site_table').innerText = 'Peak binding data table not available.'
+    });
+    ;
 }
 
 // Formatting commas into numbers
