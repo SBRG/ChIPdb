@@ -113,7 +113,7 @@
 <script src="js/peak_table.js"></script>
 
 <script>
-    $.get('/ChIPdb/data/test/0_gene_table.csv', function (gene_table_data) {
+    $.get('/data/test/0_gene_table.csv', function (gene_table_data) {
         generateGeneTable(gene_table_data, "gene_table");
     });
 </script>
@@ -128,13 +128,13 @@
                 {
                     "id": "genome",
                     "name": "genome",
-                    "fastaURL": "/ChIPdb/data/W/sequence.fasta",
-                    "indexURL": "/ChIPdb/data/W/sequence.fasta.fai",
+                    "fastaURL": "/data/W/sequence.fasta",
+                    "indexURL": "/data/W/sequence.fasta.fai",
                     "tracks": [
                         {
                             "type": "annotation",
                                 "format": "gff",
-                                "url": "/ChIPdb/data/W/genes.gff",
+                                "url": "/data/W/genes.gff",
                                 "name": "genes",
                                 "color": "#5386E4",
                                 "gffTags": "on",

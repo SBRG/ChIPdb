@@ -229,14 +229,14 @@
     document.title = TF_name;
 
     // motif
-    const motifSVG = '/ChIPdb/plot_dev/motifs/images/' + TF_name + '.svg';
+    const motifSVG = '/plot_dev/motifs/images/' + TF_name + '.svg';
     document.getElementById("motif_sequence").src = motifSVG;
     document.getElementById("motif_sequence").onerror = () =>
         document.getElementById("header-tab-3").classList.add('disabled')
     document.getElementById("motif-download").href = motifSVG;
 
 
-    $.get('/ChIPdb/data/' + organism + '/TF_list.csv', function (file_data) {
+    $.get('/data/' + organism + '/TF_list.csv', function (file_data) {
         var data = Papa.parse(file_data, {dynamicTyping: true}).data;
         const row = data[parseInt(index) + 1];
 
@@ -255,21 +255,21 @@
         generateIGVandTable(TF_name, row)
 
         // Venn
-        $.getJSON('/ChIPdb/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.json', function (data) {
+        $.getJSON('/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.json', function (data) {
             generateVenn(data, 'venn');
         }).catch(() => {
             document.getElementById("header-tab-2").classList.add('disabled')
         });;
 
         // Binding width histogram
-         $.get('/ChIPdb/data/' + organism + '/' + genome + '/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
+         $.get('/data/' + organism + '/' + genome + '/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
              generateWidthHistogram(width_data, 'widthHist')
          }).catch(() => {
             document.getElementById("widthHist").innerText = 'Binding width histogram not available.'
         });
 
         // Peak/Gene Position Scatter
-        $.get('/ChIPdb/data/' + organism + '/' + genome + '/positions/' + TF_name + "_positions.csv", function (positions_data) {
+        $.get('/data/' + organism + '/' + genome + '/positions/' + TF_name + "_positions.csv", function (positions_data) {
             generatePeakScatter(positions_data, "position_scatter");
         }).catch(() => {
             document.getElementById("header-tab-4").classList.add('disabled')

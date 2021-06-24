@@ -31,7 +31,7 @@ function generateIGVandTable(TF_name, row) {
 
 //trigger download of big wig files
     document.getElementById("download-bw").setAttribute("href",
-        "/ChIPdb/data/e_coli/NC_000913_3/bw/compressed/" + TF_name + "_bw.zip");
+        "/data/e_coli/NC_000913_3/bw/compressed/" + TF_name + "_bw.zip");
 
     // IGV
     var igvDiv = document.getElementById("igv-div");
@@ -41,13 +41,13 @@ function generateIGVandTable(TF_name, row) {
                 {
                     "id": "genome",
                     "name": genome,
-                    "fastaURL": "/ChIPdb/data/" + organism + "/" + genome + "/sequence/sequence.fasta",
-                    "indexURL": "/ChIPdb/data/" + organism + "/" + genome + "/sequence/sequence.fasta.fai",
+                    "fastaURL": "/data/" + organism + "/" + genome + "/sequence/sequence.fasta",
+                    "indexURL": "/data/" + organism + "/" + genome + "/sequence/sequence.fasta.fai",
                     "tracks": [
                         {
                             "type": "annotation",
                             "format": "gff",
-                            "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/genes.gff",
+                            "url": "/data/" + organism + "/" + genome + "/annotation/genes.gff",
                             "name": "Genes",
                             "gffTags": "on",
                             "color": "#0D5899",
@@ -68,7 +68,7 @@ function generateIGVandTable(TF_name, row) {
                     {
                         "type": "annotation",
                         "format": "gff",
-                        "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tu.gff",
+                        "url": "/data/" + organism + "/" + genome + "/annotation/tu.gff",
                         "name": "Published TUs",
                         "color": "#5386E4",
                         "gffTags": "on",
@@ -78,7 +78,7 @@ function generateIGVandTable(TF_name, row) {
                     {
                         "type": "annotation",
                         "format": "gff",
-                        "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tss.gff",
+                        "url": "/data/" + organism + "/" + genome + "/annotation/tss.gff",
                         "name": "Published TSS",
                         "color": "#8E908E",
                         "gffTags": "on",
@@ -88,7 +88,7 @@ function generateIGVandTable(TF_name, row) {
                     {
                         "type": "annotation",
                         "format": "gff",
-                        "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tfbs.gff",
+                        "url": "/data/" + organism + "/" + genome + "/annotation/tfbs.gff",
                         "name": "Published TFBS",
                         "color": "#F5CB5C",
                         "gffTags": "on",
@@ -101,7 +101,7 @@ function generateIGVandTable(TF_name, row) {
                     await browser.loadTrack({
                         "name": row[i - 1],
                         "type": "wig",
-                        "url": "/ChIPdb/data/" + organism + "/" + genome + "/bw/" + row[i],
+                        "url": "/data/" + organism + "/" + genome + "/bw/" + row[i],
                         "color": colors[color_iter]
                     })
                 }
@@ -111,7 +111,7 @@ function generateIGVandTable(TF_name, row) {
         })
 
     // Table
-    $.getJSON('/ChIPdb/data/' + organism + '/' + genome + '/table/' + TF_name.substr(0, 4) + '_binding_table.json', function (data) {
+    $.getJSON('/data/' + organism + '/' + genome + '/table/' + TF_name.substr(0, 4) + '_binding_table.json', function (data) {
         // convert rows into objects
         const container = 'binding_site_table'
         var tabledata = []
@@ -217,7 +217,7 @@ function generateIGVandTable(TF_name, row) {
                                 {
                                     "type": "annotation",
                                     "format": "gff",
-                                    "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tu.gff",
+                                    "url": "/data/" + organism + "/" + genome + "/annotation/tu.gff",
                                     "name": "Published TUs",
                                     "color": "#5386E4",
                                     "gffTags": "on",
@@ -227,7 +227,7 @@ function generateIGVandTable(TF_name, row) {
                                 {
                                     "type": "annotation",
                                     "format": "gff",
-                                    "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tss.gff",
+                                    "url": "/data/" + organism + "/" + genome + "/annotation/tss.gff",
                                     "name": "Published TSS",
                                     "color": "#8E908E",
                                     "gffTags": "on",
@@ -237,7 +237,7 @@ function generateIGVandTable(TF_name, row) {
                                 {
                                     "type": "annotation",
                                     "format": "gff",
-                                    "url": "/ChIPdb/data/" + organism + "/" + genome + "/annotation/tfbs.gff",
+                                    "url": "/data/" + organism + "/" + genome + "/annotation/tfbs.gff",
                                     "name": "Published TFBS",
                                     "color": "#F5CB5C",
                                     "gffTags": "on",
@@ -250,7 +250,7 @@ function generateIGVandTable(TF_name, row) {
                                 await browser.loadTrack({
                                     "name": row[i - 1],
                                     "type": "wig",
-                                    "url": "/ChIPdb/data/" + organism + "/" + genome + "/bw/" + row[i],
+                                    "url": "/data/" + organism + "/" + genome + "/bw/" + row[i],
                                     "color": colors[color_iter]
                                 })
                             }

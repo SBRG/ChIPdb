@@ -117,7 +117,7 @@
     var organism = params.get('organism');
 
     // populate the table
-    $.get('/ChIPdb/data/' + organism + '/TF_list.csv', function (table_data) {
+    $.get('/data/' + organism + '/TF_list.csv', function (table_data) {
 
         // get the data, convert to objects
         var data = Papa.parse(table_data, {dynamicTyping: true}).data;
