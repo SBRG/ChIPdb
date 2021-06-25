@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Venn Diagrams</title>
+
+    <!-- CSS imports -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="/css/common.css" type="text/css">
+
+    <!-- javascript imports -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/igv@2.7.6/dist/igv.min.js"></script>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Sulphur+Point:wght@300;400;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <style>
+        * {
+            font-family: 'Lato', 'Roboto', 'Helvetica', 'Segoe UI', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- Page Content -->
+<div id="main_div" class="container-fluid page-container">
+
+    <!-- top bar -->
+    <div class="header navbar-dark sticky-top">
+        <div class="navbar-header" style="font-size: x-large; font-weight: 400;">
+            TFBSdb 1.0.0
+        </div>
+    </div>
+
+    <!-- Header -->
+    <h2 style="text-align:center;">ChIPdb: Venn Diagram Plot Development</h2>
+    <hr />
+
+</div>
+
+<!-- Load Outside Libraries -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/venn.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<!-- JS file for this plot -->
+<script src="venn.js"></script>
+
+<!-- Make plots -->
+<script>
+    var tfList = [ 'Cra_M9','Cra_acetate','Cra_fructose','Cra_galactose','Crafructose','Fur_dpd','Fur_fe','GadE_M9',
+    'GadW_M9','GadX_M9','OxyR_pq','SoxR_pq','YahB_M9','YbaO_M9','YbaQ_M9','YbcM_oxidative','YbdO_M9','YbeF_M9',
+    'YbhD_M9','YcaNM9','YcaN_M9','YcfQ_M9','YciT_M9','YcjW_M9','YdcI_ph5','YdcI_ph7','YdcI_ph8','YdcN_M9','YdcR_M9',
+    'YddM_M9','YdhB_M9','YdiP_M9','YeaM_M9','YebK_M9','YedW_M9','YehT_M9','YfeD_M9','YfiE_M9','YgaV_M9','YgbI_M9',
+    'YgfI_M9','YheO_M9','YhjB_M9','YhjC_M9','YiaU_M9','YidL_M9','YidZ_M9','YieP_M9','YjdC_M9','YqhC_M9' ]
+
+    var numPlots = tfList.length;
+
+    // generate all divs:
+    for (var i = 0; i < numPlots; i++) {
+        $('#main_div').append('<h4>'+tfList[i]+'</h4>')
+        $('#main_div').append($('<div/>', {id: 'fig'+tfList[i], style: "width: 80%;height: 250px;"}));
+    }
+
+    // recursively make all plots:
+    function get_and_plot(i, tfList, numPlots) {
+        $.getJSON('data/'+tfList[i]+'_venn.json', function(data) {
+            generateVenn(data, 'fig'+tfList[i]);
+            if (i < numPlots) {
+                i++;
+                get_and_plot(i, tfList, numPlots);
+            }
+        });
+    }
+    get_and_plot(0, tfList, numPlots);
+</script>
+
+</body>
+</html>
