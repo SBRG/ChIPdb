@@ -57,8 +57,17 @@
 
 <!-- Make plots -->
 <script>
-    // Add TF names that match the json files here:
-    var tfList =['YbeF','YciT','YdcI','YbcM','YddM','YdiP','YbhD','YieP','YcfQ','YcaN','YbaQ','YdhB','YeaM','YjdC','YdcN','YdcI','YheO','YdcR','YbaO','YcjW','YahB','YbdO','YdcI'];
+    // loading all file names and conditions into a list called "tfList"
+    var fs = require("fs");
+
+    let directory = "data"
+    let dirBuf = Buffer.from(directory);
+
+    let files = fs.readdirSync(directory);
+    var tfList=[];
+    for (var i = 0; i < files.length; i++) {
+        tfList.push(files[i].replace('_venn.json',''));
+    }
     var numPlots = tfList.length;
 
     // generate all divs:
