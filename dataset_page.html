@@ -36,7 +36,10 @@
 <div class="container-fluid page-container">
     <!-- Top Navigation Bar -->
     <nav class="navbar navbar-expand-md sticky-top header">
-        <a class="navbar-brand" href="index.html"> ChIPdb 1.0.0 </a>
+        <a class="navbar-brand" href="index.html">
+             <img src="images/ChIPdb_logo.png" height=35 class="d-inline-block align-top"
+            alt="" loading="lazy">
+            ChIPdb 1.0.0 </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -50,9 +53,10 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
                         <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=p_putida"><i>P. putida</i></a>
                         <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=s_enterica"><i>S. enterica</i></a>
                         <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_yphimurium"><i>S.typhimurium</i></a>
                         <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y.
                             pseudotuberculosis</i></a>
                     </div>
@@ -71,7 +75,7 @@
         <!-- Left Navigation -->
         <div id="left_col" class="col-sm-12 col-md-2">
             <div id="left_col_content">
-                <i><h1 id="organism_name"></h1></i>
+                <i><h1 class="bd-lead" id="organism_name"></h1></i>
                 <div class="card p-2" id="meta_text"></div>
             </div>
         </div>
@@ -113,7 +117,7 @@
     var organism = params.get('organism');
 
     // populate the table
-    $.get('/ChIPdb/data/' + organism + '/TF_list.csv', function (table_data) {
+    $.get('/data/' + organism + '/TF_list.csv', function (table_data) {
 
         // get the data, convert to objects
         var data = Papa.parse(table_data, {dynamicTyping: true}).data;
@@ -125,6 +129,21 @@
             }
             tabledata.push(obj);
         }
+
+        // Populate Metadata
+        // TF details
+        $('#meta_text').append('<p class="meta_cat">NUMBER OF TFs</p>');
+        $('#meta_text').append('<p class="meta_val">' + (data.length - 2) + '</p>');
+        samples = 0;
+        for (i = 1; i < data.length - 1; i++) { //rows, excluding header
+            samples += data[i][7];}
+        $('#meta_text').append('<p class="meta_cat">NUMBER OF SAMPLES</p>');
+        $('#meta_text').append('<p class="meta_val">' + samples + '</p>');
+        conditions = 0;
+        for (i = 1; i < data.length - 1; i++) { //rows, excluding header
+            conditions += data[i][8];}
+        $('#meta_text').append('<p class="meta_cat">NUMBER OF CONDITIONS</p>');
+        $('#meta_text').append('<p class="meta_val">' + conditions + '</p>');
 
         //make a header object for the columns
         var headerMenu = [
@@ -172,8 +191,8 @@
                 headerContextMenu: headerMenu
             },
             {
-                title: "Number of Replicates",
-                field: "num_rep",
+                title: "Number of Samples",
+                field: "num_samples",
                 formatter: "textarea",
                 widthGrow: 2,
                 headerContextMenu: headerMenu
@@ -195,6 +214,7 @@
                 var link = 'tf_dashboard.html?';
                 link += 'organism=' + organism;
                 link += '&tf=' + row.getData().TF;
+                link += '&genome=' + row.getData().genome_id;
                 link += '&i=' + row.getData().index;
                 window.location.href = link;
             },

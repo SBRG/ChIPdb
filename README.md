@@ -1,2 +1,2 @@
-# ChIPdb
-Transcription Factor Binding Site database website for ChIP data
+# ChIP-pro
+Database for prokaryotic chromatin immunoprecipitation (ChIP-pro) data 

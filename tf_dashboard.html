@@ -37,7 +37,10 @@
 <div class="container-fluid page-container">
     <!-- Top Navigation Bar -->
     <nav class="navbar navbar-expand-md sticky-top header">
-        <a class="navbar-brand" href="index.html"> ChIPdb 1.0.0 </a>
+        <a class="navbar-brand" href="index.html">
+            <img src="images/ChIPdb_logo.png" height=35 class="d-inline-block align-top"
+            alt="" loading="lazy">
+            ChIPdb 1.0.0 </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -48,12 +51,13 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Organism Dataset
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
                         <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=p_putida"><i>P. putida</i></a>
                         <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=s_enterica"><i>S. enterica</i></a>
                         <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_yphimurium"><i>S.typhimurium</i></a>
                         <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y.
                             pseudotuberculosis</i></a>
                     </div>
@@ -72,7 +76,7 @@
         <!-- Left Navigation -->
         <div id="left_col" class="col-sm-12 col-md-2">
             <div id="left_col_content">
-                <h1 id="TF_header"></h1>
+                <h1 class="bd-lead" id="TF_header"></h1>
                 <div class="card p-2" id="meta_text"></div>
             </div>
         </div>
@@ -90,50 +94,71 @@
                 <div class="col-md-12 col-lg-4">
                     <div class="card">
                         <div class="section-header"> Feature Visualization</div>
-                        <!-- <div id="venn" style="width:100%; height:300px;"></div>-->
                         <ul class="nav nav-tabs tab-strip" id="myTab" role="tablist">
+
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link round-tab active" id="header-tab-1" data-bs-toggle="tab"
-                                        data-bs-target="#tab-1"   data-toggle="tab"  data-target="#tab-1"
+                                        data-bs-target="#tab-1" data-toggle="tab" data-target="#tab-1"
                                         type="button" role="tab" aria-controls="tab-1"
                                         aria-selected="true">Width
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link round-tab" id="header-tab-2" data-bs-toggle="tab"
-                                        data-bs-target="#tab-2"  data-toggle="tab" data-target="#tab-2"
-                                        type="button" role="tab" aria-controls="tab-2" aria-selected="false">Venn
+                                <button class="nav-link round-tab" id="header-tab-4" data-bs-toggle="tab"
+                                        data-bs-target="#tab-4" data-toggle="tab" data-target="#tab-4"
+                                        type="button" role="tab" aria-controls="tab-4" aria-selected="false">Position
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link round-tab" id="header-tab-3" data-bs-toggle="tab"
-                                        data-bs-target="#tab-3"  data-toggle="tab" data-target="#tab-3"
+                                        data-bs-target="#tab-3" data-toggle="tab" data-target="#tab-3"
                                         type="button" role="tab" aria-controls="tab-3" aria-selected="false">Motif
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link round-tab" id="header-tab-4" data-bs-toggle="tab"
-                                        data-bs-target="#tab-4"  data-toggle="tab" data-target="#tab-4"
-                                        type="button" role="tab" aria-controls="tab-4" aria-selected="false">Position
+                                <button class="nav-link round-tab" id="header-tab-2" data-bs-toggle="tab"
+                                        data-bs-target="#tab-2" data-toggle="tab" data-target="#tab-2"
+                                        type="button" role="tab" aria-controls="tab-2" aria-selected="false">Venn
                                 </button>
                             </li>
                         </ul>
+                        <!-- Binding width histogram-->
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="venn-tab">
-                                <div id="widthHist"></div>
-                                <p style="margin-left: 20px">
-                                    <label>Number of bins: </label>
-                                    <input type="number" min="1" max="100" step="1" value="3" id="nBin">
-                                </p>
+                            <div class="tab-pane fade show active" id="tab-1" role="tabpanel"
+                                 aria-labelledby="hist-tab">
+                                <div id="widthHist" style="width:100%; height:300px;"></div>
                             </div>
-                            <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="hist-tab">
+
+                            <!--Venn Diagram-->
+                            <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="venn-tab">
                                 <div id="venn" style="width:100%; height:300px;"></div>
                             </div>
+
+                            <!-- Motif Sequence-->
                             <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="contact-tab">
+
+                                <!--Hamburger Dropdown-->
+                                <div class="dropdown menu-right">
+                                    <!--Trigger-->
+                                    <button class="btn menu-hamburger-height" type="button" id="dropdownMenuMotif"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">menu</i>
+                                    </button>
+                                    <!--Menu-->
+                                    <div class="dropdown-menu dropdown-primary">
+                                        <a class="dropdown-item" href="#">Download PNG image</a>
+                                        <a id="motif-download" class="dropdown-item" download>Download SVG vector image</a>
+                                    </div>
+                                </div>
+                                <!--/Hamburger Dropdown-->
+
                                 <div style="width:100%; height:300px" class="fill">
                                     <img id="motif_sequence" src=""/>
                                 </div>
                             </div>
+
+                            <!-- Position Scatterplot-->
                             <div class="tab-pane fade" id="tab-4" role="tabpanel" aria-labelledby="hist-tab">
                                 <div id="position_scatter" style="width:100%; height:300px;"></div>
                             </div>
@@ -179,14 +204,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/venn.js"></script>
+<script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js"></script>
+<script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
 
 <!-- Load scripts -->
 <script src="js/igv_and_table.js"></script>
-<script src="js/binding_width.js"></script>
 <script src="js/peak_gene_positions.js"></script>
+<script src="js/width_histogram.js"></script>
 <script src="plot_dev/binding_site_table/binding_site_table.js"></script>
 <script src="plot_dev/venn/venn.js"></script>
 
@@ -195,13 +222,22 @@
     var params = new URLSearchParams(window.location.search);
     var organism = params.get('organism');
     var TF_name = params.get('tf');
+    var genome = params.get('genome');
     var index = params.get('i');
+
     $('#TF_header').append(TF_name);
 
     document.title = TF_name;
-    document.getElementById("motif_sequence").src = '/ChIPdb/plot_dev/motifs/images/' + TF_name + '.svg';
 
-    $.get('/ChIPdb/data/' + organism + '/TF_list.csv', function (file_data) {
+    // motif
+    const motifSVG = '/plot_dev/motifs/images/' + TF_name + '.svg';
+    document.getElementById("motif_sequence").src = motifSVG;
+    document.getElementById("motif_sequence").onerror = () =>
+        document.getElementById("header-tab-3").classList.add('disabled')
+    document.getElementById("motif-download").href = motifSVG;
+
+
+    $.get('/data/' + organism + '/TF_list.csv', function (file_data) {
         var data = Papa.parse(file_data, {dynamicTyping: true}).data;
         const row = data[parseInt(index) + 1];
 
@@ -220,22 +256,26 @@
         generateIGVandTable(TF_name, row)
 
         // Venn
-        $.getJSON('plot_dev/venn/data/' + TF_name.substr(0, 4) + '.json', function (data) {
+        $.getJSON('/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.json', function (data) {
             generateVenn(data, 'venn');
-        });
+        }).catch(() => {
+            document.getElementById("header-tab-2").classList.add('disabled')
+        });;
 
         // Binding width histogram
-        generateWidthHist(TF_name, "#widthHist")
+         $.get('/data/' + organism + '/' + genome + '/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
+             generateWidthHistogram(width_data, 'widthHist')
+         }).catch(() => {
+            document.getElementById("widthHist").innerText = 'Binding width histogram not available.'
+        });
 
         // Peak/Gene Position Scatter
-        $.get('data/e_coli/NC_000913_3/positions/' + TF_name + "_positions.csv", function (positions_data) {
-        generatePeakScatter(positions_data, "position_scatter");
-    });
+        $.get('/data/' + organism + '/' + genome + '/positions/' + TF_name + "_positions.csv", function (positions_data) {
+            generatePeakScatter(positions_data, "position_scatter");
+        }).catch(() => {
+            document.getElementById("header-tab-4").classList.add('disabled')
+        });
 
-        // Formatting commas into numbers
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
     });
 
 </script>

@@ -5,6 +5,28 @@
  */
 //write chart to container
 
+// data download helper function
+ function data_download(csv_data, file_name) {
+    const a = document.createElement("a");
+    a.style.display = "none";
+    document.body.appendChild(a);
+
+    // Set the HREF to a Blob representation of the data to be downloaded
+    a.href = window.URL.createObjectURL(
+        new Blob([csv_data], {type: 'text/plain'})
+    );
+
+    // Use download attribute to set set desired file name
+    a.setAttribute("download", file_name);
+
+    // Trigger the download by simulating click
+    a.click();
+
+    // Cleanup
+    window.URL.revokeObjectURL(a.href);
+    document.body.removeChild(a);
+ }
+
 
 // Write Highcharts plot to container
 function generatePeakScatter(csvContent, container) {
@@ -24,11 +46,11 @@ function generatePeakScatter(csvContent, container) {
     // set up the plot
     var chartOptions = {
         title: {
-            text: ''
+            text: TF_name + ' Peak Position Relative to Target Gene'
         },
         xAxis: {
             title: {
-                text: 'Relative Position to Gene (Normalized to Gene Length)'
+                text: 'Relative Peak Position to Gene (Normalized to Gene Length)'
             },
             crosshair: true,
             startOnTick: false,
@@ -69,6 +91,7 @@ function generatePeakScatter(csvContent, container) {
             //     }
             // }
         }],
+
         tooltip: {
             formatter: function () {
                 tooltip = "<br>Peak: " + this.point.peak;
