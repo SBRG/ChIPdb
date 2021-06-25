@@ -33,7 +33,6 @@ function generateWidthHistogram(csvContent, container) {
     for (i = 2; i < csv_data.length; i++) {
         data.push(csv_data[i][1]);
     }
-    console.log(data)
 
     var chart = Highcharts.chart(container, {
         title: {
