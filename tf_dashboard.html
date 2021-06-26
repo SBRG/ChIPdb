@@ -147,8 +147,8 @@
                                     </button>
                                     <!--Menu-->
                                     <div class="dropdown-menu dropdown-primary">
-                                        <a class="dropdown-item" href="#">Download PNG image</a>
-                                        <a id="motif-download" class="dropdown-item" download>Download SVG vector image</a>
+                                        <a id="motif-download-png" class="dropdown-item" href="#">Download PNG image</a>
+                                        <a id="motif-download-svg" class="dropdown-item" download>Download SVG vector image</a>
                                     </div>
                                 </div>
                                 <!--/Hamburger Dropdown-->
@@ -231,10 +231,12 @@
 
     // motif
     const motifSVG = '/plot_dev/motifs/images/' + TF_name + '.svg';
+    const motifPNG = '/plot_dev/motifs/images/' + TF_name + '.png';
     document.getElementById("motif_sequence").src = motifSVG;
     document.getElementById("motif_sequence").onerror = () =>
         document.getElementById("header-tab-3").classList.add('disabled')
-    document.getElementById("motif-download").href = motifSVG;
+    document.getElementById("motif-download-svg").href = motifSVG;
+    document.getElementById("motif-download-png").href = motifPNG;
 
 
     $.get('/data/' + organism + '/TF_list.csv', function (file_data) {
