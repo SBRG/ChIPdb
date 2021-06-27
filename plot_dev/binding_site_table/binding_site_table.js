@@ -1,5 +1,5 @@
 /**
- * @summary Creates interactive binding site tables for ChIPdb
+ * @summary Creates interactive binding site tables for ChIP-pro
  * @author Tahani Al Bulushi
  * requires tabulator.info
  */

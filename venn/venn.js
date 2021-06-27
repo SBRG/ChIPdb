@@ -1,5 +1,5 @@
 /**
- * @summary Creates interactive venn diagrams between regulon and chip-seq data for ChIPdb
+ * @summary Creates interactive venn diagrams between regulon and chip-seq data for ChIP-pro
  * @author Tahani Al Bulushi
  * requires highcharts
  */
