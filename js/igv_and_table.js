@@ -257,7 +257,8 @@ function generateIGVandTable(TF_name, row) {
                             i += 2
                             color_iter += 1
                         }
-                        browser.search('NC_000913.3:'.concat(numberWithCommas(start - 1000), '-',
+                        // TODO: use Math.min() to prevent +1000 from exceeding genome length
+                        browser.search('NC_000913.3:'.concat(numberWithCommas(Math.max(start - 1000, 0)), '-',
                             numberWithCommas(end + 1000)));
                     });
             },

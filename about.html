@@ -70,6 +70,11 @@
                         <span>About</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="mr-4" href="search.html"><span><i class="material-icons">search</i></span>
+                        <span>Search</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -83,6 +88,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#tf_dash">Transcription Factor Dashboards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#search">Search</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#ref">References</a>
@@ -108,7 +116,9 @@
             </h3>
 
             <p>
-                Begin by selecting your organism of interest from the splash page. Next, you can browse the table of transcription factors from our dataset page. ChIP-pro covers well-studied transcription factors, as well as a wide scope of <i>E. coli</i> y-TFs (relatively poorly characterized transcription factors).
+                Begin by selecting your organism of interest from the splash page. Next, you can browse the table of transcription factors from our dataset page. ChIP-pro covers well-studied transcription factors, as well as a wide scope of <i>E. coli</i> y-TFs (relatively poorly characterized transcription factors). 
+            </p><p>
+                You can also <a href="#search">search</a> for transcription factors or genes using the search button in the upper left corner.
             </p><p>
                 Once you’ve reached a transcription factor dashboard, you can browse its binding sites and target genes in the curated table. Interested in a specific binding site? Click on it to see the peak in our genome viewer. You can also click through the tabs in the upper right panel to see global characterizations of the transcription factor’s binding, such as its binding motif, peak width, peak location relative to its target genes, and the concordance between the data in ChIP-pro and other databases of transcription factor binding. For more details on the dashboard components, see the sections below.
             </p><p>
@@ -314,6 +324,23 @@
                     <div class="col-md-0 col-lg-4"></div>
                 </div>
             </div>
+
+            <!-- Search -->
+            <h3 id="search" class="text-center py-3">
+                Search
+            </h3>
+            <p>
+                The <a href="search.html">search page</a> can be reached from any page by clicking "Search" in the upper right hand corner. You have the option to search transcription factors by name (e.g. "AtoC") or genes by name (e.g. "thrA") or locus tag (e.g. "b0002"); you can also leave both options selected to return all relevant results. Search terms are case-insensitive. Each result that appears below the search bar will be a link to a transcription factor dashboard.
+            </p><p>
+                Transcription factor results will simply list the name, organism, and strain of the matching page. Gene results are associated with specific binding peaks upstream of the gene of interest, so they include additional details:
+            </p>
+            <ul>
+                <li>Gene name and locus tag (in parentheses)</li>
+                <li>Binding site identifier in the form "Transcription factor name - #"</li>
+                <li>Organism and strain name</li>
+                <li>Condition name in the form "transcription factor name + condition". The condition may be the media type or the supplement used, for example.</li>
+                <li>Peak strength as a signal to noise (S/N) ratio. Note that these values cannot be directly mathematically compared because noise varies from condition to condition, but the peak strength will still provide a valuable indicator of how important the peak is in the ChIP profile.</li>
+            </ul>
 
             <!-- References -->
             <h3 id="ref" class="text-center py-3">

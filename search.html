@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ChIP-pro</title>
+    <title>Search ChIP-pro</title>
 
     <!-- CSS imports -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/common.css" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/search.css" type="text/css">
 
     <!-- javascript imports -->
     <script src="js/bootstrap.bundle.js"></script>
@@ -111,32 +112,32 @@
             </div>
         </div>
         <!-- middle -->
-        <div class="col-lg-7 col-sm-10 middle-spacing">
+        <div class="col-sm-10 middle-spacing">
             <div class="content mt-4">
-                <div class="card homepage-card p-2 mb-1 text-center">
+                <div class="card search-card px-2 py-5 text-center">
+                    <h1>Search ChIP-pro</h1>
                     <div class="row">
-                        <div class="col-sm-12 m-2 mt-5">
-                            <img class="img-fluid logo mx-5" src="images/ChIP-pro-logo-dark.png" width="50%"></img>
+                        <div class="col-6 text-right">
+                            <input type="checkbox" checked="true" id="tf_checkbox" class="custom-checkbox"><span
+                                class="option"> Transcription Factor Names </span>
                         </div>
-                        <div class="col-sm-12 m-2 mt-5">
-                            <h1> ChIP-pro v1.0.0 </h1>
-                        </div>
-                        <div class="col-sm-12 mt-2 mb-5">
-                            <h3> A <b>C</b>hromatin <b>I</b>mmuno<b>P</b>recipitation database for <b>PRO</b>karyotic organisms </h3>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <h4>Organisms</h4>
-                            <div class="db-stat"> 7 </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4 middle-divider-lines">
-                            <h4>Datasets</h4>
-                            <div class="db-stat"> 639 </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <h4>Release Date</h4>
-                            <div class="db-stat"> 06.22.2021 </div>
+                        <div class="col-6 text-left">
+                            <input type="checkbox" checked="true" id="gene_checkbox" class="custom-checkbox"><span
+                                class="option"> Gene Names & Loci </span>
                         </div>
                     </div>
+                    <div class="input-group mx-auto pt-2 px-5">
+                        <input type="text" class="form-control" placeholder="" id="searchText">
+                        <div class="input-group-append">
+                            <button class="btn btn-search" id="searchBtn" onclick="search()">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <ul id="results"></ul>
                 </div>
             </div>
 
@@ -160,16 +161,108 @@
                 </div>
             </footer>
         </div>
-        <!-- right twitter panel -->
-        <div id="right_col" class="col-lg-3 d-md-none d-lg-block">
-            <a class="twitter-timeline" data-height="700" data-theme="light"
-               href="https://twitter.com/ucsd_sbrg?ref_src=twsrc%5Etfw">Tweets by ucsd_sbrg</a>
-        </div>
     </div>
 </div>
 
-<!-- Scripts -->
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!-- Search function -->
+<script>
+    // fetch json file
+    let gene_list = [];
+    let tf_list = [];
+    async function run() {
+        const response_gene = await fetch("data/genes_search.json");
+        const response_tf = await fetch("data/tfs_search.json");
+        gene_list = await response_gene.json();
+        tf_list = await response_tf.json();
+    }
+    run();
+
+    // set up variables
+    //headers
+    const tf_header = `<li class="search-header card">Transcription Factor Results</li>`
+    const gene_header = `<li class="search-header card">Gene Results</li>`
+
+    //result items
+    const tfResultItem = ({TF, Organism, Strain, link}, searchTerm) => {
+        let formatted = ``
+
+        if (searchTerm.length > 0) {
+            const re = new RegExp(searchTerm, "gi")
+            formatted = `<span class="result-title">${TF}</span>`.replace(re, (match) => `<u><b>${match}</b></u>`) + ` (<i>${Organism}</i> ${Strain})`
+        } else {
+            formatted = `<span class="result-title">${TF}</span> (<i>${Organism}</i> ${Strain})`
+        }
+        
+        return `<a class="result-link" href="${link}"><li class="result name-result">${formatted}</li><a>`
+    }
+    const geneResultItem = ({Gene, Locus, Organism, Strain, Binding_site_id, Condition, Peak_start, Peak_end, Peak_strength, link}, searchTerm) => {
+        let formatted = ``
+
+        if (searchTerm.length > 0) {
+            const re = new RegExp(searchTerm, "gi")
+            formatted = `<span class="result-title"><i>${Gene}</i> (${Locus}):`.replace(re, (match) => `<u><b>${match}</b></u>`) + ` ${Binding_site_id}</span> | <i>${Organism}</i> ${Strain} | ${Condition} | Peak Strength (S/N): ${Peak_strength}`
+        } else {
+            formatted = `<span class="result-title"><i>${Gene}</i> (${Locus}): ${Binding_site_id}</span> | <i>${Organism}</i> ${Strain} | ${Condition} | Peak Strength (S/N): ${Peak_strength}`
+        }
+        return `<a class="result-link" href="${link}"><li class="result name-result">${formatted}</li><a>`
+    }
+    const noResults = `<li class="no-results"> No results found. To see a list of all available data, empty the input field and click the "Search" button. </li>`
+
+    // search function
+    async function search() {
+        $('#results').empty()
+
+        var search_term = $('#searchText').val().toLowerCase()
+        const show_genes = $('#gene_checkbox').prop('checked');
+        const show_TFs = $('#tf_checkbox').prop('checked');
+
+        // find tfs
+        var tf_results = !show_TFs ? [] : tf_list.filter(tf =>
+            (tf.TF.toLowerCase().includes(search_term)))
+        var gene_results = !show_genes ? [] : gene_list.filter(gene =>
+            (gene.Gene.toLowerCase().includes(search_term) || gene.Locus.toLowerCase().includes(search_term)))
+
+        // items == html formatted results
+        var tf_res_items = tf_results.map(result => tfResultItem(result, search_term))
+        var gene_res_items = gene_results.map(result => geneResultItem(result, search_term))
+
+        console.log(tf_res_items)
+
+        // add headers & no results if applicable
+        if (show_TFs) {
+            tf_res_items.unshift(tf_header)
+            if (tf_res_items.length == 1) {
+                tf_res_items.push(noResults)
+            }
+        }
+        if (show_genes) {
+            gene_res_items.unshift(gene_header)
+            if (gene_res_items.length == 1) {
+                gene_res_items.push(noResults)
+            }
+        }
+
+        const all_results = tf_res_items.concat(gene_res_items)
+
+        all_results.forEach((r) => {
+            $('#results').append(r)
+        })
+
+
+    }
+    // search on 'Enter'
+    const input = document.getElementById("searchText");
+    input.addEventListener(
+        "keyup", function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                document.getElementById("searchBtn").click();
+            }
+        }
+    )
+
+
+</script>
 
 </body>
 </html>
