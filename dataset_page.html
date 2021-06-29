@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TF List</title>
+    <title>ChIP-pro: TF List</title>
 
     <!-- CSS imports -->
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
@@ -52,13 +52,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=p_putida"><i>P. putida</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_enterica"><i>S. enterica</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y.
-                            pseudotuberculosis</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=all_other">All Other Organisms</a>
                     </div>
                 </li>
             </ul>
@@ -80,7 +74,7 @@
         <!-- Left Navigation -->
         <div id="left_col" class="col-sm-12 col-md-2">
             <div id="left_col_content">
-                <i><h1 class="bd-lead" id="organism_name"></h1></i>
+                <h1 class="bd-lead" id="organism_name"></h1>
                 <div class="card p-2" id="meta_text"></div>
             </div>
         </div>
@@ -137,16 +131,16 @@
 
         // Populate Metadata
         // TF details
-        $('#meta_text').append('<p class="meta_cat">NUMBER OF TFs</p>');
+        $('#meta_text').append('<p class="meta_cat">NUMBER OF TF PAGES</p>');
         $('#meta_text').append('<p class="meta_val">' + (data.length - 2) + '</p>');
         samples = 0;
         for (i = 1; i < data.length - 1; i++) { //rows, excluding header
-            samples += data[i][7];}
+            samples += data[i][9];}
         $('#meta_text').append('<p class="meta_cat">NUMBER OF SAMPLES</p>');
         $('#meta_text').append('<p class="meta_val">' + samples + '</p>');
         conditions = 0;
         for (i = 1; i < data.length - 1; i++) { //rows, excluding header
-            conditions += data[i][8];}
+            conditions += data[i][10];}
         $('#meta_text').append('<p class="meta_cat">NUMBER OF CONDITIONS</p>');
         $('#meta_text').append('<p class="meta_val">' + conditions + '</p>');
 
@@ -217,7 +211,7 @@
             tooltips: true,
             rowClick: function (e, row) { //link to the page in a database
                 var link = 'tf_dashboard.html?';
-                link += 'organism=' + organism;
+                link += 'organism=' + row.getData().organism_id;
                 link += '&tf=' + row.getData().TF;
                 link += '&genome=' + row.getData().genome_id;
                 link += '&i=' + row.getData().index;
@@ -230,9 +224,13 @@
         table.redraw();
 
         // Page Metadata
-        $('#organism_name').append(tabledata[0]['Organism']);
-        document.title = 'TF List: ' + tabledata[0]['Organism'];
-        console.log(tabledata.length)
+        if (organism === 'all_other'){
+            $('#organism_name').append('Organisms other than '+ '<i>E. coli</i>');
+            document.title = 'TF List: Non E. coli';
+        } else{
+            $('#organism_name').append('<i>'+tabledata[0]['Organism']+'</i>');
+            document.title = 'TF List: ' + tabledata[0]['Organism'];
+        }
     });
 </script>
 
