@@ -52,13 +52,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=p_putida"><i>P. putida</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_enterica"><i>S. enterica</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y.
-                            pseudotuberculosis</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=all_other">All Other Organisms</a>
                     </div>
                 </li>
             </ul>
@@ -137,7 +131,7 @@
 
         // Populate Metadata
         // TF details
-        $('#meta_text').append('<p class="meta_cat">NUMBER OF TFs</p>');
+        $('#meta_text').append('<p class="meta_cat">NUMBER OF TF PAGES</p>');
         $('#meta_text').append('<p class="meta_val">' + (data.length - 2) + '</p>');
         samples = 0;
         for (i = 1; i < data.length - 1; i++) { //rows, excluding header
@@ -235,8 +229,7 @@
             document.title = 'TF List: Non E. coli';
         } else{
             $('#organism_name').append('<i>'+tabledata[0]['Organism']+'</i>');
-        document.title = 'TF List: ' + tabledata[0]['Organism'];
-        console.log(tabledata.length)
+            document.title = 'TF List: ' + tabledata[0]['Organism'];
         }
     });
 </script>
