@@ -146,14 +146,14 @@
                                     </button>
                                     <!--Menu-->
                                     <div class="dropdown-menu dropdown-primary">
-                                        <a id="motif-download-png" class="dropdown-item" href="#">Download PNG image</a>
+                                        <a id="motif-download-png" class="dropdown-item" download>Download PNG image</a>
                                         <a id="motif-download-svg" class="dropdown-item" download>Download SVG vector image</a>
                                     </div>
                                 </div>
                                 <!--/Hamburger Dropdown-->
 
-                                <div style="width:100%; height:300px" class="fill">
-                                    <img id="motif_sequence" src=""/>
+                                <div style="height:300px" class="fill">
+                                    <img style="max-width:95%; max-height:95%" id="motif_sequence" src=""/>
                                 </div>
                             </div>
 
@@ -213,8 +213,7 @@
 <script src="js/igv_and_table.js"></script>
 <script src="js/peak_gene_positions.js"></script>
 <script src="js/width_histogram.js"></script>
-<script src="plot_dev/binding_site_table/binding_site_table.js"></script>
-<script src="plot_dev/venn/venn.js"></script>
+<script src="js/venn.js"></script>
 
 <!-- Determine which TF -->
 <script>
@@ -261,7 +260,7 @@
             generateVenn(data, 'venn');
         }).catch(() => {
             document.getElementById("header-tab-2").classList.add('disabled')
-        });;
+        });
 
         // Binding width histogram
          $.get('/data/' + organism + '/' + genome + '/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
