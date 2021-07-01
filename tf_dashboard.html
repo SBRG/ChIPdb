@@ -242,6 +242,7 @@
     $.get('/data/' + organism + '/TF_list.csv', function (file_data) {
         var data = Papa.parse(file_data, {dynamicTyping: true}).data;
         const row = data[parseInt(index) + 1];
+        console.log(organism, row)
 
         // TF details
         $('#meta_text').append('<p class="meta_cat">ORGANISM</p>');
