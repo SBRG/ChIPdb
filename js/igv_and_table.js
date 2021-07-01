@@ -27,7 +27,8 @@ function data_download(csv_data, file_name) {
 }
 
 
-function generateIGVandTable(TF_name, row) {
+function generateIGVandTable(TF_name, row, fileName) {
+    // Update this to take in a fileName parameter as the third value
 
 //trigger download of big wig files
     document.getElementById("download-bw").setAttribute("href",
@@ -57,6 +58,7 @@ function generateIGVandTable(TF_name, row) {
                     ]
                 }
         };
+    igv.removeAllBrowsers()
     igv.createBrowser(igvDiv, options)
         .then(async function (browser) {
             console.log("Created IGV browser");
@@ -111,7 +113,8 @@ function generateIGVandTable(TF_name, row) {
         })
 
     // Table
-    $.getJSON('/data/' + organism + '/' + genome + '/table/' + TF_name.substr(0, 4) + '_binding_table.json', function (data) {
+    // update this so that instead of using TF_name.substr(0,4), it will use the new fileName param from func call
+    $.getJSON('/data/' + organism + '/' + genome + '/table/' + fileName, function (data) {
         // convert rows into objects
         const container = 'binding_site_table'
         var tabledata = []

@@ -39,7 +39,7 @@
     <nav class="navbar navbar-expand-md sticky-top header">
         <a class="navbar-brand" href="index.html">
             <img src="images/ChIPdb_logo.png" height=35 class="d-inline-block align-top"
-            alt="" loading="lazy">
+                 alt="" loading="lazy">
             ChIP-pro 1.0.0 </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Organism Dataset
                     </button>
-                   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
                         <a class="dropdown-item" href="dataset_page.html?organism=all_other">All Other Organisms</a>
                     </div>
@@ -87,6 +87,21 @@
                         <div class="section-header"> Binding Site Table
                             <button class="btn btn-sm btn-mod" id="download-table">Download CSV</button>
                         </div>
+                        <ul class="nav nav-tabs tab-strip" id="TableTab" role="tablist">
+                            <!--                            <li class="nav-item" role="presentation">-->
+                            <!--                                <button class="nav-link round-tab active" id="temp-tab-1" data-bs-toggle="tab"-->
+                            <!--                                        data-bs-target="#tab-1" data-toggle="tab" data-target="#tab-1"-->
+                            <!--                                        type="button" role="tab" aria-controls="tab-1"-->
+                            <!--                                        aria-selected="true">Width-->
+                            <!--                                </button>-->
+                            <!--                            </li>-->
+                            <!--                            <li class="nav-item" role="presentation">-->
+                            <!--                                <button class="nav-link round-tab" id="temp-tab-4" data-bs-toggle="tab"-->
+                            <!--                                        data-bs-target="#tab-4" data-toggle="tab" data-target="#tab-4"-->
+                            <!--                                        type="button" role="tab" aria-controls="tab-4" aria-selected="false">Position-->
+                            <!--                                </button>-->
+                            <!--                            </li>-->
+                        </ul>
                         <div id="binding_site_table" style="width: 100%; height:342px;"></div>
                     </div>
                 </div>
@@ -147,7 +162,8 @@
                                     <!--Menu-->
                                     <div class="dropdown-menu dropdown-primary">
                                         <a id="motif-download-png" class="dropdown-item" download>Download PNG image</a>
-                                        <a id="motif-download-svg" class="dropdown-item" download>Download SVG vector image</a>
+                                        <a id="motif-download-svg" class="dropdown-item" download>Download SVG vector
+                                            image</a>
                                     </div>
                                 </div>
                                 <!--/Hamburger Dropdown-->
@@ -253,7 +269,42 @@
 
 
         // IGV and table
-        generateIGVandTable(TF_name, row)
+        const [title, fileName] = row[12].split(";")[0].split("|");
+        generateIGVandTable(TF_name, row, fileName);
+        // First, get row[12] to get list of filenames to create the tabs for x number of files
+        const conditions = row[12].split(";");
+        // parse the table row of Title A|xyz.json;Title B|def.json;...
+        // access the tabs parent component by ID
+        $('#TableTab').append(`
+        <li className="nav-item" role="presentation">
+            <button className="nav-link round-tab active" id="table-tab-1" data-bs-toggle="tab"
+                    data-bs-target="#table-tab-1" data-toggle="tab" data-target="#table-tab-1"
+                    type="button" role="tab" aria-controls="table-tab-1"
+                    aria-selected="true">${title}
+            </button>
+        </li>
+        `);
+        $('#table-tab-1').click(() => {
+            generateIGVandTable(TF_name, row, fileName);
+        });
+        // loop through the loaded values of `Title A|xyz.json` and create a tab for each
+        conditions.slice(1, conditions.length).forEach((condition, i) => {
+            const [conditionTitle, conditionFile] = condition.split('|');
+            console.log(conditionTitle, conditionFile)
+
+            $('#TableTab').append(`
+        <li className="nav-item" role="presentation">
+            <button className="nav-link round-tab active" id="table-tab-${i + 2}" data-bs-toggle="tab"
+                    data-bs-target="#table-tab-${i + 2}" data-toggle="tab" data-target="#table-tab-${i + 2}"
+                    type="button" role="tab" aria-controls="table-tab-${i + 2}"
+                    aria-selected="true">${conditionTitle}
+            </button>
+        </li>
+        `);
+            $(`#table-tab-${i + 2}`).click(() => {
+                generateIGVandTable(TF_name, row, conditionFile);
+            });
+        });
 
         // Venn
         $.getJSON('/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.json', function (data) {
@@ -263,9 +314,9 @@
         });
 
         // Binding width histogram
-         $.get('/data/' + organism + '/' + genome + '/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
-             generateWidthHistogram(width_data, 'widthHist')
-         }).catch(() => {
+        $.get('/data/' + organism + '/' + genome + '/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
+            generateWidthHistogram(width_data, 'widthHist')
+        }).catch(() => {
             document.getElementById("widthHist").innerText = 'Binding width histogram not available.'
         });
 
