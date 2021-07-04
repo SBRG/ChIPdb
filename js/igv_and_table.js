@@ -32,7 +32,7 @@ function generateIGVandTable(TF_name, row, fileName) {
 
 //trigger download of big wig files
     document.getElementById("download-bw").setAttribute("href",
-        "/data/e_coli/NC_000913_3/bw/compressed/" + TF_name + "_bw.zip");
+        '/data/' + organism + '/' + genome + "/bw/compressed/" + TF_name + "_bw.zip");
 
     // IGV
     var igvDiv = document.getElementById("igv-div");
@@ -65,7 +65,7 @@ function generateIGVandTable(TF_name, row, fileName) {
             var i = row.length - 15;
             var color_iter = 0;
             const colors = ['#464746', '#464746', '#9BABA4', '#9BABA4', '#417f5d', '#417f5d', '#817198', '#817198']; // maybe make better someday
-            if (genome == 'NC_000913_3') {
+            if (genome == 'NC_000913.3') {
                 await browser.loadTrack(
                     {
                         "type": "annotation",
@@ -215,7 +215,7 @@ function generateIGVandTable(TF_name, row, fileName) {
                         var i = row.length - 15;
                         var color_iter = 0;
                         const colors = ['#464746', '#464746', '#9BABA4', '#9BABA4', '#417f5d', '#417f5d', '#817198', '#817198']; // maybe make better someday
-                        if (genome == 'NC_000913_3') {
+                        if (genome == 'NC_000913.3') {
                             await browser.loadTrack(
                                 {
                                     "type": "annotation",
@@ -261,7 +261,7 @@ function generateIGVandTable(TF_name, row, fileName) {
                             color_iter += 1
                         }
                         // TODO: use Math.min() to prevent +1000 from exceeding genome length
-                        browser.search('NC_000913.3:'.concat(numberWithCommas(Math.max(start - 1000, 0)), '-',
+                        browser.search(genome.concat(':',numberWithCommas(Math.max(start - 1000, 0)), '-',
                             numberWithCommas(end + 1000)));
                     });
             },
