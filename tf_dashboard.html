@@ -230,8 +230,8 @@
     document.title = TF_name;
 
     // motif
-    const motifSVG = '/plot_dev/motifs/images/' + TF_name + '.svg';
-    const motifPNG = '/plot_dev/motifs/images/' + TF_name + '.png';
+    const motifSVG = '/data/'+organism+'/'+genome+'/motifs/images/'+TF_name+'.svg';
+    const motifPNG = '/data/'+organism+'/'+genome+'/motifs/images/'+TF_name+'.png';
     document.getElementById("motif_sequence").src = motifSVG;
     document.getElementById("motif_sequence").onerror = () =>
         document.getElementById("header-tab-3").classList.add('disabled')
