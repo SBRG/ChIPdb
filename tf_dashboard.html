@@ -256,6 +256,25 @@
         $('#meta_text').append('<p class="meta_cat">SUPPLEMENT</p>');
         $('#meta_text').append('<p class="meta_val">' + row[5] + '</p>');
 
+        // out links
+        if(organism=='e_coli') {
+            $.get('/data/e_coli/outlinks/'+TF_name+'_links.csv',function (link_data) {
+                link_table = Papa.parse(link_data, {dynamicTyping: true}).data;
+
+                $('#meta_text').append('<p class="meta_cat">LINKS</p>');
+                $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[0][1] + '" target="_blank">' + link_table[0][0] + '</a></p>');
+                $('#meta_text').append('<p class="meta_val"><a href="' + link_table[1][1] + '" target="_blank">' + link_table[1][0] + '</a></p>');
+
+                if (link_table.length > 3) {
+                    $('#meta_text').append('<p class="meta_cat">iMODULONS</p>');
+                    for (let i = 2; i < link_table.length-1; i++) {
+                        $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[i][1] + '" target="_blank">' + link_table[i][0] + '</a></p>');
+                    }
+                }
+
+            })
+        }
+
 
         // IGV and table
         const [title, fileName] = row[12].split(";")[0].split("|");
