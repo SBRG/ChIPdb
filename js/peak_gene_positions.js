@@ -34,7 +34,7 @@ function generatePeakScatter(csvContent, container) {
 
     // coordinates
     var coord_data = [];
-    for (i = 2; i < data.length; i++) {
+    for (i = 1; i < data.length-1; i++) {
         coord_data.push({
             peak: data[i][1],
             gene: data[i][8],

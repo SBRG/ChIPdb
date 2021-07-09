@@ -30,7 +30,7 @@
 function generateWidthHistogram(csvContent, container) {
     var csv_data = Papa.parse(csvContent, {dynamicTyping: true}).data;
     var data = [];
-    for (i = 2; i < csv_data.length; i++) {
+    for (i = 1; i < csv_data.length-1; i++) {
         data.push(csv_data[i][1]);
     }
 
