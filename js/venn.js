@@ -18,8 +18,7 @@ function generateVenn(jsconContent, container) {
         const value = vennData[i].value;
         const gene_list = vennData[i].list;
     }
-
-    console.log(vennData)
+    
     // TF_name
     var tfName = vennData[0].value
 
