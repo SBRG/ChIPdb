@@ -81,12 +81,20 @@ function generateVenn(jsconContent, container) {
             type: 'venn',
             name: 'Venn Diagram',
             data: [{
+                name: 'Genes in Literature*',
+                sets: ['Regulon Genes'],
+                color: '#306FBF',
+                opacity: 0.7,
+                value: reg_only_val,
+                gene_list: reg_only_list
+            }, {
                 name: 'Shared Genes',
                 sets: ['Chip-seq Genes', 'Regulon Genes'],
                 color: '#04724D',
                 opacity: 0.7,
                 value: shared_val,
                 gene_list: shared_list
+
             }, {
                 name: 'Genes in ChIP',
                 sets: ['Chip-seq Genes'],
@@ -94,13 +102,7 @@ function generateVenn(jsconContent, container) {
                 opacity: 0.7,
                 value: chip_only_val,
                 gene_list: chip_only_list
-            }, {
-                name: 'Genes in Literature*',
-                sets: ['Regulon Genes'],
-                color: '#306FBF',
-                opacity: 0.6,
-                value: reg_only_val,
-                gene_list: reg_only_list
+
             }, {
                 sets: ['chipseq all contained in Regulon'],
                 value: 0,
@@ -110,7 +112,7 @@ function generateVenn(jsconContent, container) {
                 gene_list: shared_list
                 }, {
                 sets: ['Regulon Genes', 'chipseq all contained in Regulon'],
-                value: 0,
+                value: shared_val,
                 color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and i-Modulon',
@@ -124,7 +126,7 @@ function generateVenn(jsconContent, container) {
                 gene_list: shared_list
                 }, {
                 sets: ['Chip-seq Genes', 'Regulon all contained in Chipseq'],
-                value: 0,
+                value: shared_val,
                 color: '#26ada9',
                 opacity: 0.7,
                 name: 'Genes in Regulon and Chipseq',
