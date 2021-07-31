@@ -41,7 +41,7 @@
         <a class="navbar-brand" href="index.html">
              <img src="images/ChIPdb_logo.png" height=35 class="d-inline-block align-top"
             alt="" loading="lazy">
-            ChIPdb 1.0.0 </a>
+            ChIP-pro 1.0.0 </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,13 +54,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=p_putida"><i>P. putida</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_enterica"><i>S. enterica</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y.
-                            pseudotuberculosis</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=all_other">All Other Organisms</a>
                     </div>
                 </li>
             </ul>
@@ -68,6 +62,11 @@
                 <li class="nav-item">
                     <a class="mr-4" href="about.html"><span><i class="material-icons">info</i></span>
                         <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="mr-4" href="search.html"><span><i class="material-icons">search</i></span>
+                        <span>Search</span>
                     </a>
                 </li>
             </ul>
@@ -83,6 +82,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#tf_dash">Transcription Factor Dashboards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#search">Search</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#ref">References</a>
@@ -108,9 +110,11 @@
             </h3>
 
             <p>
-                Begin by selecting your organism of interest from the splash page. Next, you can browse the table of transcription factors from our dataset page. ChIP-pro covers well-studied transcription factors, as well as a wide scope of <i>E. coli</i> y-TFs (relatively poorly characterized transcription factors).
+                Begin by selecting your organism of interest from the splash page. Next, you can browse the table of transcription factors from our dataset page. ChIP-pro covers well-studied transcription factors, as well as a wide scope of <i>E. coli</i> y-TFs (relatively poorly characterized transcription factors). 
             </p><p>
-                Once you’ve reached a transcription factor dashboard, you can browse its binding sites and target genes in the curated table. Interested in a specific binding site? Click on it to see the peak in our genome viewer. You can also click through the tabs in the upper right panel to see global characterizations of the transcription factor’s binding, such as its binding motif, peak width, peak location relative to its target genes, and the concordance between the data in ChIPdb and other databases of transcription factor binding. For more details on the dashboard components, see the sections below.
+                You can also <a href="#search">search</a> for transcription factors or genes using the search button in the upper left corner.
+            </p><p>
+                Once you’ve reached a transcription factor dashboard, you can browse its binding sites and target genes in the curated table. Interested in a specific binding site? Click on it to see the peak in our genome viewer. You can also click through the tabs in the upper right panel to see global characterizations of the transcription factor’s binding, such as its binding motif, peak width, peak location relative to its target genes, and the concordance between the data in ChIP-pro and other databases of transcription factor binding. For more details on the dashboard components, see the sections below.
             </p><p>
                 It is our hope that ChIP-pro will enrich your research by allowing easy access to this compendium of binding intensity data, curated binding sites, and summary statistics. If you are trying to understand how genes are transcriptionally regulated (e.g. differential expression result interpretation, gene module identification, relative binding strength comparison, binding motif analysis), then ChIP-pro can provide detailed information relevant to you.
             </p>
@@ -121,7 +125,7 @@
             </h3>
 
             <p>
-                Each dashboard features a specific transcription factor (for a specific organism and strain) and its ChIP results for at least one condition. Most transcription factors were characterized under M9 media conditions, and some were also characterized under other relevant conditions. In the following section, we include examples of each page element from <a href="tf_dashboard.html?organism=e_coli&tf=YdcI&genome=NC_000913_3&i=16" target="_blank">the <i>E. coli</i> YddM dashboard</a>.
+                Each dashboard features a specific transcription factor (for a specific organism and strain) and its ChIP results for at least one condition. Most transcription factors were characterized under M9 media conditions, and some were also characterized under other relevant conditions. In the following section, we include examples of each page element from <a href="tf_dashboard.html?organism=e_coli&tf=Fur&genome=NC_000913_3&i=3" target="_blank">the <i>E. coli</i> K-12 Fur dashboard</a>.
             </p>
 
             <div class="container-fluid p-0 m-0">
@@ -134,10 +138,11 @@
                             Metadata Panel
                         </h4>
                         <p>
-                            Located in the left-side column of the page, this panel contains basic details about the organism, strain, media used, and supplement(s), if applicable.
-                        </p>
-                        <p>
-                            The example on the left shows the metadata for YddM, in which a simple M9 media condition was used.
+                            Located in the left-side column of the page, this panel contains basic details about the organism, strain, media used, and supplement(s), if applicable. For our <i>E. coli</i> pages, links to the transcription factor's page on <a href="ecocyc.org" target="_blank">EcoCyc</a> and <a href="http://regulondb.ccg.unam.mx/" target="_blank">RegulonDB</a>.
+                        </p><p>
+                            Below the main links, there may be additional links under the heading "iModulons". iModulons are machine-learning derived gene groupings from analysis of transcriptomes, which can be associated with transcription factors. If the page's transcription factor is predicted to regulate any iModulons, then those iModulons will be listed as links here. Since iModulons capture independent signals in a dataset, they may combine the effects of several transcription factors or approximate nonlinear responses as multiple iModulons, which means that some cases (including Fur) will have more than one associated iModulon. Links go to <a href="imodulondb.org" target="_blank">iModulonDB</a>, which has an <a href="imodulondb.org/about" target="_blank">about page</a> at which you can learn more about this approach. It may be interesting to compare the genes from the iModulon with the binding sites from ChIP-pro, as well as to use iModulonDB to learn more about the transcription factor's activity over a wide range of conditions.
+                        </p><p>
+                            The example on the left shows the metadata for Fur. Fur is the <b>f</b>erric <b>u</b>ptake <b>r</b>egulator, meaning it controls genes relevant to iron transport. It was tested with two conditions: iron (Fe) and 2'-dipyridyl (DPD) supplementation. In the presence of iron, it is expected that Fur will bind to DNA and repress its target genes. In the presence of DPD, DPD will bind any free iron to create iron starvation conditions, leading to decreased Fur binding (more details available <a href="https://www.nature.com/articles/ncomms5910" target="_blank">here</a>). More information about Fur is available at the provided links. Fur is a major cellular regulator, so it takes part in the regulation of several iModulons.
                     </div>
                 </div>
             </div>
@@ -147,7 +152,7 @@
             </h4>
 
             <p>
-                This table represents <a href="https://academic.oup.com/nar/article/42/20/e156/2902729" target="_blank">MACE</a> results from processing the sequence read data presented in the Genome Viewer. Each row represents a curated binding peak. Clicking on a row will update the Genome Viewer to display a zoomed in plot of the corresponding peak. The rows are initially sorted by genome location, and the tallest peaks can easily be found by sorting by descending "Peak Intensity" (clicking the column header twice). The columns are as follows:
+                This table represents <a href="https://academic.oup.com/nar/article/42/20/e156/2902729" target="_blank">MACE</a> results from processing the sequence read data presented in the Genome Viewer. Tabs across the top correspond to each binding condition. Each row represents a curated binding peak. Clicking on a row will update the Genome Viewer to display a zoomed in plot of the corresponding peak. The rows are initially sorted by genome location, and the tallest peaks can easily be found by sorting by descending "Peak Intensity" (clicking the column header twice). The columns are as follows:
             </p>
 
             <ul>
@@ -165,14 +170,16 @@
                             <div class="section-header"> Binding Site Table
                                 <button class="btn btn-sm btn-mod" id="download-table">Download CSV</button>
                             </div>
-                            <div id="binding_site_table" style="width: 100%; height:342px;"></div>
+                            <ul class="nav nav-tabs tab-strip" id="TableTab" role="tablist"></ul>
+                            <div id="binding_site_table" style="width: 100%; height:300px;"></div>
                         </div>
                     </div>
                     <div class="col-md-0 col-lg-1"></div>
                 </div>
             </div>
             <p>
-                In the above table, we see that the strongest binding by YddM is YddM-5. The target gene is <i>yddM</i>, so this transcripion factor strongly self-regulates. 
+                In the above table, we can learn a great deal about Fur binding. The DPD tab shows relatively low peak intensities, because DPD induces iron starvation that suppresses Fur binding. Switching to the Fe tab, we can sort by peak intensity to see the strongest binding events when Fur binding is stimulated. For example, the binding site Fur-11 has a very high peak intensity and corresponds to the <i>entCEBAH</i> operon, which produces the iron chelator enterobactin. Note that searching on our search page for any of the target genes in this table would return this page as a result.
+            </p>
 
             <h4 class="text-center py-3">
                 Genome Viewer
@@ -198,6 +205,10 @@
                 </div>
                 <div id="igv-div"></div>
             </div>
+
+            <p>
+                In the above genome viewer, the bottom four rows show the ChIP data for Fur binding (2 conditions with 2 replicates each). Note that in the DPD conditions, the y axis does not reach a very high value because none of the binding events are particularly strong; this means that noise dominates our view in those conditions. On the other hand, the Fe condition creates several strong peaks. If you'd like, you can scroll back up to the table for the Fe condition and select a binding site like Fur-11. This will zoom the genome viewer into that binding site to see its specific shape. The two peaks for Fur-11 align with the annotated "Fur" binding sites in the "Published TFBS" row. The target genes (starting with <i>entC</i>) can be seen in the "Genes" row. In our less studied transcription factors, this view represents a powerful opportunity for discovery.
+            </p>
 
 
             <h4 class="text-center py-3">
@@ -232,7 +243,7 @@
                 Feature Visualization – Venn
             </h5>
             <p>
-                The venn diagram compares the target genes obtained in ChIPdb to other target gene sets in the literature. Hover over a section of the venn diagram to see the genes it contains. Areas of agreement indicate strong evidence of direct regulation, and areas of disagreement represent opportunities to improve literature annotation or elucidate condition-specific differences in binding. The specific literature sources are mentioned below each diagram. For <i>E. coli</i>, <a href="https://ecocyc.org/" target="_blank">EcoCyc</a>’s transcriptional regulatory network was used.
+                The venn diagram compares the target genes obtained in ChIP-pro to other target gene sets in the literature. Hover over a section of the venn diagram to see the genes it contains. Areas of agreement indicate strong evidence of direct regulation, and areas of disagreement represent opportunities to improve literature annotation or elucidate condition-specific differences in binding. The specific literature sources are mentioned below each diagram. For <i>E. coli</i>, <a href="https://ecocyc.org/" target="_blank">EcoCyc</a>’s transcriptional regulatory network was used.
             </p>
             <div class="container">
                 <div class ="row">
@@ -315,6 +326,23 @@
                 </div>
             </div>
 
+            <!-- Search -->
+            <h3 id="search" class="text-center py-3">
+                Search
+            </h3>
+            <p>
+                The <a href="search.html">search page</a> can be reached from any page by clicking "Search" in the upper right hand corner. You have the option to search transcription factors by name (e.g. "AtoC") or genes by name (e.g. "thrA") or locus tag (e.g. "b0002"); you can also leave both options selected to return all relevant results. Search terms are case-insensitive. Each result that appears below the search bar will be a link to a transcription factor dashboard.
+            </p><p>
+                Transcription factor results will simply list the name, organism, and strain of the matching page. Gene results are associated with specific binding peaks upstream of the gene of interest, so they include additional details:
+            </p>
+            <ul>
+                <li>Gene name and locus tag (in parentheses)</li>
+                <li>Binding site identifier in the form "Transcription factor name - #"</li>
+                <li>Organism and strain name</li>
+                <li>Condition name in the form "transcription factor name + condition". The condition may be the media type or the supplement used, for example.</li>
+                <li>Peak strength as a signal to noise (S/N) ratio. Note that these values cannot be directly mathematically compared because noise varies from condition to condition, but the peak strength will still provide a valuable indicator of how important the peak is in the ChIP profile.</li>
+            </ul>
+
             <!-- References -->
             <h3 id="ref" class="text-center py-3">
                 References
@@ -340,6 +368,8 @@
                 <li><b>The Bitome</b>: <a class="ref_link" href="https://doi.org/10.1093/nar/gkaa774" target="_blank">Cameron R Lamoureux, Kumari Sonal Choudhary, Zachary A King, Troy E Sandberg, Ye Gao, Anand V Sastry, Patrick V Phaneuf, Donghui Choe, Byung-Kwan Cho, Bernhard O Palsson, The Bitome: digitized genomic features reveal fundamental genome organization, Nucleic Acids Research, Volume 48, Issue 18, 09 October 2020, Pages 10157–10163.</a></li>
                 <li><b>EcoCyc</b>: <a class="ref_link" href="https://doi.org/10.1128/ecosalplus.esp-0006-2018" target="_blank">Karp PD, Ong WK, Paley S, Billington R, Caspi R, Fulcher C, Kothari A, Krummenacker M, Latendresse M, Midford PE, Subhraveti P, Gama-Castro S, Muñiz-Rascado L, Bonavides-Martinez C, Santos-Zavaleta A, Mackie A, Collado-Vides J, Keseler IM, Paulsen I. The EcoCyc Database. EcoSal Plus. 2018 Nov.</a></li>
                 <li><b>RefSeq</b>: <a class="ref_link" href="https://doi.org/10.1093/nar/gkv1189" target="_blank">O'Leary NA, et al. Reference sequence (RefSeq) database at NCBI: current status, taxonomic expansion, and functional annotation. Nucleic Acids Res. 2016 Jan.</a></li>
+                <li><b>RegulonDB</b>: <a class="ref_link" href="https://doi.org/10.1093/nar/gky1077" target="_blank">Alberto SZ, et al. RegulonDB v 10.5: tackling challenges to unify classic and high throughput knowledge of gene regulation in E. coli K-12. Nucleic Acids Research, Volume 47, Issue D1, 08 January 2019, Pages D212–D220.</a></li>
+                <li><b>iModulonDB</b>: <a class="ref_link" href="https://doi.org/10.1093/nar/gkaa810" target="_blank">Rychel, K., Decker, K., Sastry, A.V. et al. iModulonDB: a knowledgebase of microbial transcriptional regulation derived from machine learning. Nucleic Acids Research, Volume 49, Issue D1, 8 January 2021, Pages D112–D120.</a></li>
             </ul>
             <h4 class="text-center py-3">
                 Additional References
@@ -360,7 +390,7 @@
                 Contact Us
             </h3>
             <p class="text-center" style="font-size:16pt">
-                To ask questions, provide feedback, report an issue, or collaborate with us, please email us at <a href="mailto:chip-pro@ucsd.edu">chip-pro@ucsd.edu</a>.
+                To ask questions, provide feedback, report an issue, or collaborate with us, please email us at <a href="mailto:be-chip-pro@eng.ucsd.edu">be-chip-pro@eng.ucsd.edu</a>.
             </p>
             <!-- Footer -->
             <footer>
@@ -374,7 +404,7 @@
                         </div>
                         <div class="col-sm-9 m-auto">
                             <p class="copyright text-muted small">
-                                ChIPdb is maintained by the Systems Biology Research Group at the University of
+                                ChIP-pro is maintained by the Systems Biology Research Group at the University of
                                 California, San Diego. <br/>
                             </p>
                         </div>
@@ -406,9 +436,9 @@
 <!-- Determine which TF -->
 <script>
     var organism = 'e_coli';
-    var TF_name = 'YddM';
-    var genome = 'NC_000913_3';
-    var index = 17;
+    var TF_name = 'Fur';
+    var genome = 'NC_000913.3';
+    var index = 3;
     $('#TF_header').append(TF_name);
 
     // motif
@@ -433,21 +463,74 @@
         $('#meta_text').append('<p class="meta_cat">SUPPLEMENT</p>');
         $('#meta_text').append('<p class="meta_val">' + row[5] + '</p>');
 
+        // out links
+        if(organism=='e_coli') {
+            $.get('/data/e_coli/outlinks/'+TF_name+'_links.csv',function (link_data) {
+                link_table = Papa.parse(link_data, {dynamicTyping: true}).data;
+
+                $('#meta_text').append('<p class="meta_cat">LINKS</p>');
+                $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[0][1] + '" target="_blank">' + link_table[0][0] + '</a></p>');
+                $('#meta_text').append('<p class="meta_val"><a href="' + link_table[1][1] + '" target="_blank">' + link_table[1][0] + '</a></p>');
+
+                console.log(link_table.length)
+
+                if (link_table.length > 3) {
+                    $('#meta_text').append('<p class="meta_cat">iMODULONS</p>');
+                    for (let i = 2; i < link_table.length-1; i++) {
+                        $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[i][1] + '" target="_blank">' + link_table[i][0] + '</a></p>');
+                    }
+                }
+
+            })
+        }
 
         // IGV and table
-        generateIGVandTable(TF_name, row)
+        const [title, fileName] = row[12].split(";")[0].split("|");
+        generateIGVandTable(TF_name, row, fileName);
+        // First, get row[12] to get list of filenames to create the tabs for x number of files
+        const conditions = row[12].split(";");
+        // parse the table row of Title A|xyz.json;Title B|def.json;...
+        // access the tabs parent component by ID
+        $('#TableTab').append(`
+        <li class="nav-item" role="presentation">
+            <button class="nav-link round-tab active" id="table-tab-1" data-bs-toggle="tab"
+                    data-bs-target="#table-tab-1" data-toggle="tab" data-target="#table-tab-1"
+                    type="button" role="tab" aria-controls="table-tab-1"
+                    aria-selected="true">${title}
+            </button>
+        </li>
+        `);
+        $('#table-tab-1').click(() => {
+            generateIGVandTable(TF_name, row, fileName);
+        });
+        // loop through the loaded values of `Title A|xyz.json` and create a tab for each
+        conditions.slice(1, conditions.length).forEach((condition, i) => {
+            const [conditionTitle, conditionFile] = condition.split('|');
+            $('#TableTab').append(`
+        <li class="nav-item" role="presentation">
+            <button class="nav-link round-tab" id="table-tab-${i + 2}" data-bs-toggle="tab"
+                    data-bs-target="#table-tab-${i + 2}" data-toggle="tab" data-target="#table-tab-${i + 2}"
+                    type="button" role="tab" aria-controls="table-tab-${i + 2}"
+                    aria-selected="true">${conditionTitle}
+            </button>
+        </li>
+        `);
+            $(`#table-tab-${i + 2}`).click(() => {
+                generateIGVandTable(TF_name, row, conditionFile);
+            });
+        });
 
         // Venn
         $.getJSON('/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.json', function (data) {
             generateVenn(data, 'venn');
         }).catch(() => {
             document.getElementById("header-tab-2").classList.add('disabled')
-        });;
+        });
 
         // Binding width histogram
-         $.get('/data/' + organism + '/' + genome + '/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
-             generateWidthHistogram(width_data, 'widthHist')
-         }).catch(() => {
+        $.get('/data/' + organism + '/' + genome + '/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
+            generateWidthHistogram(width_data, 'widthHist')
+        }).catch(() => {
             document.getElementById("widthHist").innerText = 'Binding width histogram not available.'
         });
 
