@@ -192,13 +192,24 @@ function generateIGVandTable(TF_name, row, fileName) {
                 headerContextMenu: headerMenu
             },
             {
-                title: "Target genes",
+                title: "Closest gene",
+                field: "closest_gene",
+                sorter: "string",
+                hozAlign: "left",
+                headerContextMenu: headerMenu
+            }
+        ]
+
+        if (genome == 'NC_000913.3') {
+           columns.push({
+                title: "TU Target genes",
                 field: "target_genes",
                 sorter: "string",
                 hozAlign: "left",
                 headerContextMenu: headerMenu
-            },
-        ]
+            })
+        }
+
         var table = new Tabulator("#" + container, {
             maxHeight: "100%",
             data: tabledata,
