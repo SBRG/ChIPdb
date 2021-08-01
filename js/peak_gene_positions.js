@@ -37,8 +37,8 @@ function generatePeakScatter(csvContent, container) {
     for (i = 1; i < data.length-1; i++) {
         coord_data.push({
             peak: data[i][1],
-            gene: data[i][8],
-            x: data[i][9],
+            gene: data[i][9],
+            x: data[i][10],
             y: data[i][5],
         });
     }
@@ -46,7 +46,7 @@ function generatePeakScatter(csvContent, container) {
     // set up the plot
     var chartOptions = {
         title: {
-            text: TF_name + ' Peak Position Relative to Target Gene'
+            text: TF_name + ' Peak Position Relative to Closest Gene'
         },
         xAxis: {
             title: {
