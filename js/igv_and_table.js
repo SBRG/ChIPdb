@@ -1,5 +1,5 @@
 /**
- * @summary Creates IGV + interactive table for ChIPdb
+ * @summary Creates IGV + interactive table for ChIP-pro
  * @authors Katherine Decker and Tahani Al Bulushi
  * requires Tabulator and igv.js
  */
@@ -27,11 +27,12 @@ function data_download(csv_data, file_name) {
 }
 
 
-function generateIGVandTable(TF_name, row) {
+function generateIGVandTable(TF_name, row, fileName) {
+    // Update this to take in a fileName parameter as the third value
 
 //trigger download of big wig files
     document.getElementById("download-bw").setAttribute("href",
-        "/data/e_coli/NC_000913_3/bw/compressed/" + TF_name + "_bw.zip");
+        '/data/' + organism + '/' + genome + "/bw/compressed/" + TF_name + "_bw.zip");
 
     // IGV
     var igvDiv = document.getElementById("igv-div");
@@ -57,13 +58,14 @@ function generateIGVandTable(TF_name, row) {
                     ]
                 }
         };
+    igv.removeAllBrowsers()
     igv.createBrowser(igvDiv, options)
         .then(async function (browser) {
             console.log("Created IGV browser");
             var i = row.length - 15;
             var color_iter = 0;
             const colors = ['#464746', '#464746', '#9BABA4', '#9BABA4', '#417f5d', '#417f5d', '#817198', '#817198']; // maybe make better someday
-            if (genome == 'NC_000913_3') {
+            if (genome == 'NC_000913.3') {
                 await browser.loadTrack(
                     {
                         "type": "annotation",
@@ -111,7 +113,8 @@ function generateIGVandTable(TF_name, row) {
         })
 
     // Table
-    $.getJSON('/data/' + organism + '/' + genome + '/table/' + TF_name.substr(0, 4) + '_binding_table.json', function (data) {
+    // update this so that instead of using TF_name.substr(0,4), it will use the new fileName param from func call
+    $.getJSON('/data/' + organism + '/' + genome + '/table/' + fileName, function (data) {
         // convert rows into objects
         const container = 'binding_site_table'
         var tabledata = []
@@ -189,13 +192,24 @@ function generateIGVandTable(TF_name, row) {
                 headerContextMenu: headerMenu
             },
             {
-                title: "Target genes",
+                title: "Closest gene",
+                field: "closest_gene",
+                sorter: "string",
+                hozAlign: "left",
+                headerContextMenu: headerMenu
+            }
+        ]
+
+        if (genome == 'NC_000913.3') {
+           columns.push({
+                title: "TU Target genes",
                 field: "target_genes",
                 sorter: "string",
                 hozAlign: "left",
                 headerContextMenu: headerMenu
-            },
-        ]
+            })
+        }
+
         var table = new Tabulator("#" + container, {
             maxHeight: "100%",
             data: tabledata,
@@ -212,7 +226,7 @@ function generateIGVandTable(TF_name, row) {
                         var i = row.length - 15;
                         var color_iter = 0;
                         const colors = ['#464746', '#464746', '#9BABA4', '#9BABA4', '#417f5d', '#417f5d', '#817198', '#817198']; // maybe make better someday
-                        if (genome == 'NC_000913_3') {
+                        if (genome == 'NC_000913.3') {
                             await browser.loadTrack(
                                 {
                                     "type": "annotation",
@@ -257,7 +271,8 @@ function generateIGVandTable(TF_name, row) {
                             i += 2
                             color_iter += 1
                         }
-                        browser.search('NC_000913.3:'.concat(numberWithCommas(start - 1000), '-',
+                        // TODO: use Math.min() to prevent +1000 from exceeding genome length
+                        browser.search(genome.concat(':',numberWithCommas(Math.max(start - 1000, 0)), '-',
                             numberWithCommas(end + 1000)));
                     });
             },

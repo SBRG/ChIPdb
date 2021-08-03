@@ -39,8 +39,8 @@
     <nav class="navbar navbar-expand-md sticky-top header">
         <a class="navbar-brand" href="index.html">
             <img src="images/ChIPdb_logo.png" height=35 class="d-inline-block align-top"
-            alt="" loading="lazy">
-            ChIPdb 1.0.0 </a>
+                 alt="" loading="lazy">
+            ChIP-pro 1.0.0 </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -51,15 +51,9 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Organism Dataset
                     </button>
-                   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <a class="dropdown-item" href="dataset_page.html?organism=e_coli"><i>E. coli</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=k_pneumoniae"><i>K. pneumoniae</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=p_putida"><i>P. putida</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_aureus"><i>S. aureus</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_enterica"><i>S. enterica</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=s_flexneri"><i>S. flexneri</i></a>
-                        <a class="dropdown-item" href="dataset_page.html?organism=y_pseudotuberculosis"><i>Y.
-                            pseudotuberculosis</i></a>
+                        <a class="dropdown-item" href="dataset_page.html?organism=all_other">All Other Organisms</a>
                     </div>
                 </li>
             </ul>
@@ -67,6 +61,11 @@
                 <li class="nav-item">
                     <a class="mr-4" href="about.html"><span><i class="material-icons">info</i></span>
                         <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="mr-4" href="search.html"><span><i class="material-icons">search</i></span>
+                        <span>Search</span>
                     </a>
                 </li>
             </ul>
@@ -88,7 +87,8 @@
                         <div class="section-header"> Binding Site Table
                             <button class="btn btn-sm btn-mod" id="download-table">Download CSV</button>
                         </div>
-                        <div id="binding_site_table" style="width: 100%; height:342px;"></div>
+                        <ul class="nav nav-tabs tab-strip" id="TableTab" role="tablist"></ul>
+                        <div id="binding_site_table" style="width: 100%; height:300px;"></div>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-4">
@@ -147,14 +147,15 @@
                                     </button>
                                     <!--Menu-->
                                     <div class="dropdown-menu dropdown-primary">
-                                        <a class="dropdown-item" href="#">Download PNG image</a>
-                                        <a id="motif-download" class="dropdown-item" download>Download SVG vector image</a>
+                                        <a id="motif-download-png" class="dropdown-item" download>Download PNG image</a>
+                                        <a id="motif-download-svg" class="dropdown-item" download>Download SVG vector
+                                            image</a>
                                     </div>
                                 </div>
                                 <!--/Hamburger Dropdown-->
 
-                                <div style="width:100%; height:300px" class="fill">
-                                    <img id="motif_sequence" src=""/>
+                                <div style="height:300px" class="fill">
+                                    <img style="max-width:95%; max-height:95%" id="motif_sequence" src=""/>
                                 </div>
                             </div>
 
@@ -186,7 +187,7 @@
                         </div>
                         <div class="col-sm-9 m-auto">
                             <p class="copyright text-muted small">
-                                ChIPdb is maintained by the Systems Biology Research Group at the University of
+                                ChIP-pro is maintained by the Systems Biology Research Group at the University of
                                 California, San Diego. <br/>
                             </p>
                         </div>
@@ -214,8 +215,7 @@
 <script src="js/igv_and_table.js"></script>
 <script src="js/peak_gene_positions.js"></script>
 <script src="js/width_histogram.js"></script>
-<script src="plot_dev/binding_site_table/binding_site_table.js"></script>
-<script src="plot_dev/venn/venn.js"></script>
+<script src="js/venn.js"></script>
 
 <!-- Determine which TF -->
 <script>
@@ -230,11 +230,13 @@
     document.title = TF_name;
 
     // motif
-    const motifSVG = '/plot_dev/motifs/images/' + TF_name + '.svg';
+    const motifSVG = '/data/'+organism+'/'+genome+'/motifs/images/'+TF_name+'.svg';
+    const motifPNG = '/data/'+organism+'/'+genome+'/motifs/images/'+TF_name+'.png';
     document.getElementById("motif_sequence").src = motifSVG;
     document.getElementById("motif_sequence").onerror = () =>
         document.getElementById("header-tab-3").classList.add('disabled')
-    document.getElementById("motif-download").href = motifSVG;
+    document.getElementById("motif-download-svg").href = motifSVG;
+    document.getElementById("motif-download-png").href = motifPNG;
 
 
     $.get('/data/' + organism + '/TF_list.csv', function (file_data) {
@@ -246,26 +248,80 @@
         $('#meta_text').append('<p class="meta_val"><i>' + row[2] + '</i></p>');
         $('#meta_text').append('<p class="meta_cat">STRAIN</p>');
         $('#meta_text').append('<p class="meta_val">' + row[3] + '</p>');
+        $('#meta_text').append('<p class="meta_cat">GENOME ID</p>');
+        $('#meta_text').append('<p class="meta_val">' + row[6] + '</p>');
         $('#meta_text').append('<p class="meta_cat">MEDIA</p>');
         $('#meta_text').append('<p class="meta_val">' + row[4] + '</p>');
         $('#meta_text').append('<p class="meta_cat">SUPPLEMENT</p>');
         $('#meta_text').append('<p class="meta_val">' + row[5] + '</p>');
 
+        // out links
+        if(organism=='e_coli') {
+            $.get('/data/e_coli/outlinks/'+TF_name+'_links.csv',function (link_data) {
+                link_table = Papa.parse(link_data, {dynamicTyping: true}).data;
+
+                $('#meta_text').append('<p class="meta_cat">LINKS</p>');
+                $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[0][1] + '" target="_blank">' + link_table[0][0] + '</a></p>');
+                $('#meta_text').append('<p class="meta_val"><a href="' + link_table[1][1] + '" target="_blank">' + link_table[1][0] + '</a></p>');
+
+                if (link_table.length > 3) {
+                    $('#meta_text').append('<p class="meta_cat">iMODULONS</p>');
+                    for (let i = 2; i < link_table.length-1; i++) {
+                        $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[i][1] + '" target="_blank">' + link_table[i][0] + '</a></p>');
+                    }
+                }
+
+            })
+        }
+
 
         // IGV and table
-        generateIGVandTable(TF_name, row)
+        const [title, fileName] = row[12].split(";")[0].split("|");
+        generateIGVandTable(TF_name, row, fileName);
+        // First, get row[12] to get list of filenames to create the tabs for x number of files
+        const conditions = row[12].split(";");
+        // parse the table row of Title A|xyz.json;Title B|def.json;...
+        // access the tabs parent component by ID
+        $('#TableTab').append(`
+        <li class="nav-item" role="presentation">
+            <button class="nav-link round-tab active" id="table-tab-1" data-bs-toggle="tab"
+                    data-bs-target="#table-tab-1" data-toggle="tab" data-target="#table-tab-1"
+                    type="button" role="tab" aria-controls="table-tab-1"
+                    aria-selected="true">${title}
+            </button>
+        </li>
+        `);
+        $('#table-tab-1').click(() => {
+            generateIGVandTable(TF_name, row, fileName);
+        });
+        // loop through the loaded values of `Title A|xyz.json` and create a tab for each
+        conditions.slice(1, conditions.length).forEach((condition, i) => {
+            const [conditionTitle, conditionFile] = condition.split('|');
+            $('#TableTab').append(`
+        <li class="nav-item" role="presentation">
+            <button class="nav-link round-tab" id="table-tab-${i + 2}" data-bs-toggle="tab"
+                    data-bs-target="#table-tab-${i + 2}" data-toggle="tab" data-target="#table-tab-${i + 2}"
+                    type="button" role="tab" aria-controls="table-tab-${i + 2}"
+                    aria-selected="true">${conditionTitle}
+            </button>
+        </li>
+        `);
+            $(`#table-tab-${i + 2}`).click(() => {
+                generateIGVandTable(TF_name, row, conditionFile);
+            });
+        });
 
         // Venn
         $.getJSON('/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.json', function (data) {
             generateVenn(data, 'venn');
         }).catch(() => {
             document.getElementById("header-tab-2").classList.add('disabled')
-        });;
+        });
 
         // Binding width histogram
-         $.get('/data/' + organism + '/' + genome + '/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
-             generateWidthHistogram(width_data, 'widthHist')
-         }).catch(() => {
+        $.get('/data/' + organism + '/' + genome + '/binding_widths/' + TF_name + "_widths.csv", function (width_data) {
+            generateWidthHistogram(width_data, 'widthHist')
+        }).catch(() => {
             document.getElementById("widthHist").innerText = 'Binding width histogram not available.'
         });
 

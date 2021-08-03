@@ -1,5 +1,5 @@
 /**
- * @summary Creates position relative to gene scatterplot for ChIPdb
+ * @summary Creates position relative to gene scatterplot for ChIP-pro
  * @author Katherine Decker
  * requires Highcharts, PapaParse
  */
@@ -34,11 +34,11 @@ function generatePeakScatter(csvContent, container) {
 
     // coordinates
     var coord_data = [];
-    for (i = 2; i < data.length; i++) {
+    for (i = 1; i < data.length-1; i++) {
         coord_data.push({
             peak: data[i][1],
-            gene: data[i][8],
-            x: data[i][9],
+            gene: data[i][9],
+            x: data[i][10],
             y: data[i][5],
         });
     }
@@ -46,7 +46,7 @@ function generatePeakScatter(csvContent, container) {
     // set up the plot
     var chartOptions = {
         title: {
-            text: TF_name + ' Peak Position Relative to Target Gene'
+            text: TF_name + ' Peak Position Relative to Closest Gene'
         },
         xAxis: {
             title: {
