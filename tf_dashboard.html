@@ -230,12 +230,21 @@
     document.title = TF_name;
 
     // motif
-    const motifSVG = '/data/'+organism+'/'+genome+'/motifs/images/'+TF_name+'.svg';
-    const motifPNG = '/data/'+organism+'/'+genome+'/motifs/images/'+TF_name+'.png';
-    document.getElementById("motif_sequence").src = motifSVG;
-    document.getElementById("motif_sequence").onerror = () =>
-        document.getElementById("header-tab-3").classList.add('disabled')
-    document.getElementById("motif-download-svg").href = motifSVG;
+    const motifSVG = '/data/' + organism + '/' + genome + '/motifs/images/' + TF_name + '.svg';
+    const motifPNG = '/data/' + organism + '/' + genome + '/motifs/images/' + TF_name + '.png';
+    $.get(motifSVG)
+        .done(function () {
+            document.getElementById("motif_sequence").src = motifSVG;
+            document.getElementById("motif-download-svg").href = motifSVG;
+        }).fail(function () {
+        $.get(motifPNG)
+            .done(function () {
+                document.getElementById("motif_sequence").src = motifPNG;
+                document.getElementById("motif-download-svg").remove();
+            }).fail(function () {
+            document.getElementById("header-tab-3").classList.add('disabled')
+        })
+    })
     document.getElementById("motif-download-png").href = motifPNG;
 
 
@@ -256,8 +265,8 @@
         $('#meta_text').append('<p class="meta_val">' + row[5] + '</p>');
 
         // out links
-        if(organism=='e_coli') {
-            $.get('/data/e_coli/outlinks/'+TF_name+'_links.csv',function (link_data) {
+        if (organism == 'e_coli') {
+            $.get('/data/e_coli/outlinks/' + TF_name + '_links.csv', function (link_data) {
                 link_table = Papa.parse(link_data, {dynamicTyping: true}).data;
 
                 $('#meta_text').append('<p class="meta_cat">LINKS</p>');
@@ -266,7 +275,7 @@
 
                 if (link_table.length > 3) {
                     $('#meta_text').append('<p class="meta_cat">iMODULONS</p>');
-                    for (let i = 2; i < link_table.length-1; i++) {
+                    for (let i = 2; i < link_table.length - 1; i++) {
                         $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[i][1] + '" target="_blank">' + link_table[i][0] + '</a></p>');
                     }
                 }
