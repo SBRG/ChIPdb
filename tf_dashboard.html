@@ -215,7 +215,7 @@
 <script src="js/igv_and_table.js"></script>
 <script src="js/peak_gene_positions.js"></script>
 <script src="js/width_histogram.js"></script>
-<script src="js/venn.js"></script>
+<script src="js/venn2.js"></script>
 
 <!-- Determine which TF -->
 <script>
@@ -282,6 +282,12 @@
 
             })
         }
+        $('#meta_text').append('<p class="meta_cat">RAW DATA ACCESSION</p>');
+        $('#meta_text').append('<p class="meta_val">' + row[14] + '</p>');
+        if (row[15].length >0) {
+            $('#meta_text').append('<p class="meta_cat">DOI REFERENCE</p>');
+            $('#meta_text').append('<p class="meta_val"><a href="' + row[15] + '">' + row[15] + '</a></p>');
+        }
 
 
         // IGV and table
@@ -321,8 +327,8 @@
         });
 
         // Venn
-        $.getJSON('/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.json', function (data) {
-            generateVenn(data, 'venn');
+        $.get('/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.csv', function (data) {
+            generateVenn2(data, 'venn');
         }).catch(() => {
             document.getElementById("header-tab-2").classList.add('disabled')
         });
@@ -332,6 +338,7 @@
             generateWidthHistogram(width_data, 'widthHist')
         }).catch(() => {
             document.getElementById("widthHist").innerText = 'Binding width histogram not available.'
+            document.getElementById("widthHist").classList.add('NA_text')
         });
 
         // Peak/Gene Position Scatter

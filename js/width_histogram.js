@@ -5,7 +5,7 @@
  */
 
 // data download helper function
- function data_download(csv_data, file_name) {
+function data_download(csv_data, file_name) {
     const a = document.createElement("a");
     a.style.display = "none";
     document.body.appendChild(a);
@@ -24,13 +24,13 @@
     // Cleanup
     window.URL.revokeObjectURL(a.href);
     document.body.removeChild(a);
- }
+}
 
 //write chart to container
 function generateWidthHistogram(csvContent, container) {
     var csv_data = Papa.parse(csvContent, {dynamicTyping: true}).data;
     var data = [];
-    for (i = 1; i < csv_data.length-1; i++) {
+    for (i = 1; i < csv_data.length - 1; i++) {
         data.push(csv_data[i][1]);
     }
 
@@ -86,12 +86,17 @@ function generateWidthHistogram(csvContent, container) {
         legend: {
             enabled: false
         },
+        tooltip: {
+            pointFormat: `
+              <span style="font-size:10px">{point.x:.2f} - {point.x2:.2f}</span<br/>
+              <span style="color:{point.color}">\u25CF</span>{series.name} <b>{point.y}</b><br/>`
+        },
         exporting: {
-           enabled: true,
+            enabled: true,
             menuItemDefinitions: {
                 downloadData: {
-                    onclick: function() {
-                        data_download(csvContent, TF_name+'_position_scatter.csv');
+                    onclick: function () {
+                        data_download(csvContent, TF_name + '_position_scatter.csv');
                     },
                     text: 'Download histogram data'
                 }

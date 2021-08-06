@@ -156,15 +156,6 @@ function generateIGVandTable(TF_name, row, fileName) {
                 headerContextMenu: headerMenu
             },
             {
-                title: " Binding Condition",
-                field: "condition",
-                sorter: "string",
-                hozAlign: "left",
-                formatter: "string",
-                formatterParams: {precision: 4},
-                headerContextMenu: headerMenu
-            },
-            {
                 title: "Start Position",
                 field: "binding_peak_start",
                 sorter: "number",
@@ -289,6 +280,7 @@ function generateIGVandTable(TF_name, row, fileName) {
 
     }).catch(() => {
         document.getElementById('binding_site_table').innerText = 'Peak binding data table not available.'
+        document.getElementById("binding_site_table").classList.add('NA_text')
     });
     ;
 }
