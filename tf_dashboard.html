@@ -215,7 +215,7 @@
 <script src="js/igv_and_table.js"></script>
 <script src="js/peak_gene_positions.js"></script>
 <script src="js/width_histogram.js"></script>
-<script src="js/venn.js"></script>
+<script src="js/venn2.js"></script>
 
 <!-- Determine which TF -->
 <script>
@@ -325,8 +325,8 @@
         });
 
         // Venn
-        $.getJSON('/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.json', function (data) {
-            generateVenn(data, 'venn');
+        $.get('/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.csv', function (data) {
+            generateVenn2(data, 'venn');
         }).catch(() => {
             document.getElementById("header-tab-2").classList.add('disabled')
         });
