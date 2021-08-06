@@ -46,7 +46,7 @@ function generatePeakScatter(csvContent, container) {
     // set up the plot
     var chartOptions = {
         title: {
-            text: TF_name + ' Peak Position Relative to Closest Gene'
+            text: TF_name + ' Peak Position Relative to Nearest (Downstream) Gene'
         },
         xAxis: {
             title: {

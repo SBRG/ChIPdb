@@ -336,6 +336,7 @@
             generateWidthHistogram(width_data, 'widthHist')
         }).catch(() => {
             document.getElementById("widthHist").innerText = 'Binding width histogram not available.'
+            document.getElementById("widthHist").classList.add('NA_text')
         });
 
         // Peak/Gene Position Scatter
