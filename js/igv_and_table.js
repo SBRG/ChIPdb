@@ -173,8 +173,10 @@ function generateIGVandTable(TF_name, row, fileName) {
                 formatter: "money",
                 formatterParams: {precision: 0},
                 headerContextMenu: headerMenu
-            },
-            {
+            }
+        ]
+        if(row[16]){
+            columns.push({
                 title: peak_intensity_name,
                 field: "binding_peak_strength",
                 sorter: "number",
@@ -182,15 +184,16 @@ function generateIGVandTable(TF_name, row, fileName) {
                 formatter: "money",
                 formatterParams: {precision: 2},
                 headerContextMenu: headerMenu
-            },
-            {
+            })
+        }
+
+        columns.push({
                 title: "Closest gene",
                 field: "closest_gene",
                 sorter: "string",
                 hozAlign: "left",
                 headerContextMenu: headerMenu
-            }
-        ]
+            })
 
         if (genome == 'NC_000913.3') {
            columns.push({

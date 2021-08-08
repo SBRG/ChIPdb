@@ -133,7 +133,6 @@
             }
             tabledata.push(obj);
         }
-
         // Populate Metadata
         // TF details
         $('#meta_text').append('<p class="meta_cat">NUMBER OF TF PAGES</p>');
@@ -183,6 +182,13 @@
             {
                 title: "Strain",
                 field: "Strain",
+                formatter: "textarea",
+                widthGrow: 2,
+                headerContextMenu: headerMenu
+            },
+            {
+                title: "Method",
+                field: "Method",
                 formatter: "textarea",
                 widthGrow: 2,
                 headerContextMenu: headerMenu
