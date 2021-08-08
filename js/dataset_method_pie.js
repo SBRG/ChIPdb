@@ -32,7 +32,7 @@ function method_pie(method_counts, container) {
     }
   },
         series: [{
-            name: 'Number of Samples',
+            name: 'Percent of Samples',
             colorByPoint: true,
             data: [{
                 name: `ChIP-exo (n=${method_counts['ChIP-exo']})`,
