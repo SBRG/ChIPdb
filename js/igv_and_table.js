@@ -148,9 +148,10 @@ function generateIGVandTable(TF_name, row, fileName) {
         ]
 
         // columns object: basic info
+        const peak_intensity_name = row[16];
         var columns = [
             {
-                title: "TF-#",
+                title: "TF-Condition-#",
                 field: "index",
                 sorter: "string",
                 headerContextMenu: headerMenu
@@ -172,24 +173,27 @@ function generateIGVandTable(TF_name, row, fileName) {
                 formatter: "money",
                 formatterParams: {precision: 0},
                 headerContextMenu: headerMenu
-            },
-            {
-                title: "Peak Intensity",
+            }
+        ]
+        if(row[16]){
+            columns.push({
+                title: peak_intensity_name,
                 field: "binding_peak_strength",
                 sorter: "number",
                 hozAlign: "left",
                 formatter: "money",
                 formatterParams: {precision: 2},
                 headerContextMenu: headerMenu
-            },
-            {
+            })
+        }
+
+        columns.push({
                 title: "Closest gene",
                 field: "closest_gene",
                 sorter: "string",
                 hozAlign: "left",
                 headerContextMenu: headerMenu
-            }
-        ]
+            })
 
         if (genome == 'NC_000913.3') {
            columns.push({
