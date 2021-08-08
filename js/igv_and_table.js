@@ -150,7 +150,7 @@ function generateIGVandTable(TF_name, row, fileName) {
         // columns object: basic info
         var columns = [
             {
-                title: "TF-#",
+                title: "TF-Condition-#",
                 field: "index",
                 sorter: "string",
                 headerContextMenu: headerMenu
