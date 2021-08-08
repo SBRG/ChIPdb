@@ -343,7 +343,7 @@
 
         // Peak/Gene Position Scatter
         $.get('/data/' + organism + '/' + genome + '/positions/' + TF_name + "_positions.csv", function (positions_data) {
-            generatePeakScatter(positions_data, "position_scatter");
+            generatePeakScatter(positions_data, row, "position_scatter");
         }).catch(() => {
             document.getElementById("header-tab-4").classList.add('disabled')
         });

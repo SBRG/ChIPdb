@@ -148,6 +148,7 @@ function generateIGVandTable(TF_name, row, fileName) {
         ]
 
         // columns object: basic info
+        const peak_intensity_name = row[16];
         var columns = [
             {
                 title: "TF-Condition-#",
@@ -174,7 +175,7 @@ function generateIGVandTable(TF_name, row, fileName) {
                 headerContextMenu: headerMenu
             },
             {
-                title: "Peak Intensity",
+                title: peak_intensity_name,
                 field: "binding_peak_strength",
                 sorter: "number",
                 hozAlign: "left",

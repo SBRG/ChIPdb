@@ -29,7 +29,7 @@
 
 
 // Write Highcharts plot to container
-function generatePeakScatter(csvContent, container) {
+function generatePeakScatter(csvContent, row, container) {
     var data = Papa.parse(csvContent, {dynamicTyping: true}).data;
 
     // coordinates
@@ -42,6 +42,9 @@ function generatePeakScatter(csvContent, container) {
             y: data[i][5],
         });
     }
+
+    // type of intensity
+    const peak_intensity_name = row[16];
 
     // set up the plot
     var chartOptions = {
@@ -69,7 +72,7 @@ function generatePeakScatter(csvContent, container) {
         },
         yAxis: {
             title: {
-                text: 'Peak Intensity (S/N ratio)',
+                text: `Peak Intensity (${peak_intensity_name})`,
             },
             crosshair: true,
             startOnTick: false,
