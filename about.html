@@ -41,7 +41,7 @@
         <a class="navbar-brand" href="index.html">
              <img src="images/ChIPdb_logo.png" height=35 class="d-inline-block align-top"
             alt="" loading="lazy">
-            ChIP-pro 1.0.0 </a>
+            proChIPdb 1.0.0 </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -98,10 +98,10 @@
         <!-- page content -->
         <div class="col-sm-10">
             <!-- Title -->
-            <h1 class="text-center py-3">About ChIP-pro</h1>
+            <h1 class="text-center py-3">About proChIPdb</h1>
 
             <p>
-                Welcome to <b>ChIP-pro</b>, the <b>C</b>hromatin <b>I</b>mmuno<b>P</b>recipitation database for <b>PRO</b>karyotic organisms! This tool enables microbiologists to easily browse 140 chip-seq and chip-exo profiles for various transcription factors (TFs) across 7 organisms. Currently, most of our profiles are for <i>Escherichia coli</i>. We provide curated tables of binding sites, interactive plots and genome viewers, as well as comparisons against literature binding sites. 
+                Welcome to <b>proChIPdb</b>, the <b>PRO</b>karyotic <b>Ch</b>romatin <b>I</b>mmuno<b>P</b>recipitation <b>D</b>ata<b>B</b>ase! This tool enables microbiologists to easily browse 140 chip-seq and chip-exo profiles for various transcription factors (TFs) across 7 organisms. Currently, most of our profiles are for <i>Escherichia coli</i>. We provide curated tables of binding sites, interactive plots and genome viewers, as well as comparisons against literature binding sites.
             </p>
 
             <!-- Using the Site -->
@@ -110,13 +110,13 @@
             </h3>
 
             <p>
-                Begin by selecting your organism of interest from the splash page. Next, you can browse the table of transcription factors from our dataset page. ChIP-pro covers well-studied transcription factors, as well as a wide scope of <i>E. coli</i> y-TFs (relatively poorly characterized transcription factors). 
+                Begin by selecting your organism of interest from the splash page. Next, you can browse the table of transcription factors from our dataset page. proChIPdb covers well-studied transcription factors, as well as a wide scope of <i>E. coli</i> y-TFs (relatively poorly characterized transcription factors).
             </p><p>
                 You can also <a href="#search">search</a> for transcription factors or genes using the search button in the upper left corner.
             </p><p>
-                Once you’ve reached a transcription factor dashboard, you can browse its binding sites and target genes in the curated table. Interested in a specific binding site? Click on it to see the peak in our genome viewer. You can also click through the tabs in the upper right panel to see global characterizations of the transcription factor’s binding, such as its binding motif, peak width, peak location relative to its target genes, and the concordance between the data in ChIP-pro and other databases of transcription factor binding. For more details on the dashboard components, see the sections below.
+                Once you’ve reached a transcription factor dashboard, you can browse its binding sites and target genes in the curated table. Interested in a specific binding site? Click on it to see the peak in our genome viewer. You can also click through the tabs in the upper right panel to see global characterizations of the transcription factor’s binding, such as its binding motif, peak width, peak location relative to its target genes, and the concordance between the data in proChIPdb and other databases of transcription factor binding. For more details on the dashboard components, see the sections below.
             </p><p>
-                It is our hope that ChIP-pro will enrich your research by allowing easy access to this compendium of binding intensity data, curated binding sites, and summary statistics. If you are trying to understand how genes are transcriptionally regulated (e.g. differential expression result interpretation, gene module identification, relative binding strength comparison, binding motif analysis), then ChIP-pro can provide detailed information relevant to you.
+                It is our hope that proChIPdb will enrich your research by allowing easy access to this compendium of binding intensity data, curated binding sites, and summary statistics. If you are trying to understand how genes are transcriptionally regulated (e.g. differential expression result interpretation, gene module identification, relative binding strength comparison, binding motif analysis), then proChIPdb can provide detailed information relevant to you.
             </p>
 
             <!-- TF Dashboards -->
@@ -140,7 +140,7 @@
                         <p>
                             Located in the left-side column of the page, this panel contains basic details about the organism, strain, media used, and supplement(s), if applicable. For our <i>E. coli</i> pages, links to the transcription factor's page on <a href="ecocyc.org" target="_blank">EcoCyc</a> and <a href="http://regulondb.ccg.unam.mx/" target="_blank">RegulonDB</a>.
                         </p><p>
-                            Below the main links, there may be additional links under the heading "iModulons". iModulons are machine-learning derived gene groupings from analysis of transcriptomes, which can be associated with transcription factors. If the page's transcription factor is predicted to regulate any iModulons, then those iModulons will be listed as links here. Since iModulons capture independent signals in a dataset, they may combine the effects of several transcription factors or approximate nonlinear responses as multiple iModulons, which means that some cases (including Fur) will have more than one associated iModulon. Links go to <a href="imodulondb.org" target="_blank">iModulonDB</a>, which has an <a href="imodulondb.org/about" target="_blank">about page</a> at which you can learn more about this approach. It may be interesting to compare the genes from the iModulon with the binding sites from ChIP-pro, as well as to use iModulonDB to learn more about the transcription factor's activity over a wide range of conditions.
+                            Below the main links, there may be additional links under the heading "iModulons". iModulons are machine-learning derived gene groupings from analysis of transcriptomes, which can be associated with transcription factors. If the page's transcription factor is predicted to regulate any iModulons, then those iModulons will be listed as links here. Since iModulons capture independent signals in a dataset, they may combine the effects of several transcription factors or approximate nonlinear responses as multiple iModulons, which means that some cases (including Fur) will have more than one associated iModulon. Links go to <a href="imodulondb.org" target="_blank">iModulonDB</a>, which has an <a href="imodulondb.org/about" target="_blank">about page</a> at which you can learn more about this approach. It may be interesting to compare the genes from the iModulon with the binding sites from proChIPdb, as well as to use iModulonDB to learn more about the transcription factor's activity over a wide range of conditions.
                         </p><p>
                             The example on the left shows the metadata for Fur. Fur is the <b>f</b>erric <b>u</b>ptake <b>r</b>egulator, meaning it controls genes relevant to iron transport. It was tested with two conditions: iron (Fe) and 2'-dipyridyl (DPD) supplementation. In the presence of iron, it is expected that Fur will bind to DNA and repress its target genes. In the presence of DPD, DPD will bind any free iron to create iron starvation conditions, leading to decreased Fur binding (more details available <a href="https://www.nature.com/articles/ncomms5910" target="_blank">here</a>). More information about Fur is available at the provided links. Fur is a major cellular regulator, so it takes part in the regulation of several iModulons.
                     </div>
@@ -186,7 +186,7 @@
             </h4>
 
             <p>
-                ChIP-pro’s genome viewer provides access to a complete, genome-wide view of the transcription factor’s activity under the given conditions. The genome viewer was made using <a href="https://doi.org/10.1101/2020.05.03.075499" target="_blank">igv.js</a>, and it visualizes bigWig ChIP read files generated from bam files using <a href="https://deeptools.readthedocs.io/en/develop/content/tools/bamCoverage.html" target="_blank">deeptools</a>. From top to bottom, the features and tracks of the viewer are:
+                proChIPdb’s genome viewer provides access to a complete, genome-wide view of the transcription factor’s activity under the given conditions. The genome viewer was made using <a href="https://doi.org/10.1101/2020.05.03.075499" target="_blank">igv.js</a>, and it visualizes bigWig ChIP read files generated from bam files using <a href="https://deeptools.readthedocs.io/en/develop/content/tools/bamCoverage.html" target="_blank">deeptools</a>. From top to bottom, the features and tracks of the viewer are:
             </p>
             <ul>
                 <li><b>Toolbar</b>: The toolbar contains a search bar, which can be used to search for specific loci by gene location or gene name. It also has useful tools for adding cursor guides, a center line, toggling track labels, downloading the current view, and adjusting the zoom level.</li>
@@ -229,7 +229,7 @@
                 Feature Visualization – Position
             </h5>
             <p>
-                In this tab, ChIP-pro compares the binding locations relative to each target gene. For each gene (as listed in the Target Genes column of the Binding Site Table), the distance from the gene start site to the binding site is measured in base pairs and normalized to the length of the gene. Points are then plotted with this value on the x axis and the peak intensity (S/N) on the y axis. Genes from the same transcriptional unit will have identical y axis values. Clustering on the x axis indicates the distance at which the transcription factor usually exerts its influence on gene expression. Hover over a point to view more details, such as the gene name.
+                In this tab, proChIPdb compares the binding locations relative to each target gene. For each gene (as listed in the Target Genes column of the Binding Site Table), the distance from the gene start site to the binding site is measured in base pairs and normalized to the length of the gene. Points are then plotted with this value on the x axis and the peak intensity (S/N) on the y axis. Genes from the same transcriptional unit will have identical y axis values. Clustering on the x axis indicates the distance at which the transcription factor usually exerts its influence on gene expression. Hover over a point to view more details, such as the gene name.
             </p>
 
             <h5 class="text-center py-3">
@@ -243,7 +243,7 @@
                 Feature Visualization – Venn
             </h5>
             <p>
-                The venn diagram compares the target genes obtained in ChIP-pro to other target gene sets in the literature. Hover over a section of the venn diagram to see the genes it contains. Areas of agreement indicate strong evidence of direct regulation, and areas of disagreement represent opportunities to improve literature annotation or elucidate condition-specific differences in binding. The specific literature sources are mentioned below each diagram. For <i>E. coli</i>, <a href="https://ecocyc.org/" target="_blank">EcoCyc</a>’s transcriptional regulatory network was used.
+                The venn diagram compares the target genes obtained in proChIPdb to other target gene sets in the literature. Hover over a section of the venn diagram to see the genes it contains. Areas of agreement indicate strong evidence of direct regulation, and areas of disagreement represent opportunities to improve literature annotation or elucidate condition-specific differences in binding. The specific literature sources are mentioned below each diagram. For <i>E. coli</i>, <a href="https://ecocyc.org/" target="_blank">EcoCyc</a>’s transcriptional regulatory network was used.
             </p>
             <div class="container">
                 <div class ="row">
@@ -348,7 +348,7 @@
                 References
             </h3>
             <p class="text-center" style="font-size:16pt">
-                ChIP-pro manuscript coming soon!
+                proChIPdb manuscript coming soon!
             </p>
             <h4 class="text-center py-3">
                 Methods
@@ -404,7 +404,7 @@
                         </div>
                         <div class="col-sm-9 m-auto">
                             <p class="copyright text-muted small">
-                                ChIP-pro is maintained by the Systems Biology Research Group at the University of
+                                proChIPdb is maintained by the Systems Biology Research Group at the University of
                                 California, San Diego. <br/>
                             </p>
                         </div>
