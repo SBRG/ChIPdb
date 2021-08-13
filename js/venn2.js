@@ -1,5 +1,5 @@
 /**
- * @summary Creates venn diagram for ChIP-pro
+ * @summary Creates venn diagram for proChIPdb
  * @author Katherine Decker
  * requires Papa parse, Highcharts, and Highcharts data module
  */
@@ -105,7 +105,7 @@ function generateVenn2(csvContent, container) {
             }]
         }],
         title: {
-            text: tfName+" ChIP-pro Genes versus Literature Genes"
+            text: tfName+" proChIPdb Genes versus Literature Genes"
         },
         caption: {
             text: "* Literature data from: " + data_source,

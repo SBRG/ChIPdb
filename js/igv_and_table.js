@@ -1,5 +1,5 @@
 /**
- * @summary Creates IGV + interactive table for ChIP-pro
+ * @summary Creates IGV + interactive table for proChIPdb
  * @authors Katherine Decker and Tahani Al Bulushi
  * requires Tabulator and igv.js
  */

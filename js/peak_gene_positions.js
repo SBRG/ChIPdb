@@ -1,5 +1,5 @@
 /**
- * @summary Creates position relative to gene scatterplot for ChIP-pro
+ * @summary Creates position relative to gene scatterplot for proChIPdb
  * @author Katherine Decker
  * requires Highcharts, PapaParse
  */
