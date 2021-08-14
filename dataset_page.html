@@ -226,6 +226,13 @@
                 headerContextMenu: headerMenu
             },
             {
+                title: "TF Category",
+                field: "TF Category",
+                formatter: "textarea",
+                widthGrow: 2,
+                headerContextMenu: headerMenu
+            },
+            {
                 title: "Number of Samples",
                 field: "num_samples",
                 formatter: "textarea",
@@ -255,7 +262,8 @@
             movableColumns: true,
             headerVisible: true,
             initialSort: [
-                {column: "TF", dir: "asc"}
+                {column: "TF", dir: "asc"},
+                {column: "TF Category", dir: "asc"}
             ],
             tooltips: true,
             rowClick: function (e, row) { //link to the page in a database
