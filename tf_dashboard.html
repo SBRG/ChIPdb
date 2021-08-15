@@ -288,7 +288,10 @@
             $('#meta_text').append('<p class="meta_cat">DOI REFERENCE</p>');
             $('#meta_text').append('<p class="meta_val"><a href="' + row[15] + '">' + row[15] + '</a></p>');
         }
-
+        if (row[19]) {
+            $('#meta_text').append('<p class="meta_cat">EXTRA NOTES</p>');
+            $('#meta_text').append('<p class="meta_val">' + row[19] + '</p>');
+        }
 
         // IGV and table
         const [title, fileName] = row[12].split(";")[0].split("|");
