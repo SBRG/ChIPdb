@@ -266,24 +266,36 @@
 
         // out links
         if (organism == 'e_coli') {
-            $.get('/data/e_coli/outlinks/' + TF_name + '_links.csv', function (link_data) {
-                link_table = Papa.parse(link_data, {dynamicTyping: true}).data;
-
-                // to do: make this a loop
-                $('#meta_text').append('<p class="meta_cat">LINKS</p>');
-                $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[0][1] + '" target="_blank">' + link_table[0][0] + '</a></p>');
-                $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[1][1] + '" target="_blank">' + link_table[1][0] + '</a></p>');
-                $('#meta_text').append('<p class="meta_val"><a href="' + link_table[2][1] + '" target="_blank">' + link_table[2][0] + '</a></p>');
-                
-                if (link_table.length > 4) {
-                    $('#meta_text').append('<p class="meta_cat">iMODULONS</p>');
-                    for (let i = 3; i < link_table.length - 1; i++) {
-                        $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[i][1] + '" target="_blank">' + link_table[i][0] + '</a></p>');
-                    }
-                }
-
-            })
+            var link_link = '/data/e_coli/outlinks/' + TF_name + '_links.csv';
+            var db_num = 4
+        } else {
+            var link_link = '/data/all_other/outlinks/' + organism + '_' + TF_name + '_links.csv';
+            var db_num = 4 //may change as addl data is added
         }
+        $.get(link_link, function (link_data) {
+            link_table = Papa.parse(link_data, {dynamicTyping: true, skipEmptyLines: true}).data;
+            console.log(link_table)
+
+            var link_text = '<p class="meta_cat">LINKS</p>';
+            var include_links = false;
+            for (let i = 0; i < db_num; i++) {
+                if (link_table[i][1]) {
+
+                    link_text += '<p class="meta_val mb-0"><a href="' + link_table[i][1] + '" target="_blank">' + link_table[i][0] + '</a></p>';
+                    include_links = true;
+                } 
+            }
+            if (include_links) {
+                $('#meta_text').append(link_text);
+            }
+            if (link_table.length > db_num) {
+                $('#meta_text').append('<p class="meta_cat mt-3">iMODULONS</p>');
+                for (let i = db_num; i < link_table.length; i++) {
+                    $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[i][1] + '" target="_blank">' + link_table[i][0] + '</a></p>');
+                }
+            }
+
+        })
         $('#meta_text').append('<p class="meta_cat">RAW DATA ACCESSION</p>');
         $('#meta_text').append('<p class="meta_val">' + row[14] + '</p>');
         if (row[15]) {
