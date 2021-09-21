@@ -95,11 +95,11 @@
                 <div class="card search-card px-2 py-5 text-center">
                     <h1>Search proChIPdb</h1>
                     <div class="row">
-                        <div class="col-6 text-right">
+                        <div class="col-12 text-center">
                             <input type="checkbox" checked="true" id="tf_checkbox" class="custom-checkbox"><span
-                                class="option"> Transcription Factor Names </span>
+                                class="option"> Transcription Factor Names, Study PMIDs, and Accession Numbers </span>
                         </div>
-                        <div class="col-6 text-left">
+                        <div class="col-12 text-center">
                             <input type="checkbox" checked="true" id="gene_checkbox" class="custom-checkbox"><span
                                 class="option"> Gene Names & Loci </span>
                         </div>
@@ -161,14 +161,28 @@
     const gene_header = `<li class="search-header card">Gene Results</li>`
 
     //result items
-    const tfResultItem = ({TF, Organism, Strain, link}, searchTerm) => {
+    const tfResultItem = ({TF, Organism, Strain, PMID, Accession, link}, searchTerm) => {
         let formatted = ``
 
         if (searchTerm.length > 0) {
             const re = new RegExp(searchTerm, "gi")
-            formatted = `<span class="result-title">${TF}</span>`.replace(re, (match) => `<u><b>${match}</b></u>`) + ` (<i>${Organism}</i> ${Strain})`
+            formatted = `<span class="result-title">${TF}</span>`.replace(re, (match) => `<u><b>${match}</b></u>`) + ` (<i>${Organism}</i> ${Strain}`;
+            if (PMID) {
+                formatted = formatted + ` | PMID: ${PMID}`.replace(re, (match) => `<u><b>${match}</b></u>`)
+            }
+            if (Accession) {
+                formatted = formatted + ` | Accession: ${Accession}`.replace(re, (match) => `<u><b>${match}</b></u>`)
+            }
+            formatted = formatted + `)`
         } else {
-            formatted = `<span class="result-title">${TF}</span> (<i>${Organism}</i> ${Strain})`
+            formatted = `<span class="result-title">${TF}</span> (<i>${Organism}</i> ${Strain}`
+            if (PMID) {
+                formatted = formatted + ` | PMID: ${PMID}`
+            }
+            if (Accession) {
+                formatted = formatted + ` | Accession: ${Accession}`
+            }
+            formatted = formatted + `)`
         }
         
         return `<a class="result-link" href="${link}"><li class="result name-result">${formatted}</li><a>`
@@ -186,6 +200,15 @@
     }
     const noResults = `<li class="no-results"> No results found. To see a list of all available data, empty the input field and click the "Search" button. </li>`
 
+    // this function will allow search by PMID
+    function PMID_match(tf, search_term) {
+        if (tf.PMID) {
+            return tf.PMID.toString().includes(search_term);
+        } else {
+            return false;
+        }
+    }
+
     // search function
     async function search() {
         $('#results').empty()
@@ -196,15 +219,13 @@
 
         // find tfs
         var tf_results = !show_TFs ? [] : tf_list.filter(tf =>
-            (tf.TF.toLowerCase().includes(search_term)))
+            (tf.TF.toLowerCase().includes(search_term) || tf.Accession.toLowerCase().includes(search_term) || PMID_match(tf, search_term)))
         var gene_results = !show_genes ? [] : gene_list.filter(gene =>
             (gene.Gene.toLowerCase().includes(search_term) || gene.Locus.toLowerCase().includes(search_term)))
 
         // items == html formatted results
         var tf_res_items = tf_results.map(result => tfResultItem(result, search_term))
         var gene_res_items = gene_results.map(result => geneResultItem(result, search_term))
-
-        console.log(tf_res_items)
 
         // add headers & no results if applicable
         if (show_TFs) {
