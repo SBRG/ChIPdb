@@ -198,10 +198,11 @@ function generateIGVandTable(TF_name, row, fileName) {
         if (genome == 'NC_000913.3') {
            columns.push({
                 title: "TU Target genes",
-                field: "target_genes",
+                field: "target_genes_html",
                 sorter: "string",
                 hozAlign: "left",
-                headerContextMenu: headerMenu
+                headerContextMenu: headerMenu,
+                formatter: "html"
             })
         }
 
