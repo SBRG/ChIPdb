@@ -187,23 +187,45 @@
         
         return `<a class="result-link" href="${link}"><li class="result name-result">${formatted}</li><a>`
     }
-    const geneResultItem = ({Gene, Locus, Organism, Strain, Binding_site_id, Condition, Peak_start, Peak_end, Peak_strength, link}, searchTerm) => {
+    const geneResultItem = ({Gene, Locus, Synonyms, Organism, Strain, Binding_site_id, Condition, Peak_start, Peak_end, Peak_strength, link}, searchTerm) => {
         let formatted = ``
 
         if (searchTerm.length > 0) {
             const re = new RegExp(searchTerm, "gi")
-            formatted = `<span class="result-title"><i>${Gene}</i> (${Locus}):`.replace(re, (match) => `<u><b>${match}</b></u>`) + ` ${Binding_site_id}</span> | <i>${Organism}</i> ${Strain} | ${Condition} | Peak Strength (S/N): ${Peak_strength}`
+            formatted = `<span class="result-title"><i>${Gene}</i> (${Locus}`;
+
+            // deal with synonyms
+            if (Synonyms) {
+                var syn_list = Synonyms.split(",");
+                for (let i = 0; i < syn_list.length; i++) {
+                    if (syn_list[i].toLowerCase().includes(searchTerm)) {
+                        formatted = formatted + `; ` + syn_list[i];
+                    }
+                }
+            }
+
+            formatted = formatted + `):`;
+            formatted = formatted.replace(re, (match) => `<u><b>${match}</b></u>`);
+            formatted = formatted + ` ${Binding_site_id}</span> | <i>${Organism}</i> ${Strain} | ${Condition} | Peak Strength (S/N): ${Peak_strength}`;
+
         } else {
-            formatted = `<span class="result-title"><i>${Gene}</i> (${Locus}): ${Binding_site_id}</span> | <i>${Organism}</i> ${Strain} | ${Condition} | Peak Strength (S/N): ${Peak_strength}`
+            formatted = `<span class="result-title"><i>${Gene}</i> (${Locus}): ${Binding_site_id}</span> | <i>${Organism}</i> ${Strain} | ${Condition} | Peak Strength (S/N): ${Peak_strength}`;
         }
-        return `<a class="result-link" href="${link}"><li class="result name-result">${formatted}</li><a>`
+        return `<a class="result-link" href="${link}"><li class="result name-result">${formatted}</li><a>`;
     }
-    const noResults = `<li class="no-results"> No results found. To see a list of all available data, empty the input field and click the "Search" button. </li>`
+    const noResults = `<li class="no-results"> No results found. To see a list of all available data, empty the input field and click the "Search" button. </li>`;
 
     // this function will allow search by PMID
     function PMID_match(tf, search_term) {
         if (tf.PMID) {
             return tf.PMID.toString().includes(search_term);
+        } else {
+            return false;
+        }
+    }
+    function syn_match(gene, search_term) {
+        if (gene.Synonyms) {
+            return gene.Synonyms.toLowerCase().includes(search_term);
         } else {
             return false;
         }
@@ -221,7 +243,7 @@
         var tf_results = !show_TFs ? [] : tf_list.filter(tf =>
             (tf.TF.toLowerCase().includes(search_term) || tf.Accession.toLowerCase().includes(search_term) || PMID_match(tf, search_term)))
         var gene_results = !show_genes ? [] : gene_list.filter(gene =>
-            (gene.Gene.toLowerCase().includes(search_term) || gene.Locus.toLowerCase().includes(search_term)))
+            (gene.Gene.toLowerCase().includes(search_term) || gene.Locus.toLowerCase().includes(search_term) || syn_match(gene, search_term)))
 
         // items == html formatted results
         var tf_res_items = tf_results.map(result => tfResultItem(result, search_term))
