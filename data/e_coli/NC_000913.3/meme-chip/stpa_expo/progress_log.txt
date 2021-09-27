@@ -1,0 +1,26 @@
+Invoking:
+  getsize ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/stpa_expo.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.009027
+Invoking:
+  fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/stpa_expo.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.033657
+Invoking:
+  fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/stpa_expo.txt 1> ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.042886
+Invoking:
+  fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.008811
+Invoking:
+  fasta-subsample ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/seqs-centered 600 -rest ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/seqs-discarded -seed 1 1> ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/seqs-sampled
+Finished invoke:
+  name: sample_seqs  status: 0  time: 0.037546
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/stpa_expo.txt ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/background
+Finished invoke:
+  name: bg  status: 0  time: 0.009341
+Invoking:
+  meme ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/seqs-sampled -oc ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/stpa_expo/background -dna -time 4054 -revcomp -nostatus

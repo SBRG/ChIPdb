@@ -1,0 +1,34 @@
+Invoking:
+  getsize ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/vrar_RPMI.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.002459
+Invoking:
+  fasta-most -min 50 < ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/vrar_RPMI.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.032788
+Invoking:
+  fasta-center -dna -len 100 < ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/vrar_RPMI.txt 1> ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.035393
+Invoking:
+  fasta-shuffle-letters ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/seqs-centered ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.001626
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/vrar_RPMI.txt ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/background
+Finished invoke:
+  name: bg  status: 0  time: 0.00261
+Invoking:
+  meme ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/seqs-centered -oc ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 0.603955
+Invoking:
+  dreme -v 1 -oc ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/dreme_out -png -dna -p ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/seqs-centered -n ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/seqs-shuffled -t 5699
+Finished invoke:
+  name: dreme  status: 256  time: 0.025942
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/centrimo_out -bfile ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/background ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/vrar_RPMI.txt ../data/s_aureus/NC_010079/meme-chip/vrar_RPMI/meme_out/meme.xml
+Finished invoke:
+  name: centrimo  status: 256  time: 0.011427
+Writing output
+Done

@@ -1,0 +1,74 @@
+Invoking:
+  getsize ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.00756
+Invoking:
+  fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.034417
+Invoking:
+  fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt 1> ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.038937
+Invoking:
+  fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.00688
+Invoking:
+  fasta-subsample ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/seqs-centered 600 -rest ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/seqs-discarded -seed 1 1> ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/seqs-sampled
+Finished invoke:
+  name: sample_seqs  status: 0  time: 0.037023
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background
+Finished invoke:
+  name: bg  status: 0  time: 0.00752
+Invoking:
+  meme ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/seqs-sampled -oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 626.352204
+Invoking:
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/seqs-shuffled -t 5449
+Finished invoke:
+  name: dreme  status: 256  time: 0.025121
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml
+Finished invoke:
+  name: centrimo  status: 256  time: 0.042187
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/combined.meme ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 0.509739
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml
+Finished invoke:
+  name: spamo1  status: 256  time: 0.108805
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background -primary 2 ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml
+Finished invoke:
+  name: spamo2  status: 256  time: 0.113404
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/spamo_out_3 -bgfile ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background -primary 3 ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml
+Finished invoke:
+  name: spamo3  status: 256  time: 0.111743
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/spamo_out_4 -bgfile ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background -primary 4 ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml
+Finished invoke:
+  name: spamo4  status: 256  time: 0.110925
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt
+Finished invoke:
+  name: fimo1  status: 0  time: 0.139954
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background --motif 2 ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt
+Finished invoke:
+  name: fimo2  status: 0  time: 0.14389
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/fimo_out_3 --bgfile ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background --motif 3 ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt
+Finished invoke:
+  name: fimo3  status: 0  time: 0.154122
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/fimo_out_4 --bgfile ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/background --motif 4 ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/mixed-tfs-pool5_M9+gal/mixed-tfs-pool5_M9+gal.txt
+Finished invoke:
+  name: fimo4  status: 0  time: 0.142874
+Writing output
+Done

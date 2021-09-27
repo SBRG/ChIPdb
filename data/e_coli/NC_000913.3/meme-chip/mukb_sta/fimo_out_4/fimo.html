@@ -1,0 +1,2283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:cis="http://zlab.bu.edu/schema/cisml" xmlns:fimo="http://noble.gs.washington.edu/schema/cisml" xmlns:mem="http://noble.gs.washington.edu/meme">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>FIMO Results</title>
+<style type="text/css">
+td.left {text-align: left;}
+td.right {text-align: right; padding-right: 1cm;}
+</style>
+</head>
+<body bgcolor="#D5F0FF">
+<a name="top_buttons"></a>
+<hr>
+<table summary="buttons" align="left" cellspacing="0">
+<tr>
+<td bgcolor="#00FFFF"><a href="#database_and_motifs"><b>Database and Motifs</b></a></td>
+<td bgcolor="#DDFFDD"><a href="#sec_i"><b>High-scoring Motif Occurences</b></a></td>
+<td bgcolor="#DDDDFF"><a href="#debugging_information"><b>Debugging Information</b></a></td>
+</tr>
+</table>
+<br/>
+<br/>
+<hr/>
+<center><big><b>FIMO - Motif search tool</b></big></center>
+<hr>
+<p>
+FIMO version 4.11.2, (Release date: Thu May 05 14:58:55 2016 -0700)
+</p>
+<p>
+For further information on how to interpret these results
+or to get a copy of the FIMO software please access
+<a href="http://meme.nbcr.net">http://meme.nbcr.net</a></p>
+<p>If you use FIMO in your research, please cite the following paper:<br>
+Charles E. Grant, Timothy L. Bailey, and William Stafford Noble,
+"FIMO: Scanning for occurrences of a given motif",
+<i>Bioinformatics</i>, <b>27</b>(7):1017-1018, 2011.
+<a href="http://bioinformatics.oxfordjournals.org/content/27/7/1017">[full text]</a></p>
+<hr>
+<center><big><b><a name="database_and_motifs">DATABASE AND MOTIFS</a></b></big></center>
+<hr>
+<div style="padding-left: 0.75in; line-height: 1em; font-family: monospace;">
+<p>
+  DATABASE ../data/e_coli/NC_000913.3/meme-chip/mukb_sta/mukb_sta.txt
+  <br />
+  Database contains 1194 sequences, 597000 residues
+</p>
+<p>
+  MOTIFS ../data/e_coli/NC_000913.3/meme-chip/mukb_sta/meme_out/meme.xml (DNA)
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom: 1px dashed;">MOTIF</th>
+        <th style="border-bottom: 1px dashed; padding-left: 1em;">WIDTH</th>
+        <th style="border-bottom: 1px dashed; padding-left: 1em;text-align:left;" >
+         BEST POSSIBLE MATCH
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:right;">1</td>
+        <td style="text-align:right;padding-left: 1em;">37</td>
+        <td style="text-align:left;padding-left: 1em;">ATGCCGGATGCGGCGTGAACGCCTTATCCGGCCTACA</td>
+       </tr>
+      <tr>
+        <td style="text-align:right;">2</td>
+        <td style="text-align:right;padding-left: 1em;">35</td>
+        <td style="text-align:left;padding-left: 1em;">GCAGTGCCGCTTCGCTTTTTCTCAGCGGCGCGGGG</td>
+       </tr>
+      <tr>
+        <td style="text-align:right;">3</td>
+        <td style="text-align:right;padding-left: 1em;">14</td>
+        <td style="text-align:left;padding-left: 1em;">GTGACGGTGTCACG</td>
+       </tr>
+      <tr>
+        <td style="text-align:right;">4</td>
+        <td style="text-align:right;padding-left: 1em;">40</td>
+        <td style="text-align:left;padding-left: 1em;">TGTGCCGTTATTTCTGGTGCAGAAGGTTGGGAAGATATAG</td>
+       </tr>
+    </tbody>
+  </table>
+</p>
+<p>
+Random model letter frequencies (../data/e_coli/NC_000913.3/meme-chip/mukb_sta/background):
+<br/>
+
+A 0.299 C 0.201 G 0.201 T 0.299 </p>
+</div>
+<hr>
+<center><big><b><a name="sec_i">SECTION I: HIGH-SCORING MOTIF OCCURENCES</a></b></big></center>
+<hr>
+<ul>
+<li>
+There were 209 motif occurences with a p-value less than 0.0001.
+
+The full set of motif occurences can be seen in the
+tab-delimited plain text output file
+<a href="fimo.txt">fimo.txt</a>, 
+the GFF file 
+<a href="fimo.gff">fimo.gff</a> 
+which may be suitable for uploading to the 
+<a href="http://genome.ucsc.edu/cgi-bin/hgTables">UCSC Genome Table Browser</a>
+(assuming the FASTA input sequences included genomic coordinates in UCSC or Galaxy format),
+or the XML file 
+<a href="fimo.xml">fimo.xml</a>.
+</li>
+<li>
+The p-value of a motif occurrence is defined as the
+probability of a random sequence of the same length as the motif
+matching that position of the sequence with as good or better a score.
+</li>
+<li>
+The score for the match of a position in a sequence to a motif
+is computed by summing the appropriate entries from each column of
+the position-dependent scoring matrix that represents the motif.
+</li>
+<li>
+The q-value of a motif occurrence is defined as the
+false discovery rate if the occurrence is accepted as significant.
+</li>
+<li>The table is sorted by increasing p-value.</li>
+</ul>
+<table border="1">
+<thead>
+<tr>
+<th>Motif</th>
+<th>Sequence Name</th>
+<th>Strand</th>
+<th>Start</th>
+<th>End</th>
+<th>p-value</th>
+<th>q-value</th>
+<th>Matched Sequence</th>
+</tr>
+</thead>
+<tbody>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak164</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">105</td>
+      <td style="text-align:left;">144</td>
+      <td style="text-align:left;">8.36e-25</td>
+      <td style="text-align:left;">2.3e-19</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCGTTATTTCTGGTGCAGAAGGTTGGGAAGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak807</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">212</td>
+      <td style="text-align:left;">251</td>
+      <td style="text-align:left;">8.36e-25</td>
+      <td style="text-align:left;">2.3e-19</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCGTTATTTCTGGTGCAGAAGGTTGGGAAGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak806</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">236</td>
+      <td style="text-align:left;">275</td>
+      <td style="text-align:left;">8.36e-25</td>
+      <td style="text-align:left;">2.3e-19</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCGTTATTTCTGGTGCAGAAGGTTGGGAAGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak163</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">289</td>
+      <td style="text-align:left;">328</td>
+      <td style="text-align:left;">8.36e-25</td>
+      <td style="text-align:left;">2.3e-19</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCGTTATTTCTGGTGCAGAAGGTTGGGAAGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak168</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">103</td>
+      <td style="text-align:left;">142</td>
+      <td style="text-align:left;">5.9e-24</td>
+      <td style="text-align:left;">9.25e-19</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCGTTATTTCTGGTGCAGAAGGCTGGGAAGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak295</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">208</td>
+      <td style="text-align:left;">247</td>
+      <td style="text-align:left;">5.9e-24</td>
+      <td style="text-align:left;">9.25e-19</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCGTTATTTCTGGTGCAGAAGGCTGGGAAGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak167</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">412</td>
+      <td style="text-align:left;">451</td>
+      <td style="text-align:left;">5.9e-24</td>
+      <td style="text-align:left;">9.25e-19</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCGTTATTTCTGGTGCAGAAGGCTGGGAAGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak165</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">116</td>
+      <td style="text-align:left;">155</td>
+      <td style="text-align:left;">1.62e-20</td>
+      <td style="text-align:left;">2.23e-15</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTGCCGTTATTTCTGGTGCAGAAAGTTGGGAAGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1016</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">239</td>
+      <td style="text-align:left;">278</td>
+      <td style="text-align:left;">3.32e-17</td>
+      <td style="text-align:left;">4.05e-12</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGGAAGGCATTACTCGCCCATACAGTGCGGAAGATGTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak292</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">141</td>
+      <td style="text-align:left;">180</td>
+      <td style="text-align:left;">2.76e-08</td>
+      <td style="text-align:left;">0.00303</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCAGTAATTGCAGGTGCCGATGAGTGGCAGGAAATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak69</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">173</td>
+      <td style="text-align:left;">212</td>
+      <td style="text-align:left;">1.34e-07</td>
+      <td style="text-align:left;">0.0134</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AGAGACGTAATCTCTGGCGCAGCCAGATGTTAATTTATAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak507</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">345</td>
+      <td style="text-align:left;">384</td>
+      <td style="text-align:left;">8.6e-07</td>
+      <td style="text-align:left;">0.0787</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGGCTGTCATCAAAGGCGATACCGGTACGGAAGGTCCAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak893</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">363</td>
+      <td style="text-align:left;">402</td>
+      <td style="text-align:left;">2.34e-06</td>
+      <td style="text-align:left;">0.198</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTCGGCTTCATCACTCCTGACGATGGCTCTAAAGATGTGT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak350</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">423</td>
+      <td style="text-align:left;">462</td>
+      <td style="text-align:left;">3.45e-06</td>
+      <td style="text-align:left;">0.267</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GTTGCCGGTTATTTATGTACCGAAGGTGAGCAAAAAGTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1075</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">424</td>
+      <td style="text-align:left;">463</td>
+      <td style="text-align:left;">3.64e-06</td>
+      <td style="text-align:left;">0.267</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CATGCAGTTATGCATGCTGTTGAAAAAGAGGAAGATACTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak560</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">374</td>
+      <td style="text-align:left;">413</td>
+      <td style="text-align:left;">6.1e-06</td>
+      <td style="text-align:left;">0.377</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGCACCGCTGTTTTCGCGCATGATGCTCGGTAAAAGCAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak189</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">224</td>
+      <td style="text-align:left;">263</td>
+      <td style="text-align:left;">6.3e-06</td>
+      <td style="text-align:left;">0.377</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTGGTTTCATCTGCCCTGAAGGCGGCGGCGAAGATATTT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak188</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">364</td>
+      <td style="text-align:left;">403</td>
+      <td style="text-align:left;">6.3e-06</td>
+      <td style="text-align:left;">0.377</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTGGTTTCATCTGCCCTGAAGGCGGCGGCGAAGATATTT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak745</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">144</td>
+      <td style="text-align:left;">183</td>
+      <td style="text-align:left;">6.53e-06</td>
+      <td style="text-align:left;">0.377</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ATGGCACTGAATGCTGCAACAGAAAGTGCTGCACAAATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak621</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">408</td>
+      <td style="text-align:left;">447</td>
+      <td style="text-align:left;">6.9e-06</td>
+      <td style="text-align:left;">0.379</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATTCAGGCACCATACGCGCTGAACGTTGGTCAGACCTTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak111</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">217</td>
+      <td style="text-align:left;">256</td>
+      <td style="text-align:left;">7.48e-06</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCAAAAGTAAAATCTCGCCCGCAATGTTGTGACGATGACG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak152</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">124</td>
+      <td style="text-align:left;">163</td>
+      <td style="text-align:left;">9.29e-06</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTCGGTTTCATTACTCCGGAAGACGGCAGCAAAGACGTGT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak151</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">452</td>
+      <td style="text-align:left;">491</td>
+      <td style="text-align:left;">9.29e-06</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTCGGTTTCATTACTCCGGAAGACGGCAGCAAAGACGTGT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak440</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">219</td>
+      <td style="text-align:left;">258</td>
+      <td style="text-align:left;">9.7e-06</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CTTCCGTACCTAAATCGCCCAGACGGGTGGAAATATAAGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak285</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">286</td>
+      <td style="text-align:left;">325</td>
+      <td style="text-align:left;">1.02e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCGCTGGTGTTAGGGACGCTGGCAGCTGCCGCGCTGTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1137</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">125</td>
+      <td style="text-align:left;">164</td>
+      <td style="text-align:left;">1.03e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGCAAAAATTACATGTGTATACGATCCTGAAAATGGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1136</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">245</td>
+      <td style="text-align:left;">284</td>
+      <td style="text-align:left;">1.03e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGCAAAAATTACATGTGTATACGATCCTGAAAATGGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak798</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">300</td>
+      <td style="text-align:left;">339</td>
+      <td style="text-align:left;">1.03e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CACGCTTTTATTATTCAGGCGTAAAGTGGCGTAAATGTTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1135</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">384</td>
+      <td style="text-align:left;">423</td>
+      <td style="text-align:left;">1.03e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGCAAAAATTACATGTGTATACGATCCTGAAAATGGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak798</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">81</td>
+      <td style="text-align:left;">120</td>
+      <td style="text-align:left;">1.17e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GGCACAGTTGTTGCTACCACTGAAGCGCCAGAAGATATCG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak797</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">323</td>
+      <td style="text-align:left;">362</td>
+      <td style="text-align:left;">1.17e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GGCACAGTTGTTGCTACCACTGAAGCGCCAGAAGATATCG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak448</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">200</td>
+      <td style="text-align:left;">239</td>
+      <td style="text-align:left;">1.19e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCCGGCGTTGCTGCTGGGACATACGGCGGGGTGGTATCGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak447</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">450</td>
+      <td style="text-align:left;">489</td>
+      <td style="text-align:left;">1.19e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCCGGCGTTGCTGCTGGGACATACGGCGGGGTGGTATCGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak77</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">444</td>
+      <td style="text-align:left;">483</td>
+      <td style="text-align:left;">1.26e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTAACGACATCATTCGCGAAGAGATTAAAGAAGTTGCAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak161</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">166</td>
+      <td style="text-align:left;">205</td>
+      <td style="text-align:left;">1.3e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCGGTGAGTATTATTGGCAAACAGAACTGGGTACATGTAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak160</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">267</td>
+      <td style="text-align:left;">306</td>
+      <td style="text-align:left;">1.3e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCGGTGAGTATTATTGGCAAACAGAACTGGGTACATGTAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak159</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">351</td>
+      <td style="text-align:left;">390</td>
+      <td style="text-align:left;">1.3e-05</td>
+      <td style="text-align:left;">0.386</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCGGTGAGTATTATTGGCAAACAGAACTGGGTACATGTAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak217</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">428</td>
+      <td style="text-align:left;">467</td>
+      <td style="text-align:left;">1.45e-05</td>
+      <td style="text-align:left;">0.414</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGGCCGTTGGTCATCTTTCTGCTGTTTCGGATGATCCGC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak165</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">111</td>
+      <td style="text-align:left;">150</td>
+      <td style="text-align:left;">1.54e-05</td>
+      <td style="text-align:left;">0.414</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCCCAACTTTCTGCACCAGAAATAACGGCAAAAATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1180</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">221</td>
+      <td style="text-align:left;">260</td>
+      <td style="text-align:left;">1.57e-05</td>
+      <td style="text-align:left;">0.414</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GGCACGGGAATATCTGCCGACGAAGATGGAGTAAATGAAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1179</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">268</td>
+      <td style="text-align:left;">307</td>
+      <td style="text-align:left;">1.57e-05</td>
+      <td style="text-align:left;">0.414</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GGCACGGGAATATCTGCCGACGAAGATGGAGTAAATGAAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1137</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">62</td>
+      <td style="text-align:left;">101</td>
+      <td style="text-align:left;">1.66e-05</td>
+      <td style="text-align:left;">0.414</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATGGCGTTGTTGGTGTTGGATACTTTGGCGCTGAATTAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1136</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">182</td>
+      <td style="text-align:left;">221</td>
+      <td style="text-align:left;">1.66e-05</td>
+      <td style="text-align:left;">0.414</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATGGCGTTGTTGGTGTTGGATACTTTGGCGCTGAATTAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1135</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">321</td>
+      <td style="text-align:left;">360</td>
+      <td style="text-align:left;">1.66e-05</td>
+      <td style="text-align:left;">0.414</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATGGCGTTGTTGGTGTTGGATACTTTGGCGCTGAATTAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak869</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">104</td>
+      <td style="text-align:left;">143</td>
+      <td style="text-align:left;">1.82e-05</td>
+      <td style="text-align:left;">0.423</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTTCGGTTGTAAAACGTTCAGAAGCAGCGGTATAAAGTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak868</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">186</td>
+      <td style="text-align:left;">225</td>
+      <td style="text-align:left;">1.82e-05</td>
+      <td style="text-align:left;">0.423</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTTCGGTTGTAAAACGTTCAGAAGCAGCGGTATAAAGTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak867</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">442</td>
+      <td style="text-align:left;">481</td>
+      <td style="text-align:left;">1.82e-05</td>
+      <td style="text-align:left;">0.423</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTTCGGTTGTAAAACGTTCAGAAGCAGCGGTATAAAGTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak701</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">17</td>
+      <td style="text-align:left;">56</td>
+      <td style="text-align:left;">1.9e-05</td>
+      <td style="text-align:left;">0.423</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGACCCCATATTCAGCAACAAATCGGTTGGCAACATATGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak935</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">253</td>
+      <td style="text-align:left;">292</td>
+      <td style="text-align:left;">1.93e-05</td>
+      <td style="text-align:left;">0.423</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AGAATAGTCATTATTAATCCATTAGGTGCAAAAAAAATAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak934</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">453</td>
+      <td style="text-align:left;">492</td>
+      <td style="text-align:left;">1.93e-05</td>
+      <td style="text-align:left;">0.423</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AGAATAGTCATTATTAATCCATTAGGTGCAAAAAAAATAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak697</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">306</td>
+      <td style="text-align:left;">345</td>
+      <td style="text-align:left;">2.07e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AGAGACGGTATTGCTCATGCACAAGCCTTGTTCAGTTAGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak60</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">76</td>
+      <td style="text-align:left;">115</td>
+      <td style="text-align:left;">2.13e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CGGGCAGTTATTCAGGCCGTAAACGATAAACAAAATATCG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak290</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">16</td>
+      <td style="text-align:left;">55</td>
+      <td style="text-align:left;">2.4e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGGCGATTTTTCTGCCAAATGTAGCGATGCATGTATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak89</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">353</td>
+      <td style="text-align:left;">392</td>
+      <td style="text-align:left;">2.44e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GTTGCCGATTCTTATCGTTGGTACGTTGGTGATGTTGTTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak330</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">121</td>
+      <td style="text-align:left;">160</td>
+      <td style="text-align:left;">2.53e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCCGCAGTGACAGAGGATACGCTGGCGAAAATCGAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak773</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">126</td>
+      <td style="text-align:left;">165</td>
+      <td style="text-align:left;">2.53e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGCCCGTTATTTGTTGGGTGAAAAGTGCGGTAATCGATT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak139</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">158</td>
+      <td style="text-align:left;">197</td>
+      <td style="text-align:left;">2.59e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTCCAGGTAATACGCTCTCGTGCAGCTTCCAGAATATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak556</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">140</td>
+      <td style="text-align:left;">179</td>
+      <td style="text-align:left;">2.66e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCGGATGTTTTGTCGGATGCGGCGTGAACGCCTTAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak640</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">166</td>
+      <td style="text-align:left;">205</td>
+      <td style="text-align:left;">2.71e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATGCAATTATATACGGATAGGGAGGTTCTTAACATGGGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak28</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">107</td>
+      <td style="text-align:left;">146</td>
+      <td style="text-align:left;">2.79e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGGATATATTTCTCGCAAGGAAGATTCAGCAGTTAAAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak27</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">175</td>
+      <td style="text-align:left;">214</td>
+      <td style="text-align:left;">2.79e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGGATATATTTCTCGCAAGGAAGATTCAGCAGTTAAAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak26</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">213</td>
+      <td style="text-align:left;">252</td>
+      <td style="text-align:left;">2.79e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGGATATATTTCTCGCAAGGAAGATTCAGCAGTTAAAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak25</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">363</td>
+      <td style="text-align:left;">402</td>
+      <td style="text-align:left;">2.79e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGGATATATTTCTCGCAAGGAAGATTCAGCAGTTAAAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1191</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">26</td>
+      <td style="text-align:left;">65</td>
+      <td style="text-align:left;">2.83e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTGAAAAGTATTTTCGAAGCGGAAGGCTATGATGTTTTCG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1190</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">190</td>
+      <td style="text-align:left;">229</td>
+      <td style="text-align:left;">2.83e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTGAAAAGTATTTTCGAAGCGGAAGGCTATGATGTTTTCG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1189</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">352</td>
+      <td style="text-align:left;">391</td>
+      <td style="text-align:left;">2.83e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTGAAAAGTATTTTCGAAGCGGAAGGCTATGATGTTTTCG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak584</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">196</td>
+      <td style="text-align:left;">235</td>
+      <td style="text-align:left;">2.85e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATATATTTATTGTTTGCCCGGCAGGCGGTAGAGATTGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak583</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">269</td>
+      <td style="text-align:left;">308</td>
+      <td style="text-align:left;">2.85e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATATATTTATTGTTTGCCCGGCAGGCGGTAGAGATTGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak452</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">99</td>
+      <td style="text-align:left;">138</td>
+      <td style="text-align:left;">2.95e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CGTAGCGGAATTTCTTTTGTCGATCGTAGCGAAGTTTTAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak451</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">173</td>
+      <td style="text-align:left;">212</td>
+      <td style="text-align:left;">2.95e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CGTAGCGGAATTTCTTTTGTCGATCGTAGCGAAGTTTTAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1019</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">460</td>
+      <td style="text-align:left;">499</td>
+      <td style="text-align:left;">3e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTCACGGCTTTTATTCTGCCAGCGCAGGCGCAGCGGTAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak136</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">164</td>
+      <td style="text-align:left;">203</td>
+      <td style="text-align:left;">3.09e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TAAGACGGCACTTGCGGCATTGAAAGATCCGAAGCCAACG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak135</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">260</td>
+      <td style="text-align:left;">299</td>
+      <td style="text-align:left;">3.09e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TAAGACGGCACTTGCGGCATTGAAAGATCCGAAGCCAACG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak918</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">77</td>
+      <td style="text-align:left;">116</td>
+      <td style="text-align:left;">3.18e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CTTGCAGTAACTGCACTCGCAGAAATAGAGAAAAAAATAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak917</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">388</td>
+      <td style="text-align:left;">427</td>
+      <td style="text-align:left;">3.18e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CTTGCAGTAACTGCACTCGCAGAAATAGAGAAAAAAATAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak916</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">455</td>
+      <td style="text-align:left;">494</td>
+      <td style="text-align:left;">3.18e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CTTGCAGTAACTGCACTCGCAGAAATAGAGAAAAAAATAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak201</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">282</td>
+      <td style="text-align:left;">321</td>
+      <td style="text-align:left;">3.29e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCGGCACATATTTATGGTGCATCGCTTGCAAATCATTTTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak200</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">367</td>
+      <td style="text-align:left;">406</td>
+      <td style="text-align:left;">3.29e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCGGCACATATTTATGGTGCATCGCTTGCAAATCATTTTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak349</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">361</td>
+      <td style="text-align:left;">400</td>
+      <td style="text-align:left;">3.3e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGAAGTGAAAAATGGCGCACATTGTGCGCCATTTTTTT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak348</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">430</td>
+      <td style="text-align:left;">469</td>
+      <td style="text-align:left;">3.3e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGAAGTGAAAAATGGCGCACATTGTGCGCCATTTTTTT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak778</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">460</td>
+      <td style="text-align:left;">499</td>
+      <td style="text-align:left;">3.5e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CGGCGAGTCGCTCCTGCCACATATGATCGGAAGGATGAGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak447</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">208</td>
+      <td style="text-align:left;">247</td>
+      <td style="text-align:left;">3.63e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTGCACACCCAACTGGCGGCTAATGCTGGGGCGTTAAAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak216</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">459</td>
+      <td style="text-align:left;">498</td>
+      <td style="text-align:left;">3.79e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCAATGTTCTTTGTTACTCGTAGCGCACTGAATATATGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak828</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">183</td>
+      <td style="text-align:left;">222</td>
+      <td style="text-align:left;">3.91e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGCGCGTCTTATCCGACCTACAAAGTTATGAAAATTCGA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak273</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">263</td>
+      <td style="text-align:left;">302</td>
+      <td style="text-align:left;">3.91e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTGCACAGTATTTATGGGGAAAATCCTGCGGCAGAAGAAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak306</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">108</td>
+      <td style="text-align:left;">147</td>
+      <td style="text-align:left;">4e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCCAAAGTCTGTTCACTGGCATTAGCAACGGAAAATATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak305</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">312</td>
+      <td style="text-align:left;">351</td>
+      <td style="text-align:left;">4e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCCAAAGTCTGTTCACTGGCATTAGCAACGGAAAATATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak132</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">357</td>
+      <td style="text-align:left;">396</td>
+      <td style="text-align:left;">4.03e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCGCCGCCAGTACCGGCCCCACCAGCGGACCTGCTCCGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak538</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">43</td>
+      <td style="text-align:left;">4.04e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGGATATAATACCTGGCGCTATTTATAGTGAAGATCGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak537</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">165</td>
+      <td style="text-align:left;">204</td>
+      <td style="text-align:left;">4.04e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGGATATAATACCTGGCGCTATTTATAGTGAAGATCGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak221</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">203</td>
+      <td style="text-align:left;">242</td>
+      <td style="text-align:left;">4.04e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCTGCGATATGTCTTGCGCACAAGCCGTGACAAACCTCG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak305</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">27</td>
+      <td style="text-align:left;">66</td>
+      <td style="text-align:left;">4.11e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GCTGCGGAAATGGCCACCGTCGACGGCTGGGAAGAAGGTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak792</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">90</td>
+      <td style="text-align:left;">129</td>
+      <td style="text-align:left;">4.19e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GCTGAATTTTATCGTCGTCCAGAAGGAGTCGAGATAGTAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1107</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">123</td>
+      <td style="text-align:left;">162</td>
+      <td style="text-align:left;">4.19e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GGTGACGTGTCTTTAGGTTATGCCTTATTGGAGGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1106</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">370</td>
+      <td style="text-align:left;">409</td>
+      <td style="text-align:left;">4.19e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GGTGACGTGTCTTTAGGTTATGCCTTATTGGAGGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak443</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">326</td>
+      <td style="text-align:left;">365</td>
+      <td style="text-align:left;">4.19e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ATTGACATTATTATTACCGATGATGCTGTGTCAGAGGTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak755</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">101</td>
+      <td style="text-align:left;">140</td>
+      <td style="text-align:left;">4.25e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGAGCCGACATCGAGGTGCCAAACACCGCCGTCGATATGA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak147</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">127</td>
+      <td style="text-align:left;">166</td>
+      <td style="text-align:left;">4.28e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGATATTTTCACCCGCGTAAAACGTTCAGAAAATAAAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak146</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">144</td>
+      <td style="text-align:left;">183</td>
+      <td style="text-align:left;">4.28e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGATATTTTCACCCGCGTAAAACGTTCAGAAAATAAAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1044</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">221</td>
+      <td style="text-align:left;">260</td>
+      <td style="text-align:left;">4.31e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTAACAGCAAAACGCCCCGCGACGGTGCGCAGGGCGTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak749</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">234</td>
+      <td style="text-align:left;">273</td>
+      <td style="text-align:left;">4.34e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCAGCAACGCCTGCTGGCGGGGAATTTTGGCAATATATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak748</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">345</td>
+      <td style="text-align:left;">384</td>
+      <td style="text-align:left;">4.34e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCAGCAACGCCTGCTGGCGGGGAATTTTGGCAATATATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak984</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">49</td>
+      <td style="text-align:left;">88</td>
+      <td style="text-align:left;">4.39e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATTCCCGCAGTGCTTGCAATCAAAGCTCGCAAGAAGTTT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak983</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">227</td>
+      <td style="text-align:left;">266</td>
+      <td style="text-align:left;">4.39e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATTCCCGCAGTGCTTGCAATCAAAGCTCGCAAGAAGTTT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak544</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">241</td>
+      <td style="text-align:left;">280</td>
+      <td style="text-align:left;">4.45e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGACACGGGATTATTGCGGTTTACTTTGAGGAATATAAAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak613</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">178</td>
+      <td style="text-align:left;">217</td>
+      <td style="text-align:left;">4.45e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AGTGATGACATTTGTTGTTCATCCAACTGACAAGTTACCA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak612</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">403</td>
+      <td style="text-align:left;">442</td>
+      <td style="text-align:left;">4.45e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AGTGATGACATTTGTTGTTCATCCAACTGACAAGTTACCA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak611</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">435</td>
+      <td style="text-align:left;">474</td>
+      <td style="text-align:left;">4.45e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AGTGATGACATTTGTTGTTCATCCAACTGACAAGTTACCA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak412</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">253</td>
+      <td style="text-align:left;">292</td>
+      <td style="text-align:left;">4.47e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CGTGGCGTGATTTTTTTTTCCGATAATGTGCAAGTTAACG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak411</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">385</td>
+      <td style="text-align:left;">424</td>
+      <td style="text-align:left;">4.47e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CGTGGCGTGATTTTTTTTTCCGATAATGTGCAAGTTAACG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1137</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">134</td>
+      <td style="text-align:left;">173</td>
+      <td style="text-align:left;">4.49e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ATTACATGTGTATACGATCCTGAAAATGGAGAAAATATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1136</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">254</td>
+      <td style="text-align:left;">293</td>
+      <td style="text-align:left;">4.49e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ATTACATGTGTATACGATCCTGAAAATGGAGAAAATATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1135</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">393</td>
+      <td style="text-align:left;">432</td>
+      <td style="text-align:left;">4.49e-05</td>
+      <td style="text-align:left;">0.437</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ATTACATGTGTATACGATCCTGAAAATGGAGAAAATATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak754</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">293</td>
+      <td style="text-align:left;">332</td>
+      <td style="text-align:left;">4.74e-05</td>
+      <td style="text-align:left;">0.457</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ACGCACGATAAAGCGGGGCTAAAAAGCGCGAAAGAACTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak429</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">424</td>
+      <td style="text-align:left;">463</td>
+      <td style="text-align:left;">4.93e-05</td>
+      <td style="text-align:left;">0.462</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GGTTCTGGTTTGTTTGGTGCCGTTTGTGCGAATGAGTTAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak272</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">378</td>
+      <td style="text-align:left;">417</td>
+      <td style="text-align:left;">4.96e-05</td>
+      <td style="text-align:left;">0.462</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGGGGCTAATTAATGATGAAGATGCTCTGAAAGAAATTT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak690</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">192</td>
+      <td style="text-align:left;">231</td>
+      <td style="text-align:left;">4.96e-05</td>
+      <td style="text-align:left;">0.462</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TAAGGGATTATTTATCAGCTATACCGCTGGAAATAAATGA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak689</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">428</td>
+      <td style="text-align:left;">467</td>
+      <td style="text-align:left;">4.96e-05</td>
+      <td style="text-align:left;">0.462</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TAAGGGATTATTTATCAGCTATACCGCTGGAAATAAATGA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak194</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">119</td>
+      <td style="text-align:left;">158</td>
+      <td style="text-align:left;">5.29e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGGAAGATGAATCTCGCCGCCTGCGCGGTAAAGATATCT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak792</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">30</td>
+      <td style="text-align:left;">69</td>
+      <td style="text-align:left;">5.34e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTGCTGGTATCGCTGTTCTTTGCGGCGCTGGTGGAGTAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak996</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">401</td>
+      <td style="text-align:left;">440</td>
+      <td style="text-align:left;">5.34e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGGCCCGACGCTGATGTTCCTGCTGGCTGTGACGTTTTAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak535</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">220</td>
+      <td style="text-align:left;">259</td>
+      <td style="text-align:left;">5.46e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AAAGCAATGGACGCGCTTGCAGAAGGTGAAGTCGATATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak528</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">258</td>
+      <td style="text-align:left;">297</td>
+      <td style="text-align:left;">5.69e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATGCCGCAGTTACTCCAGGAAACGATGGGGTATAATGCG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak4</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">146</td>
+      <td style="text-align:left;">185</td>
+      <td style="text-align:left;">5.77e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATAAACTTAAAACATGCGCAAAAAATCCGGATGAGTTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak20</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">24</td>
+      <td style="text-align:left;">63</td>
+      <td style="text-align:left;">5.94e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATGGCTGCTTCTGGGGCGCAGAACGTCAGGTCGTTGCAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak968</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">20</td>
+      <td style="text-align:left;">59</td>
+      <td style="text-align:left;">5.97e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CAATCAGGTCTTTATCGCGCCAGCGGCGCGGTACTTTTGC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak967</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">125</td>
+      <td style="text-align:left;">164</td>
+      <td style="text-align:left;">5.97e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CAATCAGGTCTTTATCGCGCCAGCGGCGCGGTACTTTTGC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak966</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">299</td>
+      <td style="text-align:left;">338</td>
+      <td style="text-align:left;">5.97e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CAATCAGGTCTTTATCGCGCCAGCGGCGCGGTACTTTTGC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak965</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">323</td>
+      <td style="text-align:left;">362</td>
+      <td style="text-align:left;">5.97e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CAATCAGGTCTTTATCGCGCCAGCGGCGCGGTACTTTTGC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak121</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">16</td>
+      <td style="text-align:left;">55</td>
+      <td style="text-align:left;">6.08e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ATGTTATGCTTTTGCGCCCCAAAAGGTTGTTTAGATGTAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak120</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">92</td>
+      <td style="text-align:left;">131</td>
+      <td style="text-align:left;">6.08e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ATGTTATGCTTTTGCGCCCCAAAAGGTTGTTTAGATGTAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak119</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">389</td>
+      <td style="text-align:left;">428</td>
+      <td style="text-align:left;">6.08e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ATGTTATGCTTTTGCGCCCCAAAAGGTTGTTTAGATGTAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak189</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">187</td>
+      <td style="text-align:left;">226</td>
+      <td style="text-align:left;">6.22e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTTCGCTCATTATTCCACCATTCAGATGGATGGTTACAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak188</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">327</td>
+      <td style="text-align:left;">366</td>
+      <td style="text-align:left;">6.22e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTTCGCTCATTATTCCACCATTCAGATGGATGGTTACAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak187</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">455</td>
+      <td style="text-align:left;">494</td>
+      <td style="text-align:left;">6.22e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTTCGCTCATTATTCCACCATTCAGATGGATGGTTACAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak168</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">98</td>
+      <td style="text-align:left;">137</td>
+      <td style="text-align:left;">6.27e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCCCAGCCTTCTGCACCAGAAATAACGGCACAAATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak164</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">100</td>
+      <td style="text-align:left;">139</td>
+      <td style="text-align:left;">6.27e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCCCAACCTTCTGCACCAGAAATAACGGCACAAATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak295</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">203</td>
+      <td style="text-align:left;">242</td>
+      <td style="text-align:left;">6.27e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCCCAGCCTTCTGCACCAGAAATAACGGCACAAATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak807</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">207</td>
+      <td style="text-align:left;">246</td>
+      <td style="text-align:left;">6.27e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCCCAACCTTCTGCACCAGAAATAACGGCACAAATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak806</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">231</td>
+      <td style="text-align:left;">270</td>
+      <td style="text-align:left;">6.27e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCCCAACCTTCTGCACCAGAAATAACGGCACAAATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak163</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">284</td>
+      <td style="text-align:left;">323</td>
+      <td style="text-align:left;">6.27e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCCCAACCTTCTGCACCAGAAATAACGGCACAAATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak167</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">407</td>
+      <td style="text-align:left;">446</td>
+      <td style="text-align:left;">6.27e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCCCAGCCTTCTGCACCAGAAATAACGGCACAAATAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak608</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">111</td>
+      <td style="text-align:left;">150</td>
+      <td style="text-align:left;">6.34e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCGGGAGTTTCTGGTCCGTCGGCGCGGAAAGTTGTCA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak607</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">256</td>
+      <td style="text-align:left;">295</td>
+      <td style="text-align:left;">6.34e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCGGGAGTTTCTGGTCCGTCGGCGCGGAAAGTTGTCA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak767</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">84</td>
+      <td style="text-align:left;">123</td>
+      <td style="text-align:left;">6.39e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTAGCCGGCGTATTGGATGCAGGCGTATTTGAATTTGAAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak607</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">126</td>
+      <td style="text-align:left;">165</td>
+      <td style="text-align:left;">6.45e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGAAATCATCACCCCCAAAAAACCTGGCGAAGCGATTC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak297</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">10</td>
+      <td style="text-align:left;">49</td>
+      <td style="text-align:left;">6.47e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTACGGGTAGATATCGTAAAAAAAGACGTTCAGATACTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak454</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">7</td>
+      <td style="text-align:left;">46</td>
+      <td style="text-align:left;">6.59e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGATTGCCATCGTGGTGCAGCCGGGTGTGGAATTTGAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak453</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">185</td>
+      <td style="text-align:left;">224</td>
+      <td style="text-align:left;">6.59e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGATTGCCATCGTGGTGCAGCCGGGTGTGGAATTTGAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak550</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">311</td>
+      <td style="text-align:left;">350</td>
+      <td style="text-align:left;">6.62e-05</td>
+      <td style="text-align:left;">0.484</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GTTGCAGTCAGTTTGGACACGAACAGCGCGGAGAAACCGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak202</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">21</td>
+      <td style="text-align:left;">60</td>
+      <td style="text-align:left;">6.93e-05</td>
+      <td style="text-align:left;">0.5</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CGTGACCTGGTTCCTGATACCGATAGCTATCAGGAAATAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak785</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">33</td>
+      <td style="text-align:left;">72</td>
+      <td style="text-align:left;">7.06e-05</td>
+      <td style="text-align:left;">0.5</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCGGCGTTGAATCTTCCAGATGCTTCGGAGGTTTTTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak784</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">235</td>
+      <td style="text-align:left;">274</td>
+      <td style="text-align:left;">7.06e-05</td>
+      <td style="text-align:left;">0.5</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTTCGGCGTTGAATCTTCCAGATGCTTCGGAGGTTTTTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak960</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">219</td>
+      <td style="text-align:left;">258</td>
+      <td style="text-align:left;">7.07e-05</td>
+      <td style="text-align:left;">0.5</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GGCGAAGCTGTTTCTGGATTTGGCGGCATGGAAACTGTCA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak959</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">279</td>
+      <td style="text-align:left;">318</td>
+      <td style="text-align:left;">7.07e-05</td>
+      <td style="text-align:left;">0.5</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GGCGAAGCTGTTTCTGGATTTGGCGGCATGGAAACTGTCA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak705</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">80</td>
+      <td style="text-align:left;">119</td>
+      <td style="text-align:left;">7.11e-05</td>
+      <td style="text-align:left;">0.5</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TAGCCAGGTGTTTGGCGTGCCGCACGGTGAGCTGAGCGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak440</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">270</td>
+      <td style="text-align:left;">309</td>
+      <td style="text-align:left;">7.65e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTAGCATTGATTTCTCTGGCTGTATTCCTGGTTGGTGTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1185</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">61</td>
+      <td style="text-align:left;">100</td>
+      <td style="text-align:left;">7.94e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CCTGCACGGGTGACCCGCCACGAAATTGAGGATGCTAAGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1184</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">95</td>
+      <td style="text-align:left;">134</td>
+      <td style="text-align:left;">7.94e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CCTGCACGGGTGACCCGCCACGAAATTGAGGATGCTAAGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak740</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">57</td>
+      <td style="text-align:left;">96</td>
+      <td style="text-align:left;">7.98e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATTTTATTATTACTGCCAAAAAAAGAAGGGATAAAAAAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak210</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">105</td>
+      <td style="text-align:left;">144</td>
+      <td style="text-align:left;">7.98e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGATGATGTTTTTTCTGAGTATTGTTTTGATGATGAAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak739</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">282</td>
+      <td style="text-align:left;">321</td>
+      <td style="text-align:left;">7.98e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATTTTATTATTACTGCCAAAAAAAGAAGGGATAAAAAAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak209</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">451</td>
+      <td style="text-align:left;">490</td>
+      <td style="text-align:left;">7.98e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGATGATGTTTTTTCTGAGTATTGTTTTGATGATGAAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak732</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">227</td>
+      <td style="text-align:left;">266</td>
+      <td style="text-align:left;">8.02e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ACAGGCGTTATTTTTAGTAAATAATCCCAGGAGATTGTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak731</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">458</td>
+      <td style="text-align:left;">497</td>
+      <td style="text-align:left;">8.02e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ACAGGCGTTATTTTTAGTAAATAATCCCAGGAGATTGTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak197</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">450</td>
+      <td style="text-align:left;">489</td>
+      <td style="text-align:left;">8.03e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GGTGAGATCATTGGTGGCTCCCAGCGTGAAGAACGTCTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak619</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">105</td>
+      <td style="text-align:left;">144</td>
+      <td style="text-align:left;">8.11e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTGAGGGTGCGTCTCACCGATAAAGATGAGACGCGGAAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak220</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">235</td>
+      <td style="text-align:left;">274</td>
+      <td style="text-align:left;">8.11e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTGTCAGTACTTCTGGTGCTTCTATTTTAGAGGCAGCTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak219</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">310</td>
+      <td style="text-align:left;">349</td>
+      <td style="text-align:left;">8.11e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTGTCAGTACTTCTGGTGCTTCTATTTTAGAGGCAGCTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak707</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">34</td>
+      <td style="text-align:left;">73</td>
+      <td style="text-align:left;">8.18e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CTGCCCGTTACATTTGGCAAAAACGATGTAGAAATTATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak706</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">135</td>
+      <td style="text-align:left;">174</td>
+      <td style="text-align:left;">8.18e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CTGCCCGTTACATTTGGCAAAAACGATGTAGAAATTATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak101</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">433</td>
+      <td style="text-align:left;">472</td>
+      <td style="text-align:left;">8.24e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CTGGACAGACTTTCAAGAGAAAAAGTCGGTGAAGCGATTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak76</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">253</td>
+      <td style="text-align:left;">292</td>
+      <td style="text-align:left;">8.41e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CCGGACTTCTTTATTCCGCAAGGAACTCAGGAAGAAATGC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak543</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">43</td>
+      <td style="text-align:left;">8.51e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCGCCGCTATTAGGTGAACATACCGCTGCTGTATTGCAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak288</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">384</td>
+      <td style="text-align:left;">423</td>
+      <td style="text-align:left;">8.57e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GCTCTCCATATTTGTCCTACAGATAATTGCGAATAAATAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak287</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">423</td>
+      <td style="text-align:left;">462</td>
+      <td style="text-align:left;">8.57e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">GCTCTCCATATTTGTCCTACAGATAATTGCGAATAAATAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak586</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">353</td>
+      <td style="text-align:left;">392</td>
+      <td style="text-align:left;">8.61e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCACCTCTATCTAGGCTTGATAAAAATAAGAAGATGAAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak585</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">461</td>
+      <td style="text-align:left;">500</td>
+      <td style="text-align:left;">8.61e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCACCTCTATCTAGGCTTGATAAAAATAAGAAGATGAAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak744</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">252</td>
+      <td style="text-align:left;">291</td>
+      <td style="text-align:left;">8.61e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CATTACATGAATGTTTGCGCTGAAAAATAGGAAAATATAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak743</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">391</td>
+      <td style="text-align:left;">430</td>
+      <td style="text-align:left;">8.61e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CATTACATGAATGTTTGCGCTGAAAAATAGGAAAATATAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak718</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">66</td>
+      <td style="text-align:left;">105</td>
+      <td style="text-align:left;">8.74e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTAACACATATCCCTGGCCCAAAAAGCCGGGGATTTTTTA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak717</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">106</td>
+      <td style="text-align:left;">145</td>
+      <td style="text-align:left;">8.74e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTAACACATATCCCTGGCCCAAAAAGCCGGGGATTTTTTA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak22</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">46</td>
+      <td style="text-align:left;">85</td>
+      <td style="text-align:left;">8.88e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATGCAGGCAGCGGTTGCGGCGAACGTGGGAACAAAAGTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak738</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">252</td>
+      <td style="text-align:left;">291</td>
+      <td style="text-align:left;">8.88e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTCGCAGGTAATGCCGCTGCAACCGATGGTGAAATAGTTT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak866</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">102</td>
+      <td style="text-align:left;">141</td>
+      <td style="text-align:left;">8.91e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TAAACCGTTATAACACTCCCTGTTGGCACGGGAAACTTTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak865</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">194</td>
+      <td style="text-align:left;">233</td>
+      <td style="text-align:left;">8.91e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TAAACCGTTATAACACTCCCTGTTGGCACGGGAAACTTTG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak573</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">69</td>
+      <td style="text-align:left;">108</td>
+      <td style="text-align:left;">9.04e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATTCCGCTATTAATGGCGGAAATAGCAGGATGTTTACAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak101</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">156</td>
+      <td style="text-align:left;">195</td>
+      <td style="text-align:left;">9.1e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCTATGGCTTTTTTCATGGTGACACCTGCTAACGTATGC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak100</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">260</td>
+      <td style="text-align:left;">299</td>
+      <td style="text-align:left;">9.1e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCTATGGCTTTTTTCATGGTGACACCTGCTAACGTATGC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak99</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">338</td>
+      <td style="text-align:left;">377</td>
+      <td style="text-align:left;">9.1e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCTATGGCTTTTTTCATGGTGACACCTGCTAACGTATGC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak455</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">273</td>
+      <td style="text-align:left;">312</td>
+      <td style="text-align:left;">9.21e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATACCGGAATGACACCGGCAGACTTTCGCGAATTTGTTT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak256</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">242</td>
+      <td style="text-align:left;">281</td>
+      <td style="text-align:left;">9.22e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTCTGGGTGGTTGTCGCACTGCTGATTTGGAAAGTGTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak255</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">403</td>
+      <td style="text-align:left;">442</td>
+      <td style="text-align:left;">9.22e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTCTGGGTGGTTGTCGCACTGCTGATTTGGAAAGTGTGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak759</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">309</td>
+      <td style="text-align:left;">348</td>
+      <td style="text-align:left;">9.25e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">ACTGCCAGTGATAAACTGGAGGAAGGTGGGGATGACGTCA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak221</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">159</td>
+      <td style="text-align:left;">198</td>
+      <td style="text-align:left;">9.31e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TTTGCAGTAAAAAATTGTCCACGGAGGTGTGGAGAAAAAA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak285</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">403</td>
+      <td style="text-align:left;">442</td>
+      <td style="text-align:left;">9.38e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTGGCGTTATTAACCGCCTTTAAAACCATCAATCTGGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak931</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">105</td>
+      <td style="text-align:left;">144</td>
+      <td style="text-align:left;">9.59e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGACCGCATTTCTTTTGGTGTAGGAACGGCAACAGGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak930</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">204</td>
+      <td style="text-align:left;">243</td>
+      <td style="text-align:left;">9.59e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGACCGCATTTCTTTTGGTGTAGGAACGGCAACAGGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak929</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">416</td>
+      <td style="text-align:left;">455</td>
+      <td style="text-align:left;">9.59e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGACCGCATTTCTTTTGGTGTAGGAACGGCAACAGGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak928</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">454</td>
+      <td style="text-align:left;">493</td>
+      <td style="text-align:left;">9.59e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">AATGACCGCATTTCTTTTGGTGTAGGAACGGCAACAGGAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1166</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">425</td>
+      <td style="text-align:left;">464</td>
+      <td style="text-align:left;">9.92e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCACTGTTATTTCATGAGCCACGGATTGCGGCGTTGCAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak1165</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">451</td>
+      <td style="text-align:left;">490</td>
+      <td style="text-align:left;">9.92e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGCACTGTTATTTCATGAGCCACGGATTGCGGCGTTGCAG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak840</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">71</td>
+      <td style="text-align:left;">110</td>
+      <td style="text-align:left;">9.93e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATGGTTTTAATATTTGTTGATAAGGATAGTAACATGAAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak270</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">187</td>
+      <td style="text-align:left;">226</td>
+      <td style="text-align:left;">9.93e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCAGCTTTTCATACAGTGGATGCCCTGAAAATAGAT</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak839</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">213</td>
+      <td style="text-align:left;">252</td>
+      <td style="text-align:left;">9.93e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATGGTTTTAATATTTGTTGATAAGGATAGTAACATGAAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak759</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">348</td>
+      <td style="text-align:left;">387</td>
+      <td style="text-align:left;">9.93e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TCTCCTTTGAGTTCCCGGCCGGACCGCTGGCAACAAAGGA</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak838</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">437</td>
+      <td style="text-align:left;">476</td>
+      <td style="text-align:left;">9.93e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TATGGTTTTAATATTTGTTGATAAGGATAGTAACATGAAC</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak447</td>
+      <td style="text-align:center;">-</td>
+      <td style="text-align:left;">195</td>
+      <td style="text-align:left;">234</td>
+      <td style="text-align:left;">9.94e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">CTGGCGGCTAATGCTGGGGCGTTAAAAGCCGGGGGTATGG</td>
+   </tr>
+    <tr>
+      <td style="text-align:left;">4</td>
+      <td style="text-align:left;">peak330</td>
+      <td style="text-align:center;">+</td>
+      <td style="text-align:left;">209</td>
+      <td style="text-align:left;">248</td>
+      <td style="text-align:left;">9.96e-05</td>
+      <td style="text-align:left;">0.523</td>
+      <td style="text-align:left;font-size:x-large;font-family:monospace;">TGTGCCAGTTTTACATCAACGGCTTGTGCGTAGGAAGTGA</td>
+   </tr>
+</tbody>
+</table>
+
+<hr>
+<center><big><b><a name="debugging_information">DEBUGGING INFORMATION</a></b></big></center>
+<hr>
+<p>
+Command line:
+</p>
+<pre>
+/home/katherine/anaconda3/bin/fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/mukb_sta/fimo_out_4 --bgfile ../data/e_coli/NC_000913.3/meme-chip/mukb_sta/background --motif 4 ../data/e_coli/NC_000913.3/meme-chip/mukb_sta/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/mukb_sta/mukb_sta.txt
+</pre>
+<p>
+Settings:
+</p>
+<pre>
+<table>
+  <tr>
+    <td style="padding-right: 2em">output_directory = ../data/e_coli/NC_000913.3/meme-chip/mukb_sta/fimo_out_4</td>
+    <td style="padding-left: 5em; padding-right: 2em">MEME file name = ../data/e_coli/NC_000913.3/meme-chip/mukb_sta/meme_out/meme.xml</td>
+    <td style="padding-left: 5em; padding-right: 2em">sequence file name = ../data/e_coli/NC_000913.3/meme-chip/mukb_sta/mukb_sta.txt</td>
+  </tr>  <tr>
+    <td style="padding-right: 2em">background file name = ../data/e_coli/NC_000913.3/meme-chip/mukb_sta/background</td>
+    <td style="padding-left: 5em; padding-right: 2em">alphabet = DNA</td>
+    <td style="padding-left: 5em; padding-right: 2em">max stored scores = 100000</td>
+  </tr>  <tr>
+    <td style="padding-right: 2em">allow clobber = true</td>
+    <td style="padding-left: 5em; padding-right: 2em">compute q-values = true</td>
+    <td style="padding-left: 5em; padding-right: 2em">parse genomic coord. = true</td>
+  </tr>
+  <tr>
+    <td style="padding-right: 2em">text only = false</td>
+    <td style="padding-left: 5em; padding-right: 2em">scan both strands = true</td>
+    <td style="padding-left: 5em; padding-right: 2em">max strand = false</td>
+  </tr>
+  <tr>
+    <td style="padding-right: 2em">threshold type = p-value</td>
+    <td style="padding-left: 5em; padding-right: 2em">output theshold = 0.0001</td>
+    <td style="padding-left: 5em; padding-right: 2em">pseudocount = 0.1</td>
+  </tr>
+  <tr>
+    <td style="padding-right: 2em">alpha = 1</td>
+    <td style="padding-left: 5em; padding-right: 2em">verbosity = 1</td>
+    <td style="padding-left: 5em; padding-right: 2em"></td>
+  </tr>
+
+</table>
+</pre>
+<p>
+This information can be useful in the event you wish to report a
+problem with the FIMO software.
+</p>
+<hr>
+<span style="background-color: #DDDDFF"><a href="#top_buttons"><b>Go to top</b></a></span>
+</body>
+</html>
