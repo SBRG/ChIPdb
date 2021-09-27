@@ -201,7 +201,6 @@
 <!-- Scripts -->
 
 <!-- Load Outside Libraries -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/venn.js"></script>
@@ -260,9 +259,32 @@
         $('#meta_text').append('<p class="meta_cat">GENOME ID</p>');
         $('#meta_text').append('<p class="meta_val">' + row[6] + '</p>');
         $('#meta_text').append('<p class="meta_cat">MEDIA</p>');
-        $('#meta_text').append('<p class="meta_val">' + row[4] + '</p>');
+        $('#meta_text').append('<p class="meta_val">' + row[4] + '<button class="meta-info-btn" id="media-info" type="button" ><i class="material-icons meta-icons">info</i></button></p>');
         $('#meta_text').append('<p class="meta_cat">SUPPLEMENT</p>');
         $('#meta_text').append('<p class="meta_val">' + row[5] + '</p>');
+
+        // $('#media-info').click(function () {
+        //     $('#popover-target').popover({
+        //         trigger: 'hover',
+        //         title: 'Title',
+        //         content: 'Test Content',
+        //         placement: 'bottom'
+        //     })
+        //         .popover('show');
+        // });
+
+$('#media-info').popover({
+      container: "body",
+      title: "additional media information",
+      html: true,
+      trigger: "hover focus",
+      content: function () {
+        return '<div class="popover-message">Lysogeny Broth or Tryptone Broth {LB: {1% NaCl, 1% tryptone, 0.5% yeast extract}, TB: {1% Tryptone, 0.5% NaCL}}</div>';
+      }
+    });
+
+
+
 
         // out links
         if (organism == 'e_coli') {
@@ -283,7 +305,7 @@
 
                     link_text += '<p class="meta_val mb-0"><a href="' + link_table[i][1] + '" target="_blank">' + link_table[i][0] + '</a></p>';
                     include_links = true;
-                } 
+                }
             }
             if (include_links) {
                 $('#meta_text').append(link_text);
