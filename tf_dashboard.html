@@ -150,7 +150,7 @@
                                         <a id="motif-download-png" class="dropdown-item" download>Download PNG image</a>
                                         <a id="motif-download-svg" class="dropdown-item" download>Download SVG vector
                                             image</a>
-                                        <a id="motif-download-csv" class="dropdown-item" download>Download CSV</a>
+                                        <a id="motif-download-csv" class="dropdown-item" download>Download PWM CSV</a>
                                     </div>
                                 </div>
                                 <!--/Hamburger Dropdown-->
@@ -248,15 +248,15 @@
         $('#meta_text').append('<p class="meta_val">' + row[5] + '</p>');
 
 
-        $('#media-info').popover({
-            container: "body",
-            title: "additional media information",
-            html: true,
-            trigger: "hover focus",
-            content: function () {
-                return '<div class="popover-message">Lysogeny Broth or Tryptone Broth {LB: {1% NaCl, 1% tryptone, 0.5% yeast extract}, TB: {1% Tryptone, 0.5% NaCL}}</div>';
-            }
-        });
+        // $('#media-info').popover({
+        //     container: "body",
+        //     title: "additional media information",
+        //     html: true,
+        //     trigger: "hover focus",
+        //     content: function () {
+        //         return '<div class="popover-message">Lysogeny Broth or Tryptone Broth {LB: {1% NaCl, 1% tryptone, 0.5% yeast extract}, TB: {1% Tryptone, 0.5% NaCL}}</div>';
+        //     }
+        // });
 
 
         // out links
@@ -347,7 +347,6 @@
             const motifImageAndCSVBase = conditionFile.replace("_binding_table.json", "");
             const imageFilePath = '/data/' + organism + '/' + genome + '/meme-chip/outputs/' + `${motifImageAndCSVBase}.png`;
             const csvFilePath = '/data/' + organism + '/' + genome + '/meme-chip/outputs/' + `${motifImageAndCSVBase}.csv`;
-
             const spacelessConditionTitle = conditionTitle.replace(/ /g, "_");
 
             $('#motif_selector_buttons').append(`
@@ -365,7 +364,6 @@
                     document.getElementById("motif-download-csv").href = csvFilePath;
                     document.getElementById("motif-download-csv").classList.remove('d-none');
 
-
                     clearAllActiveMotifButtonFunctions.forEach(clearFunc => clearFunc());
                     document.getElementById(`motif-button-${spacelessConditionTitle}`).classList.add('active');
                 };
@@ -381,14 +379,14 @@
             //     $('#motif_selector_buttons').append(`
             //     <button disabled title="No motif logo found using MEME-ChIP">${conditionTitle}</button>
             // `);
-                $(`#motif-button-${spacelessConditionTitle}`).addClass('disabled');
+                $(`#motif-button-${spacelessConditionTitle}`).addClass('disabled gray-btn');
+                // $(`#motif-button-${spacelessConditionTitle}`).addClass('gray-btn');
                 $(`#motif-button-${spacelessConditionTitle}`).attr('disabled', true);
                 $(`#motif-button-${spacelessConditionTitle}`).attr("title", "No motif logo found using MEME-ChIP");
             });
         });
 
-        // Add literature information, if available
-        // motif
+        // Add literature motif information, if available
         const motifSVG = '/data/' + organism + '/' + genome + '/motifs/images/' + TF_name + '.svg';
         const motifPNG = '/data/' + organism + '/' + genome + '/motifs/images/' + TF_name + '.png';
 
