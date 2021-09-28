@@ -1,0 +1,54 @@
+Invoking:
+  getsize ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/scbr2_SMM.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.006341
+Invoking:
+  fasta-most -min 50 < ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/scbr2_SMM.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.03366
+Invoking:
+  fasta-center -dna -len 100 < ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/scbr2_SMM.txt 1> ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.038285
+Invoking:
+  fasta-shuffle-letters ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/seqs-centered ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.004853
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/scbr2_SMM.txt ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/background
+Finished invoke:
+  name: bg  status: 0  time: 0.005162
+Invoking:
+  meme ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/seqs-centered -oc ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 364.947204
+Invoking:
+  dreme -v 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/dreme_out -png -dna -p ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/seqs-centered -n ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/seqs-shuffled -t 5554
+Finished invoke:
+  name: dreme  status: 256  time: 0.024093
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/centrimo_out -bfile ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/background ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/scbr2_SMM.txt ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/meme_out/meme.xml
+Finished invoke:
+  name: centrimo  status: 256  time: 0.076595
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/combined.meme ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/combined.meme 1> ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 0.013505
+Invoking:
+  spamo -verbosity 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/spamo_out_1 -bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/background -primary 1 ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/scbr2_SMM.txt ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/meme_out/meme.xml
+Finished invoke:
+  name: spamo1  status: 256  time: 0.235622
+Invoking:
+  spamo -verbosity 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/spamo_out_2 -bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/background -primary 2 ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/scbr2_SMM.txt ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/meme_out/meme.xml
+Finished invoke:
+  name: spamo2  status: 256  time: 0.324607
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/fimo_out_1 --bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/background --motif 1 ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/scbr2_SMM.txt
+Finished invoke:
+  name: fimo1  status: 0  time: 0.11951
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/fimo_out_2 --bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/background --motif 2 ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/scbr2_SMM/scbr2_SMM.txt
+Finished invoke:
+  name: fimo2  status: 0  time: 0.116392
+Writing output
+Done

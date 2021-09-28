@@ -1,0 +1,74 @@
+Invoking:
+  getsize ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.010545
+Invoking:
+  fasta-most -min 50 < ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.034225
+Invoking:
+  fasta-center -dna -len 100 < ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt 1> ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.04348
+Invoking:
+  fasta-shuffle-letters ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/seqs-centered ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.008907
+Invoking:
+  fasta-subsample ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/seqs-centered 600 -rest ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/seqs-discarded -seed 1 1> ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/seqs-sampled
+Finished invoke:
+  name: sample_seqs  status: 0  time: 0.039966
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background
+Finished invoke:
+  name: bg  status: 0  time: 0.010108
+Invoking:
+  meme ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/seqs-sampled -oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 627.369217
+Invoking:
+  dreme -v 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/dreme_out -png -dna -p ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/seqs-centered -n ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/seqs-shuffled -t 5448
+Finished invoke:
+  name: dreme  status: 256  time: 0.024284
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/centrimo_out -bfile ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml
+Finished invoke:
+  name: centrimo  status: 256  time: 0.04445
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/combined.meme ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/combined.meme 1> ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 0.421637
+Invoking:
+  spamo -verbosity 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/spamo_out_1 -bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background -primary 1 ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml
+Finished invoke:
+  name: spamo1  status: 256  time: 0.121985
+Invoking:
+  spamo -verbosity 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/spamo_out_2 -bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background -primary 2 ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml
+Finished invoke:
+  name: spamo2  status: 256  time: 0.129582
+Invoking:
+  spamo -verbosity 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/spamo_out_3 -bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background -primary 4 ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml
+Finished invoke:
+  name: spamo3  status: 256  time: 0.123976
+Invoking:
+  spamo -verbosity 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/spamo_out_4 -bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background -primary 3 ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml
+Finished invoke:
+  name: spamo4  status: 256  time: 0.116345
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/fimo_out_1 --bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background --motif 1 ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt
+Finished invoke:
+  name: fimo1  status: 0  time: 0.235276
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/fimo_out_2 --bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background --motif 2 ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt
+Finished invoke:
+  name: fimo2  status: 0  time: 0.184077
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/fimo_out_3 --bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background --motif 4 ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt
+Finished invoke:
+  name: fimo3  status: 0  time: 0.237724
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/fimo_out_4 --bgfile ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/background --motif 3 ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/meme_out/meme.xml ../data/s_coelicolor/NC_003888.3/meme-chip/hrdb_MS/hrdb_MS.txt
+Finished invoke:
+  name: fimo4  status: 0  time: 0.18117
+Writing output
+Done

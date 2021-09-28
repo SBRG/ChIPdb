@@ -1,0 +1,1009 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<pattern-file>../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml</pattern-file>
+<sequence-file>../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="1" name="1">
+<scanned-sequence accession="peak0" name="peak0">
+</scanned-sequence>
+<scanned-sequence accession="peak1" name="peak1">
+</scanned-sequence>
+<scanned-sequence accession="peak2" name="peak2">
+</scanned-sequence>
+<scanned-sequence accession="peak3" name="peak3">
+</scanned-sequence>
+<scanned-sequence accession="peak4" name="peak4">
+</scanned-sequence>
+<scanned-sequence accession="peak5" name="peak5">
+</scanned-sequence>
+<scanned-sequence accession="peak6" name="peak6">
+</scanned-sequence>
+<scanned-sequence accession="peak7" name="peak7">
+</scanned-sequence>
+<scanned-sequence accession="peak8" name="peak8">
+</scanned-sequence>
+<scanned-sequence accession="peak9" name="peak9">
+</scanned-sequence>
+<scanned-sequence accession="peak10" name="peak10">
+</scanned-sequence>
+<scanned-sequence accession="peak11" name="peak11">
+</scanned-sequence>
+<scanned-sequence accession="peak12" name="peak12">
+</scanned-sequence>
+<scanned-sequence accession="peak13" name="peak13">
+</scanned-sequence>
+<scanned-sequence accession="peak14" name="peak14">
+</scanned-sequence>
+<scanned-sequence accession="peak15" name="peak15">
+</scanned-sequence>
+<scanned-sequence accession="peak16" name="peak16">
+</scanned-sequence>
+<scanned-sequence accession="peak17" name="peak17">
+</scanned-sequence>
+<scanned-sequence accession="peak18" name="peak18">
+</scanned-sequence>
+<scanned-sequence accession="peak19" name="peak19">
+</scanned-sequence>
+<scanned-sequence accession="peak20" name="peak20">
+</scanned-sequence>
+<scanned-sequence accession="peak21" name="peak21">
+</scanned-sequence>
+<scanned-sequence accession="peak22" name="peak22">
+</scanned-sequence>
+<scanned-sequence accession="peak23" name="peak23">
+</scanned-sequence>
+<scanned-sequence accession="peak24" name="peak24">
+</scanned-sequence>
+<scanned-sequence accession="peak25" name="peak25">
+</scanned-sequence>
+<scanned-sequence accession="peak26" name="peak26">
+</scanned-sequence>
+<scanned-sequence accession="peak27" name="peak27">
+</scanned-sequence>
+<scanned-sequence accession="peak28" name="peak28">
+</scanned-sequence>
+<scanned-sequence accession="peak29" name="peak29">
+</scanned-sequence>
+<scanned-sequence accession="peak30" name="peak30">
+</scanned-sequence>
+<scanned-sequence accession="peak31" name="peak31">
+</scanned-sequence>
+<scanned-sequence accession="peak32" name="peak32">
+</scanned-sequence>
+<scanned-sequence accession="peak33" name="peak33">
+</scanned-sequence>
+<scanned-sequence accession="peak34" name="peak34">
+</scanned-sequence>
+<scanned-sequence accession="peak35" name="peak35">
+</scanned-sequence>
+<scanned-sequence accession="peak36" name="peak36">
+</scanned-sequence>
+<scanned-sequence accession="peak37" name="peak37">
+</scanned-sequence>
+<scanned-sequence accession="peak38" name="peak38">
+<matched-element start="483" stop="447" score="13.5818" pvalue="8.43e-12">
+<sequence>TGCCGGAGGCGGCCTTAGCACCCTCTCCGGCCAACGG</sequence>
+<mem:qvalue>1.53e-07</mem:qvalue>
+</matched-element>
+<matched-element start="452" stop="488" score="-45.5818" pvalue="1.47e-05">
+<sequence>GGCCGGAGAGGGTGCTAAGGCCGCCTCCGGCAAGGTC</sequence>
+<mem:qvalue>0.104</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak39" name="peak39">
+<matched-element start="210" stop="174" score="-41.8091" pvalue="7.17e-06">
+<sequence>TACCGACTGCGGCCTGAGTTTTTTAAATGGCGGAAAA</sequence>
+<mem:qvalue>0.0562</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak40" name="peak40">
+</scanned-sequence>
+<scanned-sequence accession="peak41" name="peak41">
+</scanned-sequence>
+<scanned-sequence accession="peak42" name="peak42">
+<matched-element start="56" stop="20" score="-39.6273" pvalue="4.69e-06">
+<sequence>TGCCGGAGGCGTAGGCCATTCAATATCTGGCGCACTG</sequence>
+<mem:qvalue>0.0388</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak43" name="peak43">
+</scanned-sequence>
+<scanned-sequence accession="peak44" name="peak44">
+</scanned-sequence>
+<scanned-sequence accession="peak45" name="peak45">
+</scanned-sequence>
+<scanned-sequence accession="peak46" name="peak46">
+</scanned-sequence>
+<scanned-sequence accession="peak47" name="peak47">
+</scanned-sequence>
+<scanned-sequence accession="peak48" name="peak48">
+</scanned-sequence>
+<scanned-sequence accession="peak49" name="peak49">
+</scanned-sequence>
+<scanned-sequence accession="peak50" name="peak50">
+</scanned-sequence>
+<scanned-sequence accession="peak51" name="peak51">
+</scanned-sequence>
+<scanned-sequence accession="peak52" name="peak52">
+</scanned-sequence>
+<scanned-sequence accession="peak53" name="peak53">
+</scanned-sequence>
+<scanned-sequence accession="peak54" name="peak54">
+</scanned-sequence>
+<scanned-sequence accession="peak55" name="peak55">
+</scanned-sequence>
+<scanned-sequence accession="peak56" name="peak56">
+</scanned-sequence>
+<scanned-sequence accession="peak57" name="peak57">
+</scanned-sequence>
+<scanned-sequence accession="peak58" name="peak58">
+</scanned-sequence>
+<scanned-sequence accession="peak59" name="peak59">
+</scanned-sequence>
+<scanned-sequence accession="peak60" name="peak60">
+<matched-element start="65" stop="29" score="-45.1091" pvalue="1.35e-05">
+<sequence>TGGCAGATGCCCCTTTGATGCCTGGTGCGGTTTCAAC</sequence>
+<mem:qvalue>0.0976</mem:qvalue>
+</matched-element>
+<matched-element start="208" stop="172" score="-55.3545" pvalue="8.23e-05">
+<sequence>TTCTGCATGCGGCTGAAGTTAGTCAGCACGCCCCATA</sequence>
+<mem:qvalue>0.351</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak61" name="peak61">
+</scanned-sequence>
+<scanned-sequence accession="peak62" name="peak62">
+</scanned-sequence>
+<scanned-sequence accession="peak63" name="peak63">
+</scanned-sequence>
+<scanned-sequence accession="peak64" name="peak64">
+</scanned-sequence>
+<scanned-sequence accession="peak65" name="peak65">
+</scanned-sequence>
+<scanned-sequence accession="peak66" name="peak66">
+</scanned-sequence>
+<scanned-sequence accession="peak67" name="peak67">
+</scanned-sequence>
+<scanned-sequence accession="peak68" name="peak68">
+</scanned-sequence>
+<scanned-sequence accession="peak69" name="peak69">
+</scanned-sequence>
+<scanned-sequence accession="peak70" name="peak70">
+</scanned-sequence>
+<scanned-sequence accession="peak71" name="peak71">
+</scanned-sequence>
+<scanned-sequence accession="peak72" name="peak72">
+</scanned-sequence>
+<scanned-sequence accession="peak73" name="peak73">
+</scanned-sequence>
+<scanned-sequence accession="peak74" name="peak74">
+</scanned-sequence>
+<scanned-sequence accession="peak75" name="peak75">
+</scanned-sequence>
+<scanned-sequence accession="peak76" name="peak76">
+</scanned-sequence>
+<scanned-sequence accession="peak77" name="peak77">
+</scanned-sequence>
+<scanned-sequence accession="peak78" name="peak78">
+</scanned-sequence>
+<scanned-sequence accession="peak79" name="peak79">
+</scanned-sequence>
+<scanned-sequence accession="peak80" name="peak80">
+</scanned-sequence>
+<scanned-sequence accession="peak81" name="peak81">
+</scanned-sequence>
+<scanned-sequence accession="peak82" name="peak82">
+</scanned-sequence>
+<scanned-sequence accession="peak83" name="peak83">
+<matched-element start="119" stop="155" score="-50.9636" pvalue="3.84e-05">
+<sequence>GGCACGACCGAAGTCCAGCACCTTATTCAGCTTACAA</sequence>
+<mem:qvalue>0.227</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak84" name="peak84">
+</scanned-sequence>
+<scanned-sequence accession="peak85" name="peak85">
+</scanned-sequence>
+<scanned-sequence accession="peak86" name="peak86">
+</scanned-sequence>
+<scanned-sequence accession="peak87" name="peak87">
+</scanned-sequence>
+<scanned-sequence accession="peak88" name="peak88">
+</scanned-sequence>
+<scanned-sequence accession="peak89" name="peak89">
+</scanned-sequence>
+<scanned-sequence accession="peak90" name="peak90">
+</scanned-sequence>
+<scanned-sequence accession="peak91" name="peak91">
+</scanned-sequence>
+<scanned-sequence accession="peak92" name="peak92">
+</scanned-sequence>
+<scanned-sequence accession="peak93" name="peak93">
+</scanned-sequence>
+<scanned-sequence accession="peak94" name="peak94">
+</scanned-sequence>
+<scanned-sequence accession="peak95" name="peak95">
+</scanned-sequence>
+<scanned-sequence accession="peak96" name="peak96">
+</scanned-sequence>
+<scanned-sequence accession="peak97" name="peak97">
+</scanned-sequence>
+<scanned-sequence accession="peak98" name="peak98">
+</scanned-sequence>
+<scanned-sequence accession="peak99" name="peak99">
+<matched-element start="450" stop="486" score="-46.9091" pvalue="1.87e-05">
+<sequence>TTACCGTTAATACGTTAGGGCGTTATCTGACCTGTCA</sequence>
+<mem:qvalue>0.126</mem:qvalue>
+</matched-element>
+<matched-element start="481" stop="445" score="-53.5545" pvalue="6.1e-05">
+<sequence>GGTCAGATAACGCCCTAACGTATTAACGGTAATCCAG</sequence>
+<mem:qvalue>0.296</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak100" name="peak100">
+</scanned-sequence>
+<scanned-sequence accession="peak101" name="peak101">
+<matched-element start="203" stop="239" score="70.7091" pvalue="3.14e-23">
+<sequence>TGCCGGATGCGGCGTAAACGCCTTATCCGGCCTACAA</sequence>
+<mem:qvalue>4.56e-18</mem:qvalue>
+</matched-element>
+<matched-element start="234" stop="198" score="-0.0545455" pvalue="4.47e-10">
+<sequence>GGCCGGATAAGGCGTTTACGCCGCATCCGGCATAAAC</sequence>
+<mem:qvalue>6.81e-06</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak102" name="peak102">
+</scanned-sequence>
+<scanned-sequence accession="peak103" name="peak103">
+</scanned-sequence>
+<scanned-sequence accession="peak104" name="peak104">
+</scanned-sequence>
+<scanned-sequence accession="peak105" name="peak105">
+</scanned-sequence>
+<scanned-sequence accession="peak106" name="peak106">
+</scanned-sequence>
+<scanned-sequence accession="peak107" name="peak107">
+</scanned-sequence>
+<scanned-sequence accession="peak108" name="peak108">
+</scanned-sequence>
+<scanned-sequence accession="peak109" name="peak109">
+</scanned-sequence>
+<scanned-sequence accession="peak110" name="peak110">
+</scanned-sequence>
+<scanned-sequence accession="peak111" name="peak111">
+</scanned-sequence>
+<scanned-sequence accession="peak112" name="peak112">
+</scanned-sequence>
+<scanned-sequence accession="peak113" name="peak113">
+</scanned-sequence>
+<scanned-sequence accession="peak114" name="peak114">
+</scanned-sequence>
+<scanned-sequence accession="peak115" name="peak115">
+</scanned-sequence>
+<scanned-sequence accession="peak116" name="peak116">
+</scanned-sequence>
+<scanned-sequence accession="peak117" name="peak117">
+</scanned-sequence>
+<scanned-sequence accession="peak118" name="peak118">
+</scanned-sequence>
+<scanned-sequence accession="peak119" name="peak119">
+</scanned-sequence>
+<scanned-sequence accession="peak120" name="peak120">
+</scanned-sequence>
+<scanned-sequence accession="peak121" name="peak121">
+</scanned-sequence>
+<scanned-sequence accession="peak122" name="peak122">
+<matched-element start="385" stop="349" score="-56.2091" pvalue="9.47e-05">
+<sequence>GCCAGGAGGCGGAGCAGGCGCGGGCGCAGGCAAATCT</sequence>
+<mem:qvalue>0.392</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak123" name="peak123">
+<matched-element start="210" stop="246" score="58.9909" pvalue="1.26e-19">
+<sequence>TGCCGGATACGGCGTGAACGCGTTATCCGGCTAACAA</sequence>
+<mem:qvalue>3.64e-15</mem:qvalue>
+</matched-element>
+<matched-element start="241" stop="205" score="-0.236364" pvalue="4.7e-10">
+<sequence>AGCCGGATAACGCGTTCACGCCGTATCCGGCATAAAC</sequence>
+<mem:qvalue>6.81e-06</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak124" name="peak124">
+</scanned-sequence>
+<scanned-sequence accession="peak125" name="peak125">
+</scanned-sequence>
+<scanned-sequence accession="peak126" name="peak126">
+</scanned-sequence>
+<scanned-sequence accession="peak127" name="peak127">
+</scanned-sequence>
+<scanned-sequence accession="peak128" name="peak128">
+</scanned-sequence>
+<scanned-sequence accession="peak129" name="peak129">
+</scanned-sequence>
+<scanned-sequence accession="peak130" name="peak130">
+</scanned-sequence>
+<scanned-sequence accession="peak131" name="peak131">
+</scanned-sequence>
+<scanned-sequence accession="peak132" name="peak132">
+<matched-element start="203" stop="239" score="67.7455" pvalue="5.61e-22">
+<sequence>TGCCGGATGCGGCGTAAACGCCTTATCAGGCCTACAA</sequence>
+<mem:qvalue>3.26e-17</mem:qvalue>
+</matched-element>
+<matched-element start="234" stop="198" score="-8.89091" pvalue="4.77e-09">
+<sequence>GGCCTGATAAGGCGTTTACGCCGCATCCGGCATGAAA</sequence>
+<mem:qvalue>5.32e-05</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak133" name="peak133">
+<matched-element start="292" stop="256" score="70.7091" pvalue="3.14e-23">
+<sequence>TGCCGGATGCGGCGTAAACGCCTTATCCGGCCTACAA</sequence>
+<mem:qvalue>4.56e-18</mem:qvalue>
+</matched-element>
+<matched-element start="261" stop="297" score="-1.86364" pvalue="7.6e-10">
+<sequence>GGCCGGATAAGGCGTTTACGCCGCATCCGGCATGAAG</sequence>
+<mem:qvalue>1.05e-05</mem:qvalue>
+</matched-element>
+<matched-element start="145" stop="109" score="-53.6818" pvalue="6.22e-05">
+<sequence>GCCCTGTTGTGCCGTAAACCCCAGCGCCTGCATAAAC</sequence>
+<mem:qvalue>0.296</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak134" name="peak134">
+</scanned-sequence>
+<scanned-sequence accession="peak135" name="peak135">
+<matched-element start="221" stop="185" score="-53.7818" pvalue="6.36e-05">
+<sequence>TTCCGTCTGCGGGTGATGCACCGTCTGACGCTCACCG</sequence>
+<mem:qvalue>0.298</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak136" name="peak136">
+</scanned-sequence>
+<scanned-sequence accession="peak137" name="peak137">
+</scanned-sequence>
+<scanned-sequence accession="peak138" name="peak138">
+</scanned-sequence>
+<scanned-sequence accession="peak139" name="peak139">
+</scanned-sequence>
+<scanned-sequence accession="peak140" name="peak140">
+</scanned-sequence>
+<scanned-sequence accession="peak141" name="peak141">
+</scanned-sequence>
+<scanned-sequence accession="peak142" name="peak142">
+<matched-element start="209" stop="245" score="68.7364" pvalue="2.47e-22">
+<sequence>TGCCGGATGCGGCGTTAACGCCTTATCCGGCCTACAA</sequence>
+<mem:qvalue>1.79e-17</mem:qvalue>
+</matched-element>
+<matched-element start="240" stop="204" score="8.18182" pvalue="4.23e-11">
+<sequence>GGCCGGATAAGGCGTTAACGCCGCATCCGGCATAAAC</sequence>
+<mem:qvalue>7.21e-07</mem:qvalue>
+</matched-element>
+<matched-element start="326" stop="290" score="-53.5545" pvalue="6.1e-05">
+<sequence>TGATGGCAAAGGCAAAAATGCCTGATGCGCTCCGCTT</sequence>
+<mem:qvalue>0.296</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak143" name="peak143">
+</scanned-sequence>
+<scanned-sequence accession="peak144" name="peak144">
+</scanned-sequence>
+<scanned-sequence accession="peak145" name="peak145">
+</scanned-sequence>
+<scanned-sequence accession="peak146" name="peak146">
+<matched-element start="332" stop="368" score="-45.9545" pvalue="1.57e-05">
+<sequence>TGCCGGAAGCCATGGTGACGCGTTTAACGCCAAAACG</sequence>
+<mem:qvalue>0.108</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak147" name="peak147">
+</scanned-sequence>
+<scanned-sequence accession="peak148" name="peak148">
+</scanned-sequence>
+<scanned-sequence accession="peak149" name="peak149">
+</scanned-sequence>
+<scanned-sequence accession="peak150" name="peak150">
+</scanned-sequence>
+<scanned-sequence accession="peak151" name="peak151">
+</scanned-sequence>
+<scanned-sequence accession="peak152" name="peak152">
+</scanned-sequence>
+<scanned-sequence accession="peak153" name="peak153">
+</scanned-sequence>
+<scanned-sequence accession="peak154" name="peak154">
+</scanned-sequence>
+<scanned-sequence accession="peak155" name="peak155">
+</scanned-sequence>
+<scanned-sequence accession="peak156" name="peak156">
+</scanned-sequence>
+<scanned-sequence accession="peak157" name="peak157">
+</scanned-sequence>
+<scanned-sequence accession="peak158" name="peak158">
+</scanned-sequence>
+<scanned-sequence accession="peak159" name="peak159">
+</scanned-sequence>
+<scanned-sequence accession="peak160" name="peak160">
+</scanned-sequence>
+<scanned-sequence accession="peak161" name="peak161">
+</scanned-sequence>
+<scanned-sequence accession="peak162" name="peak162">
+</scanned-sequence>
+<scanned-sequence accession="peak163" name="peak163">
+</scanned-sequence>
+<scanned-sequence accession="peak164" name="peak164">
+</scanned-sequence>
+<scanned-sequence accession="peak165" name="peak165">
+</scanned-sequence>
+<scanned-sequence accession="peak166" name="peak166">
+</scanned-sequence>
+<scanned-sequence accession="peak167" name="peak167">
+</scanned-sequence>
+<scanned-sequence accession="peak168" name="peak168">
+</scanned-sequence>
+<scanned-sequence accession="peak169" name="peak169">
+</scanned-sequence>
+<scanned-sequence accession="peak170" name="peak170">
+</scanned-sequence>
+<scanned-sequence accession="peak171" name="peak171">
+</scanned-sequence>
+<scanned-sequence accession="peak172" name="peak172">
+</scanned-sequence>
+<scanned-sequence accession="peak173" name="peak173">
+</scanned-sequence>
+<scanned-sequence accession="peak174" name="peak174">
+</scanned-sequence>
+<scanned-sequence accession="peak175" name="peak175">
+</scanned-sequence>
+<scanned-sequence accession="peak176" name="peak176">
+</scanned-sequence>
+<scanned-sequence accession="peak177" name="peak177">
+<matched-element start="301" stop="337" score="-41.4727" pvalue="6.73e-06">
+<sequence>CTTCGTATGGGGTATTGGCGCCTCGTCAGGCTTTACA</sequence>
+<mem:qvalue>0.0542</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak178" name="peak178">
+</scanned-sequence>
+<scanned-sequence accession="peak179" name="peak179">
+</scanned-sequence>
+<scanned-sequence accession="peak180" name="peak180">
+</scanned-sequence>
+<scanned-sequence accession="peak181" name="peak181">
+</scanned-sequence>
+<scanned-sequence accession="peak182" name="peak182">
+</scanned-sequence>
+<scanned-sequence accession="peak183" name="peak183">
+</scanned-sequence>
+<scanned-sequence accession="peak184" name="peak184">
+<matched-element start="376" stop="340" score="-53.5909" pvalue="6.18e-05">
+<sequence>GGCTGGCAGCAGGATGAACGGTTGATGCTGGTTATTG</sequence>
+<mem:qvalue>0.296</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak185" name="peak185">
+<matched-element start="28" stop="64" score="-55.8818" pvalue="8.89e-05">
+<sequence>AACGGGTGGTGCCGTCAGCGCCTTAACCCCGCGTGAG</sequence>
+<mem:qvalue>0.374</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak186" name="peak186">
+</scanned-sequence>
+<scanned-sequence accession="peak187" name="peak187">
+</scanned-sequence>
+<scanned-sequence accession="peak188" name="peak188">
+</scanned-sequence>
+<scanned-sequence accession="peak189" name="peak189">
+</scanned-sequence>
+<scanned-sequence accession="peak190" name="peak190">
+</scanned-sequence>
+<scanned-sequence accession="peak191" name="peak191">
+</scanned-sequence>
+<scanned-sequence accession="peak192" name="peak192">
+<matched-element start="359" stop="323" score="-34.0455" pvalue="1.54e-06">
+<sequence>GCGGGCAAACAGCATAAACGCGTTTGCCCGCTTACTG</sequence>
+<mem:qvalue>0.0132</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak193" name="peak193">
+<matched-element start="235" stop="199" score="-44.5273" pvalue="1.19e-05">
+<sequence>TCCCGGCCCCGGCAGAACCGACCTATCGTTCTAACGT</sequence>
+<mem:qvalue>0.0887</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak194" name="peak194">
+</scanned-sequence>
+<scanned-sequence accession="peak195" name="peak195">
+</scanned-sequence>
+<scanned-sequence accession="peak196" name="peak196">
+<matched-element start="380" stop="344" score="-52.8545" pvalue="5.37e-05">
+<sequence>TTATGGCTGTTCCGTTTATGCCACAGCAGGGTAAAAG</sequence>
+<mem:qvalue>0.278</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak197" name="peak197">
+</scanned-sequence>
+<scanned-sequence accession="peak198" name="peak198">
+</scanned-sequence>
+<scanned-sequence accession="peak199" name="peak199">
+</scanned-sequence>
+<scanned-sequence accession="peak200" name="peak200">
+</scanned-sequence>
+<scanned-sequence accession="peak201" name="peak201">
+</scanned-sequence>
+<scanned-sequence accession="peak202" name="peak202">
+<matched-element start="67" stop="103" score="-48.4364" pvalue="2.46e-05">
+<sequence>TGCACGATCAGACTTAAACGCCAACGCTGGAGAAAAA</sequence>
+<mem:qvalue>0.162</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak203" name="peak203">
+<matched-element start="180" stop="216" score="-54.7273" pvalue="7.37e-05">
+<sequence>AGCCTTCCCGGGCGTAAAAGCCCTCTCGGGCGCAGCG</sequence>
+<mem:qvalue>0.329</mem:qvalue>
+</matched-element>
+<matched-element start="203" stop="239" score="-55.2727" pvalue="8.08e-05">
+<sequence>TCTCGGGCGCAGCGTTAAATGTCTATCCGGGCCGCGT</sequence>
+<mem:qvalue>0.35</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak204" name="peak204">
+</scanned-sequence>
+<scanned-sequence accession="peak205" name="peak205">
+</scanned-sequence>
+<scanned-sequence accession="peak206" name="peak206">
+</scanned-sequence>
+<scanned-sequence accession="peak207" name="peak207">
+</scanned-sequence>
+<scanned-sequence accession="peak208" name="peak208">
+</scanned-sequence>
+<scanned-sequence accession="peak209" name="peak209">
+</scanned-sequence>
+<scanned-sequence accession="peak210" name="peak210">
+</scanned-sequence>
+<scanned-sequence accession="peak211" name="peak211">
+</scanned-sequence>
+<scanned-sequence accession="peak212" name="peak212">
+</scanned-sequence>
+<scanned-sequence accession="peak213" name="peak213">
+</scanned-sequence>
+<scanned-sequence accession="peak214" name="peak214">
+</scanned-sequence>
+<scanned-sequence accession="peak215" name="peak215">
+</scanned-sequence>
+<scanned-sequence accession="peak216" name="peak216">
+</scanned-sequence>
+<scanned-sequence accession="peak217" name="peak217">
+</scanned-sequence>
+<scanned-sequence accession="peak218" name="peak218">
+</scanned-sequence>
+<scanned-sequence accession="peak219" name="peak219">
+</scanned-sequence>
+<scanned-sequence accession="peak220" name="peak220">
+</scanned-sequence>
+<scanned-sequence accession="peak221" name="peak221">
+</scanned-sequence>
+<scanned-sequence accession="peak222" name="peak222">
+</scanned-sequence>
+<scanned-sequence accession="peak223" name="peak223">
+</scanned-sequence>
+<scanned-sequence accession="peak224" name="peak224">
+</scanned-sequence>
+<scanned-sequence accession="peak225" name="peak225">
+</scanned-sequence>
+<scanned-sequence accession="peak226" name="peak226">
+</scanned-sequence>
+<scanned-sequence accession="peak227" name="peak227">
+</scanned-sequence>
+<scanned-sequence accession="peak228" name="peak228">
+<matched-element start="406" stop="442" score="-55.1091" pvalue="7.88e-05">
+<sequence>TGGAGTGGGCGAAGTATGCGCAATCGCTGACCGACAA</sequence>
+<mem:qvalue>0.346</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak229" name="peak229">
+</scanned-sequence>
+<scanned-sequence accession="peak230" name="peak230">
+</scanned-sequence>
+<scanned-sequence accession="peak231" name="peak231">
+</scanned-sequence>
+<scanned-sequence accession="peak232" name="peak232">
+</scanned-sequence>
+<scanned-sequence accession="peak233" name="peak233">
+</scanned-sequence>
+<scanned-sequence accession="peak234" name="peak234">
+</scanned-sequence>
+<scanned-sequence accession="peak235" name="peak235">
+</scanned-sequence>
+<scanned-sequence accession="peak236" name="peak236">
+</scanned-sequence>
+<scanned-sequence accession="peak237" name="peak237">
+</scanned-sequence>
+<scanned-sequence accession="peak238" name="peak238">
+</scanned-sequence>
+<scanned-sequence accession="peak239" name="peak239">
+</scanned-sequence>
+<scanned-sequence accession="peak240" name="peak240">
+</scanned-sequence>
+<scanned-sequence accession="peak241" name="peak241">
+</scanned-sequence>
+<scanned-sequence accession="peak242" name="peak242">
+</scanned-sequence>
+<scanned-sequence accession="peak243" name="peak243">
+</scanned-sequence>
+<scanned-sequence accession="peak244" name="peak244">
+</scanned-sequence>
+<scanned-sequence accession="peak245" name="peak245">
+</scanned-sequence>
+<scanned-sequence accession="peak246" name="peak246">
+</scanned-sequence>
+<scanned-sequence accession="peak247" name="peak247">
+<matched-element start="210" stop="246" score="70.4818" pvalue="5.91e-23">
+<sequence>TGCCGGATGCGGCGTGAACGCCTTATCCGGCCTACAA</sequence>
+<mem:qvalue>5.72e-18</mem:qvalue>
+</matched-element>
+<matched-element start="241" stop="205" score="-8.29091" pvalue="4.03e-09">
+<sequence>GGCCGGATAAGGCGTTCACGCCGCATCCGGCATGAAC</sequence>
+<mem:qvalue>4.67e-05</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak248" name="peak248">
+</scanned-sequence>
+<scanned-sequence accession="peak249" name="peak249">
+</scanned-sequence>
+<scanned-sequence accession="peak250" name="peak250">
+<matched-element start="242" stop="206" score="60.6091" pvalue="4.47e-20">
+<sequence>TGCCGGATGCGGCACAAGTGCCTTATCCGGCCTACAG</sequence>
+<mem:qvalue>1.44e-15</mem:qvalue>
+</matched-element>
+<matched-element start="334" stop="298" score="60.6091" pvalue="4.47e-20">
+<sequence>TGCCGGATGCGGCACAAGTGCCTTATCCGGCCTACAG</sequence>
+<mem:qvalue>1.44e-15</mem:qvalue>
+</matched-element>
+<matched-element start="58" stop="22" score="58.0727" pvalue="1.85e-19">
+<sequence>TGCCGGATGCGGCGCGAGCGCCTTATCCGGCCTACGG</sequence>
+<mem:qvalue>4.13e-15</mem:qvalue>
+</matched-element>
+<matched-element start="426" stop="390" score="58.0727" pvalue="1.85e-19">
+<sequence>TGCCGGATGCGGCGCGAGCGCCTTATCCGGCCTACGG</sequence>
+<mem:qvalue>4.13e-15</mem:qvalue>
+</matched-element>
+<matched-element start="150" stop="114" score="57.6455" pvalue="2.69e-19">
+<sequence>TGCCGGATGCGGCACAAGTGCCTTATCAGGCCTACAG</sequence>
+<mem:qvalue>5.57e-15</mem:qvalue>
+</matched-element>
+<matched-element start="27" stop="63" score="2.38182" pvalue="2.28e-10">
+<sequence>GGCCGGATAAGGCGCTCGCGCCGCATCCGGCAATCAA</sequence>
+<mem:qvalue>3.67e-06</mem:qvalue>
+</matched-element>
+<matched-element start="211" stop="247" score="-3.54545" pvalue="1.19e-09">
+<sequence>GGCCGGATAAGGCACTTGTGCCGCATCCGGCAATCAA</sequence>
+<mem:qvalue>1.51e-05</mem:qvalue>
+</matched-element>
+<matched-element start="303" stop="339" score="-3.54545" pvalue="1.19e-09">
+<sequence>GGCCGGATAAGGCACTTGTGCCGCATCCGGCAATCAA</sequence>
+<mem:qvalue>1.51e-05</mem:qvalue>
+</matched-element>
+<matched-element start="119" stop="155" score="-11.9636" pvalue="1.05e-08">
+<sequence>GGCCTGATAAGGCACTTGTGCCGCATCCGGCAATCAA</sequence>
+<mem:qvalue>0.000112</mem:qvalue>
+</matched-element>
+<matched-element start="395" stop="431" score="-27.3545" pvalue="3.76e-07">
+<sequence>GGCCGGATAAGGCGCTCGCGCCGCATCCGGCAGTGTT</sequence>
+<mem:qvalue>0.00341</mem:qvalue>
+</matched-element>
+<matched-element start="66" stop="102" score="-51.9545" pvalue="4.6e-05">
+<sequence>CCTGATGCGACGCTGTCGCGTCTTATCAGGCCTACAA</sequence>
+<mem:qvalue>0.252</mem:qvalue>
+</matched-element>
+<matched-element start="158" stop="194" score="-51.9545" pvalue="4.6e-05">
+<sequence>CCTGATGCGACGCTGTCGCGTCTTATCAGGCCTACAA</sequence>
+<mem:qvalue>0.252</mem:qvalue>
+</matched-element>
+<matched-element start="250" stop="286" score="-51.9545" pvalue="4.6e-05">
+<sequence>CCTGATGCGACGCTGTCGCGTCTTATCAGGCCTACAA</sequence>
+<mem:qvalue>0.252</mem:qvalue>
+</matched-element>
+<matched-element start="342" stop="378" score="-51.9545" pvalue="4.6e-05">
+<sequence>CCTGATGCGACGCTGTCGCGTCTTATCAGGCCTACAA</sequence>
+<mem:qvalue>0.252</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak251" name="peak251">
+<matched-element start="221" stop="257" score="66.3091" pvalue="1.75e-21">
+<sequence>TGCCGGATGCGGCGCGAGCGCCTTATCCGGCCTACAG</sequence>
+<mem:qvalue>8.44e-17</mem:qvalue>
+</matched-element>
+<matched-element start="344" stop="380" score="58.0727" pvalue="1.85e-19">
+<sequence>TGCCGGATGCGGCGCGAGCGCCTTATCCGGCCTACGG</sequence>
+<mem:qvalue>4.13e-15</mem:qvalue>
+</matched-element>
+<matched-element start="252" stop="216" score="-27.3545" pvalue="3.76e-07">
+<sequence>GGCCGGATAAGGCGCTCGCGCCGCATCCGGCACTGTT</sequence>
+<mem:qvalue>0.00341</mem:qvalue>
+</matched-element>
+<matched-element start="375" stop="339" score="-27.3545" pvalue="3.76e-07">
+<sequence>GGCCGGATAAGGCGCTCGCGCCGCATCCGGCACTGTT</sequence>
+<mem:qvalue>0.00341</mem:qvalue>
+</matched-element>
+<matched-element start="498" stop="462" score="-27.3545" pvalue="3.76e-07">
+<sequence>GGCCGGATAAGGCGCTCGCGCCGCATCCGGCGCTGTT</sequence>
+<mem:qvalue>0.00341</mem:qvalue>
+</matched-element>
+<matched-element start="436" stop="400" score="-49.4182" pvalue="2.92e-05">
+<sequence>TCGGATGCGATGCTTGCGCATCTTATCCGACCTACAG</sequence>
+<mem:qvalue>0.181</mem:qvalue>
+</matched-element>
+<matched-element start="27" stop="63" score="-50.7636" pvalue="3.72e-05">
+<sequence>CGTCAAATGCTGCGAAATCGCTTCAGCAAACGAATAA</sequence>
+<mem:qvalue>0.224</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak252" name="peak252">
+</scanned-sequence>
+<scanned-sequence accession="peak253" name="peak253">
+</scanned-sequence>
+<scanned-sequence accession="peak254" name="peak254">
+</scanned-sequence>
+<scanned-sequence accession="peak255" name="peak255">
+</scanned-sequence>
+<scanned-sequence accession="peak256" name="peak256">
+</scanned-sequence>
+<scanned-sequence accession="peak257" name="peak257">
+</scanned-sequence>
+<scanned-sequence accession="peak258" name="peak258">
+</scanned-sequence>
+<scanned-sequence accession="peak259" name="peak259">
+</scanned-sequence>
+<scanned-sequence accession="peak260" name="peak260">
+</scanned-sequence>
+<scanned-sequence accession="peak261" name="peak261">
+</scanned-sequence>
+<scanned-sequence accession="peak262" name="peak262">
+</scanned-sequence>
+<scanned-sequence accession="peak263" name="peak263">
+</scanned-sequence>
+<scanned-sequence accession="peak264" name="peak264">
+</scanned-sequence>
+<scanned-sequence accession="peak265" name="peak265">
+</scanned-sequence>
+<scanned-sequence accession="peak266" name="peak266">
+</scanned-sequence>
+<scanned-sequence accession="peak267" name="peak267">
+</scanned-sequence>
+<scanned-sequence accession="peak268" name="peak268">
+<matched-element start="429" stop="465" score="-54.2818" pvalue="6.83e-05">
+<sequence>TGGCTGATGGGGGAGAAATGAATTTTGATGGCTATCT</sequence>
+<mem:qvalue>0.309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak269" name="peak269">
+<matched-element start="267" stop="303" score="-54.2818" pvalue="6.83e-05">
+<sequence>TGGCTGATGGGGGAGAAATGAATTTTGATGGCTATCT</sequence>
+<mem:qvalue>0.309</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak270" name="peak270">
+</scanned-sequence>
+<scanned-sequence accession="peak271" name="peak271">
+</scanned-sequence>
+<scanned-sequence accession="peak272" name="peak272">
+</scanned-sequence>
+<scanned-sequence accession="peak273" name="peak273">
+<matched-element start="41" stop="5" score="-41.9727" pvalue="7.4e-06">
+<sequence>TGCCGCAGGCGGGAAGCCTGCTTTACCCAACATACCT</sequence>
+<mem:qvalue>0.0564</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak274" name="peak274">
+</scanned-sequence>
+<scanned-sequence accession="peak275" name="peak275">
+</scanned-sequence>
+<scanned-sequence accession="peak276" name="peak276">
+</scanned-sequence>
+<scanned-sequence accession="peak277" name="peak277">
+</scanned-sequence>
+<scanned-sequence accession="peak278" name="peak278">
+</scanned-sequence>
+<scanned-sequence accession="peak279" name="peak279">
+<matched-element start="266" stop="230" score="-49.4545" pvalue="2.94e-05">
+<sequence>TGCAACTGTTGGCGAGAAAGCTGTAACAGGCGTTCAG</sequence>
+<mem:qvalue>0.181</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak280" name="peak280">
+<matched-element start="176" stop="140" score="-49.4545" pvalue="2.94e-05">
+<sequence>TGCAACTGTTGGCGAGAAAGCTGTAACAGGCGTTCAG</sequence>
+<mem:qvalue>0.181</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak281" name="peak281">
+</scanned-sequence>
+<scanned-sequence accession="peak282" name="peak282">
+</scanned-sequence>
+<scanned-sequence accession="peak283" name="peak283">
+</scanned-sequence>
+<scanned-sequence accession="peak284" name="peak284">
+</scanned-sequence>
+<scanned-sequence accession="peak285" name="peak285">
+<matched-element start="323" stop="287" score="-52.3636" pvalue="4.92e-05">
+<sequence>TCCCGCTTGGGTGGTCTGTGCCTTACAGCACTTTCAA</sequence>
+<mem:qvalue>0.264</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak286" name="peak286">
+</scanned-sequence>
+<scanned-sequence accession="peak287" name="peak287">
+</scanned-sequence>
+<scanned-sequence accession="peak288" name="peak288">
+<matched-element start="406" stop="442" score="62.6636" pvalue="1.17e-20">
+<sequence>TGCCGGATGCGGCGTGAACGCCTTATCCGGCCTACAT</sequence>
+<mem:qvalue>4.85e-16</mem:qvalue>
+</matched-element>
+<matched-element start="437" stop="401" score="-8.29091" pvalue="4.03e-09">
+<sequence>GGCCGGATAAGGCGTTCACGCCGCATCCGGCATGAAC</sequence>
+<mem:qvalue>4.67e-05</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak289" name="peak289">
+</scanned-sequence>
+<scanned-sequence accession="peak290" name="peak290">
+</scanned-sequence>
+<scanned-sequence accession="peak291" name="peak291">
+</scanned-sequence>
+<scanned-sequence accession="peak292" name="peak292">
+</scanned-sequence>
+<scanned-sequence accession="peak293" name="peak293">
+<matched-element start="381" stop="417" score="-53.3727" pvalue="5.92e-05">
+<sequence>GTCCAGCTTCGGCGTAACCGGGATCTACGGTTACGAT</sequence>
+<mem:qvalue>0.296</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak294" name="peak294">
+<matched-element start="223" stop="187" score="-52.4455" pvalue="5.01e-05">
+<sequence>TAACGAAAGCGGCGTGAGCCAGCTCACCCGCGAGCGT</sequence>
+<mem:qvalue>0.264</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak295" name="peak295">
+</scanned-sequence>
+<scanned-sequence accession="peak296" name="peak296">
+</scanned-sequence>
+<scanned-sequence accession="peak297" name="peak297">
+<matched-element start="290" stop="326" score="-56.5182" pvalue="9.99e-05">
+<sequence>TTATGGCAGCAAAAGGACTGCGTCATCAGGCCTTAAT</sequence>
+<mem:qvalue>0.397</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak298" name="peak298">
+<matched-element start="210" stop="246" score="-56.5182" pvalue="9.99e-05">
+<sequence>TTATGGCAGCAAAAGGACTGCGTCATCAGGCCTTAAT</sequence>
+<mem:qvalue>0.397</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak299" name="peak299">
+<matched-element start="107" stop="143" score="-56.5182" pvalue="9.99e-05">
+<sequence>TTATGGCAGCAAAAGGACTGCGTCATCAGGCCTTAAT</sequence>
+<mem:qvalue>0.397</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak300" name="peak300">
+<matched-element start="491" stop="455" score="54.2455" pvalue="1.23e-18">
+<sequence>TGCCGGATGCGGCGTGAACGCCTTATCCGACCTACAC</sequence>
+<mem:qvalue>2.37e-14</mem:qvalue>
+</matched-element>
+<matched-element start="460" stop="496" score="-19.4909" pvalue="6.28e-08">
+<sequence>GGTCGGATAAGGCGTTCACGCCGCATCCGGCAATAAC</sequence>
+<mem:qvalue>0.00065</mem:qvalue>
+</matched-element>
+<matched-element start="172" stop="208" score="-28.4273" pvalue="4.74e-07">
+<sequence>TGCCGGACGCGCCCACAGGGCTTCATCCAGCCGGTAA</sequence>
+<mem:qvalue>0.00416</mem:qvalue>
+</matched-element>
+</scanned-sequence>
+<scanned-sequence accession="peak301" name="peak301">
+</scanned-sequence>
+<scanned-sequence accession="peak302" name="peak302">
+</scanned-sequence>
+<scanned-sequence accession="peak303" name="peak303">
+</scanned-sequence>
+<scanned-sequence accession="peak304" name="peak304">
+</scanned-sequence>
+<scanned-sequence accession="peak305" name="peak305">
+</scanned-sequence>
+<scanned-sequence accession="peak306" name="peak306">
+</scanned-sequence>
+<scanned-sequence accession="peak307" name="peak307">
+</scanned-sequence>
+<scanned-sequence accession="peak308" name="peak308">
+</scanned-sequence>
+<scanned-sequence accession="peak309" name="peak309">
+</scanned-sequence>
+<scanned-sequence accession="peak310" name="peak310">
+</scanned-sequence>
+<scanned-sequence accession="peak311" name="peak311">
+</scanned-sequence>
+<scanned-sequence accession="peak312" name="peak312">
+</scanned-sequence>
+<scanned-sequence accession="peak313" name="peak313">
+</scanned-sequence>
+<scanned-sequence accession="peak314" name="peak314">
+</scanned-sequence>
+<scanned-sequence accession="peak315" name="peak315">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>

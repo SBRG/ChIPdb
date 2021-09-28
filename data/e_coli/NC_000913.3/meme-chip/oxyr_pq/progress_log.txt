@@ -1,0 +1,46 @@
+Invoking:
+  getsize ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.002502
+Invoking:
+  fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.031528
+Invoking:
+  fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt 1> ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.035738
+Invoking:
+  fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.001539
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background
+Finished invoke:
+  name: bg  status: 0  time: 0.002349
+Invoking:
+  meme ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 2.270998
+Invoking:
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-shuffled -t 5699
+Finished invoke:
+  name: dreme  status: 256  time: 0.025189
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out/meme.xml
+Finished invoke:
+  name: centrimo  status: 256  time: 0.014003
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/combined.meme ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 0.123199
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out/meme.xml
+Finished invoke:
+  name: spamo1  status: 256  time: 0.048806
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt
+Finished invoke:
+  name: fimo1  status: 0  time: 0.034634
+Writing output
+Done
