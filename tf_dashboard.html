@@ -110,7 +110,7 @@
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link round-tab" id="header-tab-3" data-bs-toggle="tab"
+                                <button class="nav-link round-tab disabled" id="header-tab-3" data-bs-toggle="tab"
                                         data-bs-target="#tab-3" data-toggle="tab" data-target="#tab-3"
                                         type="button" role="tab" aria-controls="tab-3" aria-selected="false">Motif
                                 </button>
@@ -150,6 +150,7 @@
                                         <a id="motif-download-png" class="dropdown-item" download>Download PNG image</a>
                                         <a id="motif-download-svg" class="dropdown-item" download>Download SVG vector
                                             image</a>
+                                        <a id="motif-download-csv" class="dropdown-item" download>Download CSV</a>
                                     </div>
                                 </div>
                                 <!--/Hamburger Dropdown-->
@@ -345,6 +346,7 @@
             const [conditionTitle, conditionFile] = condition.split('|');
             const motifImageAndCSVBase = conditionFile.replace("_binding_table.json", "");
             const imageFilePath = '/data/' + organism + '/' + genome + '/meme-chip/outputs/' + `${motifImageAndCSVBase}.png`;
+            const csvFilePath = '/data/' + organism + '/' + genome + '/meme-chip/outputs/' + `${motifImageAndCSVBase}.csv`;
 
             const spacelessConditionTitle = conditionTitle.replace(/ /g, "_");
 
@@ -352,12 +354,17 @@
                 <button class="btn btn-primary btn-sm" id="motif-button-${spacelessConditionTitle}">${conditionTitle}</button>
             `);
 
-            $.get(imageFilePath, function (data) {
-                // maybe change to file path instead of data later
+            $.get(imageFilePath, function () {
+                // successfully received some sort of data -- remove 'disabled' class to enable the motifs tab.
+                document.getElementById("header-tab-3").classList.remove('disabled');
+
                 const changeImageHandler = function() {
                     document.getElementById("motif_sequence").src = imageFilePath;
                     document.getElementById("motif-download-svg").classList.add('d-none');
                     document.getElementById("motif-download-png").href = imageFilePath;
+                    document.getElementById("motif-download-csv").href = csvFilePath;
+                    document.getElementById("motif-download-csv").classList.remove('d-none');
+
 
                     clearAllActiveMotifButtonFunctions.forEach(clearFunc => clearFunc());
                     document.getElementById(`motif-button-${spacelessConditionTitle}`).classList.add('active');
@@ -393,11 +400,16 @@
 
         $.get(motifSVG)
             .done(function () {
+                // successfully received some sort of data -- remove 'disabled' class to enable the motifs tab.
+                document.getElementById("header-tab-3").classList.remove('disabled');
+
                 const changeImageHandler = function() {
                     document.getElementById("motif_sequence").src = motifSVG;
                     document.getElementById("motif-download-svg").href = motifSVG;
                     document.getElementById("motif-download-svg").classList.remove('d-none');
                     document.getElementById("motif-download-png").href = motifPNG;
+                    document.getElementById("motif-download-csv").classList.add('d-none');
+
 
                     clearAllActiveMotifButtonFunctions.forEach(clearFunc => clearFunc());
                     document.getElementById(`motif-button-lit`).classList.add('active');
@@ -415,10 +427,15 @@
             }).fail(function () {
             $.get(motifPNG)
                 .done(function () {
+                    // successfully received some sort of data -- remove 'disabled' class to enable the motifs tab.
+                    document.getElementById("header-tab-3").classList.remove('disabled');
+
                     const changeImageHandler = function() {
                         document.getElementById("motif_sequence").src = motifPNG;
                         document.getElementById("motif-download-svg").classList.add('d-none');
                         document.getElementById("motif-download-png").href = motifPNG;
+                        document.getElementById("motif-download-csv").classList.add('d-none');
+
 
                         clearAllActiveMotifButtonFunctions.forEach(clearFunc => clearFunc());
                         document.getElementById(`motif-button-lit`).classList.add('active');
@@ -438,9 +455,9 @@
             })
         });
 
-        if (!hasFoundFirstImageToRender) {
-            document.getElementById("header-tab-3").classList.add('disabled');
-        }
+        // if (!hasFoundFirstImageToRender) {
+        //     document.getElementById("header-tab-3").classList.add('disabled');
+        // }
 
         // deal with disabling header tab here
 
