@@ -110,7 +110,7 @@
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link round-tab" id="header-tab-3" data-bs-toggle="tab"
+                                <button class="nav-link round-tab disabled" id="header-tab-3" data-bs-toggle="tab"
                                         data-bs-target="#tab-3" data-toggle="tab" data-target="#tab-3"
                                         type="button" role="tab" aria-controls="tab-3" aria-selected="false">Motif
                                 </button>
@@ -150,6 +150,7 @@
                                         <a id="motif-download-png" class="dropdown-item" download>Download PNG image</a>
                                         <a id="motif-download-svg" class="dropdown-item" download>Download SVG vector
                                             image</a>
+                                        <a id="motif-download-csv" class="dropdown-item" download>Download PWM CSV</a>
                                     </div>
                                 </div>
                                 <!--/Hamburger Dropdown-->
@@ -157,6 +158,7 @@
                                 <div style="height:300px" class="fill">
                                     <img style="max-width:95%; max-height:95%" id="motif_sequence" src=""/>
                                 </div>
+                                <div id="motif_selector_buttons"></div>
                             </div>
 
                             <!-- Position Scatterplot-->
@@ -201,7 +203,6 @@
 <!-- Scripts -->
 
 <!-- Load Outside Libraries -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/venn.js"></script>
@@ -229,24 +230,6 @@
 
     document.title = TF_name;
 
-    // motif
-    const motifSVG = '/data/' + organism + '/' + genome + '/motifs/images/' + TF_name + '.svg';
-    const motifPNG = '/data/' + organism + '/' + genome + '/motifs/images/' + TF_name + '.png';
-    $.get(motifSVG)
-        .done(function () {
-            document.getElementById("motif_sequence").src = motifSVG;
-            document.getElementById("motif-download-svg").href = motifSVG;
-        }).fail(function () {
-        $.get(motifPNG)
-            .done(function () {
-                document.getElementById("motif_sequence").src = motifPNG;
-                document.getElementById("motif-download-svg").remove();
-            }).fail(function () {
-            document.getElementById("header-tab-3").classList.add('disabled')
-        })
-    })
-    document.getElementById("motif-download-png").href = motifPNG;
-
 
     $.get('/data/' + organism + '/TF_list.csv', function (file_data) {
         var data = Papa.parse(file_data, {dynamicTyping: true}).data;
@@ -260,9 +243,21 @@
         $('#meta_text').append('<p class="meta_cat">GENOME ID</p>');
         $('#meta_text').append('<p class="meta_val">' + row[6] + '</p>');
         $('#meta_text').append('<p class="meta_cat">MEDIA</p>');
-        $('#meta_text').append('<p class="meta_val">' + row[4] + '</p>');
+        $('#meta_text').append('<p class="meta_val">' + row[4] + '<button class="meta-info-btn" id="media-info" type="button" ><i class="material-icons meta-icons">info</i></button></p>');
         $('#meta_text').append('<p class="meta_cat">SUPPLEMENT</p>');
         $('#meta_text').append('<p class="meta_val">' + row[5] + '</p>');
+
+
+        // $('#media-info').popover({
+        //     container: "body",
+        //     title: "additional media information",
+        //     html: true,
+        //     trigger: "hover focus",
+        //     content: function () {
+        //         return '<div class="popover-message">Lysogeny Broth or Tryptone Broth {LB: {1% NaCl, 1% tryptone, 0.5% yeast extract}, TB: {1% Tryptone, 0.5% NaCL}}</div>';
+        //     }
+        // });
+
 
         // out links
         if (organism == 'e_coli') {
@@ -283,7 +278,7 @@
 
                     link_text += '<p class="meta_val mb-0"><a href="' + link_table[i][1] + '" target="_blank">' + link_table[i][0] + '</a></p>';
                     include_links = true;
-                } 
+                }
             }
             if (include_links) {
                 $('#meta_text').append(link_text);
@@ -342,6 +337,127 @@
                 generateIGVandTable(TF_name, row, conditionFile);
             });
         });
+
+        // Loop through it all again and create buttons to choose the motif graphic
+        let hasFoundFirstImageToRender = false;
+        const clearAllActiveMotifButtonFunctions = [];
+
+        conditions.forEach((condition, i) => {
+            const [conditionTitle, conditionFile] = condition.split('|');
+            const motifImageAndCSVBase = conditionFile.replace("_binding_table.json", "");
+            const imageFilePath = '/data/' + organism + '/' + genome + '/meme-chip/outputs/' + `${motifImageAndCSVBase}.png`;
+            const csvFilePath = '/data/' + organism + '/' + genome + '/meme-chip/outputs/' + `${motifImageAndCSVBase}.csv`;
+            const spacelessConditionTitle = conditionTitle.replace(/ /g, "_");
+
+            $('#motif_selector_buttons').append(`
+                <button class="btn btn-primary btn-sm" id="motif-button-${spacelessConditionTitle}">${conditionTitle}</button>
+            `);
+
+            $.get(imageFilePath, function () {
+                // successfully received some sort of data -- remove 'disabled' class to enable the motifs tab.
+                document.getElementById("header-tab-3").classList.remove('disabled');
+
+                const changeImageHandler = function() {
+                    document.getElementById("motif_sequence").src = imageFilePath;
+                    document.getElementById("motif-download-svg").classList.add('d-none');
+                    document.getElementById("motif-download-png").href = imageFilePath;
+                    document.getElementById("motif-download-csv").href = csvFilePath;
+                    document.getElementById("motif-download-csv").classList.remove('d-none');
+
+                    clearAllActiveMotifButtonFunctions.forEach(clearFunc => clearFunc());
+                    document.getElementById(`motif-button-${spacelessConditionTitle}`).classList.add('active');
+                };
+
+                clearAllActiveMotifButtonFunctions.push(() => document.getElementById(`motif-button-${spacelessConditionTitle}`).classList.remove('active'));
+                $(`#motif-button-${spacelessConditionTitle}`).click(changeImageHandler);
+
+                if (!hasFoundFirstImageToRender) {
+                    changeImageHandler();
+                    hasFoundFirstImageToRender = true;
+                }
+            }).catch(() => {
+            //     $('#motif_selector_buttons').append(`
+            //     <button disabled title="No motif logo found using MEME-ChIP">${conditionTitle}</button>
+            // `);
+                $(`#motif-button-${spacelessConditionTitle}`).addClass('disabled gray-btn');
+                // $(`#motif-button-${spacelessConditionTitle}`).addClass('gray-btn');
+                $(`#motif-button-${spacelessConditionTitle}`).attr('disabled', true);
+                $(`#motif-button-${spacelessConditionTitle}`).attr("title", "No motif logo found using MEME-ChIP");
+            });
+        });
+
+        // Add literature motif information, if available
+        const motifSVG = '/data/' + organism + '/' + genome + '/motifs/images/' + TF_name + '.svg';
+        const motifPNG = '/data/' + organism + '/' + genome + '/motifs/images/' + TF_name + '.png';
+
+        $('#motif_selector_buttons').append(`
+            <button class="btn btn-primary btn-sm" id="motif-button-lit">Literature</button>
+        `);
+        clearAllActiveMotifButtonFunctions.push(() => document.getElementById(`motif-button-lit`).classList.remove('active'));
+
+
+        $.get(motifSVG)
+            .done(function () {
+                // successfully received some sort of data -- remove 'disabled' class to enable the motifs tab.
+                document.getElementById("header-tab-3").classList.remove('disabled');
+
+                const changeImageHandler = function() {
+                    document.getElementById("motif_sequence").src = motifSVG;
+                    document.getElementById("motif-download-svg").href = motifSVG;
+                    document.getElementById("motif-download-svg").classList.remove('d-none');
+                    document.getElementById("motif-download-png").href = motifPNG;
+                    document.getElementById("motif-download-csv").classList.add('d-none');
+
+
+                    clearAllActiveMotifButtonFunctions.forEach(clearFunc => clearFunc());
+                    document.getElementById(`motif-button-lit`).classList.add('active');
+                };
+
+                $('#motif-button-lit').click(changeImageHandler);
+
+                if (!hasFoundFirstImageToRender) {
+                    changeImageHandler();
+                    hasFoundFirstImageToRender = true;
+                }
+
+                // document.getElementById("motif_sequence").src = motifSVG;
+                // document.getElementById("motif-download-svg").href = motifSVG;
+            }).fail(function () {
+            $.get(motifPNG)
+                .done(function () {
+                    // successfully received some sort of data -- remove 'disabled' class to enable the motifs tab.
+                    document.getElementById("header-tab-3").classList.remove('disabled');
+
+                    const changeImageHandler = function() {
+                        document.getElementById("motif_sequence").src = motifPNG;
+                        document.getElementById("motif-download-svg").classList.add('d-none');
+                        document.getElementById("motif-download-png").href = motifPNG;
+                        document.getElementById("motif-download-csv").classList.add('d-none');
+
+
+                        clearAllActiveMotifButtonFunctions.forEach(clearFunc => clearFunc());
+                        document.getElementById(`motif-button-lit`).classList.add('active');
+                    };
+
+                    $('#motif-button-lit').click(changeImageHandler);
+
+                    if (!hasFoundFirstImageToRender) {
+                    changeImageHandler();
+                    hasFoundFirstImageToRender = true;
+                }
+                    // document.getElementById("motif_sequence").src = motifPNG;
+                    // document.getElementById("motif-download-svg").remove();
+                }).fail(function () {
+                // document.getElementById("header-tab-3").classList.add('disabled')
+                document.getElementById("motif-button-lit").classList.add('disabled')
+            })
+        });
+
+        // if (!hasFoundFirstImageToRender) {
+        //     document.getElementById("header-tab-3").classList.add('disabled');
+        // }
+
+        // deal with disabling header tab here
 
         // Venn
         $.get('/data/' + organism + '/' + genome + '/venn/' + TF_name.substr(0, 4) + '_venn.csv', function (data) {

@@ -1,0 +1,34 @@
+Invoking:
+  getsize ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/argr_arginine.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.00269
+Invoking:
+  fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/argr_arginine.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.030765
+Invoking:
+  fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/argr_arginine.txt 1> ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.035924
+Invoking:
+  fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.002201
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/argr_arginine.txt ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/background
+Finished invoke:
+  name: bg  status: 0  time: 0.001616
+Invoking:
+  meme ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 9.810576
+Invoking:
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/seqs-shuffled -t 5696
+Finished invoke:
+  name: dreme  status: 256  time: 0.02406
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/background ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/argr_arginine.txt ../data/e_coli/NC_000913.3/meme-chip/argr_arginine/meme_out/meme.xml
+Finished invoke:
+  name: centrimo  status: 256  time: 0.015389
+Writing output
+Done

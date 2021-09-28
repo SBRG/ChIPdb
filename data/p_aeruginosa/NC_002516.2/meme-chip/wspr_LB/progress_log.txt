@@ -1,0 +1,30 @@
+Invoking:
+  getsize ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/wspr_LB.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.002586
+Invoking:
+  fasta-most -min 50 < ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/wspr_LB.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.031631
+Invoking:
+  fasta-center -dna -len 100 < ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/wspr_LB.txt 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.031546
+Invoking:
+  fasta-shuffle-letters ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-centered ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.002201
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/wspr_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/background
+Finished invoke:
+  name: bg  status: 0  time: 0.002267
+Invoking:
+  meme ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 256  time: 0.002645
+Invoking:
+  dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-shuffled -t 5700
+Finished invoke:
+  name: dreme  status: 256  time: 0.022598
+Writing output
+Done

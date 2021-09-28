@@ -1,0 +1,46 @@
+Invoking:
+  getsize ../data/s_aureus/CP035369.1/meme-chip/cody_M9/cody_M9.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.004074
+Invoking:
+  fasta-most -min 50 < ../data/s_aureus/CP035369.1/meme-chip/cody_M9/cody_M9.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.031254
+Invoking:
+  fasta-center -dna -len 100 < ../data/s_aureus/CP035369.1/meme-chip/cody_M9/cody_M9.txt 1> ../data/s_aureus/CP035369.1/meme-chip/cody_M9/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.035171
+Invoking:
+  fasta-shuffle-letters ../data/s_aureus/CP035369.1/meme-chip/cody_M9/seqs-centered ../data/s_aureus/CP035369.1/meme-chip/cody_M9/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.003233
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_aureus/CP035369.1/meme-chip/cody_M9/cody_M9.txt ../data/s_aureus/CP035369.1/meme-chip/cody_M9/background
+Finished invoke:
+  name: bg  status: 0  time: 0.003331
+Invoking:
+  meme ../data/s_aureus/CP035369.1/meme-chip/cody_M9/seqs-centered -oc ../data/s_aureus/CP035369.1/meme-chip/cody_M9/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_aureus/CP035369.1/meme-chip/cody_M9/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 121.640662
+Invoking:
+  dreme -v 1 -oc ../data/s_aureus/CP035369.1/meme-chip/cody_M9/dreme_out -png -dna -p ../data/s_aureus/CP035369.1/meme-chip/cody_M9/seqs-centered -n ../data/s_aureus/CP035369.1/meme-chip/cody_M9/seqs-shuffled -t 5651
+Finished invoke:
+  name: dreme  status: 256  time: 0.021826
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc ../data/s_aureus/CP035369.1/meme-chip/cody_M9/centrimo_out -bfile ../data/s_aureus/CP035369.1/meme-chip/cody_M9/background ../data/s_aureus/CP035369.1/meme-chip/cody_M9/cody_M9.txt ../data/s_aureus/CP035369.1/meme-chip/cody_M9/meme_out/meme.xml
+Finished invoke:
+  name: centrimo  status: 256  time: 0.034366
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 ../data/s_aureus/CP035369.1/meme-chip/cody_M9/combined.meme ../data/s_aureus/CP035369.1/meme-chip/cody_M9/combined.meme 1> ../data/s_aureus/CP035369.1/meme-chip/cody_M9/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 0.021633
+Invoking:
+  spamo -verbosity 1 -oc ../data/s_aureus/CP035369.1/meme-chip/cody_M9/spamo_out_1 -bgfile ../data/s_aureus/CP035369.1/meme-chip/cody_M9/background -primary 1 ../data/s_aureus/CP035369.1/meme-chip/cody_M9/cody_M9.txt ../data/s_aureus/CP035369.1/meme-chip/cody_M9/meme_out/meme.xml ../data/s_aureus/CP035369.1/meme-chip/cody_M9/meme_out/meme.xml
+Finished invoke:
+  name: spamo1  status: 256  time: 0.077776
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_aureus/CP035369.1/meme-chip/cody_M9/fimo_out_1 --bgfile ../data/s_aureus/CP035369.1/meme-chip/cody_M9/background --motif 1 ../data/s_aureus/CP035369.1/meme-chip/cody_M9/meme_out/meme.xml ../data/s_aureus/CP035369.1/meme-chip/cody_M9/cody_M9.txt
+Finished invoke:
+  name: fimo1  status: 0  time: 0.067401
+Writing output
+Done

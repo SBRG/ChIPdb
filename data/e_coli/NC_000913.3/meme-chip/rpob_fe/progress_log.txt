@@ -1,0 +1,74 @@
+Invoking:
+  getsize ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.013694
+Invoking:
+  fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.0349
+Invoking:
+  fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt 1> ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.046052
+Invoking:
+  fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.011525
+Invoking:
+  fasta-subsample ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/seqs-centered 600 -rest ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/seqs-discarded -seed 1 1> ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/seqs-sampled
+Finished invoke:
+  name: sample_seqs  status: 0  time: 0.040599
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background
+Finished invoke:
+  name: bg  status: 0  time: 0.013661
+Invoking:
+  meme ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/seqs-sampled -oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 626.525488
+Invoking:
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/seqs-shuffled -t 5449
+Finished invoke:
+  name: dreme  status: 256  time: 0.023259
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml
+Finished invoke:
+  name: centrimo  status: 256  time: 0.0396919999999999
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/combined.meme ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 1.107775
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml
+Finished invoke:
+  name: spamo1  status: 256  time: 0.12983
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background -primary 3 ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml
+Finished invoke:
+  name: spamo2  status: 256  time: 0.139237
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/spamo_out_3 -bgfile ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background -primary 2 ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml
+Finished invoke:
+  name: spamo3  status: 256  time: 0.14029
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/spamo_out_4 -bgfile ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background -primary 4 ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml
+Finished invoke:
+  name: spamo4  status: 256  time: 0.134334
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt
+Finished invoke:
+  name: fimo1  status: 0  time: 0.268833
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background --motif 3 ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt
+Finished invoke:
+  name: fimo2  status: 0  time: 0.278853
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/fimo_out_3 --bgfile ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background --motif 2 ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt
+Finished invoke:
+  name: fimo3  status: 0  time: 0.274801
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/fimo_out_4 --bgfile ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/background --motif 4 ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/rpob_fe/rpob_fe.txt
+Finished invoke:
+  name: fimo4  status: 0  time: 0.277648
+Writing output
+Done

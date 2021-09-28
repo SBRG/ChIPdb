@@ -1,0 +1,62 @@
+Invoking:
+  getsize ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.006141
+Invoking:
+  fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.031961
+Invoking:
+  fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt 1> ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.039781
+Invoking:
+  fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.005013
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/background
+Finished invoke:
+  name: bg  status: 0  time: 0.005547
+Invoking:
+  meme ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 585.968955
+Invoking:
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/seqs-shuffled -t 5465
+Finished invoke:
+  name: dreme  status: 256  time: 0.022173
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/background ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out/meme.xml
+Finished invoke:
+  name: centrimo  status: 256  time: 0.042118
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/combined.meme ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 0.291901
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out/meme.xml
+Finished invoke:
+  name: spamo1  status: 256  time: 0.116104
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/background -primary 2 ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out/meme.xml
+Finished invoke:
+  name: spamo2  status: 256  time: 0.11352
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/spamo_out_3 -bgfile ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/background -primary 4 ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out/meme.xml
+Finished invoke:
+  name: spamo3  status: 256  time: 0.116944
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt
+Finished invoke:
+  name: fimo1  status: 0  time: 0.118932
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/background --motif 2 ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt
+Finished invoke:
+  name: fimo2  status: 0  time: 0.122976
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/fimo_out_3 --bgfile ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/background --motif 4 ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/gyra_expo/gyra_expo.txt
+Finished invoke:
+  name: fimo3  status: 0  time: 0.103221
+Writing output
+Done

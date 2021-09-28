@@ -1,0 +1,46 @@
+Invoking:
+  getsize ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/gaca_LB.txt 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.002731
+Invoking:
+  fasta-most -min 50 < ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/gaca_LB.txt 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.032288
+Invoking:
+  fasta-center -dna -len 100 < ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/gaca_LB.txt 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.036249
+Invoking:
+  fasta-shuffle-letters ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/seqs-centered ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.002245
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/gaca_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/background
+Finished invoke:
+  name: bg  status: 0  time: 0.002215
+Invoking:
+  meme ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/background -dna -time 4054 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 4.925136
+Invoking:
+  dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/seqs-shuffled -t 5698
+Finished invoke:
+  name: dreme  status: 256  time: 0.021919
+Invoking:
+  centrimo -seqlen 500 -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/centrimo_out -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/background ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/gaca_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/meme_out/meme.xml
+Finished invoke:
+  name: centrimo  status: 256  time: 0.019441
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/combined.meme ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/combined.meme 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 0.022019
+Invoking:
+  spamo -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/spamo_out_1 -bgfile ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/background -primary 1 ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/gaca_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/meme_out/meme.xml ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/meme_out/meme.xml
+Finished invoke:
+  name: spamo1  status: 256  time: 0.046085
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/fimo_out_1 --bgfile ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/background --motif 1 ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/meme_out/meme.xml ../data/p_aeruginosa/NC_002516.2/meme-chip/gaca_LB/gaca_LB.txt
+Finished invoke:
+  name: fimo1  status: 0  time: 0.032745
+Writing output
+Done
