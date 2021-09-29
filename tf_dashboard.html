@@ -75,7 +75,14 @@
         <!-- Left Navigation -->
         <div id="left_col" class="col-sm-12 col-md-2">
             <div id="left_col_content">
-                <h1 class="bd-lead" id="TF_header"></h1>
+                <div class="row row-no-margin">
+                    <div class="col-10>"><h1 class="bd-lead" id="TF_header"></h1></div>
+                    <div class="col-2">
+                        <button class="panel-info-btn" id="table-info" data-toggle="popover" type="button">
+                            <i class="material-icons meta-icons">help</i>
+                        </button>
+                    </div>
+                </div>
                 <div class="card p-2" id="meta_text"></div>
             </div>
         </div>
@@ -85,6 +92,9 @@
                 <div class="col-md-12 col-lg-8">
                     <div class="card">
                         <div class="section-header"> Binding Site Table
+                            <button class="panel-info-btn" id="table-info" data-toggle="popover" type="button">
+                                <i class="material-icons meta-icons">help</i>
+                            </button>
                             <button class="btn btn-sm btn-mod" id="download-table">Download CSV</button>
                         </div>
                         <ul class="nav nav-tabs tab-strip" id="TableTab" role="tablist"></ul>
@@ -93,7 +103,12 @@
                 </div>
                 <div class="col-md-12 col-lg-4">
                     <div class="card">
-                        <div class="section-header"> Feature Visualization</div>
+                        <div class="section-header"> Feature Visualization
+                            <button class="panel-info-btn" id="visual-info" type="button">
+                                <i class="material-icons meta-icons">help</i>
+                            </button>
+                        </div>
+
                         <ul class="nav nav-tabs tab-strip" id="myTab" role="tablist">
 
                             <li class="nav-item" role="presentation">
@@ -172,6 +187,9 @@
             </div>
             <div class="card mt-3 pb-2">
                 <div class="section-header"> Genome Viewer
+                    <button class="panel-info-btn" id="igv-info" type="button">
+                        <i class="material-icons meta-icons">help</i>
+                    </button>
                     <a class="btn btn-sm btn-mod" id="download-bw">Download bigWig files</a>
                 </div>
                 <div id="igv-div"></div>
@@ -243,20 +261,20 @@
         $('#meta_text').append('<p class="meta_cat">GENOME ID</p>');
         $('#meta_text').append('<p class="meta_val">' + row[6] + '</p>');
         $('#meta_text').append('<p class="meta_cat">MEDIA</p>');
-        $('#meta_text').append('<p class="meta_val">' + row[4] + '<button class="meta-info-btn" id="media-info" type="button" ><i class="material-icons meta-icons">info</i></button></p>');
+        $('#meta_text').append('<p class="meta_val">' + row[20] + '<button class="meta-info-btn" id="media-info" type="button" ><i class="material-icons meta-icons">info</i></button></p>');
         $('#meta_text').append('<p class="meta_cat">SUPPLEMENT</p>');
-        $('#meta_text').append('<p class="meta_val">' + row[5] + '</p>');
+        $('#meta_text').append('<p class="meta_val">' + row[21] + '</p>');
 
 
-        // $('#media-info').popover({
-        //     container: "body",
-        //     title: "additional media information",
-        //     html: true,
-        //     trigger: "hover focus",
-        //     content: function () {
-        //         return '<div class="popover-message">Lysogeny Broth or Tryptone Broth {LB: {1% NaCl, 1% tryptone, 0.5% yeast extract}, TB: {1% Tryptone, 0.5% NaCL}}</div>';
-        //     }
-        // });
+        $('#media-info').popover({
+            container: "body",
+            title: "additional media information",
+            html: true,
+            trigger: "hover focus",
+            content: function () {
+                return `<div class="popover-message">${row[22]}</div>`;
+            }
+        });
 
 
         // out links
@@ -297,9 +315,9 @@
             $('#meta_text').append('<p class="meta_cat">DOI REFERENCE</p>');
             $('#meta_text').append('<p class="meta_val"><a href="' + row[15] + '">' + row[15] + '</a></p>');
         }
-        if (row[19]) {
+        if (row[26]) {
             $('#meta_text').append('<p class="meta_cat">EXTRA NOTES</p>');
-            $('#meta_text').append('<p class="meta_val">' + row[19] + '</p>');
+            $('#meta_text').append('<p class="meta_val">' + row[26] + '</p>');
         }
 
         // IGV and table
@@ -357,7 +375,7 @@
                 // successfully received some sort of data -- remove 'disabled' class to enable the motifs tab.
                 document.getElementById("header-tab-3").classList.remove('disabled');
 
-                const changeImageHandler = function() {
+                const changeImageHandler = function () {
                     document.getElementById("motif_sequence").src = imageFilePath;
                     document.getElementById("motif-download-svg").classList.add('d-none');
                     document.getElementById("motif-download-png").href = imageFilePath;
@@ -376,9 +394,9 @@
                     hasFoundFirstImageToRender = true;
                 }
             }).catch(() => {
-            //     $('#motif_selector_buttons').append(`
-            //     <button disabled title="No motif logo found using MEME-ChIP">${conditionTitle}</button>
-            // `);
+                //     $('#motif_selector_buttons').append(`
+                //     <button disabled title="No motif logo found using MEME-ChIP">${conditionTitle}</button>
+                // `);
                 $(`#motif-button-${spacelessConditionTitle}`).addClass('disabled gray-btn');
                 // $(`#motif-button-${spacelessConditionTitle}`).addClass('gray-btn');
                 $(`#motif-button-${spacelessConditionTitle}`).attr('disabled', true);
@@ -401,7 +419,7 @@
                 // successfully received some sort of data -- remove 'disabled' class to enable the motifs tab.
                 document.getElementById("header-tab-3").classList.remove('disabled');
 
-                const changeImageHandler = function() {
+                const changeImageHandler = function () {
                     document.getElementById("motif_sequence").src = motifSVG;
                     document.getElementById("motif-download-svg").href = motifSVG;
                     document.getElementById("motif-download-svg").classList.remove('d-none');
@@ -428,7 +446,7 @@
                     // successfully received some sort of data -- remove 'disabled' class to enable the motifs tab.
                     document.getElementById("header-tab-3").classList.remove('disabled');
 
-                    const changeImageHandler = function() {
+                    const changeImageHandler = function () {
                         document.getElementById("motif_sequence").src = motifPNG;
                         document.getElementById("motif-download-svg").classList.add('d-none');
                         document.getElementById("motif-download-png").href = motifPNG;
@@ -442,9 +460,9 @@
                     $('#motif-button-lit').click(changeImageHandler);
 
                     if (!hasFoundFirstImageToRender) {
-                    changeImageHandler();
-                    hasFoundFirstImageToRender = true;
-                }
+                        changeImageHandler();
+                        hasFoundFirstImageToRender = true;
+                    }
                     // document.getElementById("motif_sequence").src = motifPNG;
                     // document.getElementById("motif-download-svg").remove();
                 }).fail(function () {
@@ -481,6 +499,86 @@
             document.getElementById("header-tab-4").classList.add('disabled')
         });
 
+    });
+
+    // populate info buttons
+    $('#table-info').popover({
+        title: "Help - Binding Site Table",
+        html: true,
+        trigger: "hover focus",
+        content: function () {
+            return `<div class="popover-message"><p>This table represents <a href="https://academic.oup.com/nar/article/42/20/e156/2902729" target="_blank">MACE</a> results from processing the sequence read data presented in the Genome Viewer. Tabs across the top correspond to each binding condition. Each row represents a curated binding peak. Clicking on a row will update the Genome Viewer to display a zoomed in plot of the corresponding peak. The rows are initially sorted by genome location, and the tallest peaks can easily be found by sorting by descending "Peak Intensity" (clicking the column header twice). The columns are as follows:</p>
+            <ul>
+                <li><b>TF-#</b>: A unique identifier for the peak, ordered by genome location.</li>
+                <li><b>Binding Condtion</b>: Takes the form “TF + condition.”</li>
+                <li><b>Start Position & End Position</b>: The genome locations of the peak in base pairs are determined by MACE. For each peak, a single-nucleotide resolution border peak is detected by using the Chebyshev Inequality and the border is matched by using the Gale–Shapley stable matching algorithm. For E. coli K-12 MG1655, these locations refer to the <a href="https://www.ncbi.nlm.nih.gov/nuccore/556503834" target="_blank">NC_000913.3 genome</a>.</li>
+                <li><b>Peak Intensity</b>: Peak signal intensity is determined with two replicates using MACE peak calling algorithm, which employs Shannon’s relative entropy (H)to compute signal to noise values across the genome for each replicate. Note that the noise value varies for each condition because it captures variation due to inexact cross-linking, exonuclease digestion, dynamic protein conformations, and PCR amplification.</li>
+                <li><b>Target genes</b>: Each peak is assigned to the target gene, according to genomic positions.</li>
+            </ul></div>`;
+        }
+    });
+
+    $('#visual-info').popover({
+        container: "body",
+        title: "Help - Feature Visualization",
+        html: true,
+        trigger: "hover focus",
+        content: function () {
+            return `<div class="popover-message">
+            <p>
+                The tabs within this panel provide additional characterization of the data. In the upper right hand corner of each tab, the menu button (<i class="material-icons">menu</i>) enables PNG, SVG, and data download.
+            </p>
+
+            <h5 class="text-center py-3">
+                Feature Visualization – Width
+            </h5>
+            <p>
+                This tab shows a histogram of the binding peak widths from the binding site table. Hover over each bar to see a count of peaks that fall within its corresponding bin.
+            </p>
+
+            <h5 class="text-center py-3">
+                Feature Visualization – Position
+            </h5>
+            <p>
+                In this tab, proChIPdb compares the binding locations relative to each target gene. For each gene (as listed in the Target Genes column of the Binding Site Table), the distance from the gene start site to the binding site is measured in base pairs and normalized to the length of the gene. Points are then plotted with this value on the x axis and the peak intensity (S/N) on the y axis. Genes from the same transcriptional unit will have identical y axis values. Clustering on the x axis indicates the distance at which the transcription factor usually exerts its influence on gene expression. Hover over a point to view more details, such as the gene name.
+            </p>
+
+            <h5 class="text-center py-3">
+                Feature Visualization – Motif
+            </h5>
+            <p>
+                If this tab exists, then it contains a sequence logo of a significantly enriched motif for these binding sites and its corresponding E-value. The motif and logo are generated by <a href="https://meme-suite.org/meme/index.html" target="_blank">the MEME Suite</a> (parameters: width = 20bp, E-value cutoff = 0.001). The dot with arrows represents the center of the motif, which assists in identifying palindromic sequences.
+            </p>
+
+            <h5 class="text-center py-3">
+                Feature Visualization – Venn
+            </h5>
+            <p>
+                The venn diagram compares the target genes obtained in proChIPdb to other target gene sets in the literature. Hover over a section of the venn diagram to see the genes it contains. Areas of agreement indicate strong evidence of direct regulation, and areas of disagreement represent opportunities to improve literature annotation or elucidate condition-specific differences in binding. The specific literature sources are mentioned below each diagram. For <i>E. coli</i>, <a href="https://ecocyc.org/" target="_blank">EcoCyc</a>’s transcriptional regulatory network was used.
+            </p></div>`;
+        }
+    });
+
+    $('#igv-info').popover({
+        title: "Help - Genome Viewer",
+        html: true,
+        trigger: "hover focus",
+        content: function () {
+            return `<div class="popover-message">
+            <p>
+                proChIPdb’s genome viewer provides access to a complete, genome-wide view of the transcription factor’s activity under the given conditions. The genome viewer was made using <a href="https://doi.org/10.1101/2020.05.03.075499" target="_blank">igv.js</a>, and it visualizes bigWig ChIP read files generated from bam files using <a href="https://deeptools.readthedocs.io/en/develop/content/tools/bamCoverage.html" target="_blank">deeptools</a>. From top to bottom, the features and tracks of the viewer are:
+            </p>
+            <ul>
+                <li><b>Toolbar</b>: The toolbar contains a search bar, which can be used to search for specific loci by gene location or gene name. It also has useful tools for adding cursor guides, a center line, toggling track labels, downloading the current view, and adjusting the zoom level.</li>
+                <li><b>Genome Location</b>: The white bar with red outlines may help orient you to which region of the genome is currently displayed. Underneath that, an axis is labeled with specific base pair numbers.</li>
+                <li><b>Nucleotides</b>: If the viewer is zoomed close enough, color-coded nucleotide labels will appear.</li>
+                <li><b>Genes</b>: Gene annotations as provided in the genome. Click on a track to see additional details, such as the gene name, locus tag, and product description.</li>
+                <li><b>Published TUs</b>: Transcriptional unit annotations, as provided by <a href="https://academic.oup.com/nar/article/48/18/10157/5911745" target="_blank">the Bitome</a>.</li>
+                <li><b>Published TSS</b>: Transcription start sites, as provided by the Bitome.</li>
+                <li><b>Published TFBS</b>: Transcription factor binding sites, as provided by the Bitome.</li>
+                <li><b>Data Tracks</b>: The y-axis of these plots is the number of ChIP reads mapped to the x-axis nucleotide. Replicate numbers and unique conditions (if applicable) are indicated by the track name. To download this data for custom analysis, click “Download bigWig Files” in the upper left corner of the pane.</li>
+            </ul></div>`;
+        }
     });
 
 </script>
