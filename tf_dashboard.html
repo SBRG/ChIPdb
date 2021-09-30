@@ -144,7 +144,6 @@
 
                             <!-- Motif Sequence-->
                             <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="contact-tab">
-
                                 <!--Hamburger Dropdown-->
                                 <div class="dropdown menu-right">
                                     <!--Trigger-->
@@ -161,12 +160,16 @@
                                         <a id="motif-download-csv" class="dropdown-item" download>Download PWM CSV</a>
                                     </div>
                                 </div>
-                                <!--/Hamburger Dropdown-->
+                                <div id="motif-banner-title" class="motif-banner-title"></div>
 
-                                <div style="height:300px" class="fill">
-                                    <img style="max-width:95%; max-height:95%" id="motif_sequence" src=""/>
+                                <!--Motif Logo and Selector Buttons-->
+                                <div class="fill-parent">
+                                    <div class="fill">
+                                        <img style="max-width:95%; max-height:95%" id="motif_sequence" src="">
+                                    </div>
+                                    <div class="motif-selector-buttons" id="motif_selector_buttons"></div>
                                 </div>
-                                <div id="motif_selector_buttons"></div>
+
                             </div>
 
                             <!-- Position Scatterplot-->
@@ -361,7 +364,7 @@
             const spacelessConditionTitle = conditionTitle.replace(/ /g, "_");
 
             $('#motif_selector_buttons').append(`
-                <button class="btn btn-primary btn-sm" id="motif-button-${spacelessConditionTitle}">${conditionTitle}</button>
+                <button class="btn btn-outline-dark btn-sm" id="motif-button-${spacelessConditionTitle}">${conditionTitle}</button>
             `);
 
             $.get(imageFilePath, function () {
@@ -377,6 +380,7 @@
 
                     clearAllActiveMotifButtonFunctions.forEach(clearFunc => clearFunc());
                     document.getElementById(`motif-button-${spacelessConditionTitle}`).classList.add('active');
+                    document.getElementById('motif-banner-title').innerText = 'Logo identified by MEME-ChIP';
                 };
 
                 clearAllActiveMotifButtonFunctions.push(() => document.getElementById(`motif-button-${spacelessConditionTitle}`).classList.remove('active'));
@@ -390,8 +394,8 @@
                 //     $('#motif_selector_buttons').append(`
                 //     <button disabled title="No motif logo found using MEME-ChIP">${conditionTitle}</button>
                 // `);
-                $(`#motif-button-${spacelessConditionTitle}`).addClass('disabled gray-btn');
-                // $(`#motif-button-${spacelessConditionTitle}`).addClass('gray-btn');
+                $(`#motif-button-${spacelessConditionTitle}`).addClass('disabled');
+                $(`#motif-button-${spacelessConditionTitle}`).addClass('gray-btn');
                 $(`#motif-button-${spacelessConditionTitle}`).attr('disabled', true);
                 $(`#motif-button-${spacelessConditionTitle}`).attr("title", "No motif logo found using MEME-ChIP");
             });
@@ -402,9 +406,8 @@
         const motifPNG = '/data/' + organism + '/' + genome + '/motifs/images/' + TF_name + '.png';
 
         $('#motif_selector_buttons').append(`
-            <button class="btn btn-primary btn-sm" id="motif-button-lit">Literature</button>
+            <button class="btn btn-outline-dark btn-sm" id="motif-button-lit">PMID: ${row[19]}</button>
         `);
-        clearAllActiveMotifButtonFunctions.push(() => document.getElementById(`motif-button-lit`).classList.remove('active'));
 
 
         $.get(motifSVG)
@@ -420,8 +423,10 @@
                     document.getElementById("motif-download-csv").classList.add('d-none');
 
 
+                    clearAllActiveMotifButtonFunctions.push(() => document.getElementById(`motif-button-lit`).classList.remove('active'));
                     clearAllActiveMotifButtonFunctions.forEach(clearFunc => clearFunc());
                     document.getElementById(`motif-button-lit`).classList.add('active');
+                    document.getElementById('motif-banner-title').innerText = `Logo from PMID ${row[19]}`;
                 };
 
                 $('#motif-button-lit').click(changeImageHandler);
@@ -445,9 +450,10 @@
                         document.getElementById("motif-download-png").href = motifPNG;
                         document.getElementById("motif-download-csv").classList.add('d-none');
 
-
+                        clearAllActiveMotifButtonFunctions.push(() => document.getElementById(`motif-button-lit`).classList.remove('active'));
                         clearAllActiveMotifButtonFunctions.forEach(clearFunc => clearFunc());
                         document.getElementById(`motif-button-lit`).classList.add('active');
+                        document.getElementById('motif-banner-title').innerText = `Logo from PMID ${row[19]}`;
                     };
 
                     $('#motif-button-lit').click(changeImageHandler);
@@ -460,7 +466,9 @@
                     // document.getElementById("motif-download-svg").remove();
                 }).fail(function () {
                 // document.getElementById("header-tab-3").classList.add('disabled')
-                document.getElementById("motif-button-lit").classList.add('disabled')
+                // document.getElementById("motif-button-lit").classList.add('disabled');
+                // document.getElementById("motif-button-lit").classList.add('gray-btn');
+                $('#motif-button-lit').remove();
             })
         });
 
