@@ -75,14 +75,7 @@
         <!-- Left Navigation -->
         <div id="left_col" class="col-sm-12 col-md-2">
             <div id="left_col_content">
-                <div class="row row-no-margin">
-                    <div class="col-10>"><h1 class="bd-lead" id="TF_header"></h1></div>
-                    <div class="col-2">
-                        <button class="panel-info-btn" id="table-info" data-toggle="popover" type="button">
-                            <i class="material-icons meta-icons">help</i>
-                        </button>
-                    </div>
-                </div>
+                <h1 class="bd-lead" id="TF_header"></h1>
                 <div class="card p-2" id="meta_text"></div>
             </div>
         </div>
@@ -92,7 +85,7 @@
                 <div class="col-md-12 col-lg-8">
                     <div class="card">
                         <div class="section-header"> Binding Site Table
-                            <button class="panel-info-btn" id="table-info" data-toggle="popover" type="button">
+                            <button class="panel-info-btn" id="table-info" type="button">
                                 <i class="material-icons meta-icons">help</i>
                             </button>
                             <button class="btn btn-sm btn-mod" id="download-table">Download CSV</button>
@@ -501,11 +494,12 @@
 
     });
 
-    // populate info buttons
+    // populate help buttons
     $('#table-info').popover({
         title: "Help - Binding Site Table",
         html: true,
         trigger: "hover focus",
+        template: '<div class="popover popover-make-it-wide" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
         content: function () {
             return `<div class="popover-message"><p>This table represents <a href="https://academic.oup.com/nar/article/42/20/e156/2902729" target="_blank">MACE</a> results from processing the sequence read data presented in the Genome Viewer. Tabs across the top correspond to each binding condition. Each row represents a curated binding peak. Clicking on a row will update the Genome Viewer to display a zoomed in plot of the corresponding peak. The rows are initially sorted by genome location, and the tallest peaks can easily be found by sorting by descending "Peak Intensity" (clicking the column header twice). The columns are as follows:</p>
             <ul>
@@ -523,6 +517,7 @@
         title: "Help - Feature Visualization",
         html: true,
         trigger: "hover focus",
+        template: '<div class="popover popover-make-it-wide" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
         content: function () {
             return `<div class="popover-message">
             <p>
@@ -563,6 +558,7 @@
         title: "Help - Genome Viewer",
         html: true,
         trigger: "hover focus",
+        template: '<div class="popover popover-make-it-wide" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
         content: function () {
             return `<div class="popover-message">
             <p>
