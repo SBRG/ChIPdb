@@ -307,9 +307,11 @@
         })
         $('#meta_text').append('<p class="meta_cat">RAW DATA ACCESSION</p>');
         $('#meta_text').append('<p class="meta_val">' + row[14] + '</p>');
-        if (row[15]) {
-            $('#meta_text').append('<p class="meta_cat">DOI REFERENCE</p>');
-            $('#meta_text').append('<p class="meta_val"><a href="' + row[15] + '">' + row[15] + '</a></p>');
+        if (row[15]|row[19]) {
+            $('#meta_text').append('<p class="meta_cat">REFERENCE</p>');
+            $('#meta_text').append('<p class="meta_val mb-0">PMID: ' + row[19] + '</p>');
+            $('#meta_text').append('<p class="meta_val">DOI: <a href="' + row[15] + '">' + row[15].replace("https://doi.org/", "") + '</a></p>');
+
         }
         if (row[26]) {
             $('#meta_text').append('<p class="meta_cat">EXTRA NOTES</p>');
