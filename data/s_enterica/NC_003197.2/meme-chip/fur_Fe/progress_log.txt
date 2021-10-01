@@ -1,46 +1,46 @@
 Invoking:
   getsize ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.003159
+  name: count_seqs  status: 0  time: 0.002552
 Invoking:
   fasta-most -min 50 < ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.033466
+  name: most_seqs  status: 0  time: 0.03319
 Invoking:
   fasta-center -dna -len 100 < ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt 1> ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.035771
+  name: center_seqs  status: 0  time: 0.037937
 Invoking:
   fasta-shuffle-letters ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.002517
+  name: shuffle_seqs  status: 0  time: 0.002476
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background
 Finished invoke:
-  name: bg  status: 0  time: 0.002289
+  name: bg  status: 0  time: 0.002086
 Invoking:
-  meme ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 10.814409
+  name: meme  status: 0  time: 5.85873
 Invoking:
-  dreme -v 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/dreme_out -png -dna -p ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered -n ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-shuffled -t 5695
+  dreme -v 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/dreme_out -png -dna -p ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered -n ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-shuffled -t 5697
 Finished invoke:
-  name: dreme  status: 256  time: 0.024228
+  name: dreme  status: 256  time: 0.02635
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/centrimo_out -bfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out/meme.xml
+  centrimo -seqlen 72 -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/centrimo_out -bfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.02372
+  name: centrimo  status: 256  time: 0.017638
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/combined.meme ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/combined.meme 1> ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.019853
+  name: align  status: 0  time: 0.016686
 Invoking:
   spamo -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/spamo_out_1 -bgfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background -primary 1 ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.052271
+  name: spamo1  status: 256  time: 0.038653
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fimo_out_1 --bgfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background --motif 1 ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.03939
+  name: fimo1  status: 0  time: 0.030319
 Writing output
 Done

@@ -14,7 +14,7 @@
           "meme-chip", "-oc",
           "../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe",
           "-time", "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw",
-          "6", "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod",
+          "5", "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod",
           "zoops", "-meme-nmotifs", "4",
           "../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/fur_Fe.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.003519,
+            "time": 0.002812,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/fur_Fe.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.033102,
+            "time": 0.030552,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/fur_Fe.txt 1> ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.034866,
+            "time": 0.036896,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/seqs-centered ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.00255,
+            "time": 0.002817,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/fur_Fe.txt ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/background",
             "status": 0,
             "oot": false,
-            "time": 0.001879,
+            "time": 0.002187,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/seqs-centered -oc ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/seqs-centered -oc ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 26.056005,
+            "time": 23.254738,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -89,18 +89,18 @@
             ]
           }, {
             "name": "dreme",
-            "cmd": "dreme -v 1 -oc ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/dreme_out -png -dna -p ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/seqs-centered -n ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/seqs-shuffled -t 5689",
+            "cmd": "dreme -v 1 -oc ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/dreme_out -png -dna -p ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/seqs-centered -n ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/seqs-shuffled -t 5690",
             "status": 256,
             "oot": false,
-            "time": 0.024591,
+            "time": 0.025004,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/centrimo_out -bfile ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/background ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/fur_Fe.txt ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 70 -verbosity 1 -oc ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/centrimo_out -bfile ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/background ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/fur_Fe.txt ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.019074,
+            "time": 0.02418,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -113,7 +113,7 @@
             "cmd": "tomtom -verbosity 1 -text -thresh 0.1 ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/combined.meme ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/combined.meme 1> ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/motif_alignment.txt",
             "status": 0,
             "oot": false,
-            "time": 0.017984,
+            "time": 0.01971,
             "messages_file": "align_msgs.txt",
             "outputs": [
               {
@@ -126,7 +126,7 @@
             "cmd": "spamo -verbosity 1 -oc ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/spamo_out_1 -bgfile ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/background -primary 1 ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/fur_Fe.txt ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/meme_out/meme.xml ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.059826,
+            "time": 0.041864,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -139,7 +139,7 @@
             "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/fimo_out_1 --bgfile ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/background --motif 1 ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/meme_out/meme.xml ../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe/fur_Fe.txt",
             "status": 0,
             "oot": false,
-            "time": 0.046008,
+            "time": 0.035968,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -229,7 +229,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2879, 0.2121, 0.2121, 0.2879]
+          "freqs": [0.3055, 0.1945, 0.1945, 0.3055]
         },
         "sequence_db": {
           "source": "../data/y_pseudotuberculosis/NZ_CP009712.1/meme-chip/fur_Fe.txt",
@@ -247,31 +247,33 @@
             "db": -1,
             "id": "1",
             "alt": "MEME",
-            "len": 20,
-            "evalue": "5.9e-046",
-            "sites": 57,
-            "sig": "5.9e-046",
+            "len": 22,
+            "evalue": "5.4e-046",
+            "sites": 50,
+            "sig": "5.4e-046",
             "pwm": [
-              [0.245614, 0.105263, 0.491228, 0.157895], 
-              [0.245614, 0.280702, 0.210526, 0.263158], 
-              [0.315789, 0.105263, 0.315789, 0.263158], 
-              [0.929825, 0.000000, 0.035088, 0.035088], 
-              [0.526316, 0.070175, 0.122807, 0.280702], 
-              [0.157895, 0.175439, 0.000000, 0.666667], 
-              [0.263158, 0.000000, 0.736842, 0.000000], 
-              [0.842105, 0.140351, 0.000000, 0.017544], 
-              [0.315789, 0.000000, 0.228070, 0.456140], 
-              [0.842105, 0.000000, 0.000000, 0.157895], 
-              [0.824561, 0.052632, 0.000000, 0.122807], 
-              [0.122807, 0.192982, 0.000000, 0.684211], 
-              [0.280702, 0.228070, 0.368421, 0.122807], 
-              [0.947368, 0.052632, 0.000000, 0.000000], 
-              [0.035088, 0.052632, 0.157895, 0.754386], 
-              [0.140351, 0.052632, 0.017544, 0.789474], 
-              [0.438596, 0.210526, 0.035088, 0.315789], 
-              [0.052632, 0.052632, 0.192982, 0.701754], 
-              [0.052632, 0.614035, 0.087719, 0.245614], 
-              [1.000000, 0.000000, 0.000000, 0.000000]
+              [0.220000, 0.180000, 0.480000, 0.120000], 
+              [0.060000, 0.420000, 0.280000, 0.240000], 
+              [0.300000, 0.100000, 0.340000, 0.260000], 
+              [0.680000, 0.060000, 0.100000, 0.160000], 
+              [0.420000, 0.060000, 0.040000, 0.480000], 
+              [0.160000, 0.020000, 0.000000, 0.820000], 
+              [0.200000, 0.000000, 0.800000, 0.000000], 
+              [0.800000, 0.120000, 0.000000, 0.080000], 
+              [0.180000, 0.020000, 0.240000, 0.560000], 
+              [0.980000, 0.020000, 0.000000, 0.000000], 
+              [0.780000, 0.160000, 0.000000, 0.060000], 
+              [0.160000, 0.160000, 0.040000, 0.640000], 
+              [0.140000, 0.180000, 0.440000, 0.240000], 
+              [0.940000, 0.020000, 0.040000, 0.000000], 
+              [0.180000, 0.020000, 0.140000, 0.660000], 
+              [0.240000, 0.040000, 0.040000, 0.680000], 
+              [0.480000, 0.180000, 0.020000, 0.320000], 
+              [0.000000, 0.000000, 0.180000, 0.820000], 
+              [0.000000, 0.580000, 0.060000, 0.360000], 
+              [0.920000, 0.000000, 0.080000, 0.000000], 
+              [0.080000, 0.040000, 0.060000, 0.820000], 
+              [0.160000, 0.000000, 0.140000, 0.700000]
             ],
             "tomtom_matches": [],
             "fimo_gff": "fimo_out_1/fimo.gff"

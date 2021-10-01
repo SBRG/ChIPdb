@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS", "-time",
-          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.00387,
+            "time": 0.005162,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.030777,
+            "time": 0.032211,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt 1> ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.036818,
+            "time": 0.03732,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.00514,
+            "time": 0.003358,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background",
             "status": 0,
             "oot": false,
-            "time": 0.003383,
+            "time": 0.004644,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 90.57467,
+            "time": 113.842582,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -89,18 +89,18 @@
             ]
           }, {
             "name": "dreme",
-            "cmd": "dreme -v 1 -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/dreme_out -png -dna -p ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered -n ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-shuffled -t 5663",
+            "cmd": "dreme -v 1 -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/dreme_out -png -dna -p ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered -n ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-shuffled -t 5654",
             "status": 256,
             "oot": false,
-            "time": 0.024418,
+            "time": 0.026375,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/centrimo_out -bfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 380 -verbosity 1 -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/centrimo_out -bfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.029944,
+            "time": 0.031429,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -113,7 +113,7 @@
             "cmd": "tomtom -verbosity 1 -text -thresh 0.1 ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/combined.meme ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/combined.meme 1> ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/motif_alignment.txt",
             "status": 0,
             "oot": false,
-            "time": 0.008313,
+            "time": 0.009189,
             "messages_file": "align_msgs.txt",
             "outputs": [
               {
@@ -126,7 +126,7 @@
             "cmd": "spamo -verbosity 1 -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/spamo_out_1 -bgfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background -primary 1 ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out/meme.xml ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.065832,
+            "time": 0.071672,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -139,7 +139,7 @@
             "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/fimo_out_1 --bgfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background --motif 1 ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out/meme.xml ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt",
             "status": 0,
             "oot": false,
-            "time": 0.053704,
+            "time": 0.07195,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -229,7 +229,7 @@
           ]
         },
         "background": {
-          "freqs": [0.1718, 0.3282, 0.3282, 0.1718]
+          "freqs": [0.1778, 0.3222, 0.3222, 0.1778]
         },
         "sequence_db": {
           "source": "../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS.txt",
@@ -247,19 +247,20 @@
             "db": -1,
             "id": "1",
             "alt": "MEME",
-            "len": 8,
-            "evalue": "6.1e-013",
-            "sites": 50,
-            "sig": "6.1e-013",
+            "len": 9,
+            "evalue": "3.2e-017",
+            "sites": 95,
+            "sig": "3.2e-017",
             "pwm": [
-              [0.000000, 0.200000, 0.800000, 0.000000], 
-              [0.900000, 0.000000, 0.000000, 0.100000], 
-              [0.920000, 0.000000, 0.000000, 0.080000], 
+              [0.000000, 0.063158, 0.831579, 0.105263], 
+              [0.705263, 0.000000, 0.126316, 0.168421], 
+              [0.515789, 0.000000, 0.000000, 0.484211], 
               [0.000000, 0.000000, 0.000000, 1.000000], 
               [0.000000, 0.000000, 0.000000, 1.000000], 
-              [0.000000, 0.940000, 0.060000, 0.000000], 
-              [0.000000, 0.720000, 0.000000, 0.280000], 
-              [0.100000, 0.360000, 0.080000, 0.460000]
+              [0.021053, 0.800000, 0.084211, 0.094737], 
+              [0.178947, 0.610526, 0.000000, 0.210526], 
+              [0.021053, 0.347368, 0.168421, 0.463158], 
+              [0.000000, 0.484211, 0.031579, 0.484211]
             ],
             "tomtom_matches": [],
             "fimo_gff": "fimo_out_1/fimo.gff"

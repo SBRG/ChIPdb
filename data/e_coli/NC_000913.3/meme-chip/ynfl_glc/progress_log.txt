@@ -1,30 +1,30 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/ynfl_glc.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.002302
+  name: count_seqs  status: 0  time: 0.002467
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/ynfl_glc.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.034822
+  name: most_seqs  status: 0  time: 0.030131
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/ynfl_glc.txt 1> ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.038149
+  name: center_seqs  status: 0  time: 0.02941
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.002257
+  name: shuffle_seqs  status: 0  time: 0.00221
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/ynfl_glc.txt ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/background
 Finished invoke:
-  name: bg  status: 0  time: 0.002134
+  name: bg  status: 0  time: 0.001451
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 256  time: 0.003295
+  name: meme  status: 256  time: 0.004274
 Invoking:
   dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-shuffled -t 5700
 Finished invoke:
-  name: dreme  status: 256  time: 0.023588
+  name: dreme  status: 256  time: 0.021839
 Writing output
 Done

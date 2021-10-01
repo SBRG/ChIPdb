@@ -1,46 +1,34 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/rcsb_RcsD-KO.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.002693
+  name: count_seqs  status: 0  time: 0.002756
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/rcsb_RcsD-KO.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.033018
+  name: most_seqs  status: 0  time: 0.031186
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/rcsb_RcsD-KO.txt 1> ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.036358
+  name: center_seqs  status: 0  time: 0.034233
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.002496
+  name: shuffle_seqs  status: 0  time: 0.002371
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/rcsb_RcsD-KO.txt ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/background
 Finished invoke:
-  name: bg  status: 0  time: 0.00267
+  name: bg  status: 0  time: 0.002098
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 7.32771
+  name: meme  status: 0  time: 5.289031
 Invoking:
-  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/seqs-shuffled -t 5697
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/seqs-shuffled -t 5698
 Finished invoke:
-  name: dreme  status: 256  time: 0.026962
+  name: dreme  status: 256  time: 0.022825
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/background ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/rcsb_RcsD-KO.txt ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/meme_out/meme.xml
+  centrimo -seqlen 72 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/background ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/rcsb_RcsD-KO.txt ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.017287
-Invoking:
-  tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/combined.meme ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/motif_alignment.txt
-Finished invoke:
-  name: align  status: 0  time: 0.042617
-Invoking:
-  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/rcsb_RcsD-KO.txt ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/meme_out/meme.xml
-Finished invoke:
-  name: spamo1  status: 256  time: 0.049752
-Invoking:
-  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/rcsb_RcsD-KO/rcsb_RcsD-KO.txt
-Finished invoke:
-  name: fimo1  status: 0  time: 0.0324
+  name: centrimo  status: 256  time: 0.017267
 Writing output
 Done

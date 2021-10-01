@@ -1,74 +1,74 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.006398
+  name: count_seqs  status: 0  time: 0.00317
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.032383
+  name: most_seqs  status: 0  time: 0.030946
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt 1> ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.04084
+  name: center_seqs  status: 0  time: 0.037494
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.003535
+  name: shuffle_seqs  status: 0  time: 0.004651
 Invoking:
   fasta-subsample ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-centered 600 -rest ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-discarded -seed 1 1> ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-sampled
 Finished invoke:
-  name: sample_seqs  status: 0  time: 0.0338
+  name: sample_seqs  status: 0  time: 0.033865
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background
 Finished invoke:
-  name: bg  status: 0  time: 0.006139
+  name: bg  status: 0  time: 0.002817
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-sampled -oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-sampled -oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 614.295838
+  name: meme  status: 0  time: 375.350724
 Invoking:
-  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-shuffled -t 5454
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/tus_sta/seqs-shuffled -t 5549
 Finished invoke:
-  name: dreme  status: 256  time: 0.02349
+  name: dreme  status: 256  time: 0.024138
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml
+  centrimo -seqlen 71 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.047
+  name: centrimo  status: 256  time: 0.03555
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/tus_sta/combined.meme ../data/e_coli/NC_000913.3/meme-chip/tus_sta/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/tus_sta/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.738134
+  name: align  status: 0  time: 1.268557
 Invoking:
   spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.114922
+  name: spamo1  status: 256  time: 0.069451
 Invoking:
   spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background -primary 2 ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml
 Finished invoke:
-  name: spamo2  status: 256  time: 0.12
+  name: spamo2  status: 256  time: 0.073249
 Invoking:
   spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/spamo_out_3 -bgfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background -primary 3 ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml
 Finished invoke:
-  name: spamo3  status: 256  time: 0.115705
+  name: spamo3  status: 256  time: 0.071528
 Invoking:
   spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/spamo_out_4 -bgfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background -primary 4 ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml
 Finished invoke:
-  name: spamo4  status: 256  time: 0.104532
+  name: spamo4  status: 256  time: 0.069637
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.131553
+  name: fimo1  status: 0  time: 0.059474
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background --motif 2 ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt
 Finished invoke:
-  name: fimo2  status: 0  time: 0.142268
+  name: fimo2  status: 0  time: 0.054458
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/fimo_out_3 --bgfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background --motif 3 ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt
 Finished invoke:
-  name: fimo3  status: 0  time: 0.132295
+  name: fimo3  status: 0  time: 0.059416
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/tus_sta/fimo_out_4 --bgfile ../data/e_coli/NC_000913.3/meme-chip/tus_sta/background --motif 4 ../data/e_coli/NC_000913.3/meme-chip/tus_sta/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/tus_sta/tus_sta.txt
 Finished invoke:
-  name: fimo4  status: 0  time: 0.115481
+  name: fimo4  status: 0  time: 0.065007
 Writing output
 Done

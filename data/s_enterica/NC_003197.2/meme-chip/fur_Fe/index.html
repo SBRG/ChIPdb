@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/s_enterica/NC_003197.2/meme-chip/fur_Fe", "-time", "240",
-          "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/s_enterica/NC_003197.2/meme-chip/fur_Fe.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.003159,
+            "time": 0.002552,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.033466,
+            "time": 0.03319,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt 1> ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.035771,
+            "time": 0.037937,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.002517,
+            "time": 0.002476,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background",
             "status": 0,
             "oot": false,
-            "time": 0.002289,
+            "time": 0.002086,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 10.814409,
+            "time": 5.85873,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -89,18 +89,18 @@
             ]
           }, {
             "name": "dreme",
-            "cmd": "dreme -v 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/dreme_out -png -dna -p ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered -n ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-shuffled -t 5695",
+            "cmd": "dreme -v 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/dreme_out -png -dna -p ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-centered -n ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/seqs-shuffled -t 5697",
             "status": 256,
             "oot": false,
-            "time": 0.024228,
+            "time": 0.02635,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/centrimo_out -bfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 72 -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/centrimo_out -bfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.02372,
+            "time": 0.017638,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -113,7 +113,7 @@
             "cmd": "tomtom -verbosity 1 -text -thresh 0.1 ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/combined.meme ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/combined.meme 1> ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/motif_alignment.txt",
             "status": 0,
             "oot": false,
-            "time": 0.019853,
+            "time": 0.016686,
             "messages_file": "align_msgs.txt",
             "outputs": [
               {
@@ -126,7 +126,7 @@
             "cmd": "spamo -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/spamo_out_1 -bgfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background -primary 1 ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.052271,
+            "time": 0.038653,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -139,7 +139,7 @@
             "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fimo_out_1 --bgfile ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/background --motif 1 ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/fur_Fe/fur_Fe.txt",
             "status": 0,
             "oot": false,
-            "time": 0.03939,
+            "time": 0.030319,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -229,7 +229,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2668, 0.2332, 0.2332, 0.2668]
+          "freqs": [0.3069, 0.1931, 0.1931, 0.3069]
         },
         "sequence_db": {
           "source": "../data/s_enterica/NC_003197.2/meme-chip/fur_Fe.txt",
@@ -248,31 +248,31 @@
             "id": "1",
             "alt": "MEME",
             "len": 21,
-            "evalue": "2.0e-114",
-            "sites": 57,
-            "sig": "2.0e-114",
+            "evalue": "3.0e-096",
+            "sites": 51,
+            "sig": "3.0e-096",
             "pwm": [
-              [0.087719, 0.140351, 0.070175, 0.701754], 
-              [0.140351, 0.228070, 0.543860, 0.087719], 
-              [0.315789, 0.245614, 0.192982, 0.245614], 
-              [0.421053, 0.035088, 0.245614, 0.298246], 
-              [0.842105, 0.105263, 0.052632, 0.000000], 
-              [0.824561, 0.052632, 0.017544, 0.105263], 
-              [0.035088, 0.175439, 0.052632, 0.736842], 
-              [0.228070, 0.000000, 0.771930, 0.000000], 
-              [0.771930, 0.157895, 0.035088, 0.035088], 
-              [0.210526, 0.017544, 0.298246, 0.473684], 
-              [0.894737, 0.000000, 0.000000, 0.105263], 
-              [0.894737, 0.000000, 0.052632, 0.052632], 
-              [0.017544, 0.035088, 0.000000, 0.947368], 
-              [0.280702, 0.456140, 0.157895, 0.105263], 
-              [0.754386, 0.017544, 0.175439, 0.052632], 
-              [0.157895, 0.000000, 0.000000, 0.842105], 
-              [0.000000, 0.000000, 0.035088, 0.964912], 
-              [0.473684, 0.350877, 0.122807, 0.052632], 
-              [0.000000, 0.228070, 0.035088, 0.736842], 
-              [0.035088, 0.596491, 0.157895, 0.210526], 
-              [0.754386, 0.035088, 0.175439, 0.035088]
+              [0.156863, 0.137255, 0.039216, 0.666667], 
+              [0.137255, 0.235294, 0.490196, 0.137255], 
+              [0.352941, 0.254902, 0.215686, 0.176471], 
+              [0.470588, 0.078431, 0.196078, 0.254902], 
+              [0.862745, 0.058824, 0.078431, 0.000000], 
+              [0.843137, 0.039216, 0.019608, 0.098039], 
+              [0.058824, 0.176471, 0.039216, 0.725490], 
+              [0.215686, 0.000000, 0.784314, 0.000000], 
+              [0.784314, 0.137255, 0.058824, 0.019608], 
+              [0.215686, 0.000000, 0.274510, 0.509804], 
+              [0.843137, 0.019608, 0.000000, 0.137255], 
+              [0.882353, 0.000000, 0.078431, 0.039216], 
+              [0.019608, 0.058824, 0.000000, 0.921569], 
+              [0.235294, 0.509804, 0.098039, 0.156863], 
+              [0.784314, 0.019608, 0.176471, 0.019608], 
+              [0.117647, 0.000000, 0.000000, 0.882353], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [0.470588, 0.411765, 0.098039, 0.019608], 
+              [0.000000, 0.196078, 0.039216, 0.764706], 
+              [0.039216, 0.745098, 0.098039, 0.117647], 
+              [0.784314, 0.019608, 0.176471, 0.019608]
             ],
             "tomtom_matches": [],
             "fimo_gff": "fimo_out_1/fimo.gff"

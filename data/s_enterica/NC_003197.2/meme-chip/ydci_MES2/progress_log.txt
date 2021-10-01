@@ -1,70 +1,62 @@
 Invoking:
   getsize ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.00579600000000002
+  name: count_seqs  status: 0  time: 0.003135
 Invoking:
   fasta-most -min 50 < ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.032627
+  name: most_seqs  status: 0  time: 0.035093
 Invoking:
   fasta-center -dna -len 100 < ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt 1> ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.03867
+  name: center_seqs  status: 0  time: 0.038119
 Invoking:
   fasta-shuffle-letters ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/seqs-centered ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.004854
+  name: shuffle_seqs  status: 0  time: 0.004274
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background
 Finished invoke:
-  name: bg  status: 0  time: 0.005603
+  name: bg  status: 0  time: 0.002263
 Invoking:
-  meme ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/seqs-centered -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/seqs-centered -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 514.674267
+  name: meme  status: 0  time: 341.991642
 Invoking:
-  dreme -v 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/dreme_out -png -dna -p ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/seqs-centered -n ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/seqs-shuffled -t 5494
+  dreme -v 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/dreme_out -png -dna -p ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/seqs-centered -n ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/seqs-shuffled -t 5563
 Finished invoke:
-  name: dreme  status: 256  time: 0.02276
+  name: dreme  status: 256  time: 0.02458
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/centrimo_out -bfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml
+  centrimo -seqlen 70 -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/centrimo_out -bfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.036674
+  name: centrimo  status: 256  time: 0.036249
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/combined.meme ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/combined.meme 1> ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.997894
+  name: align  status: 0  time: 0.285592
 Invoking:
   spamo -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/spamo_out_1 -bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background -primary 1 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.114262
+  name: spamo1  status: 256  time: 0.06558
 Invoking:
-  spamo -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/spamo_out_2 -bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background -primary 3 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml
+  spamo -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/spamo_out_2 -bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background -primary 2 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml
 Finished invoke:
-  name: spamo2  status: 256  time: 0.115771
+  name: spamo2  status: 256  time: 0.066528
 Invoking:
-  spamo -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/spamo_out_3 -bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background -primary 2 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml
+  spamo -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/spamo_out_3 -bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background -primary 3 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml
 Finished invoke:
-  name: spamo3  status: 256  time: 0.117543
-Invoking:
-  spamo -verbosity 1 -oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/spamo_out_4 -bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background -primary 4 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml
-Finished invoke:
-  name: spamo4  status: 256  time: 0.114693
+  name: spamo3  status: 256  time: 0.062493
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/fimo_out_1 --bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background --motif 1 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.111854
+  name: fimo1  status: 0  time: 0.058872
 Invoking:
-  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/fimo_out_2 --bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background --motif 3 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/fimo_out_2 --bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background --motif 2 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt
 Finished invoke:
-  name: fimo2  status: 0  time: 0.116695
+  name: fimo2  status: 0  time: 0.052987
 Invoking:
-  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/fimo_out_3 --bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background --motif 2 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/fimo_out_3 --bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background --motif 3 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt
 Finished invoke:
-  name: fimo3  status: 0  time: 0.113498
-Invoking:
-  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/fimo_out_4 --bgfile ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/background --motif 4 ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/meme_out/meme.xml ../data/s_enterica/NC_003197.2/meme-chip/ydci_MES2/ydci_MES2.txt
-Finished invoke:
-  name: fimo4  status: 0  time: 0.11486
+  name: fimo3  status: 0  time: 0.050126
 Writing output
 Done

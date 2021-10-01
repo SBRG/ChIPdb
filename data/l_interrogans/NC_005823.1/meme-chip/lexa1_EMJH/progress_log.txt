@@ -1,46 +1,46 @@
 Invoking:
   getsize ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/lexa1_EMJH.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.002567
+  name: count_seqs  status: 0  time: 0.002513
 Invoking:
   fasta-most -min 50 < ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/lexa1_EMJH.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.032964
+  name: most_seqs  status: 0  time: 0.033881
 Invoking:
   fasta-center -dna -len 100 < ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/lexa1_EMJH.txt 1> ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.036758
+  name: center_seqs  status: 0  time: 0.033868
 Invoking:
   fasta-shuffle-letters ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/seqs-centered ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.002581
+  name: shuffle_seqs  status: 0  time: 0.002466
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/lexa1_EMJH.txt ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/background
 Finished invoke:
-  name: bg  status: 0  time: 0.00242
+  name: bg  status: 0  time: 0.002225
 Invoking:
-  meme ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/seqs-centered -oc ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/seqs-centered -oc ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 2.416709
+  name: meme  status: 0  time: 2.851486
 Invoking:
   dreme -v 1 -oc ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/dreme_out -png -dna -p ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/seqs-centered -n ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/seqs-shuffled -t 5698
 Finished invoke:
-  name: dreme  status: 256  time: 0.023531
+  name: dreme  status: 256  time: 0.024999
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/centrimo_out -bfile ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/background ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/lexa1_EMJH.txt ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/meme_out/meme.xml
+  centrimo -seqlen 160 -verbosity 1 -oc ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/centrimo_out -bfile ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/background ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/lexa1_EMJH.txt ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.016284
+  name: centrimo  status: 256  time: 0.017419
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/combined.meme ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/combined.meme 1> ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.017728
+  name: align  status: 0  time: 0.010762
 Invoking:
   spamo -verbosity 1 -oc ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/spamo_out_1 -bgfile ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/background -primary 1 ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/lexa1_EMJH.txt ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/meme_out/meme.xml ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.037451
+  name: spamo1  status: 256  time: 0.026771
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/fimo_out_1 --bgfile ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/background --motif 1 ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/meme_out/meme.xml ../data/l_interrogans/NC_005823.1/meme-chip/lexa1_EMJH/lexa1_EMJH.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.028457
+  name: fimo1  status: 0  time: 0.025889
 Writing output
 Done

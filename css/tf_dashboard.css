@@ -34,15 +34,42 @@
     background-color: #D2DAD6;
 }
 
+.fill-parent {
+    height: calc(300px - 1.875rem);
+    display: flex;
+    flex-direction: column;
+}
+
 .fill {
+    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden
+    overflow: hidden;
 }
+
 .fill img {
     flex-shrink: 0;
     min-width: 100%;
+}
+
+.motif-selector-buttons {
+    flex-grow: 0;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.motif-selector-buttons button {
+    margin: 4px;
+}
+
+.motif-banner-title {
+    line-height: 1.5rem;
+    padding-top: 0.375rem;
+    padding-left: 8px;
+    font-weight: 600;
 }
 
 .svg-container {
@@ -98,6 +125,11 @@ svg{
 .gray-btn{
     background-color: #a6b5ae !important;
     border-color: #85998F !important;
+    cursor: default !important;
+}
+
+.gray-btn:focus{
+    box-shadow: none !important;
 }
 
 .panel-info-btn{
@@ -107,10 +139,6 @@ svg{
     height: 50px;
     line-height: 50px;
 }
-
-/*.popover {*/
-/*  min-width: 50% !important;*/
-/*}*/
 
 .popover-make-it-wide {
     min-width: 50% !important;
