@@ -194,7 +194,7 @@
                 <li><b>Toolbar</b>: The toolbar contains a search bar, which can be used to search for specific loci by gene location or gene name. It also has useful tools for adding cursor guides, a center line, toggling track labels, downloading the current view, and adjusting the zoom level.</li>
                 <li><b>Genome Location</b>: The white bar with red outlines may help orient you to which region of the genome is currently displayed. Underneath that, an axis is labeled with specific base pair numbers.</li>
                 <li><b>Nucleotides</b>: If the viewer is zoomed close enough, color-coded nucleotide labels will appear.</li>
-                <li><b>Genes</b>: Gene annotations as provided in the genome. Click on a track to see additional details, such as the gene name, locus tag, and product description.</li>
+                <li><b>Genes</b>: Gene annotations as provided in the genome. Click on an element to see additional details, such as the gene name, locus tag, and product description.</li>
                 <li><b>Published TUs</b>: Transcriptional unit annotations, as provided by <a href="https://academic.oup.com/nar/article/48/18/10157/5911745" target="_blank">the Bitome</a>.</li>
                 <li><b>Published TSS</b>: Transcription start sites, as provided by the Bitome.</li>
                 <li><b>Published TFBS</b>: Transcription factor binding sites, as provided by the Bitome.</li>
@@ -231,7 +231,7 @@
                 Feature Visualization – Position
             </h5>
             <p>
-                In this tab, proChIPdb compares the binding locations relative to each target gene. For each gene (as listed in the Target Genes column of the Binding Site Table), the distance from the gene start site to the binding site is measured in base pairs and normalized to the length of the gene. Points are then plotted with this value on the x axis and the peak intensity (S/N) on the y axis. Genes from the same transcriptional unit will have identical y axis values. Clustering on the x axis indicates the distance at which the transcription factor usually exerts its influence on gene expression. Hover over a point to view more details, such as the gene name.
+                In this tab, proChIPdb compares the binding locations relative to each target gene. For each gene (as listed in the Closest Gene column of the Binding Site Table), the distance from the gene start site to the binding site is measured in base pairs and normalized to the length of the gene. Points are then plotted with this value on the x axis and the peak intensity (S/N) on the y axis. Clustering on the x axis indicates the distance at which the transcription factor usually exerts its influence on gene expression. Hover over a point to view more details, such as the gene name.
             </p>
 
             <h5 class="text-center py-3">
@@ -242,7 +242,7 @@
             </p><p>
                 These motifs were generated using <a href="https://meme-suite.org/meme/doc/meme-chip.html" target="_blank">MEME-ChIP</a> (parameters: meme-minw=5bp, meme-maxw=45bp, -meme-nmotifs=4, filter-thresh=0.001), run on the binding peaks extended with a 20bp margin.
             </p><p>
-                In addition, a final tab named using a PMID may be available; this contains the sequence logo that as it appears in the publication from which the data is from. You are encouraged to refer to the original publications for more details about those sequence logos. 
+                In addition, a final tab named using a PMID may be available; this contains the sequence logo as it appears in the publication from which the data is from. You are encouraged to refer to the original publications for more details about those sequence logos. 
             </p>
 
             <h5 class="text-center py-3">
