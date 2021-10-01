@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB", "-time",
-          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/wspr_LB.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.002586,
+            "time": 0.002771,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/wspr_LB.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.031631,
+            "time": 0.030919,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/wspr_LB.txt 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.031546,
+            "time": 0.036164,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-centered ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.002201,
+            "time": 0.002223,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/wspr_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/background",
             "status": 0,
             "oot": false,
-            "time": 0.002267,
+            "time": 0.001961,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/background -dna -time 4054 -revcomp -nostatus",
             "status": 256,
             "oot": false,
-            "time": 0.002645,
+            "time": 0.003766,
             "messages_file": "meme_msgs.txt",
             "outputs": []
           }, {
@@ -82,7 +82,7 @@
             "cmd": "dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB/seqs-shuffled -t 5700",
             "status": 256,
             "oot": false,
-            "time": 0.022598,
+            "time": 0.025519,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }
@@ -162,7 +162,7 @@
           ]
         },
         "background": {
-          "freqs": [0.242, 0.258, 0.258, 0.242]
+          "freqs": [0.2119, 0.2881, 0.2881, 0.2119]
         },
         "sequence_db": {
           "source": "../data/p_aeruginosa/NC_002516.2/meme-chip/wspr_LB.txt",

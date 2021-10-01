@@ -1,34 +1,34 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/ypdc_glc.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.00262
+  name: count_seqs  status: 0  time: 0.002643
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/ypdc_glc.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.031192
+  name: most_seqs  status: 0  time: 0.032626
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/ypdc_glc.txt 1> ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.035614
+  name: center_seqs  status: 0  time: 0.0382
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.001479
+  name: shuffle_seqs  status: 0  time: 0.00181
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/ypdc_glc.txt ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/background
 Finished invoke:
-  name: bg  status: 0  time: 0.001904
+  name: bg  status: 0  time: 0.002356
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 0.619342
+  name: meme  status: 0  time: 0.612524
 Invoking:
   dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/seqs-shuffled -t 5699
 Finished invoke:
-  name: dreme  status: 256  time: 0.023862
+  name: dreme  status: 256  time: 0.023484
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/background ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/ypdc_glc.txt ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/meme_out/meme.xml
+  centrimo -seqlen 76 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/background ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/ypdc_glc.txt ../data/e_coli/NC_000913.3/meme-chip/ypdc_glc/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.01289
+  name: centrimo  status: 256  time: 0.011593
 Writing output
 Done

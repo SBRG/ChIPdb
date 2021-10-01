@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/e_coli/NC_000913.3/meme-chip/baer_EtOH", "-time", "240",
-          "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/e_coli/NC_000913.3/meme-chip/baer_EtOH.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/baer_EtOH.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.004001,
+            "time": 0.002643,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/baer_EtOH.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.028209,
+            "time": 0.029904,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/baer_EtOH.txt 1> ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.036007,
+            "time": 0.036182,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.003032,
+            "time": 0.002874,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/baer_EtOH.txt ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/background",
             "status": 0,
             "oot": false,
-            "time": 0.003489,
+            "time": 0.0015,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 59.428547,
+            "time": 40.07753,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -89,18 +89,18 @@
             ]
           }, {
             "name": "dreme",
-            "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/seqs-shuffled -t 5676",
+            "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/seqs-shuffled -t 5684",
             "status": 256,
             "oot": false,
-            "time": 0.024779,
+            "time": 0.024584,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/background ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/baer_EtOH.txt ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 72 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/background ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/baer_EtOH.txt ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.022273,
+            "time": 0.021163,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -113,7 +113,7 @@
             "cmd": "tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/combined.meme ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/motif_alignment.txt",
             "status": 0,
             "oot": false,
-            "time": 0.241331,
+            "time": 0.034701,
             "messages_file": "align_msgs.txt",
             "outputs": [
               {
@@ -126,7 +126,7 @@
             "cmd": "spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/baer_EtOH.txt ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.072852,
+            "time": 0.030955,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -135,24 +135,11 @@
               }
             ]
           }, {
-            "name": "spamo2",
-            "cmd": "spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/background -primary 2 ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/baer_EtOH.txt ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/meme_out/meme.xml",
-            "status": 256,
-            "oot": false,
-            "time": 0.072718,
-            "messages_file": "spamo2_msgs.txt",
-            "outputs": [
-              {
-                "name": "SpaMo HTML",
-                "file": "spamo_out_2/spamo.html"
-              }
-            ]
-          }, {
             "name": "fimo1",
             "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/baer_EtOH.txt",
             "status": 0,
             "oot": false,
-            "time": 0.053866,
+            "time": 0.034777,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -163,24 +150,6 @@
               }, {
                 "name": "FIMO Text",
                 "file": "fimo_out_1/fimo.txt"
-              }
-            ]
-          }, {
-            "name": "fimo2",
-            "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/background --motif 2 ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/baer_EtOH/baer_EtOH.txt",
-            "status": 0,
-            "oot": false,
-            "time": 0.092599,
-            "outputs": [
-              {
-                "name": "FIMO GFF",
-                "file": "fimo_out_2/fimo.gff"
-              }, {
-                "name": "FIMO HTML",
-                "file": "fimo_out_2/fimo.html"
-              }, {
-                "name": "FIMO Text",
-                "file": "fimo_out_2/fimo.txt"
               }
             ]
           }
@@ -260,7 +229,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2703, 0.2297, 0.2297, 0.2703]
+          "freqs": [0.2754, 0.2246, 0.2246, 0.2754]
         },
         "sequence_db": {
           "source": "../data/e_coli/NC_000913.3/meme-chip/baer_EtOH.txt",
@@ -278,10 +247,10 @@
             "db": -1,
             "id": "1",
             "alt": "MEME",
-            "len": 38,
-            "evalue": "1.0e-019",
+            "len": 26,
+            "evalue": "1.0e-013",
             "sites": 6,
-            "sig": "1.0e-019",
+            "sig": "1.0e-013",
             "pwm": [
               [0.666667, 0.000000, 0.000000, 0.333333], 
               [0.000000, 0.833333, 0.000000, 0.166667], 
@@ -308,80 +277,16 @@
               [0.166667, 0.500000, 0.000000, 0.333333], 
               [0.166667, 0.166667, 0.666667, 0.000000], 
               [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.000000, 0.833333, 0.166667, 0.000000], 
-              [0.666667, 0.166667, 0.166667, 0.000000], 
-              [0.166667, 0.666667, 0.166667, 0.000000], 
-              [0.000000, 0.166667, 0.833333, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.166667, 0.666667, 0.166667, 0.000000], 
-              [0.333333, 0.000000, 0.666667, 0.000000], 
-              [0.000000, 0.166667, 0.666667, 0.166667], 
-              [0.833333, 0.000000, 0.166667, 0.000000], 
-              [0.500000, 0.000000, 0.000000, 0.500000], 
-              [0.166667, 0.166667, 0.500000, 0.166667], 
-              [0.000000, 0.000000, 0.166667, 0.833333], 
-              [0.166667, 0.000000, 0.833333, 0.000000]
+              [0.000000, 0.833333, 0.166667, 0.000000]
             ],
             "tomtom_matches": [],
             "fimo_gff": "fimo_out_1/fimo.gff"
-          }, {
-            "prog": "meme",
-            "db": -1,
-            "id": "2",
-            "alt": "MEME",
-            "len": 33,
-            "evalue": "1.3e-004",
-            "sites": 11,
-            "sig": "1.3e-004",
-            "pwm": [
-              [0.363636, 0.000000, 0.000000, 0.636364], 
-              [0.000000, 0.818182, 0.181818, 0.000000], 
-              [0.181818, 0.454545, 0.000000, 0.363636], 
-              [0.363636, 0.454545, 0.181818, 0.000000], 
-              [0.363636, 0.272727, 0.181818, 0.181818], 
-              [0.000000, 0.000000, 0.000000, 1.000000], 
-              [0.000000, 0.000000, 0.454545, 0.545455], 
-              [0.000000, 0.272727, 0.000000, 0.727273], 
-              [0.636364, 0.000000, 0.000000, 0.363636], 
-              [0.000000, 0.181818, 0.727273, 0.090909], 
-              [0.000000, 0.818182, 0.000000, 0.181818], 
-              [0.545455, 0.363636, 0.090909, 0.000000], 
-              [0.454545, 0.000000, 0.000000, 0.545455], 
-              [0.181818, 0.454545, 0.363636, 0.000000], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.363636, 0.181818, 0.454545, 0.000000], 
-              [0.818182, 0.000000, 0.181818, 0.000000], 
-              [0.272727, 0.000000, 0.000000, 0.727273], 
-              [0.363636, 0.000000, 0.000000, 0.636364], 
-              [0.636364, 0.000000, 0.363636, 0.000000], 
-              [0.181818, 0.818182, 0.000000, 0.000000], 
-              [0.363636, 0.272727, 0.181818, 0.181818], 
-              [0.181818, 0.454545, 0.363636, 0.000000], 
-              [0.000000, 0.363636, 0.272727, 0.363636], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.545455, 0.181818, 0.272727, 0.000000], 
-              [0.818182, 0.181818, 0.000000, 0.000000], 
-              [0.727273, 0.000000, 0.000000, 0.272727], 
-              [0.363636, 0.454545, 0.181818, 0.000000], 
-              [0.454545, 0.545455, 0.000000, 0.000000], 
-              [0.363636, 0.181818, 0.181818, 0.272727], 
-              [0.272727, 0.000000, 0.000000, 0.727273], 
-              [0.181818, 0.000000, 0.363636, 0.454545]
-            ],
-            "tomtom_matches": [],
-            "fimo_gff": "fimo_out_2/fimo.gff"
           }
         ],
         "groups": [
           [
             {
               "motif": 0,
-              "rc": false,
-              "offset": 0
-            }
-          ], [
-            {
-              "motif": 1,
               "rc": false,
               "offset": 0
             }

@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida", "-time", "240",
-          "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/rcsA_oxida.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.003319,
+            "time": 0.002622,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/rcsA_oxida.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.032979,
+            "time": 0.031592,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/rcsA_oxida.txt 1> ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.034865,
+            "time": 0.036081,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.003182,
+            "time": 0.002838,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/rcsA_oxida.txt ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/background",
             "status": 0,
             "oot": false,
-            "time": 0.001904,
+            "time": 0.00245,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 25.7144,
+            "time": 15.512461,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -89,18 +89,18 @@
             ]
           }, {
             "name": "dreme",
-            "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/seqs-shuffled -t 5689",
+            "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/seqs-shuffled -t 5693",
             "status": 256,
             "oot": false,
-            "time": 0.02455,
+            "time": 0.024758,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/background ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/rcsA_oxida.txt ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 84 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/background ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/rcsA_oxida.txt ../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.016464,
+            "time": 0.018897,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -185,7 +185,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2575, 0.2425, 0.2425, 0.2575]
+          "freqs": [0.2568, 0.2432, 0.2432, 0.2568]
         },
         "sequence_db": {
           "source": "../data/e_coli/NC_000913.3/meme-chip/rcsA_oxida.txt",

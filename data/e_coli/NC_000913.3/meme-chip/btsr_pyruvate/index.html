@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate", "-time",
-          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/btsr_pyruvate.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.003007,
+            "time": 0.003625,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/btsr_pyruvate.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.033744,
+            "time": 0.030067,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/btsr_pyruvate.txt 1> ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.035165,
+            "time": 0.039609,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.002189,
+            "time": 0.003134,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/btsr_pyruvate.txt ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/background",
             "status": 0,
             "oot": false,
-            "time": 0.001814,
+            "time": 0.001877,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 7.220706,
+            "time": 6.670962,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -92,15 +92,15 @@
             "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/seqs-shuffled -t 5697",
             "status": 256,
             "oot": false,
-            "time": 0.023816,
+            "time": 0.024772,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/background ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/btsr_pyruvate.txt ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 86 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/background ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/btsr_pyruvate.txt ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.013216,
+            "time": 0.016658,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -113,7 +113,7 @@
             "cmd": "tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/combined.meme ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/motif_alignment.txt",
             "status": 0,
             "oot": false,
-            "time": 0.124806,
+            "time": 0.056075,
             "messages_file": "align_msgs.txt",
             "outputs": [
               {
@@ -126,7 +126,7 @@
             "cmd": "spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/btsr_pyruvate.txt ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.069752,
+            "time": 0.026317,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -139,7 +139,7 @@
             "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate/btsr_pyruvate.txt",
             "status": 0,
             "oot": false,
-            "time": 0.033896,
+            "time": 0.030608,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -229,7 +229,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2715, 0.2285, 0.2285, 0.2715]
+          "freqs": [0.2757, 0.2243, 0.2243, 0.2757]
         },
         "sequence_db": {
           "source": "../data/e_coli/NC_000913.3/meme-chip/btsr_pyruvate.txt",
@@ -247,51 +247,42 @@
             "db": -1,
             "id": "1",
             "alt": "MEME",
-            "len": 40,
-            "evalue": "1.1e-012",
-            "sites": 8,
-            "sig": "1.1e-012",
+            "len": 31,
+            "evalue": "3.0e-009",
+            "sites": 7,
+            "sig": "3.0e-009",
             "pwm": [
-              [0.125000, 0.000000, 0.000000, 0.875000], 
-              [0.500000, 0.000000, 0.000000, 0.500000], 
-              [0.000000, 0.000000, 0.750000, 0.250000], 
-              [0.500000, 0.000000, 0.500000, 0.000000], 
-              [0.000000, 0.750000, 0.000000, 0.250000], 
-              [0.000000, 0.625000, 0.000000, 0.375000], 
-              [0.250000, 0.250000, 0.375000, 0.125000], 
-              [0.250000, 0.375000, 0.375000, 0.000000], 
-              [0.375000, 0.250000, 0.375000, 0.000000], 
               [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.250000, 0.125000, 0.125000, 0.500000], 
-              [0.000000, 0.250000, 0.625000, 0.125000], 
+              [0.285714, 0.142857, 0.000000, 0.571429], 
+              [0.000000, 0.285714, 0.714286, 0.000000], 
               [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 0.875000, 0.125000, 0.000000], 
-              [0.500000, 0.000000, 0.500000, 0.000000], 
-              [0.375000, 0.000000, 0.625000, 0.000000], 
-              [0.250000, 0.375000, 0.375000, 0.000000], 
-              [0.250000, 0.125000, 0.000000, 0.625000], 
-              [0.125000, 0.375000, 0.000000, 0.500000], 
-              [0.000000, 0.125000, 0.875000, 0.000000], 
-              [0.000000, 0.375000, 0.375000, 0.250000], 
-              [0.000000, 0.250000, 0.625000, 0.125000], 
-              [0.000000, 0.625000, 0.000000, 0.375000], 
-              [0.250000, 0.000000, 0.500000, 0.250000], 
-              [0.625000, 0.000000, 0.000000, 0.375000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.571429, 0.000000, 0.428571, 0.000000], 
+              [0.285714, 0.000000, 0.714286, 0.000000], 
+              [0.285714, 0.428571, 0.285714, 0.000000], 
+              [0.285714, 0.000000, 0.000000, 0.714286], 
+              [0.000000, 0.428571, 0.000000, 0.571429], 
+              [0.000000, 0.000000, 1.000000, 0.000000], 
+              [0.000000, 0.428571, 0.285714, 0.285714], 
+              [0.000000, 0.285714, 0.571429, 0.142857], 
+              [0.000000, 0.714286, 0.000000, 0.285714], 
+              [0.285714, 0.000000, 0.571429, 0.142857], 
+              [0.714286, 0.000000, 0.000000, 0.285714], 
               [0.000000, 0.000000, 0.000000, 1.000000], 
               [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.375000, 0.250000, 0.000000, 0.375000], 
-              [0.000000, 0.625000, 0.000000, 0.375000], 
+              [0.285714, 0.285714, 0.000000, 0.428571], 
+              [0.000000, 0.571429, 0.000000, 0.428571], 
               [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.500000, 0.375000, 0.000000, 0.125000], 
-              [0.000000, 0.000000, 0.250000, 0.750000], 
-              [0.000000, 0.125000, 0.125000, 0.750000], 
-              [0.000000, 0.625000, 0.250000, 0.125000], 
-              [0.625000, 0.000000, 0.000000, 0.375000], 
-              [0.000000, 0.875000, 0.125000, 0.000000], 
-              [0.500000, 0.500000, 0.000000, 0.000000], 
-              [0.500000, 0.500000, 0.000000, 0.000000], 
-              [0.625000, 0.375000, 0.000000, 0.000000], 
-              [0.000000, 0.000000, 0.875000, 0.125000]
+              [0.571429, 0.285714, 0.000000, 0.142857], 
+              [0.000000, 0.000000, 0.285714, 0.714286], 
+              [0.000000, 0.000000, 0.142857, 0.857143], 
+              [0.000000, 0.714286, 0.285714, 0.000000], 
+              [0.714286, 0.000000, 0.000000, 0.285714], 
+              [0.000000, 0.857143, 0.142857, 0.000000], 
+              [0.571429, 0.428571, 0.000000, 0.000000], 
+              [0.571429, 0.428571, 0.000000, 0.000000], 
+              [0.571429, 0.428571, 0.000000, 0.000000], 
+              [0.000000, 0.000000, 0.857143, 0.142857]
             ],
             "tomtom_matches": [],
             "fimo_gff": "fimo_out_1/fimo.gff"

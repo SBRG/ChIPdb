@@ -1,54 +1,46 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/cra_fructose.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.002618
+  name: count_seqs  status: 0  time: 0.002579
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/cra_fructose.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.031021
+  name: most_seqs  status: 0  time: 0.034134
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/cra_fructose.txt 1> ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.043398
+  name: center_seqs  status: 0  time: 0.037185
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.002421
+  name: shuffle_seqs  status: 0  time: 0.002362
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/cra_fructose.txt ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/background
 Finished invoke:
-  name: bg  status: 0  time: 0.002588
+  name: bg  status: 0  time: 0.002368
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 3.036223
+  name: meme  status: 0  time: 2.331985
 Invoking:
-  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/seqs-shuffled -t 5698
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/seqs-shuffled -t 5699
 Finished invoke:
-  name: dreme  status: 256  time: 0.024728
+  name: dreme  status: 256  time: 0.025439
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/background ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/cra_fructose.txt ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/meme_out/meme.xml
+  centrimo -seqlen 69 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/background ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/cra_fructose.txt ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.015673
+  name: centrimo  status: 256  time: 0.012076
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/combined.meme ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.151062
+  name: align  status: 0  time: 0.165221
 Invoking:
   spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/cra_fructose.txt ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.055891
-Invoking:
-  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/background -primary 2 ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/cra_fructose.txt ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/meme_out/meme.xml
-Finished invoke:
-  name: spamo2  status: 256  time: 0.04542
+  name: spamo1  status: 256  time: 0.023916
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/cra_fructose.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.041471
-Invoking:
-  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/background --motif 2 ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/cra_fructose/cra_fructose.txt
-Finished invoke:
-  name: fimo2  status: 0  time: 0.028129
+  name: fimo1  status: 0  time: 0.035753
 Writing output
 Done

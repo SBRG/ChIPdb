@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB", "-time",
-          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/gbdr_LB.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.002738,
+            "time": 0.002948,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/gbdr_LB.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.031164,
+            "time": 0.034012,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/gbdr_LB.txt 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.037964,
+            "time": 0.03917,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/seqs-centered ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.001713,
+            "time": 0.002555,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/gbdr_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/background",
             "status": 0,
             "oot": false,
-            "time": 0.002553,
+            "time": 0.002158,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 9.550793,
+            "time": 12.135246,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -89,67 +89,23 @@
             ]
           }, {
             "name": "dreme",
-            "cmd": "dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/seqs-shuffled -t 5696",
+            "cmd": "dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/seqs-shuffled -t 5695",
             "status": 256,
             "oot": false,
-            "time": 0.022309,
+            "time": 0.025194,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/centrimo_out -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/background ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/gbdr_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 196 -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/centrimo_out -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/background ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/gbdr_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.018399,
+            "time": 0.014963,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
                 "name": "CentriMo HTML",
                 "file": "centrimo_out/centrimo.html"
-              }
-            ]
-          }, {
-            "name": "align",
-            "cmd": "tomtom -verbosity 1 -text -thresh 0.1 ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/combined.meme ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/combined.meme 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/motif_alignment.txt",
-            "status": 0,
-            "oot": false,
-            "time": 0.02066,
-            "messages_file": "align_msgs.txt",
-            "outputs": [
-              {
-                "name": "Motif Alignment",
-                "file": "motif_alignment.txt"
-              }
-            ]
-          }, {
-            "name": "spamo1",
-            "cmd": "spamo -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/spamo_out_1 -bgfile ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/background -primary 1 ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/gbdr_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/meme_out/meme.xml ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/meme_out/meme.xml",
-            "status": 256,
-            "oot": false,
-            "time": 0.049808,
-            "messages_file": "spamo1_msgs.txt",
-            "outputs": [
-              {
-                "name": "SpaMo HTML",
-                "file": "spamo_out_1/spamo.html"
-              }
-            ]
-          }, {
-            "name": "fimo1",
-            "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/fimo_out_1 --bgfile ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/background --motif 1 ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/meme_out/meme.xml ../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB/gbdr_LB.txt",
-            "status": 0,
-            "oot": false,
-            "time": 0.035667,
-            "outputs": [
-              {
-                "name": "FIMO GFF",
-                "file": "fimo_out_1/fimo.gff"
-              }, {
-                "name": "FIMO HTML",
-                "file": "fimo_out_1/fimo.html"
-              }, {
-                "name": "FIMO Text",
-                "file": "fimo_out_1/fimo.txt"
               }
             ]
           }
@@ -229,7 +185,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2272, 0.2728, 0.2728, 0.2272]
+          "freqs": [0.2391, 0.2609, 0.2609, 0.2391]
         },
         "sequence_db": {
           "source": "../data/p_aeruginosa/NC_002516.2/meme-chip/gbdr_LB.txt",
@@ -241,52 +197,8 @@
           "meme": 4,
           "dreme": 0
         },
-        "motifs": [
-          {
-            "prog": "meme",
-            "db": -1,
-            "id": "1",
-            "alt": "MEME",
-            "len": 21,
-            "evalue": "2.9e-006",
-            "sites": 19,
-            "sig": "2.9e-006",
-            "pwm": [
-              [0.000000, 0.052632, 0.105263, 0.842105], 
-              [0.052632, 0.000000, 0.000000, 0.947368], 
-              [0.052632, 0.263158, 0.000000, 0.684211], 
-              [0.210526, 0.421053, 0.052632, 0.315789], 
-              [0.000000, 0.052632, 0.000000, 0.947368], 
-              [0.105263, 0.105263, 0.421053, 0.368421], 
-              [0.315789, 0.315789, 0.263158, 0.105263], 
-              [0.421053, 0.578947, 0.000000, 0.000000], 
-              [0.421053, 0.000000, 0.263158, 0.315789], 
-              [0.315789, 0.210526, 0.157895, 0.315789], 
-              [0.000000, 0.000000, 0.157895, 0.842105], 
-              [0.684211, 0.000000, 0.000000, 0.315789], 
-              [0.210526, 0.105263, 0.210526, 0.473684], 
-              [0.210526, 0.052632, 0.000000, 0.736842], 
-              [0.000000, 0.368421, 0.000000, 0.631579], 
-              [0.368421, 0.000000, 0.315789, 0.315789], 
-              [0.526316, 0.105263, 0.052632, 0.315789], 
-              [0.105263, 0.000000, 0.736842, 0.157895], 
-              [0.157895, 0.263158, 0.368421, 0.210526], 
-              [0.000000, 0.000000, 0.157895, 0.842105], 
-              [0.000000, 0.000000, 0.263158, 0.736842]
-            ],
-            "tomtom_matches": [],
-            "fimo_gff": "fimo_out_1/fimo.gff"
-          }
-        ],
-        "groups": [
-          [
-            {
-              "motif": 0,
-              "rc": false,
-              "offset": 0
-            }
-          ]
-        ]
+        "motifs": [],
+        "groups": []
       };
     </script>
     <script>

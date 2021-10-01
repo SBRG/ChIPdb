@@ -1,38 +1,38 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/h-ns_expo.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.010493
+  name: count_seqs  status: 0  time: 0.00378
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/h-ns_expo.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.035366
+  name: most_seqs  status: 0  time: 0.035335
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/h-ns_expo.txt 1> ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.035924
+  name: center_seqs  status: 0  time: 0.041977
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.004367
+  name: shuffle_seqs  status: 0  time: 0.006722
 Invoking:
   fasta-subsample ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-centered 600 -rest ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-discarded -seed 1 1> ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-sampled
 Finished invoke:
-  name: sample_seqs  status: 0  time: 0.038042
+  name: sample_seqs  status: 0  time: 0.036538
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/h-ns_expo.txt ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/background
 Finished invoke:
-  name: bg  status: 0  time: 0.008112
+  name: bg  status: 0  time: 0.00313
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-sampled -oc ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-sampled -oc ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 625.783193
+  name: meme  status: 0  time: 382.052175
 Invoking:
-  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-shuffled -t 5449
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/seqs-shuffled -t 5547
 Finished invoke:
-  name: dreme  status: 256  time: 0.024643
+  name: dreme  status: 256  time: 0.022812
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/background ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/h-ns_expo.txt ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/meme_out/meme.xml
+  centrimo -seqlen 71 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/background ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/h-ns_expo.txt ../data/e_coli/NC_000913.3/meme-chip/h-ns_expo/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.034398
+  name: centrimo  status: 256  time: 0.035359
 Writing output
 Done

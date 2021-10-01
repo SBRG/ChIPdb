@@ -1,46 +1,54 @@
 Invoking:
   getsize ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fur_Fe.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.003351
+  name: count_seqs  status: 0  time: 0.002599
 Invoking:
   fasta-most -min 50 < ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fur_Fe.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.030618
+  name: most_seqs  status: 0  time: 0.030933
 Invoking:
   fasta-center -dna -len 100 < ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fur_Fe.txt 1> ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.035716
+  name: center_seqs  status: 0  time: 0.036177
 Invoking:
   fasta-shuffle-letters ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/seqs-centered ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.003238
+  name: shuffle_seqs  status: 0  time: 0.002706
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fur_Fe.txt ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/background
 Finished invoke:
-  name: bg  status: 0  time: 0.002886
+  name: bg  status: 0  time: 0.002296
 Invoking:
-  meme ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/seqs-centered -oc ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/seqs-centered -oc ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 34.049328
+  name: meme  status: 0  time: 25.458685
 Invoking:
-  dreme -v 1 -oc ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/dreme_out -png -dna -p ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/seqs-centered -n ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/seqs-shuffled -t 5686
+  dreme -v 1 -oc ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/dreme_out -png -dna -p ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/seqs-centered -n ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/seqs-shuffled -t 5689
 Finished invoke:
-  name: dreme  status: 256  time: 0.022973
+  name: dreme  status: 256  time: 0.023038
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/centrimo_out -bfile ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/background ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fur_Fe.txt ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/meme_out/meme.xml
+  centrimo -seqlen 76 -verbosity 1 -oc ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/centrimo_out -bfile ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/background ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fur_Fe.txt ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.025229
+  name: centrimo  status: 256  time: 0.021568
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/combined.meme ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/combined.meme 1> ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.014937
+  name: align  status: 0  time: 0.064899
 Invoking:
   spamo -verbosity 1 -oc ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/spamo_out_1 -bgfile ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/background -primary 1 ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fur_Fe.txt ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/meme_out/meme.xml ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.062044
+  name: spamo1  status: 256  time: 0.042212
+Invoking:
+  spamo -verbosity 1 -oc ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/spamo_out_2 -bgfile ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/background -primary 2 ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fur_Fe.txt ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/meme_out/meme.xml ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/meme_out/meme.xml
+Finished invoke:
+  name: spamo2  status: 256  time: 0.040777
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fimo_out_1 --bgfile ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/background --motif 1 ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/meme_out/meme.xml ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fur_Fe.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.044304
+  name: fimo1  status: 0  time: 0.030948
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fimo_out_2 --bgfile ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/background --motif 2 ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/meme_out/meme.xml ../data/s_flexneri/AE014073.1/meme-chip/fur_Fe/fur_Fe.txt
+Finished invoke:
+  name: fimo2  status: 0  time: 0.037285
 Writing output
 Done

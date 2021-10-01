@@ -1,46 +1,46 @@
 Invoking:
   getsize ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/phob_LB.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.003007
+  name: count_seqs  status: 0  time: 0.002676
 Invoking:
   fasta-most -min 50 < ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/phob_LB.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.030659
+  name: most_seqs  status: 0  time: 0.028989
 Invoking:
   fasta-center -dna -len 100 < ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/phob_LB.txt 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.037893
+  name: center_seqs  status: 0  time: 0.034276
 Invoking:
   fasta-shuffle-letters ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/seqs-centered ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.002743
+  name: shuffle_seqs  status: 0  time: 0.002797
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/phob_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/background
 Finished invoke:
-  name: bg  status: 0  time: 0.001707
+  name: bg  status: 0  time: 0.001836
 Invoking:
-  meme ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 9.768869
+  name: meme  status: 0  time: 12.120831
 Invoking:
-  dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/seqs-shuffled -t 5696
+  dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/seqs-shuffled -t 5695
 Finished invoke:
-  name: dreme  status: 256  time: 0.022733
+  name: dreme  status: 256  time: 0.024534
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/centrimo_out -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/background ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/phob_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/meme_out/meme.xml
+  centrimo -seqlen 126 -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/centrimo_out -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/background ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/phob_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.017845
+  name: centrimo  status: 256  time: 0.013211
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/combined.meme ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/combined.meme 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.019835
+  name: align  status: 0  time: 0.013962
 Invoking:
   spamo -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/spamo_out_1 -bgfile ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/background -primary 1 ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/phob_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/meme_out/meme.xml ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.061385
+  name: spamo1  status: 256  time: 0.048295
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/fimo_out_1 --bgfile ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/background --motif 1 ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/meme_out/meme.xml ../data/p_aeruginosa/NC_002516.2/meme-chip/phob_LB/phob_LB.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.035439
+  name: fimo1  status: 0  time: 0.026443
 Writing output
 Done

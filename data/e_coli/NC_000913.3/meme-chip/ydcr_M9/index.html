@@ -13,7 +13,7 @@
         "cmd": [
           "meme-chip", "-oc", "../data/e_coli/NC_000913.3/meme-chip/ydcr_M9",
           "-time", "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw",
-          "6", "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod",
+          "5", "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod",
           "zoops", "-meme-nmotifs", "4",
           "../data/e_coli/NC_000913.3/meme-chip/ydcr_M9.txt"
         ],
@@ -23,21 +23,21 @@
             "cmd": "getsize ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/ydcr_M9.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.002627,
+            "time": 0.002481,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/ydcr_M9.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.031728,
+            "time": 0.027899,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/ydcr_M9.txt 1> ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.035363,
+            "time": 0.036452,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -49,7 +49,7 @@
             "cmd": "fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.001582,
+            "time": 0.002391,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -61,7 +61,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/ydcr_M9.txt ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/background",
             "status": 0,
             "oot": false,
-            "time": 0.002445,
+            "time": 0.002189,
             "outputs": [
               {
                 "name": "Background",
@@ -70,10 +70,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 1.680741,
+            "time": 1.538404,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -91,15 +91,15 @@
             "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/seqs-shuffled -t 5699",
             "status": 256,
             "oot": false,
-            "time": 0.022341,
+            "time": 0.023477,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/background ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/ydcr_M9.txt ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 82 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/background ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/ydcr_M9.txt ../data/e_coli/NC_000913.3/meme-chip/ydcr_M9/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.01464,
+            "time": 0.012862,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -184,7 +184,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2813, 0.2187, 0.2187, 0.2813]
+          "freqs": [0.303, 0.197, 0.197, 0.303]
         },
         "sequence_db": {
           "source": "../data/e_coli/NC_000913.3/meme-chip/ydcr_M9.txt",

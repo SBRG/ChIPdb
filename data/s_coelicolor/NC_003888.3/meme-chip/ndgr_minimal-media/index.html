@@ -14,7 +14,7 @@
           "meme-chip", "-oc",
           "../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media",
           "-time", "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw",
-          "6", "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod",
+          "5", "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod",
           "zoops", "-meme-nmotifs", "4",
           "../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/ndgr_minimal-media.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.002588,
+            "time": 0.003081,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/ndgr_minimal-media.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.029926,
+            "time": 0.033085,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/ndgr_minimal-media.txt 1> ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.030755,
+            "time": 0.033182,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/seqs-centered ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.002389,
+            "time": 0.001591,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/ndgr_minimal-media.txt ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/background",
             "status": 0,
             "oot": false,
-            "time": 0.002115,
+            "time": 0.002547,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/seqs-centered -oc ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/seqs-centered -oc ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 1.619727,
+            "time": 1.97983,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -92,15 +92,15 @@
             "cmd": "dreme -v 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/dreme_out -png -dna -p ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/seqs-centered -n ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/seqs-shuffled -t 5699",
             "status": 256,
             "oot": false,
-            "time": 0.025688,
+            "time": 0.026368,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/centrimo_out -bfile ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/background ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/ndgr_minimal-media.txt ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 5498 -verbosity 1 -oc ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/centrimo_out -bfile ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/background ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/ndgr_minimal-media.txt ../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.016412,
+            "time": 0.011104,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -185,7 +185,7 @@
           ]
         },
         "background": {
-          "freqs": [0.1518, 0.3482, 0.3482, 0.1518]
+          "freqs": [0.1445, 0.3555, 0.3555, 0.1445]
         },
         "sequence_db": {
           "source": "../data/s_coelicolor/NC_003888.3/meme-chip/ndgr_minimal-media.txt",

@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe", "-time", "240",
-          "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/fur_Fe.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.002618,
+            "time": 0.002744,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/fur_Fe.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.031707,
+            "time": 0.032226,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/fur_Fe.txt 1> ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.03076,
+            "time": 0.037622,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/seqs-centered ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.002561,
+            "time": 0.002599,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/fur_Fe.txt ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/background",
             "status": 0,
             "oot": false,
-            "time": 0.002822,
+            "time": 0.002275,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/seqs-centered -oc ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/seqs-centered -oc ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 3.930388,
+            "time": 2.522588,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -92,15 +92,15 @@
             "cmd": "dreme -v 1 -oc ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/dreme_out -png -dna -p ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/seqs-centered -n ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/seqs-shuffled -t 5698",
             "status": 256,
             "oot": false,
-            "time": 0.024564,
+            "time": 0.025083,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/centrimo_out -bfile ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/background ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/fur_Fe.txt ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 70 -verbosity 1 -oc ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/centrimo_out -bfile ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/background ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/fur_Fe.txt ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.012352,
+            "time": 0.018523,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -113,7 +113,7 @@
             "cmd": "tomtom -verbosity 1 -text -thresh 0.1 ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/combined.meme ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/combined.meme 1> ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/motif_alignment.txt",
             "status": 0,
             "oot": false,
-            "time": 0.026376,
+            "time": 0.028917,
             "messages_file": "align_msgs.txt",
             "outputs": [
               {
@@ -126,7 +126,7 @@
             "cmd": "spamo -verbosity 1 -oc ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/spamo_out_1 -bgfile ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/background -primary 1 ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/fur_Fe.txt ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/meme_out/meme.xml ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.041609,
+            "time": 0.028418,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -139,7 +139,7 @@
             "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/fimo_out_1 --bgfile ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/background --motif 1 ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/meme_out/meme.xml ../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe/fur_Fe.txt",
             "status": 0,
             "oot": false,
-            "time": 0.033308,
+            "time": 0.027294,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -229,7 +229,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2423, 0.2577, 0.2577, 0.2423]
+          "freqs": [0.3024, 0.1976, 0.1976, 0.3024]
         },
         "sequence_db": {
           "source": "../data/k_pneumoniae/CP000647.1/meme-chip/fur_Fe.txt",
@@ -248,34 +248,34 @@
             "id": "1",
             "alt": "MEME",
             "len": 24,
-            "evalue": "1.5e-074",
-            "sites": 24,
-            "sig": "1.5e-074",
+            "evalue": "4.7e-041",
+            "sites": 23,
+            "sig": "4.7e-041",
             "pwm": [
-              [0.833333, 0.083333, 0.041667, 0.041667], 
-              [0.166667, 0.166667, 0.000000, 0.666667], 
-              [0.375000, 0.125000, 0.416667, 0.083333], 
-              [0.333333, 0.208333, 0.166667, 0.291667], 
-              [0.375000, 0.000000, 0.166667, 0.458333], 
-              [0.916667, 0.000000, 0.000000, 0.083333], 
-              [0.875000, 0.000000, 0.000000, 0.125000], 
-              [0.041667, 0.041667, 0.000000, 0.916667], 
-              [0.125000, 0.041667, 0.833333, 0.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.000000, 0.000000, 0.375000, 0.625000], 
-              [0.875000, 0.000000, 0.000000, 0.125000], 
-              [0.750000, 0.000000, 0.166667, 0.083333], 
-              [0.083333, 0.291667, 0.083333, 0.541667], 
-              [0.291667, 0.083333, 0.250000, 0.375000], 
-              [0.875000, 0.000000, 0.041667, 0.083333], 
-              [0.041667, 0.000000, 0.000000, 0.958333], 
-              [0.041667, 0.000000, 0.000000, 0.958333], 
-              [0.333333, 0.416667, 0.041667, 0.208333], 
-              [0.000000, 0.083333, 0.208333, 0.708333], 
-              [0.000000, 0.791667, 0.041667, 0.166667], 
-              [0.791667, 0.000000, 0.208333, 0.000000], 
-              [0.291667, 0.000000, 0.041667, 0.666667], 
-              [0.041667, 0.083333, 0.000000, 0.875000]
+              [0.739130, 0.086957, 0.043478, 0.130435], 
+              [0.173913, 0.173913, 0.043478, 0.608696], 
+              [0.391304, 0.043478, 0.521739, 0.043478], 
+              [0.391304, 0.260870, 0.000000, 0.347826], 
+              [0.304348, 0.086957, 0.260870, 0.347826], 
+              [0.869565, 0.000000, 0.000000, 0.130435], 
+              [0.782609, 0.043478, 0.000000, 0.173913], 
+              [0.086957, 0.086957, 0.000000, 0.826087], 
+              [0.130435, 0.086957, 0.782609, 0.000000], 
+              [0.913043, 0.000000, 0.043478, 0.043478], 
+              [0.043478, 0.000000, 0.347826, 0.608696], 
+              [0.869565, 0.000000, 0.043478, 0.086957], 
+              [0.782609, 0.043478, 0.086957, 0.086957], 
+              [0.000000, 0.217391, 0.000000, 0.782609], 
+              [0.260870, 0.086957, 0.304348, 0.347826], 
+              [0.869565, 0.000000, 0.043478, 0.086957], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [0.130435, 0.000000, 0.000000, 0.869565], 
+              [0.304348, 0.391304, 0.086957, 0.217391], 
+              [0.000000, 0.130435, 0.260870, 0.608696], 
+              [0.000000, 0.608696, 0.173913, 0.217391], 
+              [0.956522, 0.000000, 0.043478, 0.000000], 
+              [0.217391, 0.000000, 0.000000, 0.782609], 
+              [0.000000, 0.043478, 0.000000, 0.956522]
             ],
             "tomtom_matches": [],
             "fimo_gff": "fimo_out_1/fimo.gff"

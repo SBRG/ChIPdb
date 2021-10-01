@@ -13,7 +13,7 @@
         "cmd": [
           "meme-chip", "-oc", "../data/e_coli/NC_000913.3/meme-chip/soxr_pq",
           "-time", "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw",
-          "6", "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod",
+          "5", "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod",
           "zoops", "-meme-nmotifs", "4",
           "../data/e_coli/NC_000913.3/meme-chip/soxr_pq.txt"
         ],
@@ -23,21 +23,21 @@
             "cmd": "getsize ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/soxr_pq.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.002583,
+            "time": 0.002428,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/soxr_pq.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.031872,
+            "time": 0.031597,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/soxr_pq.txt 1> ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.037464,
+            "time": 0.034929,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -49,7 +49,7 @@
             "cmd": "fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.002159,
+            "time": 0.001986,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -61,7 +61,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/soxr_pq.txt ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/background",
             "status": 0,
             "oot": false,
-            "time": 0.001344,
+            "time": 0.002326,
             "outputs": [
               {
                 "name": "Background",
@@ -70,10 +70,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 1.632811,
+            "time": 1.387826,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -91,15 +91,15 @@
             "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/seqs-shuffled -t 5699",
             "status": 256,
             "oot": false,
-            "time": 0.023215,
+            "time": 0.022762,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/background ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/soxr_pq.txt ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 75 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/background ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/soxr_pq.txt ../data/e_coli/NC_000913.3/meme-chip/soxr_pq/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.008981,
+            "time": 0.00854,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -184,7 +184,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2559, 0.2441, 0.2441, 0.2559]
+          "freqs": [0.254, 0.246, 0.246, 0.254]
         },
         "sequence_db": {
           "source": "../data/e_coli/NC_000913.3/meme-chip/soxr_pq.txt",
