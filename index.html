@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/common.css" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/introjs.min.css" type="text/css">
 
     <!-- javascript imports -->
     <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/intro.min.js"></script>
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -100,7 +102,8 @@
         </div>
         <!-- middle -->
         <div class="col-lg-7 col-sm-10 middle-spacing">
-            <div class="mt-4">
+            <div class="mt-4" data-step="1"
+                 data-intro="Welcome to proChIPdb! Here, we display basic statistics about our database website for ChIP-seq and ChIP-exo data">
                 <div class="card homepage-card p-2 mb-1 text-center">
                     <div class="row">
                         <div class="col-sm-12 m-2 mt-5">
@@ -126,6 +129,14 @@
                             <div class="db-stat"> 06.22.2021</div>
                         </div>
                     </div>
+                </div>
+
+            </div>
+            <div>
+                <div class="card mb-2 text-center">
+                    <a role="button" id="start_tutorial" class="btn bd-lead" href="javascript:void(0);"><span><i
+                            class="material-icons">download</i></span>
+                        <span>Getting Started Tour</span></a>
                 </div>
             </div>
 
@@ -159,6 +170,13 @@
 
 <!-- Scripts -->
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<!-- interactive tour -->
+<script>
+    $("#start_tutorial").click(function () {
+        introJs().start();
+    });
+</script>
 
 </body>
 </html>
