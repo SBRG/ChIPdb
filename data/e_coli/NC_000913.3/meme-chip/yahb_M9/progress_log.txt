@@ -1,34 +1,34 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/yahb_M9.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.002365
+  name: count_seqs  status: 0  time: 0.003204
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/yahb_M9.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.030805
+  name: most_seqs  status: 0  time: 0.032379
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/yahb_M9.txt 1> ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.03786
+  name: center_seqs  status: 0  time: 0.036126
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.002089
+  name: shuffle_seqs  status: 0  time: 0.002012
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/yahb_M9.txt ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/background
 Finished invoke:
-  name: bg  status: 0  time: 0.002305
+  name: bg  status: 0  time: 0.001353
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 0.582287
+  name: meme  status: 0  time: 0.630431
 Invoking:
   dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/seqs-shuffled -t 5699
 Finished invoke:
-  name: dreme  status: 256  time: 0.024907
+  name: dreme  status: 256  time: 0.023241
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/background ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/yahb_M9.txt ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/meme_out/meme.xml
+  centrimo -seqlen 83 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/background ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/yahb_M9.txt ../data/e_coli/NC_000913.3/meme-chip/yahb_M9/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.012285
+  name: centrimo  status: 256  time: 0.006201
 Writing output
 Done

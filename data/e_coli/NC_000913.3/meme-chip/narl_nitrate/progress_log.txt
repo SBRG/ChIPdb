@@ -1,62 +1,70 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.005437
+  name: count_seqs  status: 0  time: 0.003167
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.031418
+  name: most_seqs  status: 0  time: 0.030197
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt 1> ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.0334
+  name: center_seqs  status: 0  time: 0.037615
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.004748
+  name: shuffle_seqs  status: 0  time: 0.00241
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background
 Finished invoke:
-  name: bg  status: 0  time: 0.004216
+  name: bg  status: 0  time: 0.001472
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 377.5194
+  name: meme  status: 0  time: 225.292146
 Invoking:
-  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-shuffled -t 5548
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-shuffled -t 5610
 Finished invoke:
-  name: dreme  status: 256  time: 0.02496
+  name: dreme  status: 256  time: 0.026111
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml
+  centrimo -seqlen 72 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.03748
+  name: centrimo  status: 256  time: 0.036787
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/combined.meme ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.260322
+  name: align  status: 0  time: 0.657768
 Invoking:
   spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.101553
+  name: spamo1  status: 256  time: 0.063278
 Invoking:
-  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 3 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 2 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml
 Finished invoke:
-  name: spamo2  status: 256  time: 0.098902
+  name: spamo2  status: 256  time: 0.066706
 Invoking:
-  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_3 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 4 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_3 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 3 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml
 Finished invoke:
-  name: spamo3  status: 256  time: 0.09674
+  name: spamo3  status: 256  time: 0.063905
+Invoking:
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_4 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 4 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml
+Finished invoke:
+  name: spamo4  status: 256  time: 0.066862
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.097442
+  name: fimo1  status: 0  time: 0.050503
 Invoking:
-  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 3 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 2 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt
 Finished invoke:
-  name: fimo2  status: 0  time: 0.09211
+  name: fimo2  status: 0  time: 0.048305
 Invoking:
-  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_3 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 4 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_3 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 3 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt
 Finished invoke:
-  name: fimo3  status: 0  time: 0.093497
+  name: fimo3  status: 0  time: 0.05798
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_4 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 4 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt
+Finished invoke:
+  name: fimo4  status: 0  time: 0.063443
 Writing output
 Done

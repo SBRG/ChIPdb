@@ -1,62 +1,62 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.004669
+  name: count_seqs  status: 0  time: 0.002847
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.030925
+  name: most_seqs  status: 0  time: 0.035791
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt 1> ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.037678
+  name: center_seqs  status: 0  time: 0.037057
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.003625
+  name: shuffle_seqs  status: 0  time: 0.00408
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background
 Finished invoke:
-  name: bg  status: 0  time: 0.003128
+  name: bg  status: 0  time: 0.002243
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 177.003892
+  name: meme  status: 0  time: 102.895506
 Invoking:
-  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/seqs-shuffled -t 5629
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/seqs-shuffled -t 5658
 Finished invoke:
-  name: dreme  status: 256  time: 0.023232
+  name: dreme  status: 256  time: 0.025585
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml
+  centrimo -seqlen 71 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.029953
+  name: centrimo  status: 256  time: 0.032505
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/combined.meme ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.382836
+  name: align  status: 0  time: 0.57254
 Invoking:
   spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.085468
+  name: spamo1  status: 256  time: 0.053101
 Invoking:
-  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background -primary 2 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background -primary 3 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml
 Finished invoke:
-  name: spamo2  status: 256  time: 0.078029
+  name: spamo2  status: 256  time: 0.051344
 Invoking:
-  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/spamo_out_3 -bgfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background -primary 3 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml
+  spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/spamo_out_3 -bgfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background -primary 4 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml
 Finished invoke:
-  name: spamo3  status: 256  time: 0.074984
+  name: spamo3  status: 256  time: 0.050132
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.07755
+  name: fimo1  status: 0  time: 0.05151
 Invoking:
-  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background --motif 2 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background --motif 3 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt
 Finished invoke:
-  name: fimo2  status: 0  time: 0.072792
+  name: fimo2  status: 0  time: 0.043454
 Invoking:
-  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/fimo_out_3 --bgfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background --motif 3 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt
+  fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/fimo_out_3 --bgfile ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/background --motif 4 ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/hupb_expo/hupb_expo.txt
 Finished invoke:
-  name: fimo3  status: 0  time: 0.073967
+  name: fimo3  status: 0  time: 0.042321
 Writing output
 Done

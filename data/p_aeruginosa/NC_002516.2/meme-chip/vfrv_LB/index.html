@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB", "-time",
-          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/vfrv_LB.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.003596,
+            "time": 0.003495,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/vfrv_LB.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.030405,
+            "time": 0.029751,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/vfrv_LB.txt 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.036988,
+            "time": 0.039507,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/seqs-centered ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.002969,
+            "time": 0.002998,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/vfrv_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/background",
             "status": 0,
             "oot": false,
-            "time": 0.003053,
+            "time": 0.00249,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 48.105024,
+            "time": 55.055568,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -89,18 +89,18 @@
             ]
           }, {
             "name": "dreme",
-            "cmd": "dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/seqs-shuffled -t 5680",
+            "cmd": "dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/seqs-shuffled -t 5678",
             "status": 256,
             "oot": false,
-            "time": 0.023702,
+            "time": 0.021209,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/centrimo_out -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/background ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/vfrv_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 190 -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/centrimo_out -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/background ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/vfrv_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.02961,
+            "time": 0.034321,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -113,7 +113,7 @@
             "cmd": "tomtom -verbosity 1 -text -thresh 0.1 ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/combined.meme ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/combined.meme 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/motif_alignment.txt",
             "status": 0,
             "oot": false,
-            "time": 0.032372,
+            "time": 0.015115,
             "messages_file": "align_msgs.txt",
             "outputs": [
               {
@@ -126,7 +126,7 @@
             "cmd": "spamo -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/spamo_out_1 -bgfile ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/background -primary 1 ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/vfrv_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/meme_out/meme.xml ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.093376,
+            "time": 0.073516,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -135,24 +135,11 @@
               }
             ]
           }, {
-            "name": "spamo2",
-            "cmd": "spamo -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/spamo_out_2 -bgfile ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/background -primary 3 ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/vfrv_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/meme_out/meme.xml ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/meme_out/meme.xml",
-            "status": 256,
-            "oot": false,
-            "time": 0.07735,
-            "messages_file": "spamo2_msgs.txt",
-            "outputs": [
-              {
-                "name": "SpaMo HTML",
-                "file": "spamo_out_2/spamo.html"
-              }
-            ]
-          }, {
             "name": "fimo1",
             "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/fimo_out_1 --bgfile ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/background --motif 1 ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/meme_out/meme.xml ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/vfrv_LB.txt",
             "status": 0,
             "oot": false,
-            "time": 0.053574,
+            "time": 0.045875,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -163,24 +150,6 @@
               }, {
                 "name": "FIMO Text",
                 "file": "fimo_out_1/fimo.txt"
-              }
-            ]
-          }, {
-            "name": "fimo2",
-            "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/fimo_out_2 --bgfile ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/background --motif 3 ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/meme_out/meme.xml ../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB/vfrv_LB.txt",
-            "status": 0,
-            "oot": false,
-            "time": 0.053479,
-            "outputs": [
-              {
-                "name": "FIMO GFF",
-                "file": "fimo_out_2/fimo.gff"
-              }, {
-                "name": "FIMO HTML",
-                "file": "fimo_out_2/fimo.html"
-              }, {
-                "name": "FIMO Text",
-                "file": "fimo_out_2/fimo.txt"
               }
             ]
           }
@@ -260,7 +229,7 @@
           ]
         },
         "background": {
-          "freqs": [0.172, 0.328, 0.328, 0.172]
+          "freqs": [0.1701, 0.3299, 0.3299, 0.1701]
         },
         "sequence_db": {
           "source": "../data/p_aeruginosa/NC_002516.2/meme-chip/vfrv_LB.txt",
@@ -278,75 +247,36 @@
             "db": -1,
             "id": "1",
             "alt": "MEME",
-            "len": 15,
-            "evalue": "4.2e-041",
-            "sites": 78,
-            "sig": "4.2e-041",
+            "len": 16,
+            "evalue": "2.3e-046",
+            "sites": 123,
+            "sig": "2.3e-046",
             "pwm": [
-              [0.012821, 0.333333, 0.205128, 0.448718], 
-              [0.000000, 0.000000, 0.974359, 0.025641], 
-              [0.025641, 0.025641, 0.000000, 0.948718], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.653846, 0.346154, 0.000000, 0.000000], 
-              [0.038462, 0.294872, 0.230769, 0.435897], 
-              [0.000000, 0.461538, 0.512821, 0.025641], 
-              [0.102564, 0.538462, 0.230769, 0.128205], 
-              [0.500000, 0.179487, 0.179487, 0.141026], 
-              [0.025641, 0.371795, 0.525641, 0.076923], 
-              [0.076923, 0.128205, 0.282051, 0.512821], 
-              [0.064103, 0.000000, 0.166667, 0.769231], 
-              [0.000000, 0.897436, 0.102564, 0.000000], 
-              [0.487179, 0.064103, 0.346154, 0.102564], 
-              [0.179487, 0.743590, 0.025641, 0.051282]
+              [0.365854, 0.268293, 0.146341, 0.219512], 
+              [0.016260, 0.528455, 0.056911, 0.398374], 
+              [0.073171, 0.016260, 0.910569, 0.000000], 
+              [0.300813, 0.000000, 0.000000, 0.699187], 
+              [0.016260, 0.146341, 0.796748, 0.040650], 
+              [0.642276, 0.341463, 0.016260, 0.000000], 
+              [0.284553, 0.227642, 0.170732, 0.317073], 
+              [0.000000, 0.552846, 0.422764, 0.024390], 
+              [0.081301, 0.479675, 0.284553, 0.154472], 
+              [0.479675, 0.097561, 0.219512, 0.203252], 
+              [0.016260, 0.487805, 0.333333, 0.162602], 
+              [0.113821, 0.211382, 0.430894, 0.243902], 
+              [0.089431, 0.056911, 0.195122, 0.658537], 
+              [0.000000, 0.959350, 0.040650, 0.000000], 
+              [0.512195, 0.113821, 0.373984, 0.000000], 
+              [0.219512, 0.707317, 0.000000, 0.073171]
             ],
             "tomtom_matches": [],
             "fimo_gff": "fimo_out_1/fimo.gff"
-          }, {
-            "prog": "meme",
-            "db": -1,
-            "id": "3",
-            "alt": "MEME",
-            "len": 21,
-            "evalue": "1.8e-006",
-            "sites": 48,
-            "sig": "1.8e-006",
-            "pwm": [
-              [0.000000, 0.916667, 0.083333, 0.000000], 
-              [0.187500, 0.000000, 0.791667, 0.020833], 
-              [0.458333, 0.000000, 0.395833, 0.145833], 
-              [0.000000, 0.854167, 0.145833, 0.000000], 
-              [0.333333, 0.083333, 0.541667, 0.041667], 
-              [0.270833, 0.250000, 0.104167, 0.375000], 
-              [0.000000, 0.812500, 0.187500, 0.000000], 
-              [0.187500, 0.104167, 0.562500, 0.145833], 
-              [0.583333, 0.000000, 0.229167, 0.187500], 
-              [0.020833, 0.583333, 0.354167, 0.041667], 
-              [0.208333, 0.250000, 0.312500, 0.229167], 
-              [0.416667, 0.020833, 0.041667, 0.520833], 
-              [0.000000, 0.708333, 0.291667, 0.000000], 
-              [0.041667, 0.145833, 0.625000, 0.187500], 
-              [0.333333, 0.166667, 0.166667, 0.333333], 
-              [0.000000, 0.750000, 0.208333, 0.041667], 
-              [0.500000, 0.083333, 0.416667, 0.000000], 
-              [0.250000, 0.125000, 0.083333, 0.541667], 
-              [0.000000, 0.604167, 0.333333, 0.062500], 
-              [0.375000, 0.312500, 0.312500, 0.000000], 
-              [0.458333, 0.000000, 0.020833, 0.520833]
-            ],
-            "tomtom_matches": [],
-            "fimo_gff": "fimo_out_2/fimo.gff"
           }
         ],
         "groups": [
           [
             {
               "motif": 0,
-              "rc": false,
-              "offset": 0
-            }
-          ], [
-            {
-              "motif": 1,
               "rc": false,
               "offset": 0
             }

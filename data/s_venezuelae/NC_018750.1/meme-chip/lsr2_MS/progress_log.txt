@@ -1,46 +1,46 @@
 Invoking:
   getsize ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.00387
+  name: count_seqs  status: 0  time: 0.005162
 Invoking:
   fasta-most -min 50 < ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.030777
+  name: most_seqs  status: 0  time: 0.032211
 Invoking:
   fasta-center -dna -len 100 < ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt 1> ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.036818
+  name: center_seqs  status: 0  time: 0.03732
 Invoking:
   fasta-shuffle-letters ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.00514
+  name: shuffle_seqs  status: 0  time: 0.003358
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background
 Finished invoke:
-  name: bg  status: 0  time: 0.003383
+  name: bg  status: 0  time: 0.004644
 Invoking:
-  meme ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 90.57467
+  name: meme  status: 0  time: 113.842582
 Invoking:
-  dreme -v 1 -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/dreme_out -png -dna -p ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered -n ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-shuffled -t 5663
+  dreme -v 1 -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/dreme_out -png -dna -p ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-centered -n ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/seqs-shuffled -t 5654
 Finished invoke:
-  name: dreme  status: 256  time: 0.024418
+  name: dreme  status: 256  time: 0.026375
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/centrimo_out -bfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out/meme.xml
+  centrimo -seqlen 380 -verbosity 1 -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/centrimo_out -bfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.029944
+  name: centrimo  status: 256  time: 0.031429
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/combined.meme ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/combined.meme 1> ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.008313
+  name: align  status: 0  time: 0.009189
 Invoking:
   spamo -verbosity 1 -oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/spamo_out_1 -bgfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background -primary 1 ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out/meme.xml ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.065832
+  name: spamo1  status: 256  time: 0.071672
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/fimo_out_1 --bgfile ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/background --motif 1 ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/meme_out/meme.xml ../data/s_venezuelae/NC_018750.1/meme-chip/lsr2_MS/lsr2_MS.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.053704
+  name: fimo1  status: 0  time: 0.07195
 Writing output
 Done

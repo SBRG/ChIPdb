@@ -1,46 +1,46 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/arca-2_M9+ace.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.002826
+  name: count_seqs  status: 0  time: 0.002403
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/arca-2_M9+ace.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.030809
+  name: most_seqs  status: 0  time: 0.031237
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/arca-2_M9+ace.txt 1> ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.035039
+  name: center_seqs  status: 0  time: 0.036677
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.002286
+  name: shuffle_seqs  status: 0  time: 0.002375
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/arca-2_M9+ace.txt ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/background
 Finished invoke:
-  name: bg  status: 0  time: 0.002285
+  name: bg  status: 0  time: 0.002581
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 5.598603
+  name: meme  status: 0  time: 4.513582
 Invoking:
-  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/seqs-shuffled -t 5697
+  dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/seqs-shuffled -t 5698
 Finished invoke:
-  name: dreme  status: 256  time: 0.023946
+  name: dreme  status: 256  time: 0.025715
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/background ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/arca-2_M9+ace.txt ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/meme_out/meme.xml
+  centrimo -seqlen 74 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/background ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/arca-2_M9+ace.txt ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.01437
+  name: centrimo  status: 256  time: 0.018234
 Invoking:
   tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/combined.meme ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/motif_alignment.txt
 Finished invoke:
-  name: align  status: 0  time: 0.014406
+  name: align  status: 0  time: 0.011941
 Invoking:
   spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/arca-2_M9+ace.txt ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/meme_out/meme.xml
 Finished invoke:
-  name: spamo1  status: 256  time: 0.039651
+  name: spamo1  status: 256  time: 0.024009
 Invoking:
   fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/arca-2_M9+ace/arca-2_M9+ace.txt
 Finished invoke:
-  name: fimo1  status: 0  time: 0.028728
+  name: fimo1  status: 0  time: 0.023751
 Writing output
 Done

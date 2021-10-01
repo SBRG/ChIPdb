@@ -1,34 +1,34 @@
 Invoking:
   getsize ../data/p_putida/NC_002947.4/meme-chip/fur_fe/fur_fe.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.002691
+  name: count_seqs  status: 0  time: 0.002491
 Invoking:
   fasta-most -min 50 < ../data/p_putida/NC_002947.4/meme-chip/fur_fe/fur_fe.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.028545
+  name: most_seqs  status: 0  time: 0.029976
 Invoking:
   fasta-center -dna -len 100 < ../data/p_putida/NC_002947.4/meme-chip/fur_fe/fur_fe.txt 1> ../data/p_putida/NC_002947.4/meme-chip/fur_fe/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.037365
+  name: center_seqs  status: 0  time: 0.035328
 Invoking:
   fasta-shuffle-letters ../data/p_putida/NC_002947.4/meme-chip/fur_fe/seqs-centered ../data/p_putida/NC_002947.4/meme-chip/fur_fe/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.001933
+  name: shuffle_seqs  status: 0  time: 0.00211
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/p_putida/NC_002947.4/meme-chip/fur_fe/fur_fe.txt ../data/p_putida/NC_002947.4/meme-chip/fur_fe/background
 Finished invoke:
-  name: bg  status: 0  time: 0.002282
+  name: bg  status: 0  time: 0.002126
 Invoking:
-  meme ../data/p_putida/NC_002947.4/meme-chip/fur_fe/seqs-centered -oc ../data/p_putida/NC_002947.4/meme-chip/fur_fe/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/p_putida/NC_002947.4/meme-chip/fur_fe/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/p_putida/NC_002947.4/meme-chip/fur_fe/seqs-centered -oc ../data/p_putida/NC_002947.4/meme-chip/fur_fe/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/p_putida/NC_002947.4/meme-chip/fur_fe/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 1.818823
+  name: meme  status: 0  time: 1.678455
 Invoking:
   dreme -v 1 -oc ../data/p_putida/NC_002947.4/meme-chip/fur_fe/dreme_out -png -dna -p ../data/p_putida/NC_002947.4/meme-chip/fur_fe/seqs-centered -n ../data/p_putida/NC_002947.4/meme-chip/fur_fe/seqs-shuffled -t 5699
 Finished invoke:
-  name: dreme  status: 256  time: 0.024889
+  name: dreme  status: 256  time: 0.02352
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/p_putida/NC_002947.4/meme-chip/fur_fe/centrimo_out -bfile ../data/p_putida/NC_002947.4/meme-chip/fur_fe/background ../data/p_putida/NC_002947.4/meme-chip/fur_fe/fur_fe.txt ../data/p_putida/NC_002947.4/meme-chip/fur_fe/meme_out/meme.xml
+  centrimo -seqlen 80 -verbosity 1 -oc ../data/p_putida/NC_002947.4/meme-chip/fur_fe/centrimo_out -bfile ../data/p_putida/NC_002947.4/meme-chip/fur_fe/background ../data/p_putida/NC_002947.4/meme-chip/fur_fe/fur_fe.txt ../data/p_putida/NC_002947.4/meme-chip/fur_fe/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.007764
+  name: centrimo  status: 256  time: 0.0135
 Writing output
 Done

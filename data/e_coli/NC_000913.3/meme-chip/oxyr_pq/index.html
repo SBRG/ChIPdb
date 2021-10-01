@@ -13,7 +13,7 @@
         "cmd": [
           "meme-chip", "-oc", "../data/e_coli/NC_000913.3/meme-chip/oxyr_pq",
           "-time", "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw",
-          "6", "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod",
+          "5", "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod",
           "zoops", "-meme-nmotifs", "4",
           "../data/e_coli/NC_000913.3/meme-chip/oxyr_pq.txt"
         ],
@@ -23,21 +23,21 @@
             "cmd": "getsize ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.002502,
+            "time": 0.002549,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.031528,
+            "time": 0.031041,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt 1> ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.035738,
+            "time": 0.032615,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -49,7 +49,7 @@
             "cmd": "fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.001539,
+            "time": 0.00205,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -61,7 +61,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background",
             "status": 0,
             "oot": false,
-            "time": 0.002349,
+            "time": 0.002058,
             "outputs": [
               {
                 "name": "Background",
@@ -70,10 +70,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 2.270998,
+            "time": 1.873405,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -91,15 +91,15 @@
             "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/seqs-shuffled -t 5699",
             "status": 256,
             "oot": false,
-            "time": 0.025189,
+            "time": 0.025683,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 84 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.014003,
+            "time": 0.009729,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -112,7 +112,7 @@
             "cmd": "tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/combined.meme ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/motif_alignment.txt",
             "status": 0,
             "oot": false,
-            "time": 0.123199,
+            "time": 0.145473,
             "messages_file": "align_msgs.txt",
             "outputs": [
               {
@@ -125,7 +125,7 @@
             "cmd": "spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.048806,
+            "time": 0.020669,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -138,7 +138,7 @@
             "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/oxyr_pq/oxyr_pq.txt",
             "status": 0,
             "oot": false,
-            "time": 0.034634,
+            "time": 0.032648,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -228,7 +228,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2652, 0.2348, 0.2348, 0.2652]
+          "freqs": [0.2585, 0.2415, 0.2415, 0.2585]
         },
         "sequence_db": {
           "source": "../data/e_coli/NC_000913.3/meme-chip/oxyr_pq.txt",
@@ -246,11 +246,30 @@
             "db": -1,
             "id": "1",
             "alt": "MEME",
-            "len": 40,
-            "evalue": "6.0e-006",
+            "len": 41,
+            "evalue": "2.5e-004",
             "sites": 4,
-            "sig": "6.0e-006",
+            "sig": "2.5e-004",
             "pwm": [
+              [0.000000, 0.000000, 1.000000, 0.000000], 
+              [0.000000, 0.250000, 0.750000, 0.000000], 
+              [0.250000, 0.000000, 0.000000, 0.750000], 
+              [0.750000, 0.000000, 0.000000, 0.250000], 
+              [0.000000, 0.000000, 0.750000, 0.250000], 
+              [0.750000, 0.250000, 0.000000, 0.000000], 
+              [0.250000, 0.000000, 0.500000, 0.250000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.750000, 0.000000, 0.250000, 0.000000], 
+              [0.000000, 0.250000, 0.250000, 0.500000], 
+              [0.000000, 0.750000, 0.250000, 0.000000], 
+              [0.250000, 0.000000, 0.750000, 0.000000], 
+              [0.000000, 0.750000, 0.250000, 0.000000], 
+              [0.500000, 0.250000, 0.250000, 0.000000], 
+              [0.000000, 0.250000, 0.000000, 0.750000], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [0.000000, 0.750000, 0.250000, 0.000000], 
+              [0.250000, 0.250000, 0.500000, 0.000000], 
+              [0.000000, 0.250000, 0.000000, 0.750000], 
               [1.000000, 0.000000, 0.000000, 0.000000], 
               [1.000000, 0.000000, 0.000000, 0.000000], 
               [0.000000, 0.250000, 0.250000, 0.500000], 
@@ -272,24 +291,6 @@
               [0.000000, 0.000000, 0.000000, 1.000000], 
               [0.000000, 1.000000, 0.000000, 0.000000], 
               [0.250000, 0.000000, 0.750000, 0.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.250000, 0.500000, 0.250000, 0.000000], 
-              [0.000000, 0.000000, 0.000000, 1.000000], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.000000, 0.750000, 0.000000, 0.250000], 
-              [0.000000, 0.250000, 0.250000, 0.500000], 
-              [0.500000, 0.000000, 0.500000, 0.000000], 
-              [0.000000, 0.250000, 0.000000, 0.750000], 
-              [0.000000, 0.250000, 0.000000, 0.750000], 
-              [0.500000, 0.250000, 0.000000, 0.250000], 
-              [0.000000, 0.500000, 0.000000, 0.500000], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.000000, 0.250000, 0.750000, 0.000000], 
-              [0.000000, 0.250000, 0.750000, 0.000000], 
-              [0.250000, 0.750000, 0.000000, 0.000000], 
-              [0.750000, 0.000000, 0.000000, 0.250000], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
               [1.000000, 0.000000, 0.000000, 0.000000]
             ],
             "tomtom_matches": [],

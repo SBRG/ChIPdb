@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/e_coli/NC_000913.3/meme-chip/narl_nitrate", "-time", "240",
-          "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/e_coli/NC_000913.3/meme-chip/narl_nitrate.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.005437,
+            "time": 0.003167,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.031418,
+            "time": 0.030197,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt 1> ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.0334,
+            "time": 0.037615,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.004748,
+            "time": 0.00241,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background",
             "status": 0,
             "oot": false,
-            "time": 0.004216,
+            "time": 0.001472,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 377.5194,
+            "time": 225.292146,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -89,18 +89,18 @@
             ]
           }, {
             "name": "dreme",
-            "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-shuffled -t 5548",
+            "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/seqs-shuffled -t 5610",
             "status": 256,
             "oot": false,
-            "time": 0.02496,
+            "time": 0.026111,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 72 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.03748,
+            "time": 0.036787,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -113,7 +113,7 @@
             "cmd": "tomtom -verbosity 1 -text -thresh 0.1 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/combined.meme ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/combined.meme 1> ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/motif_alignment.txt",
             "status": 0,
             "oot": false,
-            "time": 0.260322,
+            "time": 0.657768,
             "messages_file": "align_msgs.txt",
             "outputs": [
               {
@@ -126,7 +126,7 @@
             "cmd": "spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_1 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 1 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.101553,
+            "time": 0.063278,
             "messages_file": "spamo1_msgs.txt",
             "outputs": [
               {
@@ -136,10 +136,10 @@
             ]
           }, {
             "name": "spamo2",
-            "cmd": "spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 3 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml",
+            "cmd": "spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_2 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 2 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.098902,
+            "time": 0.066706,
             "messages_file": "spamo2_msgs.txt",
             "outputs": [
               {
@@ -149,10 +149,10 @@
             ]
           }, {
             "name": "spamo3",
-            "cmd": "spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_3 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 4 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml",
+            "cmd": "spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_3 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 3 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.09674,
+            "time": 0.063905,
             "messages_file": "spamo3_msgs.txt",
             "outputs": [
               {
@@ -161,11 +161,24 @@
               }
             ]
           }, {
+            "name": "spamo4",
+            "cmd": "spamo -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/spamo_out_4 -bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background -primary 4 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml",
+            "status": 256,
+            "oot": false,
+            "time": 0.066862,
+            "messages_file": "spamo4_msgs.txt",
+            "outputs": [
+              {
+                "name": "SpaMo HTML",
+                "file": "spamo_out_4/spamo.html"
+              }
+            ]
+          }, {
             "name": "fimo1",
             "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_1 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 1 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt",
             "status": 0,
             "oot": false,
-            "time": 0.097442,
+            "time": 0.050503,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -180,10 +193,10 @@
             ]
           }, {
             "name": "fimo2",
-            "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 3 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt",
+            "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_2 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 2 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt",
             "status": 0,
             "oot": false,
-            "time": 0.09211,
+            "time": 0.048305,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -198,10 +211,10 @@
             ]
           }, {
             "name": "fimo3",
-            "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_3 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 4 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt",
+            "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_3 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 3 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt",
             "status": 0,
             "oot": false,
-            "time": 0.093497,
+            "time": 0.05798,
             "outputs": [
               {
                 "name": "FIMO GFF",
@@ -212,6 +225,24 @@
               }, {
                 "name": "FIMO Text",
                 "file": "fimo_out_3/fimo.txt"
+              }
+            ]
+          }, {
+            "name": "fimo4",
+            "cmd": "fimo --parse-genomic-coord --verbosity 1 --oc ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/fimo_out_4 --bgfile ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/background --motif 4 ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/meme_out/meme.xml ../data/e_coli/NC_000913.3/meme-chip/narl_nitrate/narl_nitrate.txt",
+            "status": 0,
+            "oot": false,
+            "time": 0.063443,
+            "outputs": [
+              {
+                "name": "FIMO GFF",
+                "file": "fimo_out_4/fimo.gff"
+              }, {
+                "name": "FIMO HTML",
+                "file": "fimo_out_4/fimo.html"
+              }, {
+                "name": "FIMO Text",
+                "file": "fimo_out_4/fimo.txt"
               }
             ]
           }
@@ -291,7 +322,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2764, 0.2236, 0.2236, 0.2764]
+          "freqs": [0.2757, 0.2243, 0.2243, 0.2757]
         },
         "sequence_db": {
           "source": "../data/e_coli/NC_000913.3/meme-chip/narl_nitrate.txt",
@@ -309,45 +340,30 @@
             "db": -1,
             "id": "1",
             "alt": "MEME",
-            "len": 34,
-            "evalue": "1.4e-222",
-            "sites": 19,
-            "sig": "1.4e-222",
+            "len": 19,
+            "evalue": "2.2e-082",
+            "sites": 18,
+            "sig": "2.2e-082",
             "pwm": [
+              [0.000000, 0.000000, 1.000000, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
               [0.000000, 0.000000, 0.000000, 1.000000], 
-              [0.000000, 0.105263, 0.000000, 0.894737], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
               [0.000000, 0.000000, 0.000000, 1.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 0.894737, 0.000000, 0.105263], 
-              [0.000000, 0.894737, 0.000000, 0.105263], 
-              [0.000000, 0.000000, 0.947368, 0.052632], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.000000, 0.052632, 0.000000, 0.947368], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 0.105263, 0.000000, 0.894737], 
-              [0.000000, 0.000000, 0.000000, 1.000000], 
-              [0.052632, 0.578947, 0.000000, 0.368421], 
-              [0.842105, 0.000000, 0.157895, 0.000000], 
-              [0.052632, 0.894737, 0.000000, 0.052632], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
+              [0.944444, 0.000000, 0.055556, 0.000000], 
               [0.000000, 0.000000, 0.000000, 1.000000], 
               [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.055556, 0.944444, 0.000000, 0.000000], 
+              [0.111111, 0.000000, 0.888889, 0.000000], 
+              [0.111111, 0.000000, 0.888889, 0.000000], 
               [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000]
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [1.000000, 0.000000, 0.000000, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.888889, 0.000000, 0.111111, 0.000000], 
+              [1.000000, 0.000000, 0.000000, 0.000000], 
+              [0.777778, 0.000000, 0.111111, 0.111111]
             ],
             "tomtom_matches": [],
             "fimo_gff": "fimo_out_1/fimo.gff"
@@ -356,108 +372,143 @@
             "db": -1,
             "id": "2",
             "alt": "MEME",
-            "len": 20,
-            "evalue": "6.3e-060",
-            "sites": 17,
-            "sig": "6.3e-060",
+            "len": 16,
+            "evalue": "2.0e-042",
+            "sites": 86,
+            "sig": "2.0e-042",
             "pwm": [
-              [0.000000, 0.000000, 0.941176, 0.058824], 
+              [0.593023, 0.046512, 0.116279, 0.244186], 
+              [0.767442, 0.011628, 0.011628, 0.209302], 
+              [0.697674, 0.023256, 0.000000, 0.279070], 
+              [0.639535, 0.000000, 0.011628, 0.348837], 
+              [0.232558, 0.000000, 0.000000, 0.767442], 
+              [0.000000, 0.941860, 0.034884, 0.023256], 
+              [0.988372, 0.000000, 0.000000, 0.011628], 
+              [0.744186, 0.000000, 0.255814, 0.000000], 
+              [0.162791, 0.337209, 0.174419, 0.325581], 
+              [0.546512, 0.011628, 0.360465, 0.081395], 
+              [0.348837, 0.174419, 0.279070, 0.197674], 
+              [0.406977, 0.000000, 0.488372, 0.104651], 
+              [0.244186, 0.023256, 0.011628, 0.720930], 
               [0.000000, 0.000000, 0.000000, 1.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.058824, 0.941176, 0.000000, 0.000000], 
-              [0.058824, 0.000000, 0.117647, 0.823529], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.000000, 0.000000, 0.000000, 1.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.058824, 0.000000, 0.941176, 0.000000], 
-              [0.470588, 0.529412, 0.000000, 0.000000], 
-              [0.000000, 0.411765, 0.529412, 0.058824], 
-              [0.000000, 0.176471, 0.529412, 0.294118], 
-              [0.529412, 0.470588, 0.000000, 0.000000], 
-              [0.000000, 0.000000, 1.000000, 0.000000], 
-              [0.000000, 0.705882, 0.058824, 0.235294]
-            ],
-            "tomtom_matches": []
-          }, {
-            "prog": "meme",
-            "db": -1,
-            "id": "3",
-            "alt": "MEME",
-            "len": 20,
-            "evalue": "3.6e-053",
-            "sites": 75,
-            "sig": "3.6e-053",
-            "pwm": [
-              [0.173333, 0.493333, 0.053333, 0.280000], 
-              [0.000000, 0.533333, 0.346667, 0.120000], 
-              [0.520000, 0.053333, 0.000000, 0.426667], 
-              [0.306667, 0.000000, 0.386667, 0.306667], 
-              [0.360000, 0.306667, 0.120000, 0.213333], 
-              [0.533333, 0.026667, 0.133333, 0.306667], 
-              [0.746667, 0.106667, 0.000000, 0.146667], 
-              [0.733333, 0.000000, 0.000000, 0.266667], 
-              [0.586667, 0.000000, 0.013333, 0.400000], 
-              [0.160000, 0.026667, 0.000000, 0.813333], 
-              [0.000000, 1.000000, 0.000000, 0.000000], 
-              [1.000000, 0.000000, 0.000000, 0.000000], 
-              [0.786667, 0.013333, 0.200000, 0.000000], 
-              [0.120000, 0.373333, 0.106667, 0.400000], 
-              [0.586667, 0.026667, 0.280000, 0.106667], 
-              [0.280000, 0.133333, 0.293333, 0.293333], 
-              [0.400000, 0.160000, 0.440000, 0.000000], 
-              [0.200000, 0.040000, 0.013333, 0.746667], 
-              [0.000000, 0.026667, 0.000000, 0.973333], 
-              [0.493333, 0.000000, 0.466667, 0.040000]
+              [0.627907, 0.000000, 0.372093, 0.000000], 
+              [0.232558, 0.441860, 0.162791, 0.162791]
             ],
             "tomtom_matches": [],
             "fimo_gff": "fimo_out_2/fimo.gff"
           }, {
             "prog": "meme",
             "db": -1,
-            "id": "4",
+            "id": "3",
             "alt": "MEME",
-            "len": 29,
-            "evalue": "8.2e-017",
-            "sites": 10,
-            "sig": "8.2e-017",
+            "len": 42,
+            "evalue": "1.7e-013",
+            "sites": 5,
+            "sig": "1.7e-013",
             "pwm": [
-              [0.200000, 0.600000, 0.200000, 0.000000], 
-              [0.000000, 0.600000, 0.000000, 0.400000], 
-              [0.000000, 0.900000, 0.100000, 0.000000], 
-              [0.000000, 0.000000, 0.800000, 0.200000], 
-              [0.200000, 0.000000, 0.800000, 0.000000], 
-              [0.300000, 0.000000, 0.000000, 0.700000], 
-              [0.200000, 0.000000, 0.000000, 0.800000], 
-              [0.300000, 0.200000, 0.000000, 0.500000], 
-              [0.200000, 0.400000, 0.100000, 0.300000], 
+              [0.000000, 0.000000, 1.000000, 0.000000], 
               [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.200000, 0.800000, 0.000000, 0.000000], 
-              [0.200000, 0.600000, 0.000000, 0.200000], 
-              [0.000000, 0.000000, 0.100000, 0.900000], 
-              [0.000000, 0.500000, 0.500000, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.400000, 0.000000, 0.600000, 0.000000], 
+              [0.000000, 0.000000, 1.000000, 0.000000], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [1.000000, 0.000000, 0.000000, 0.000000], 
+              [0.400000, 0.000000, 0.000000, 0.600000], 
+              [0.000000, 0.600000, 0.400000, 0.000000], 
+              [0.400000, 0.600000, 0.000000, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [0.000000, 0.400000, 0.600000, 0.000000], 
               [0.000000, 0.000000, 1.000000, 0.000000], 
               [0.600000, 0.000000, 0.400000, 0.000000], 
-              [0.000000, 0.500000, 0.000000, 0.500000], 
-              [0.300000, 0.000000, 0.000000, 0.700000], 
-              [0.200000, 0.200000, 0.400000, 0.200000], 
-              [0.000000, 0.900000, 0.000000, 0.100000], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [0.600000, 0.000000, 0.000000, 0.400000], 
+              [0.000000, 0.000000, 0.600000, 0.400000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
               [0.000000, 0.400000, 0.600000, 0.000000], 
               [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.000000, 0.800000, 0.000000, 0.200000], 
-              [0.400000, 0.100000, 0.000000, 0.500000], 
+              [0.000000, 0.600000, 0.000000, 0.400000], 
               [0.000000, 0.000000, 0.000000, 1.000000], 
-              [0.000000, 0.000000, 0.400000, 0.600000], 
+              [0.000000, 0.400000, 0.000000, 0.600000], 
+              [0.000000, 0.000000, 1.000000, 0.000000], 
+              [0.000000, 0.600000, 0.400000, 0.000000], 
               [0.000000, 1.000000, 0.000000, 0.000000], 
-              [0.000000, 0.300000, 0.700000, 0.000000], 
-              [0.000000, 0.100000, 0.900000, 0.000000]
+              [0.000000, 0.000000, 0.600000, 0.400000], 
+              [0.000000, 0.400000, 0.600000, 0.000000], 
+              [0.600000, 0.400000, 0.000000, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.000000, 0.000000, 0.600000, 0.400000], 
+              [0.400000, 0.600000, 0.000000, 0.000000], 
+              [0.600000, 0.000000, 0.000000, 0.400000], 
+              [0.000000, 0.600000, 0.000000, 0.400000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.600000, 0.000000, 0.400000, 0.000000], 
+              [0.000000, 0.600000, 0.400000, 0.000000], 
+              [0.000000, 0.600000, 0.000000, 0.400000]
             ],
             "tomtom_matches": [],
             "fimo_gff": "fimo_out_3/fimo.gff"
+          }, {
+            "prog": "meme",
+            "db": -1,
+            "id": "4",
+            "alt": "MEME",
+            "len": 45,
+            "evalue": "4.4e-006",
+            "sites": 6,
+            "sig": "4.4e-006",
+            "pwm": [
+              [0.000000, 0.333333, 0.000000, 0.666667], 
+              [0.333333, 0.666667, 0.000000, 0.000000], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [0.000000, 0.000000, 0.333333, 0.666667], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.333333, 0.333333, 0.000000, 0.333333], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [0.333333, 0.000000, 0.333333, 0.333333], 
+              [0.000000, 0.666667, 0.000000, 0.333333], 
+              [0.666667, 0.000000, 0.333333, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.333333, 0.000000, 0.333333, 0.333333], 
+              [0.000000, 0.666667, 0.000000, 0.333333], 
+              [0.000000, 0.333333, 0.666667, 0.000000], 
+              [0.000000, 0.000000, 0.666667, 0.333333], 
+              [0.000000, 0.333333, 0.333333, 0.333333], 
+              [0.333333, 0.333333, 0.333333, 0.000000], 
+              [0.000000, 0.000000, 0.000000, 1.000000], 
+              [0.000000, 0.333333, 0.333333, 0.333333], 
+              [0.333333, 0.000000, 0.666667, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.000000, 0.000000, 0.333333, 0.666667], 
+              [0.000000, 0.333333, 0.666667, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.333333, 0.000000, 0.666667, 0.000000], 
+              [0.333333, 0.000000, 0.000000, 0.666667], 
+              [0.333333, 0.666667, 0.000000, 0.000000], 
+              [0.666667, 0.000000, 0.333333, 0.000000], 
+              [0.000000, 0.333333, 0.666667, 0.000000], 
+              [0.000000, 0.000000, 1.000000, 0.000000], 
+              [0.000000, 0.666667, 0.333333, 0.000000], 
+              [0.000000, 0.000000, 0.333333, 0.666667], 
+              [0.000000, 0.333333, 0.333333, 0.333333], 
+              [0.333333, 0.000000, 0.666667, 0.000000], 
+              [0.000000, 1.000000, 0.000000, 0.000000], 
+              [0.333333, 0.000000, 0.666667, 0.000000], 
+              [0.000000, 0.333333, 0.666667, 0.000000], 
+              [0.333333, 0.333333, 0.000000, 0.333333], 
+              [0.000000, 0.666667, 0.333333, 0.000000], 
+              [1.000000, 0.000000, 0.000000, 0.000000], 
+              [0.666667, 0.000000, 0.000000, 0.333333], 
+              [0.000000, 0.000000, 0.666667, 0.333333], 
+              [0.000000, 0.333333, 0.666667, 0.000000], 
+              [0.000000, 0.333333, 0.000000, 0.666667], 
+              [0.000000, 0.000000, 0.666667, 0.333333]
+            ],
+            "tomtom_matches": [],
+            "fimo_gff": "fimo_out_4/fimo.gff"
           }
         ],
         "groups": [
@@ -466,10 +517,12 @@
               "motif": 0,
               "rc": false,
               "offset": 0
-            }, {
+            }
+          ], [
+            {
               "motif": 1,
               "rc": false,
-              "offset": 2
+              "offset": 0
             }
           ], [
             {

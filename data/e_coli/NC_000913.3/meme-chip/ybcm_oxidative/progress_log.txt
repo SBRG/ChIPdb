@@ -1,34 +1,34 @@
 Invoking:
   getsize ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt 1> $metrics
 Finished invoke:
-  name: count_seqs  status: 0  time: 0.002513
+  name: count_seqs  status: 0  time: 0.002429
 Invoking:
   fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt 1> $metrics
 Finished invoke:
-  name: most_seqs  status: 0  time: 0.029624
+  name: most_seqs  status: 0  time: 0.03434
 Invoking:
   fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt 1> ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-centered
 Finished invoke:
-  name: center_seqs  status: 0  time: 0.029952
+  name: center_seqs  status: 0  time: 0.038141
 Invoking:
   fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
 Finished invoke:
-  name: shuffle_seqs  status: 0  time: 0.002266
+  name: shuffle_seqs  status: 0  time: 0.002556
 Invoking:
   fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/background
 Finished invoke:
-  name: bg  status: 0  time: 0.001593
+  name: bg  status: 0  time: 0.002339
 Invoking:
-  meme ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/background -dna -time 4054 -revcomp -nostatus
+  meme ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/background -dna -time 4054 -revcomp -nostatus
 Finished invoke:
-  name: meme  status: 0  time: 1.180115
+  name: meme  status: 0  time: 1.018959
 Invoking:
   dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-shuffled -t 5699
 Finished invoke:
-  name: dreme  status: 256  time: 0.025215
+  name: dreme  status: 256  time: 0.024409
 Invoking:
-  centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/background ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/meme_out/meme.xml
+  centrimo -seqlen 85 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/background ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/meme_out/meme.xml
 Finished invoke:
-  name: centrimo  status: 256  time: 0.008993
+  name: centrimo  status: 256  time: 0.01461
 Writing output
 Done

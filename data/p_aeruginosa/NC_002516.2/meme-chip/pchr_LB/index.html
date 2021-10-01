@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB", "-time",
-          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/pchr_LB.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.002983,
+            "time": 0.003022,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/pchr_LB.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.028997,
+            "time": 0.033207,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/pchr_LB.txt 1> ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.036269,
+            "time": 0.037496,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/seqs-centered ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.002661,
+            "time": 0.002688,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/pchr_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/background",
             "status": 0,
             "oot": false,
-            "time": 0.002392,
+            "time": 0.002394,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/seqs-centered -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 23.313323,
+            "time": 30.148718,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -89,18 +89,18 @@
             ]
           }, {
             "name": "dreme",
-            "cmd": "dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/seqs-shuffled -t 5690",
+            "cmd": "dreme -v 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/dreme_out -png -dna -p ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/seqs-centered -n ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/seqs-shuffled -t 5688",
             "status": 256,
             "oot": false,
-            "time": 0.025408,
+            "time": 0.022933,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/centrimo_out -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/background ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/pchr_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 154 -verbosity 1 -oc ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/centrimo_out -bfile ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/background ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/pchr_LB.txt ../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.019264,
+            "time": 0.02168,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -185,7 +185,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2361, 0.2639, 0.2639, 0.2361]
+          "freqs": [0.2544, 0.2456, 0.2456, 0.2544]
         },
         "sequence_db": {
           "source": "../data/p_aeruginosa/NC_002516.2/meme-chip/pchr_LB.txt",

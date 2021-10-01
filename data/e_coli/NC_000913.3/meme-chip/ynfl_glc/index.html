@@ -13,7 +13,7 @@
         "cmd": [
           "meme-chip", "-oc", "../data/e_coli/NC_000913.3/meme-chip/ynfl_glc",
           "-time", "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw",
-          "6", "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod",
+          "5", "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod",
           "zoops", "-meme-nmotifs", "4",
           "../data/e_coli/NC_000913.3/meme-chip/ynfl_glc.txt"
         ],
@@ -23,21 +23,21 @@
             "cmd": "getsize ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/ynfl_glc.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.002302,
+            "time": 0.002467,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/ynfl_glc.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.034822,
+            "time": 0.030131,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/ynfl_glc.txt 1> ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.038149,
+            "time": 0.02941,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -49,7 +49,7 @@
             "cmd": "fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.002257,
+            "time": 0.00221,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -61,7 +61,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/ynfl_glc.txt ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/background",
             "status": 0,
             "oot": false,
-            "time": 0.002134,
+            "time": 0.001451,
             "outputs": [
               {
                 "name": "Background",
@@ -70,10 +70,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/background -dna -time 4054 -revcomp -nostatus",
             "status": 256,
             "oot": false,
-            "time": 0.003295,
+            "time": 0.004274,
             "messages_file": "meme_msgs.txt",
             "outputs": []
           }, {
@@ -81,7 +81,7 @@
             "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/ynfl_glc/seqs-shuffled -t 5700",
             "status": 256,
             "oot": false,
-            "time": 0.023588,
+            "time": 0.021839,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }
@@ -161,7 +161,7 @@
           ]
         },
         "background": {
-          "freqs": [0.263, 0.237, 0.237, 0.263]
+          "freqs": [0.3456, 0.1544, 0.1544, 0.3456]
         },
         "sequence_db": {
           "source": "../data/e_coli/NC_000913.3/meme-chip/ynfl_glc.txt",

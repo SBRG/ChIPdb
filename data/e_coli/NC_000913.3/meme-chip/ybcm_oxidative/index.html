@@ -13,8 +13,8 @@
         "cmd": [
           "meme-chip", "-oc",
           "../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative", "-time",
-          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "6",
-          "-meme-maxw", "40", "-filter-thresh", "0.001", "-meme-mod", "zoops",
+          "240", "-ccut", "100", "-dna", "-order", "2", "-meme-minw", "5",
+          "-meme-maxw", "45", "-filter-thresh", "0.001", "-meme-mod", "zoops",
           "-meme-nmotifs", "4",
           "../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative.txt"
         ],
@@ -24,21 +24,21 @@
             "cmd": "getsize ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.002513,
+            "time": 0.002429,
             "outputs": []
           }, {
             "name": "most_seqs",
             "cmd": "fasta-most -min 50 < ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt 1> $metrics",
             "status": 0,
             "oot": false,
-            "time": 0.029624,
+            "time": 0.03434,
             "outputs": []
           }, {
             "name": "center_seqs",
             "cmd": "fasta-center -dna -len 100 < ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt 1> ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-centered",
             "status": 0,
             "oot": false,
-            "time": 0.029952,
+            "time": 0.038141,
             "outputs": [
               {
                 "name": "seqs-centered",
@@ -50,7 +50,7 @@
             "cmd": "fasta-shuffle-letters ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-centered ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1",
             "status": 0,
             "oot": false,
-            "time": 0.002266,
+            "time": 0.002556,
             "outputs": [
               {
                 "name": "seqs-shuffled",
@@ -62,7 +62,7 @@
             "cmd": "fasta-get-markov -nostatus -nosummary -dna -m 2 ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/background",
             "status": 0,
             "oot": false,
-            "time": 0.001593,
+            "time": 0.002339,
             "outputs": [
               {
                 "name": "Background",
@@ -71,10 +71,10 @@
             ]
           }, {
             "name": "meme",
-            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/meme_out -mod zoops -nmotifs 4 -minw 6 -maxw 40 -bfile ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/background -dna -time 4054 -revcomp -nostatus",
+            "cmd": "meme ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-centered -oc ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/meme_out -mod zoops -nmotifs 4 -minw 5 -maxw 45 -bfile ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/background -dna -time 4054 -revcomp -nostatus",
             "status": 0,
             "oot": false,
-            "time": 1.180115,
+            "time": 1.018959,
             "outputs": [
               {
                 "name": "MEME HTML",
@@ -92,15 +92,15 @@
             "cmd": "dreme -v 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/dreme_out -png -dna -p ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-centered -n ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/seqs-shuffled -t 5699",
             "status": 256,
             "oot": false,
-            "time": 0.025215,
+            "time": 0.024409,
             "messages_file": "dreme_msgs.txt",
             "outputs": []
           }, {
             "name": "centrimo",
-            "cmd": "centrimo -seqlen 500 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/background ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/meme_out/meme.xml",
+            "cmd": "centrimo -seqlen 85 -verbosity 1 -oc ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/centrimo_out -bfile ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/background ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/ybcm_oxidative.txt ../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative/meme_out/meme.xml",
             "status": 256,
             "oot": false,
-            "time": 0.008993,
+            "time": 0.01461,
             "messages_file": "centrimo_msgs.txt",
             "outputs": [
               {
@@ -185,7 +185,7 @@
           ]
         },
         "background": {
-          "freqs": [0.2657, 0.2343, 0.2343, 0.2657]
+          "freqs": [0.2912, 0.2088, 0.2088, 0.2912]
         },
         "sequence_db": {
           "source": "../data/e_coli/NC_000913.3/meme-chip/ybcm_oxidative.txt",
