@@ -154,7 +154,7 @@
             </h4>
 
             <p>
-                This table represents <a href="https://academic.oup.com/nar/article/42/20/e156/2902729" target="_blank">MACE</a> results from processing the sequence read data presented in the Genome Viewer. Tabs across the top correspond to each binding condition. Each row represents a curated binding peak. Clicking on a row will update the Genome Viewer to display a zoomed in plot of the corresponding peak. The rows are initially sorted by genome location, and the tallest peaks can easily be found by sorting by descending "Peak Intensity" (clicking the column header twice). The columns are as follows:
+                This table represents all identified binding locations for the transcription factor. Tabs across the top correspond to each binding condition. Each row represents a curated binding peak. Clicking on a row will update the Genome Viewer to display a zoomed in plot of the corresponding peak. The rows are initially sorted by genome location, and the tallest peaks can easily be found by sorting by descending "Peak Intensity" (clicking the column header twice). In most cases, peaks were identified by processing the sequence read data with <a href="https://academic.oup.com/nar/article/42/20/e156/2902729" target="_blank">MACE</a>. The columns are as follows:
             </p>
 
             <ul>
@@ -162,7 +162,7 @@
                 <li><b>Start Position & End Position</b>: The genome locations of the peak in base pairs are determined by MACE. For each peak, a single-nucleotide resolution border peak is detected by using the Chebyshev Inequality and the border is matched by using the Gale–Shapley stable matching algorithm. For E. coli K-12 MG1655, these locations refer to the <a href="https://www.ncbi.nlm.nih.gov/nuccore/556503834" target="_blank">NC_000913.3 genome</a>.</li>
                 <li><b>Peak Intensity</b>: Peak signal intensity is determined with two replicates using MACE peak calling algorithm, which employs Shannon’s relative entropy (H) to compute signal to noise values across the genome for each replicate. Note that the noise value varies for each condition because it captures variation due to inexact cross-linking, exonuclease digestion, dynamic protein conformations, and PCR amplification.</li>
                 <li><b>Closest gene</b>: Each peak is assigned to its closest gene, according to genomic positions. This column will contain a gene name regardless of the distance to the gene.</li>
-                <li><b>TU Target genes</b>: If a transcriptional unit exists downstream of the binding peak and is within 500 base pairs of the peak, its genes will be listed here. If that TU also has a page in an online database, such as <a href="http://regulondb.ccg.unam.mx/" target="_blank">RegulonDB</a> for <i>E. coli</i>, then the TU will appear as a link to that page.</li>
+                <li><b>Operon</b>: If a transcriptional unit exists downstream of the binding peak and is within 500 base pairs of the peak, its genes will be listed here. If that operon also has a page in an online database, such as <a href="http://regulondb.ccg.unam.mx/" target="_blank">RegulonDB</a> for <i>E. coli</i>, then the operon will appear as a link to that page. There may be two operons if they diverge in both directions downstream of the binding peak.</li>
             </ul>
             <div class="container">
                 <div class ="row">
