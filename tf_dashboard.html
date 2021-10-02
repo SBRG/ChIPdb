@@ -266,14 +266,27 @@
         $('#meta_text').append('<p class="meta_cat">GENOME ID</p>');
         $('#meta_text').append('<p class="meta_val">' + row[6] + '</p>');
         $('#meta_text').append('<p class="meta_cat">MEDIA</p>');
-        $('#meta_text').append('<p class="meta_val">' + row[20] + '<button class="meta-info-btn" id="media-info" type="button" ><i class="material-icons meta-icons">info</i></button></p>');
-        $('#meta_text').append('<p class="meta_cat">SUPPLEMENT</p>');
-        $('#meta_text').append('<p class="meta_val">' + row[21] + '</p>');
+        $('#meta_text').append('<p class="meta_val">' + row[4] + '<button class="meta-info-btn" id="media-info" type="button" ><i class="material-icons meta-icons">info</i></button></p>');
+        if (row[20]) {
+            $('#meta_text').append('<p class="meta_cat">ADDITIONAL CARBON SOURCE</p>');
+            $('#meta_text').append('<p class="meta_val">' + row[20] + '</p>');
+        }$('#meta_text').append('<p class="meta_cat">SUPPLEMENT</p>');
+        $('#meta_text').append('<p class="meta_val">' + row[5] + (row[22] ? '<button class="meta-info-btn" id="supp-info" type="button" ><i class="material-icons meta-icons">info</i></button>': '') + '</p>');
 
-
+        // Generate info buttons
         $('#media-info').popover({
             container: "body",
             title: "additional media information",
+            html: true,
+            trigger: "hover focus",
+            content: function () {
+                return `<div class="popover-message">${row[21]}</div>`;
+            }
+        });
+
+        $('#supp-info').popover({
+            container: "body",
+            title: "additional supplement information",
             html: true,
             trigger: "hover focus",
             content: function () {
@@ -331,9 +344,9 @@
             $('#meta_text').append('<p class="meta_val">DOI: <a href="' + row[15] + '">' + row[15].replace("https://doi.org/", "") + '</a></p>');
 
         }
-        if (row[26]) {
+        if (row[24]) {
             $('#meta_text').append('<p class="meta_cat">EXTRA NOTES</p>');
-            $('#meta_text').append('<p class="meta_val">' + row[26] + '</p>');
+            $('#meta_text').append('<p class="meta_val">' + row[24] + '</p>');
         }
 
         // IGV and table
@@ -378,7 +391,8 @@
 
         conditions.forEach((condition, i) => {
             const [conditionTitle, conditionFile] = condition.split('|');
-            const motifImageAndCSVBase = conditionFile.replace("_binding_table.json", "");
+            const motifImageAndCSVBase = conditionFile && conditionFile.replace("_binding_table.json", "");
+            if (!motifImageAndCSVBase) return;
             const imageFilePath = '/data/' + organism + '/' + genome + '/meme-chip/outputs/' + `${motifImageAndCSVBase}.png`;
             const csvFilePath = '/data/' + organism + '/' + genome + '/meme-chip/outputs/' + `${motifImageAndCSVBase}.csv`;
             const spacelessConditionTitle = conditionTitle.replace(/ /g, "_");
