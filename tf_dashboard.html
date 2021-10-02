@@ -378,7 +378,8 @@
 
         conditions.forEach((condition, i) => {
             const [conditionTitle, conditionFile] = condition.split('|');
-            const motifImageAndCSVBase = conditionFile.replace("_binding_table.json", "");
+            const motifImageAndCSVBase = conditionFile && conditionFile.replace("_binding_table.json", "");
+            if (!motifImageAndCSVBase) return;
             const imageFilePath = '/data/' + organism + '/' + genome + '/meme-chip/outputs/' + `${motifImageAndCSVBase}.png`;
             const csvFilePath = '/data/' + organism + '/' + genome + '/meme-chip/outputs/' + `${motifImageAndCSVBase}.csv`;
             const spacelessConditionTitle = conditionTitle.replace(/ /g, "_");
