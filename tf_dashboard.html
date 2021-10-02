@@ -9,12 +9,14 @@
     <script src="js/bootstrap.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/igv@2.8.1/dist/igv.min.js"></script>
     <script src="js/tabulator.min.js" type="text/javascript"></script>
+    <script src="js/intro.min.js"></script>
 
     <!-- CSS imports -->
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/common.css" type="text/css">
     <link rel="stylesheet" href="css/tf_dashboard.css" type="text/css">
     <link rel="stylesheet" href="css/tabulator_bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/introjs.min.css" type="text/css">
 
     <!-- font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -37,7 +39,8 @@
 <div class="container-fluid page-container">
     <!-- Top Navigation Bar -->
     <nav class="navbar navbar-expand-md sticky-top header">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.html" data-step="5" data-title="Thanks for learning about us 👋"
+        data-intro="Thanks for checking out our interactive tour! Let's take you back to the homepage. Remember, you can always get more details by visiting out 'About' page linked in the top navigation bar.">
             <img src="images/ChIPdb_logo.png" height=35 class="d-inline-block align-top"
                  alt="" loading="lazy">
             proChIPdb 1.0.0 </a>
@@ -73,7 +76,9 @@
     </nav>
     <div class="row row-no-margin">
         <!-- Left Navigation -->
-        <div id="left_col" class="col-sm-12 col-md-2">
+        <div id="left_col" class="col-sm-12 col-md-2"
+        data-step="1" data-title="TF dashboard metadata"
+        data-intro="In this left panel, various details on the TF metadata, including information from the data source publication and useful links, will be available for your reference.">
             <div id="left_col_content" class="mb-3">
                 <h1 class="bd-lead" id="TF_header"></h1>
                 <div class="card p-2" id="meta_text"></div>
@@ -83,7 +88,8 @@
         <div class="col-sm-10 middle-spacing mt-3">
             <div class="row">
                 <div class="col-md-12 col-lg-8">
-                    <div class="card">
+                    <div class="card" data-step="2" data-title="Binding Site Table"
+                         data-intro="The binding site table displays different transcription factor binding sites (TFBSs) that were identified from the experimental source data. Each tab represents the results from a different experimental condition.">
                         <div class="section-header"> Binding Site Table
                             <button class="panel-info-btn" id="table-info" type="button">
                                 <i class="material-icons meta-icons">help</i>
@@ -95,7 +101,8 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-4">
-                    <div class="card">
+                    <div class="card" data-step="3" data-title="Feature Visualization"
+                    data-intro="This panel includes different visuals to summarize the TFBSs (where available), including: 1) a histogram of binding widths, 2) a scatterplot of peak positions relative to their respective closest gene, 3) the generated binding motif (either re-processed with MEME-ChIP or from the source publication), and 4) the Venn diagram comparison between the proChIPdb identified target genes and published regulon genes. Downloads are available in the hamburger menus (≡) in the top right corners of each tab.">
                         <div class="section-header"> Feature Visualization
                             <button class="panel-info-btn" id="visual-info" type="button">
                                 <i class="material-icons meta-icons">help</i>
@@ -182,7 +189,9 @@
                 </div>
             </div>
             <div class="card mt-3 pb-2">
-                <div class="section-header"> Genome Viewer
+                <div class="section-header" data-step="4" data-title="Genome Viewer"
+                     data-intro="proChIPdb’s genome viewer (below) provides access to a complete, genome-wide view of the transcription factor’s activity under the given conditions. The genome viewer was made using igv.js, and it visualizes bigWig ChIP read files. The genome viewer also interacts with the Binding Site Table panel, and will zoom in on a peak when it is clicked in the table.">
+                    Genome Viewer
                     <button class="panel-info-btn" id="igv-info" type="button">
                         <i class="material-icons meta-icons">help</i>
                     </button>
@@ -596,6 +605,16 @@
     });
 
 </script>
+
+<!-- for interactive tour -->
+<script type="text/javascript">
+      if (RegExp('multipage', 'gi').test(window.location.search)) {
+        introJs().setOption('doneLabel', 'Next page').start().oncomplete(function() {
+          window.location.href = 'index.html';
+        });
+      }
+    </script>
+
 </body>
 
 </html>
