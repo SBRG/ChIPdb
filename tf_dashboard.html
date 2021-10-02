@@ -297,10 +297,20 @@
                 $('#meta_text').append(link_text);
             }
             if (link_table.length > db_num) {
-                $('#meta_text').append('<p class="meta_cat mt-3">iMODULONS</p>');
+                $('#meta_text').append('<p class="meta_cat mt-3">iMODULONS<button class="meta-info-btn" id="iM-info" type="button" ><i class="material-icons meta-icons">info</i></button></p>');
                 for (let i = db_num; i < link_table.length; i++) {
                     $('#meta_text').append('<p class="meta_val mb-0"><a href="' + link_table[i][1] + '" target="_blank">' + link_table[i][0] + '</a></p>');
                 }
+                $('#iM-info').popover({
+                    title: "Additional Information - iModulons",
+                    html: true,
+                    container: "body",
+                    trigger: "hover focus",
+                    template: '<div class="popover popover-make-it-wide" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
+                    content: function () {
+                        return `<p>iModulons are machine-learning derived gene groupings from analysis of transcriptomes, which can be associated with transcription factors. The iModulons listed here are regulated by this page's transcription factor. Since iModulons capture independent signals in a dataset, they may combine the effects of several transcription factors or approximate nonlinear responses as multiple iModulons. Links go to iModulonDB.org. It may be interesting to compare the genes from the iModulon with the binding sites from proChIPdb, as well as to use iModulonDB to learn more about the transcription factor's activity over a wide range of conditions.</p>`;
+                    }
+                });
             }
 
         })
@@ -511,7 +521,7 @@
         template: '<div class="popover popover-make-it-wide" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>',
         content: function () {
             return `            <p>
-                This table represents <a href="https://academic.oup.com/nar/article/42/20/e156/2902729" target="_blank">MACE</a> results from processing the sequence read data presented in the Genome Viewer. Tabs across the top correspond to each condition. Each row represents a curated binding peak. Clicking on a row will update the Genome Viewer to display a zoomed in plot of the corresponding peak. The rows are initially sorted by genome location, and the tallest peaks can easily be found by sorting by descending "Peak Intensity" (clicking the column header twice). The columns are as follows:
+                This table represents all identified binding locations for the transcription factor. Tabs across the top correspond to each binding condition. Each row represents a curated binding peak. Clicking on a row will update the Genome Viewer to display a zoomed in plot of the corresponding peak. The rows are initially sorted by genome location, and the tallest peaks can easily be found by sorting by descending "Peak Intensity" (clicking the column header twice). The columns are as follows:
             </p>
 
             <ul>
@@ -519,7 +529,7 @@
                 <li><b>Start Position & End Position*</b>: The genome locations of the peak in base pairs are determined by MACE.</li>
                 <li><b>Peak Intensity*</b>: Peak signal intensity is presented as a signal/noise (S/N) ratio, with noise levels defined separately for each condition.</li>
                 <li><b>Closest gene</b>: Each peak is assigned to its closest gene, according to genomic positions. This column will contain a gene name regardless of the distance to the gene.</li>
-                <li><b>TU Target genes</b>: If a transcriptional unit exists downstream of the binding peak and is within 500 base pairs of the peak, its genes will be listed here. If that TU also has a page in an online database, then the TU will appear as a link to that page.</li>
+                <li><b>Operon</b>: If a transcriptional unit exists downstream of the binding peak and is within 500 base pairs of the peak, its genes will be listed here. If that operon also has a page in an online database, then the operon will appear as a link to that page. There may be two operons if they diverge in both directions downstream of the binding peak.</li>
             </ul>
             <p>*See the About page for more details.</p>`;
         }
