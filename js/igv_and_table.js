@@ -197,7 +197,7 @@ function generateIGVandTable(TF_name, row, fileName) {
 
         if (genome == 'NC_000913.3') {
            columns.push({
-                title: "Operon Target genes",
+                title: "Operon",
                 field: "target_genes_html",
                 sorter: "string",
                 hozAlign: "left",
