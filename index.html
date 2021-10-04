@@ -45,7 +45,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav" >
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown" data-step="4" data-title="Go to Dataset Page"
                     data-intro="A first step to accessing the ChIP data in our website is to select a dataset to view. Currently, the data is grouped by <i>E. coli</i> transcription factors (TFs) versus the TFs of all other organisms. <i>E. coli</i> is our most developed organism for now, but we have plans to expand all datasets in the future!">
@@ -79,7 +79,7 @@
         <!-- Left Navigation -->
         <div id="left_col" class="col-sm-2">
             <div id="left_col_content" data-step="7" data-title="Access dataset pages from homepage"
-            data-intro="On our homepage, you can access the different datasets from these buttons on the left panel. They link to the same place as the 'Organism Dataset' dropdown options in the top navigation bar">
+                 data-intro="On our homepage, you can access the different datasets from these buttons on the left panel. They link to the same place as the 'Organism Dataset' dropdown options in the top navigation bar">
                 <div class="pl-1 mb-4"><h2 class="bd-lead">Browse a Dataset:</h2></div>
 
                 <div class="card mb-2 text-center" data-step="9" data-title="Let's look at the datasets!"
@@ -92,20 +92,21 @@
                     <a role="button" class="btn org-btn bd-lead" href="dataset_page.html?organism=all_other">All Other
                         Organisms</a>
                 </div>
-                <div class="row mt-5 org-disclaimer">
+                <div class="row mt-5 mb-5 org-disclaimer">
                     <div class="col-2"><i class="material-icons">star</i></div>
-                    <div class="col-10">Database most developed for<i>E. coli</i>.</div>
+                    <div class="col-10">Database most developed for <i>E. coli</i>.</div>
+                </div>
+                <hr>
+                <div class="mt-4 gray-font" data-step="8" data-title="Option to download entire database"
+                     data-intro="There is also an option to download the complete proChIPdb database for offline analysis by the user. But, be warned- it has a somewhat large file size!">
+                    <div>Or, download all data:</div>
+                    <a class="mr-4 " href="https://zenodo.org/record/5545676"><span><i
+                            class="material-icons">download</i></span>
+                        <span>Download proChIPdb</span>
+                    </a>
                 </div>
             </div>
-            <hr>
-            <div class="mt-4 gray-font" data-step="8" data-title="Option to download entire database"
-            data-intro="There is also an option to download the complete proChIPdb database for offline analysis by the user. But, be warned- it has a somewhat large file size!">
-                <div>Or, download all data:</div>
-                <a class="mr-4 " href="https://zenodo.org/record/5545676"><span><i
-                        class="material-icons">download</i></span>
-                    <span>Download proChIPdb</span>
-                </a>
-            </div>
+
         </div>
         <!-- middle -->
         <div class="col-lg-7 col-sm-10 middle-spacing">
@@ -114,7 +115,7 @@
                 <div class="card homepage-card p-2 text-center">
                     <div class="row">
                         <div class="col-sm-12 mb-1 mt-4">
-                            <img class="img-fluid logo mx-5" src="images/proChIPdb-logo-dark.png" width="50%"></img>
+                            <img class="img-fluid logo mx-5" src="images/proChIPdb-logo-dark.png" width="40%"></img>
                         </div>
                         <div class="col-sm-12 mb-2 mt-4">
                             <h1> proChIPdb v1.0.0 </h1>
@@ -141,7 +142,7 @@
             </div>
             <div>
                 <div class="mb-2 text-center" data-step="1" data-title="proChIPdb Interactive Tutorial 👋"
-                data-intro="Welcome to proChIPdb! This short interactive tutorial will guide you through our site. Click 'Next' to continue the tutorial and feel free to exit at any time.">
+                     data-intro="Welcome to proChIPdb! This short interactive tutorial will guide you through our site. Click 'Next' to continue the tutorial and feel free to exit at any time.">
                     <h5 style="color: #87978F">New here?</h5>
                     <a role="button" id="start_tutorial" class="btn btn-tour" href="javascript:void(0);"><span><i
                             class="material-icons">play_arrow</i></span>
@@ -182,11 +183,11 @@
 
 <!-- interactive tour -->
 <script>
-    document.getElementById("start_tutorial").onclick = function() {
-        introJs().setOption('doneLabel', 'Next page').start().oncomplete(function() {
-          window.location.href = 'dataset_page.html?organism=e_coli&multipage=true';
+    document.getElementById("start_tutorial").onclick = function () {
+        introJs().setOption('doneLabel', 'Next page').start().oncomplete(function () {
+            window.location.href = 'dataset_page.html?organism=e_coli&multipage=true';
         });
-      };
+    };
 </script>
 
 </body>
